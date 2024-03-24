@@ -7,22 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		128BB5A62BAFE3B7009E0FAB /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 128BB5A52BAFE3B7009E0FAB /* Colors.xcassets */; };
+		128BB5A82BAFE3CB009E0FAB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 128BB5A72BAFE3CB009E0FAB /* Localizable.strings */; };
+		128BB5AB2BAFE5C8009E0FAB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 128BB5AA2BAFE5C8009E0FAB /* GoogleService-Info.plist */; };
 		12CBFBE92BAFE25B005FE4F1 /* UNCHILOGApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CBFBE82BAFE25B005FE4F1 /* UNCHILOGApp.swift */; };
 		12CBFBEB2BAFE25B005FE4F1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CBFBEA2BAFE25B005FE4F1 /* ContentView.swift */; };
-		12CBFBED2BAFE25C005FE4F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12CBFBEC2BAFE25C005FE4F1 /* Assets.xcassets */; };
+		12CBFBED2BAFE25C005FE4F1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12CBFBEC2BAFE25C005FE4F1 /* Images.xcassets */; };
 		12CBFBF02BAFE25C005FE4F1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12CBFBEF2BAFE25C005FE4F1 /* Preview Assets.xcassets */; };
-		12CBFBF22BAFE25C005FE4F1 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CBFBF12BAFE25C005FE4F1 /* Persistence.swift */; };
 		12CBFBF52BAFE25C005FE4F1 /* UNCHILOG.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 12CBFBF32BAFE25C005FE4F1 /* UNCHILOG.xcdatamodeld */; };
+		C297C18C2F20E9590633A74B /* Pods_UNCHILOG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B70382F8D83335666AC1D3D7 /* Pods_UNCHILOG.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		128BB5A52BAFE3B7009E0FAB /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		128BB5A72BAFE3CB009E0FAB /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		128BB5A92BAFE480009E0FAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		128BB5AA2BAFE5C8009E0FAB /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		12CBFBE52BAFE25B005FE4F1 /* UNCHILOG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UNCHILOG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12CBFBE82BAFE25B005FE4F1 /* UNCHILOGApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNCHILOGApp.swift; sourceTree = "<group>"; };
 		12CBFBEA2BAFE25B005FE4F1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		12CBFBEC2BAFE25C005FE4F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		12CBFBEC2BAFE25C005FE4F1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		12CBFBEF2BAFE25C005FE4F1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		12CBFBF12BAFE25C005FE4F1 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		12CBFBF42BAFE25C005FE4F1 /* UNCHILOG.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UNCHILOG.xcdatamodel; sourceTree = "<group>"; };
+		B70382F8D83335666AC1D3D7 /* Pods_UNCHILOG.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UNCHILOG.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C335F896FB75E0D71E43B745 /* Pods-UNCHILOG.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UNCHILOG.release.xcconfig"; path = "Target Support Files/Pods-UNCHILOG/Pods-UNCHILOG.release.xcconfig"; sourceTree = "<group>"; };
+		FFAB3A2F64D4F2AEF273AC17 /* Pods-UNCHILOG.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UNCHILOG.debug.xcconfig"; path = "Target Support Files/Pods-UNCHILOG/Pods-UNCHILOG.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,17 +39,81 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C297C18C2F20E9590633A74B /* Pods_UNCHILOG.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		128BB59D2BAFE348009E0FAB /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
+		128BB59E2BAFE34E009E0FAB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				12CBFBEC2BAFE25C005FE4F1 /* Images.xcassets */,
+				128BB5A52BAFE3B7009E0FAB /* Colors.xcassets */,
+				128BB5A72BAFE3CB009E0FAB /* Localizable.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		128BB59F2BAFE357009E0FAB /* Extension&Utility */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Extension&Utility";
+			sourceTree = "<group>";
+		};
+		128BB5A02BAFE361009E0FAB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				128BB5A42BAFE38F009E0FAB /* CoreData */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		128BB5A12BAFE36C009E0FAB /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		128BB5A22BAFE371009E0FAB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		128BB5A32BAFE37D009E0FAB /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		128BB5A42BAFE38F009E0FAB /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				12CBFBF32BAFE25C005FE4F1 /* UNCHILOG.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		12CBFBDC2BAFE25B005FE4F1 = {
 			isa = PBXGroup;
 			children = (
 				12CBFBE72BAFE25B005FE4F1 /* UNCHILOG */,
 				12CBFBE62BAFE25B005FE4F1 /* Products */,
+				1966409B7BAB9EB294D87360 /* Pods */,
+				6DBA257C95B27BCA3EAE7CCB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,11 +128,17 @@
 		12CBFBE72BAFE25B005FE4F1 /* UNCHILOG */ = {
 			isa = PBXGroup;
 			children = (
+				128BB5A92BAFE480009E0FAB /* Info.plist */,
+				128BB5AA2BAFE5C8009E0FAB /* GoogleService-Info.plist */,
 				12CBFBE82BAFE25B005FE4F1 /* UNCHILOGApp.swift */,
 				12CBFBEA2BAFE25B005FE4F1 /* ContentView.swift */,
-				12CBFBEC2BAFE25C005FE4F1 /* Assets.xcassets */,
-				12CBFBF12BAFE25C005FE4F1 /* Persistence.swift */,
-				12CBFBF32BAFE25C005FE4F1 /* UNCHILOG.xcdatamodeld */,
+				128BB59D2BAFE348009E0FAB /* Generated */,
+				128BB59E2BAFE34E009E0FAB /* Resources */,
+				128BB59F2BAFE357009E0FAB /* Extension&Utility */,
+				128BB5A02BAFE361009E0FAB /* Model */,
+				128BB5A12BAFE36C009E0FAB /* View */,
+				128BB5A22BAFE371009E0FAB /* ViewModel */,
+				128BB5A32BAFE37D009E0FAB /* Repository */,
 				12CBFBEE2BAFE25C005FE4F1 /* Preview Content */,
 			);
 			path = UNCHILOG;
@@ -73,6 +152,23 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		1966409B7BAB9EB294D87360 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FFAB3A2F64D4F2AEF273AC17 /* Pods-UNCHILOG.debug.xcconfig */,
+				C335F896FB75E0D71E43B745 /* Pods-UNCHILOG.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		6DBA257C95B27BCA3EAE7CCB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B70382F8D83335666AC1D3D7 /* Pods_UNCHILOG.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -80,9 +176,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 12CBFBF82BAFE25C005FE4F1 /* Build configuration list for PBXNativeTarget "UNCHILOG" */;
 			buildPhases = (
+				8CA84FE6A9154B3DD87231E6 /* [CP] Check Pods Manifest.lock */,
 				12CBFBE12BAFE25B005FE4F1 /* Sources */,
 				12CBFBE22BAFE25B005FE4F1 /* Frameworks */,
 				12CBFBE32BAFE25B005FE4F1 /* Resources */,
+				CD277CC31CE15987174DBBA6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -131,19 +229,63 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				128BB5A62BAFE3B7009E0FAB /* Colors.xcassets in Resources */,
+				128BB5A82BAFE3CB009E0FAB /* Localizable.strings in Resources */,
+				128BB5AB2BAFE5C8009E0FAB /* GoogleService-Info.plist in Resources */,
 				12CBFBF02BAFE25C005FE4F1 /* Preview Assets.xcassets in Resources */,
-				12CBFBED2BAFE25C005FE4F1 /* Assets.xcassets in Resources */,
+				12CBFBED2BAFE25C005FE4F1 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8CA84FE6A9154B3DD87231E6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UNCHILOG-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CD277CC31CE15987174DBBA6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UNCHILOG/Pods-UNCHILOG-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UNCHILOG/Pods-UNCHILOG-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UNCHILOG/Pods-UNCHILOG-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		12CBFBE12BAFE25B005FE4F1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				12CBFBF22BAFE25C005FE4F1 /* Persistence.swift in Sources */,
 				12CBFBEB2BAFE25B005FE4F1 /* ContentView.swift in Sources */,
 				12CBFBF52BAFE25C005FE4F1 /* UNCHILOG.xcdatamodeld in Sources */,
 				12CBFBE92BAFE25B005FE4F1 /* UNCHILOGApp.swift in Sources */,
@@ -274,6 +416,7 @@
 		};
 		12CBFBF92BAFE25C005FE4F1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FFAB3A2F64D4F2AEF273AC17 /* Pods-UNCHILOG.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -282,12 +425,14 @@
 				DEVELOPMENT_ASSET_PATHS = "\"UNCHILOG/Preview Content\"";
 				DEVELOPMENT_TEAM = CGD79LB65H;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = UNCHILOG/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -295,14 +440,18 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ame.UNCHILOG;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		12CBFBFA2BAFE25C005FE4F1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C335F896FB75E0D71E43B745 /* Pods-UNCHILOG.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -311,12 +460,14 @@
 				DEVELOPMENT_ASSET_PATHS = "\"UNCHILOG/Preview Content\"";
 				DEVELOPMENT_TEAM = CGD79LB65H;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = UNCHILOG/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -324,9 +475,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ame.UNCHILOG;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
