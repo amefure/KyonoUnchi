@@ -10,6 +10,11 @@
 		128BB5A62BAFE3B7009E0FAB /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 128BB5A52BAFE3B7009E0FAB /* Colors.xcassets */; };
 		128BB5A82BAFE3CB009E0FAB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 128BB5A72BAFE3CB009E0FAB /* Localizable.strings */; };
 		128BB5AB2BAFE5C8009E0FAB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 128BB5AA2BAFE5C8009E0FAB /* GoogleService-Info.plist */; };
+		128BB5AF2BB14115009E0FAB /* SCDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5AE2BB14115009E0FAB /* SCDate.swift */; };
+		128BB5B12BB14125009E0FAB /* SCYearAndMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5B02BB14125009E0FAB /* SCYearAndMonth.swift */; };
+		128BB5B32BB14135009E0FAB /* SCWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5B22BB14135009E0FAB /* SCWeek.swift */; };
+		128BB5B62BB141C5009E0FAB /* SCCalenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5B52BB141C5009E0FAB /* SCCalenderViewModel.swift */; };
+		128BB5B82BB142BB009E0FAB /* EXCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5B72BB142BB009E0FAB /* EXCollection.swift */; };
 		12CBFBE92BAFE25B005FE4F1 /* UNCHILOGApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CBFBE82BAFE25B005FE4F1 /* UNCHILOGApp.swift */; };
 		12CBFBEB2BAFE25B005FE4F1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CBFBEA2BAFE25B005FE4F1 /* ContentView.swift */; };
 		12CBFBED2BAFE25C005FE4F1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12CBFBEC2BAFE25C005FE4F1 /* Images.xcassets */; };
@@ -23,6 +28,11 @@
 		128BB5A72BAFE3CB009E0FAB /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		128BB5A92BAFE480009E0FAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		128BB5AA2BAFE5C8009E0FAB /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		128BB5AE2BB14115009E0FAB /* SCDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCDate.swift; sourceTree = "<group>"; };
+		128BB5B02BB14125009E0FAB /* SCYearAndMonth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCYearAndMonth.swift; sourceTree = "<group>"; };
+		128BB5B22BB14135009E0FAB /* SCWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCWeek.swift; sourceTree = "<group>"; };
+		128BB5B52BB141C5009E0FAB /* SCCalenderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCCalenderViewModel.swift; sourceTree = "<group>"; };
+		128BB5B72BB142BB009E0FAB /* EXCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EXCollection.swift; sourceTree = "<group>"; };
 		12CBFBE52BAFE25B005FE4F1 /* UNCHILOG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UNCHILOG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12CBFBE82BAFE25B005FE4F1 /* UNCHILOGApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNCHILOGApp.swift; sourceTree = "<group>"; };
 		12CBFBEA2BAFE25B005FE4F1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -66,6 +76,7 @@
 		128BB59F2BAFE357009E0FAB /* Extension&Utility */ = {
 			isa = PBXGroup;
 			children = (
+				128BB5B72BB142BB009E0FAB /* EXCollection.swift */,
 			);
 			path = "Extension&Utility";
 			sourceTree = "<group>";
@@ -73,6 +84,7 @@
 		128BB5A02BAFE361009E0FAB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				128BB5AD2BB140F6009E0FAB /* SCCalendar */,
 				128BB5A42BAFE38F009E0FAB /* CoreData */,
 			);
 			path = Model;
@@ -88,6 +100,7 @@
 		128BB5A22BAFE371009E0FAB /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				128BB5B42BB141A4009E0FAB /* SCCalendar */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -105,6 +118,24 @@
 				12CBFBF32BAFE25C005FE4F1 /* UNCHILOG.xcdatamodeld */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		128BB5AD2BB140F6009E0FAB /* SCCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				128BB5AE2BB14115009E0FAB /* SCDate.swift */,
+				128BB5B02BB14125009E0FAB /* SCYearAndMonth.swift */,
+				128BB5B22BB14135009E0FAB /* SCWeek.swift */,
+			);
+			path = SCCalendar;
+			sourceTree = "<group>";
+		};
+		128BB5B42BB141A4009E0FAB /* SCCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				128BB5B52BB141C5009E0FAB /* SCCalenderViewModel.swift */,
+			);
+			path = SCCalendar;
 			sourceTree = "<group>";
 		};
 		12CBFBDC2BAFE25B005FE4F1 = {
@@ -287,8 +318,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				12CBFBEB2BAFE25B005FE4F1 /* ContentView.swift in Sources */,
+				128BB5B62BB141C5009E0FAB /* SCCalenderViewModel.swift in Sources */,
 				12CBFBF52BAFE25C005FE4F1 /* UNCHILOG.xcdatamodeld in Sources */,
 				12CBFBE92BAFE25B005FE4F1 /* UNCHILOGApp.swift in Sources */,
+				128BB5B32BB14135009E0FAB /* SCWeek.swift in Sources */,
+				128BB5AF2BB14115009E0FAB /* SCDate.swift in Sources */,
+				128BB5B82BB142BB009E0FAB /* EXCollection.swift in Sources */,
+				128BB5B12BB14125009E0FAB /* SCYearAndMonth.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
