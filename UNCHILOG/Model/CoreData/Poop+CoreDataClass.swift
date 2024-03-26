@@ -11,8 +11,19 @@ import CoreData
 
 @objc(Poop)
 public class Poop: NSManagedObject {
+    // 値がnilの場合のデフォルト値定義
+    public var wrappedId: UUID { id ?? UUID() }
+    public var wrappedMemo: String { memo ?? "" }
+    public var wrappedCreatedAt: Date { createdAt ?? Date() }
+}
 
 
+extension Poop {
+    /// デモプレビュー用インスタンス生成メソッド
+    public func getDate() -> String {
+        let str = DateFormatManager(format: "yyyy-M-d").getString(date: wrappedCreatedAt)
+        return str
+    }
 }
 
 

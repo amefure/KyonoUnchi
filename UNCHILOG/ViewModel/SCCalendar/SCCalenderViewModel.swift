@@ -97,43 +97,38 @@ extension SCCalenderViewModel {
         var dates: [SCDate] = []
         
         // 月の初めから最後の日までループして日にち情報を作成
-        for i in 1...range.count {
+        for day in 1...range.count {
             components.year = year
             components.month = month
-            components.day = i
+            components.day = day
             guard let date = calendar.date(from: components) else {
                 continue
             }
-            let df = DateFormatter()
-            df.dateFormat = "yyyy-MM-dd"
-            df.locale = Locale(identifier: "ja_JP")
-            df.calendar = Calendar(identifier: .japanese)
             let dayOfWeek = calendar.component(.weekday, from: date)
             let week = SCWeek(rawValue: dayOfWeek - 1)!
             
             let holidayName = "" // ここに祝日名を取得する処理を追加する
-            
-            let scDate = SCDate(date: i, week: week, holidayName: holidayName)
+            let scDate = SCDate(year: year, month: month, day: day, week: week, holidayName: holidayName)
             dates.append(scDate)
         }
         
-        let firstWeek = dayOfWeekList.firstIndex(of: dates.first!.week)!
+        let firstWeek = dayOfWeekList.firstIndex(of: dates.first!.week!)!
         let initWeek = dayOfWeekList.firstIndex(of: initWeek)!
         let subun = abs(firstWeek - initWeek)
     
         
         if subun != 0 {
             for _ in 0..<subun {
-                let scDate = SCDate(date: -1, week: .friday, holidayName: "")
-                dates.insert(scDate, at: 0)
+                let blankScDate = SCDate(year: -1, month: -1, day: -1)
+                dates.insert(blankScDate, at: 0)
             }
         }
         
         if dates.count % 7 != 0 {
             let space = 7 - dates.count % 7
             for _ in 0..<space {
-                let scDate = SCDate(date: -1, week: .friday, holidayName: "")
-                dates.append(scDate)
+                let blankScDate = SCDate(year: -1, month: -1, day: -1)
+                dates.append(blankScDate)
             }
         }
         currentDate = dates

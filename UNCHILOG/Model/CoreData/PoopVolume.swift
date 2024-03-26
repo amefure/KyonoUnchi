@@ -7,8 +7,9 @@
 
 import UIKit
 
-enum PoopVolume: Int {
-    case small = 0
-    case medium = 1
-    case large = 2
+enum PoopVolume: Int, CaseIterable {
+    case undefined = 0
+    case small = 1
+    case medium = 2
+    case large = 3
 }

@@ -6,8 +6,10 @@
 //
 
 import UIKit
+import SwiftUI
 
-enum PoopColor: String {
+enum PoopColor: String, CaseIterable {
+    case undefined
     // 黄褐色・・・正常な便の色調です。これは胆汁色素ビリルビンによると考えられています。
     case yellowishBrown
     // 黄色・・・高度の下痢便などで見られます。牛乳の多飲、下剤の服用や脂肪便の時でも見られます。
@@ -25,4 +27,26 @@ enum PoopColor: String {
     // 灰白色・・・胆汁の流出が悪いか、胃透視時のバリウムによるものです。腸結核や膵疾患でもこの様な色になることがあります。
     case grayishWhite
     
+    public var color: Color {
+        return switch self {
+        case .undefined:
+            Color.black
+        case .yellowishBrown:
+            Color.black
+        case .yellow:
+            Color.black
+        case .brown:
+            Color.black
+        case .darkBrown:
+            Color.black
+        case .black:
+            Color.black
+        case .green:
+            Color.green
+        case .red:
+            Color.red
+        case .grayishWhite:
+            Color.black
+        }
+    }
 }

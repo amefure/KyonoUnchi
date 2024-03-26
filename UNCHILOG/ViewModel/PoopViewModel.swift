@@ -22,30 +22,26 @@ class PoopViewModel: ObservableObject {
 
 extension PoopViewModel {
     
-    public func fetchAllCategorys() {
+    public func fetchAllPoops() {
         poops = repository.fetchAllPoops()
     
     }
     
-    public func addCategory(name: String, color: String) {
-        repository.addPoop(color: <#T##PoopColor#>, shape: <#T##PoopShape#>, volume: <#T##PoopVolume#>, hardness: <#T##PoopHardness#>, memo: <#T##String#>)
+    public func addPoop(color: PoopColor, shape: PoopShape, volume: PoopVolume, hardness: PoopHardness, memo: String, createdAt: Date) {
+        repository.addPoop(color: color, shape: shape, volume: volume, hardness: hardness, memo: memo, createdAt: createdAt)
+    }
+
+    public func updatePoop(id : UUID, color: PoopColor, shape: PoopShape, volume: PoopVolume, hardness: PoopHardness, memo: String) {
+        repository.updatePoop(id: id, color: color, shape: shape, volume: volume, hardness: hardness, memo: memo)
     }
     
-    public func updateCategory(id: UUID, name: String, color: String) {
-        repository.updateCategory(categoryId: id, name: name, color: color)
-    }
-    
-    private func updateOrder(id: UUID, order: Int) {
-        repository.updateOrder(categoryId: id, order: order)
-    }
     
     public func onAppear(){
-        fetchAllCategorys()
+        fetchAllPoops()
     }
     
     
-   
-    public func deleteCategory(poop: Poop) {
-        repository.deleteCategory(categoryId: poop.)
+    public func deletePoop(poop: Poop) {
+        repository.deletePoop(id: poop.wrappedId)
     }
 }

@@ -13,7 +13,7 @@ class PoopRepository {
         return CoreDataRepository.fetch(sorts: [NSSortDescriptor(keyPath: \Poop.id, ascending: true)])
     }
     
-    public func addPoop(color: PoopColor, shape: PoopShape, volume: PoopVolume, hardness: PoopHardness, memo: String) {
+    public func addPoop(color: PoopColor, shape: PoopShape, volume: PoopVolume, hardness: PoopHardness, memo: String, createdAt: Date) {
         let entity: Poop = CoreDataRepository.entity()
         entity.id = UUID()
         entity.color = color.rawValue
@@ -21,23 +21,23 @@ class PoopRepository {
         entity.volume = Int16(volume.rawValue)
         entity.hardness = Int16(hardness.rawValue)
         entity.memo = memo
-        entity.createdAt = Date()
+        entity.createdAt = createdAt
         CoreDataRepository.insert(entity)
         CoreDataRepository.save()
     }
     
-    public func updatePoop(id : UUID, color: String, shape: Int, volume: Int, hardness: Int, memo: String) {
+    public func updatePoop(id : UUID, color: PoopColor, shape: PoopShape, volume: PoopVolume, hardness: PoopHardness, memo: String) {
         let predicate = NSPredicate(format: "id == %@", id as CVarArg)
         guard let poop: Poop = CoreDataRepository.fetchSingle(predicate: predicate) else { return }
-        poop.color = color
-        poop.shape = Int16(shape)
-        poop.volume = Int16(volume)
-        poop.hardness = Int16(hardness)
+        poop.color = color.rawValue
+        poop.shape = Int16(shape.rawValue)
+        poop.volume = Int16(volume.rawValue)
+        poop.hardness = Int16(hardness.rawValue)
         poop.memo = memo
         CoreDataRepository.save()
     }
 
-    public func deletePoop(categoryId id : UUID) {
+    public func deletePoop(id : UUID) {
         let predicate = NSPredicate(format: "id == %@", id as CVarArg)
         guard let poop: Poop = CoreDataRepository.fetchSingle(predicate: predicate) else { return }
         CoreDataRepository.delete(poop)

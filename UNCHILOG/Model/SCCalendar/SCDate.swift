@@ -9,7 +9,13 @@ import UIKit
 
 struct SCDate: Identifiable {
     public var id: UUID = UUID()
-    public var date: Int
-    public var week: SCWeek
-    public var holidayName: String
+    public var year: Int
+    public var month: Int
+    public var day: Int
+    public var week: SCWeek?
+    public var holidayName: String = ""
+    
+    public func getDate() -> String {
+        "\(year)-\(month)-\(day)"
+    }
 }

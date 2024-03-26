@@ -7,10 +7,11 @@
 
 import UIKit
 
-enum PoopShape: Int {
-    case korokoro = 0
-    case semiKorokoro = 1
-    case normal = 2
-    case semiLiquid = 3
-    case liquid = 4
+enum PoopShape: Int, CaseIterable {
+    case undefined = 0
+    case korokoro = 1
+    case semiKorokoro = 2
+    case normal = 3
+    case semiLiquid = 4
+    case liquid = 5
 }
