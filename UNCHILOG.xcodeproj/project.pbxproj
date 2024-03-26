@@ -15,6 +15,19 @@
 		128BB5B32BB14135009E0FAB /* SCWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5B22BB14135009E0FAB /* SCWeek.swift */; };
 		128BB5B62BB141C5009E0FAB /* SCCalenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5B52BB141C5009E0FAB /* SCCalenderViewModel.swift */; };
 		128BB5B82BB142BB009E0FAB /* EXCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5B72BB142BB009E0FAB /* EXCollection.swift */; };
+		128BB5BC2BB147BB009E0FAB /* Poop+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5BB2BB147BB009E0FAB /* Poop+CoreDataClass.swift */; };
+		128BB5BF2BB1497D009E0FAB /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5BE2BB1497D009E0FAB /* CoreDataRepository.swift */; };
+		128BB5C22BB282E7009E0FAB /* PoopRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5C12BB282E7009E0FAB /* PoopRepository.swift */; };
+		128BB5C52BB28495009E0FAB /* PoopShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5C42BB28495009E0FAB /* PoopShape.swift */; };
+		128BB5C72BB284AC009E0FAB /* PoopVolume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5C62BB284AC009E0FAB /* PoopVolume.swift */; };
+		128BB5C92BB284CA009E0FAB /* PoopHardness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5C82BB284CA009E0FAB /* PoopHardness.swift */; };
+		128BB5CB2BB284D5009E0FAB /* PoopColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5CA2BB284D5009E0FAB /* PoopColor.swift */; };
+		128BB5CD2BB28833009E0FAB /* PoopInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5CC2BB28833009E0FAB /* PoopInputView.swift */; };
+		128BB5D02BB2885C009E0FAB /* RepositoryDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5CF2BB2885C009E0FAB /* RepositoryDependency.swift */; };
+		128BB5D22BB28882009E0FAB /* UserDefaultsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5D12BB28882009E0FAB /* UserDefaultsRepository.swift */; };
+		128BB5D42BB2899C009E0FAB /* KeyChainRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5D32BB2899C009E0FAB /* KeyChainRepository.swift */; };
+		128BB5D62BB289AF009E0FAB /* BiometricAuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5D52BB289AF009E0FAB /* BiometricAuthRepository.swift */; };
+		128BB5D82BB289E2009E0FAB /* PoopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5D72BB289E2009E0FAB /* PoopViewModel.swift */; };
 		12CBFBE92BAFE25B005FE4F1 /* UNCHILOGApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CBFBE82BAFE25B005FE4F1 /* UNCHILOGApp.swift */; };
 		12CBFBEB2BAFE25B005FE4F1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CBFBEA2BAFE25B005FE4F1 /* ContentView.swift */; };
 		12CBFBED2BAFE25C005FE4F1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12CBFBEC2BAFE25C005FE4F1 /* Images.xcassets */; };
@@ -33,6 +46,19 @@
 		128BB5B22BB14135009E0FAB /* SCWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCWeek.swift; sourceTree = "<group>"; };
 		128BB5B52BB141C5009E0FAB /* SCCalenderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCCalenderViewModel.swift; sourceTree = "<group>"; };
 		128BB5B72BB142BB009E0FAB /* EXCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EXCollection.swift; sourceTree = "<group>"; };
+		128BB5BB2BB147BB009E0FAB /* Poop+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Poop+CoreDataClass.swift"; path = "/Users/s/Desktop/SwiftApp/UNCHILOG/UNCHILOG/Model/CoreData/Poop+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		128BB5BE2BB1497D009E0FAB /* CoreDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
+		128BB5C12BB282E7009E0FAB /* PoopRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopRepository.swift; sourceTree = "<group>"; };
+		128BB5C42BB28495009E0FAB /* PoopShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopShape.swift; sourceTree = "<group>"; };
+		128BB5C62BB284AC009E0FAB /* PoopVolume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopVolume.swift; sourceTree = "<group>"; };
+		128BB5C82BB284CA009E0FAB /* PoopHardness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopHardness.swift; sourceTree = "<group>"; };
+		128BB5CA2BB284D5009E0FAB /* PoopColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopColor.swift; sourceTree = "<group>"; };
+		128BB5CC2BB28833009E0FAB /* PoopInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopInputView.swift; sourceTree = "<group>"; };
+		128BB5CF2BB2885C009E0FAB /* RepositoryDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDependency.swift; sourceTree = "<group>"; };
+		128BB5D12BB28882009E0FAB /* UserDefaultsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsRepository.swift; sourceTree = "<group>"; };
+		128BB5D32BB2899C009E0FAB /* KeyChainRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainRepository.swift; sourceTree = "<group>"; };
+		128BB5D52BB289AF009E0FAB /* BiometricAuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricAuthRepository.swift; sourceTree = "<group>"; };
+		128BB5D72BB289E2009E0FAB /* PoopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopViewModel.swift; sourceTree = "<group>"; };
 		12CBFBE52BAFE25B005FE4F1 /* UNCHILOG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UNCHILOG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12CBFBE82BAFE25B005FE4F1 /* UNCHILOGApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNCHILOGApp.swift; sourceTree = "<group>"; };
 		12CBFBEA2BAFE25B005FE4F1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -93,6 +119,9 @@
 		128BB5A12BAFE36C009E0FAB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				12CBFBE82BAFE25B005FE4F1 /* UNCHILOGApp.swift */,
+				12CBFBEA2BAFE25B005FE4F1 /* ContentView.swift */,
+				128BB5CC2BB28833009E0FAB /* PoopInputView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -101,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				128BB5B42BB141A4009E0FAB /* SCCalendar */,
+				128BB5D72BB289E2009E0FAB /* PoopViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -108,6 +138,10 @@
 		128BB5A32BAFE37D009E0FAB /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				128BB5CE2BB28854009E0FAB /* DI */,
+				128BB5C02BB282D6009E0FAB /* AppModel */,
+				128BB5BD2BB14973009E0FAB /* DB */,
+				128BB5D52BB289AF009E0FAB /* BiometricAuthRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -115,6 +149,11 @@
 		128BB5A42BAFE38F009E0FAB /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				128BB5BB2BB147BB009E0FAB /* Poop+CoreDataClass.swift */,
+				128BB5C42BB28495009E0FAB /* PoopShape.swift */,
+				128BB5CA2BB284D5009E0FAB /* PoopColor.swift */,
+				128BB5C82BB284CA009E0FAB /* PoopHardness.swift */,
+				128BB5C62BB284AC009E0FAB /* PoopVolume.swift */,
 				12CBFBF32BAFE25C005FE4F1 /* UNCHILOG.xcdatamodeld */,
 			);
 			path = CoreData;
@@ -136,6 +175,32 @@
 				128BB5B52BB141C5009E0FAB /* SCCalenderViewModel.swift */,
 			);
 			path = SCCalendar;
+			sourceTree = "<group>";
+		};
+		128BB5BD2BB14973009E0FAB /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				128BB5BE2BB1497D009E0FAB /* CoreDataRepository.swift */,
+				128BB5D12BB28882009E0FAB /* UserDefaultsRepository.swift */,
+				128BB5D32BB2899C009E0FAB /* KeyChainRepository.swift */,
+			);
+			path = DB;
+			sourceTree = "<group>";
+		};
+		128BB5C02BB282D6009E0FAB /* AppModel */ = {
+			isa = PBXGroup;
+			children = (
+				128BB5C12BB282E7009E0FAB /* PoopRepository.swift */,
+			);
+			path = AppModel;
+			sourceTree = "<group>";
+		};
+		128BB5CE2BB28854009E0FAB /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				128BB5CF2BB2885C009E0FAB /* RepositoryDependency.swift */,
+			);
+			path = DI;
 			sourceTree = "<group>";
 		};
 		12CBFBDC2BAFE25B005FE4F1 = {
@@ -161,8 +226,6 @@
 			children = (
 				128BB5A92BAFE480009E0FAB /* Info.plist */,
 				128BB5AA2BAFE5C8009E0FAB /* GoogleService-Info.plist */,
-				12CBFBE82BAFE25B005FE4F1 /* UNCHILOGApp.swift */,
-				12CBFBEA2BAFE25B005FE4F1 /* ContentView.swift */,
 				128BB59D2BAFE348009E0FAB /* Generated */,
 				128BB59E2BAFE34E009E0FAB /* Resources */,
 				128BB59F2BAFE357009E0FAB /* Extension&Utility */,
@@ -317,13 +380,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				128BB5D62BB289AF009E0FAB /* BiometricAuthRepository.swift in Sources */,
+				128BB5BF2BB1497D009E0FAB /* CoreDataRepository.swift in Sources */,
+				128BB5C52BB28495009E0FAB /* PoopShape.swift in Sources */,
+				128BB5D82BB289E2009E0FAB /* PoopViewModel.swift in Sources */,
 				12CBFBEB2BAFE25B005FE4F1 /* ContentView.swift in Sources */,
 				128BB5B62BB141C5009E0FAB /* SCCalenderViewModel.swift in Sources */,
 				12CBFBF52BAFE25C005FE4F1 /* UNCHILOG.xcdatamodeld in Sources */,
+				128BB5C22BB282E7009E0FAB /* PoopRepository.swift in Sources */,
 				12CBFBE92BAFE25B005FE4F1 /* UNCHILOGApp.swift in Sources */,
+				128BB5CD2BB28833009E0FAB /* PoopInputView.swift in Sources */,
 				128BB5B32BB14135009E0FAB /* SCWeek.swift in Sources */,
+				128BB5D42BB2899C009E0FAB /* KeyChainRepository.swift in Sources */,
+				128BB5D02BB2885C009E0FAB /* RepositoryDependency.swift in Sources */,
 				128BB5AF2BB14115009E0FAB /* SCDate.swift in Sources */,
+				128BB5C92BB284CA009E0FAB /* PoopHardness.swift in Sources */,
+				128BB5D22BB28882009E0FAB /* UserDefaultsRepository.swift in Sources */,
+				128BB5C72BB284AC009E0FAB /* PoopVolume.swift in Sources */,
+				128BB5BC2BB147BB009E0FAB /* Poop+CoreDataClass.swift in Sources */,
 				128BB5B82BB142BB009E0FAB /* EXCollection.swift in Sources */,
+				128BB5CB2BB284D5009E0FAB /* PoopColor.swift in Sources */,
 				128BB5B12BB14125009E0FAB /* SCYearAndMonth.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
