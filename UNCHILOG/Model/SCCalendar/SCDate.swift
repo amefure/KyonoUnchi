@@ -5,7 +5,7 @@
 //  Created by t&a on 2024/03/25.
 //
 
-import UIKit
+import SwiftUI
 
 struct SCDate: Identifiable {
     public var id: UUID = UUID()
@@ -17,5 +17,17 @@ struct SCDate: Identifiable {
     
     public func getDate() -> String {
         "\(year)-\(month)-\(day)"
+    }
+    
+    public func dayColor(defaultColor: Color = .gray) -> Color {
+        guard let week = week else { return defaultColor }
+        if !holidayName.isEmpty { return .red }
+        if week == .saturday {
+            return .blue
+        } else if week == .sunday {
+            return .red
+        } else {
+            return defaultColor
+        }
     }
 }

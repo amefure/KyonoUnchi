@@ -37,7 +37,7 @@ struct PoopCalendarView: View {
             ScrollView {
                 LazyVGrid(columns: Array(repeating: GridItem(), count: 7), spacing: 0) {
                     ForEach($viewModel.currentDate) { date in
-                        DateView(date: date, poops: poopViewModel.poops)
+                        TheDayView(date: date, poops: poopViewModel.poops)
                     }
                 }
             }
@@ -45,32 +45,7 @@ struct PoopCalendarView: View {
     }
 }
 
-struct DateView: View {
-    @Binding var date: SCDate
-    public var poops: [Poop]
-    
-    func poopCount() -> Int {
-        let list = poops.filter({ $0.getDate() == date.getDate() })
-        return list.count
-    }
 
-    var body: some View {
-        VStack {
-            if date.day == -1 {
-                Text("")
-            } else {
-                Text("\(poopCount())")
-                Text("\(date.day)")
-                Text("\(date.week!.shortSymbols)")
-            }
-            
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.gray)
-        .padding(10)
-        .foregroundColor(.white)
-    }
-}
 
 #Preview {
     PoopCalendarView()

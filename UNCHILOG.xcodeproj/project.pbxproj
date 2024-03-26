@@ -30,6 +30,9 @@
 		128BB5D82BB289E2009E0FAB /* PoopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5D72BB289E2009E0FAB /* PoopViewModel.swift */; };
 		128BB5DA2BB2FCEF009E0FAB /* PoopCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5D92BB2FCEF009E0FAB /* PoopCalendarView.swift */; };
 		128BB5DC2BB306FA009E0FAB /* DateFormatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5DB2BB306FA009E0FAB /* DateFormatManager.swift */; };
+		128BB5DE2BB30B72009E0FAB /* TheDayDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5DD2BB30B72009E0FAB /* TheDayDetailView.swift */; };
+		128BB5E12BB30E6E009E0FAB /* TheDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5E02BB30E6E009E0FAB /* TheDayView.swift */; };
+		128BB5E32BB310D6009E0FAB /* PoopDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5E22BB310D6009E0FAB /* PoopDetailView.swift */; };
 		12CBFBE92BAFE25B005FE4F1 /* UNCHILOGApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CBFBE82BAFE25B005FE4F1 /* UNCHILOGApp.swift */; };
 		12CBFBEB2BAFE25B005FE4F1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CBFBEA2BAFE25B005FE4F1 /* ContentView.swift */; };
 		12CBFBED2BAFE25C005FE4F1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12CBFBEC2BAFE25C005FE4F1 /* Images.xcassets */; };
@@ -63,6 +66,9 @@
 		128BB5D72BB289E2009E0FAB /* PoopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopViewModel.swift; sourceTree = "<group>"; };
 		128BB5D92BB2FCEF009E0FAB /* PoopCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopCalendarView.swift; sourceTree = "<group>"; };
 		128BB5DB2BB306FA009E0FAB /* DateFormatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatManager.swift; sourceTree = "<group>"; };
+		128BB5DD2BB30B72009E0FAB /* TheDayDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheDayDetailView.swift; sourceTree = "<group>"; };
+		128BB5E02BB30E6E009E0FAB /* TheDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheDayView.swift; sourceTree = "<group>"; };
+		128BB5E22BB310D6009E0FAB /* PoopDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopDetailView.swift; sourceTree = "<group>"; };
 		12CBFBE52BAFE25B005FE4F1 /* UNCHILOG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UNCHILOG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12CBFBE82BAFE25B005FE4F1 /* UNCHILOGApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNCHILOGApp.swift; sourceTree = "<group>"; };
 		12CBFBEA2BAFE25B005FE4F1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -126,8 +132,10 @@
 			children = (
 				12CBFBE82BAFE25B005FE4F1 /* UNCHILOGApp.swift */,
 				12CBFBEA2BAFE25B005FE4F1 /* ContentView.swift */,
-				128BB5D92BB2FCEF009E0FAB /* PoopCalendarView.swift */,
+				128BB5DF2BB30E48009E0FAB /* Calendar */,
+				128BB5DD2BB30B72009E0FAB /* TheDayDetailView.swift */,
 				128BB5CC2BB28833009E0FAB /* PoopInputView.swift */,
+				128BB5E22BB310D6009E0FAB /* PoopDetailView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -207,6 +215,15 @@
 				128BB5CF2BB2885C009E0FAB /* RepositoryDependency.swift */,
 			);
 			path = DI;
+			sourceTree = "<group>";
+		};
+		128BB5DF2BB30E48009E0FAB /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				128BB5D92BB2FCEF009E0FAB /* PoopCalendarView.swift */,
+				128BB5E02BB30E6E009E0FAB /* TheDayView.swift */,
+			);
+			path = Calendar;
 			sourceTree = "<group>";
 		};
 		12CBFBDC2BAFE25B005FE4F1 = {
@@ -395,8 +412,11 @@
 				12CBFBEB2BAFE25B005FE4F1 /* ContentView.swift in Sources */,
 				128BB5B62BB141C5009E0FAB /* SCCalenderViewModel.swift in Sources */,
 				12CBFBF52BAFE25C005FE4F1 /* UNCHILOG.xcdatamodeld in Sources */,
+				128BB5E32BB310D6009E0FAB /* PoopDetailView.swift in Sources */,
+				128BB5E12BB30E6E009E0FAB /* TheDayView.swift in Sources */,
 				128BB5C22BB282E7009E0FAB /* PoopRepository.swift in Sources */,
 				12CBFBE92BAFE25B005FE4F1 /* UNCHILOGApp.swift in Sources */,
+				128BB5DE2BB30B72009E0FAB /* TheDayDetailView.swift in Sources */,
 				128BB5CD2BB28833009E0FAB /* PoopInputView.swift in Sources */,
 				128BB5B32BB14135009E0FAB /* SCWeek.swift in Sources */,
 				128BB5D42BB2899C009E0FAB /* KeyChainRepository.swift in Sources */,
