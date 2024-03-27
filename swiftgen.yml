@@ -1,7 +1,7 @@
 # ローカリゼーション(多言語対応)用Stringファイル
 strings:
   inputs:
-      - UNCHILOG/Resources/ja.lproj/Localizable.strings
+      - UNCHILOG/Resources/Localizable.strings
   # テンプレート指定と保存先
   outputs:
     - templateName: structured-swift5

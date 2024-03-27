@@ -10,7 +10,12 @@ import SwiftUI
 struct TheDayDetailView: View {
     public var poops: [Poop] = []
     public var theDay: SCDate
+    
+    
     @ObservedObject private var poopViewModel = PoopViewModel.shared
+    
+    @State private var poop: Poop? = nil
+    @State private var showDeleteDialog = false
     var body: some View {
         VStack {
             Text("\(theDay.month)")
@@ -31,16 +36,26 @@ struct TheDayDetailView: View {
                         .swipeActions(edge: .trailing, allowsFullSwipe: false) {
                             // 右スワイプ：削除アクション
                             Button(role: .none) {
-//                                self.category = category
-//                                showDeleteDialog = true
-                                poopViewModel.deletePoop(poop: poop)
+                                self.poop = poop
+                                showDeleteDialog = true
                             } label: {
                                 Image(systemName: "trash")
-                            }
+                            }.tint(.exNegative)
                         }
                 }
             }
-        }
+        }.dialog(
+            isPresented: $showDeleteDialog,
+            title: L10n.dialogTitle,
+            message: L10n.dialogDeletePoop,
+            positiveButtonTitle: L10n.dialogButtonOk,
+            negativeButtonTitle: L10n.dialogButtonCancel,
+            positiveAction: {
+                guard let poop = poop else { return }
+                poopViewModel.deletePoop(poop: poop)
+            },
+            negativeAction: { showDeleteDialog = false }
+        )
         
     }
 }
