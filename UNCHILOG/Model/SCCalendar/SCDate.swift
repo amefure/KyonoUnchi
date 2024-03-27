@@ -12,6 +12,7 @@ struct SCDate: Identifiable {
     public var year: Int
     public var month: Int
     public var day: Int
+    public var date: Date?
     public var week: SCWeek?
     public var holidayName: String = ""
     
@@ -30,4 +31,8 @@ struct SCDate: Identifiable {
             return defaultColor
         }
     }
+}
+
+extension SCDate {
+    static let demo: SCDate = SCDate(year: 2024, month: 12, day: 25)
 }

@@ -108,7 +108,7 @@ extension SCCalenderViewModel {
             let week = SCWeek(rawValue: dayOfWeek - 1)!
             
             let holidayName = "" // ここに祝日名を取得する処理を追加する
-            let scDate = SCDate(year: year, month: month, day: day, week: week, holidayName: holidayName)
+            let scDate = SCDate(year: year, month: month, day: day, date: date,week: week, holidayName: holidayName)
             dates.append(scDate)
         }
         

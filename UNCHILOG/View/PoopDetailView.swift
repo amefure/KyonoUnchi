@@ -8,12 +8,21 @@
 import SwiftUI
 
 struct PoopDetailView: View {
+    public var theDay: SCDate
     public var poop: Poop
     var body: some View {
-        HStack {
-            Text(poop.getDate())
-            Text(poop.wrappedId.uuidString)
+        VStack {
+            HStack {
+                Text(poop.getDate())
+                Text(poop.wrappedId.uuidString)
+            }
             Text(poop.wrappedMemo)
+            
+            NavigationLink {
+                PoopInputView(theDay: theDay, poop: poop)
+            } label: {
+                Text("EDIT")
+            }
         }
     }
 }

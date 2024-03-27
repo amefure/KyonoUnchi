@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct TheDayView: View {
-    @Binding var date: SCDate
+    @Binding var theDay: SCDate
     public var poops: [Poop]
     
     func poopList() -> [Poop] {
-        let list = poops.filter({ $0.getDate() == date.getDate() })
+        let list = poops.filter({ $0.getDate() == theDay.getDate() })
         return list
     }
     
@@ -22,24 +22,24 @@ struct TheDayView: View {
 
     var body: some View {
         VStack {
-            if date.day == -1 {
+            if theDay.day == -1 {
                 Text("")
             } else {
                 if poopCount() == 0 {
                     NavigationLink {
-                        PoopInputView()
+                        PoopInputView(theDay: theDay)
                     } label: {
-                        Text("\(date.day)")
-                            .foregroundStyle(date.dayColor())
+                        Text("\(theDay.day)")
+                            .foregroundStyle(theDay.dayColor())
                     }
                 } else {
                     NavigationLink {
-                        TheDayDetailView(poops: poopList(),date: date)
+                        TheDayDetailView(poops: poopList(), theDay: theDay)
                     } label: {
                         Text("\(poopCount())")
-                        Text("\(date.day)")
-                            .foregroundStyle(date.dayColor())
-                        Text("\(date.week!.shortSymbols)")
+                        Text("\(theDay.day)")
+                            .foregroundStyle(theDay.dayColor())
+                        Text("\(theDay.week!.shortSymbols)")
                     }
                 }
             }
@@ -55,5 +55,5 @@ struct TheDayView: View {
 }
 
 #Preview {
-    TheDayView(date: Binding.constant(SCDate(year: 2024, month: 12, day: 4)), poops: [])
+    TheDayView(theDay: Binding.constant(SCDate.demo), poops: [])
 }

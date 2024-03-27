@@ -36,8 +36,8 @@ struct PoopCalendarView: View {
             
             ScrollView {
                 LazyVGrid(columns: Array(repeating: GridItem(), count: 7), spacing: 0) {
-                    ForEach($viewModel.currentDate) { date in
-                        TheDayView(date: date, poops: poopViewModel.poops)
+                    ForEach($viewModel.currentDate) { theDay in
+                        TheDayView(theDay: theDay, poops: poopViewModel.poops)
                     }
                 }
             }

@@ -8,8 +8,13 @@
 import SwiftUI
 
 struct PoopInputView: View {
+    
+    private let df = DateFormatManager()
     // MARK: - ViewModel
     @ObservedObject private var viewModel = PoopViewModel.shared
+    
+    public var theDay: SCDate
+    public var poop: Poop? = nil
     
     @State private var color: PoopColor = .undefined
     @State private var shape: PoopShape = .undefined
@@ -24,9 +29,10 @@ struct PoopInputView: View {
     var body: some View {
         VStack {
             
-            DatePicker(selection: $createdAt) {
-                Text("登録日")
-            }
+            DatePicker("createdAt",
+              selection: $createdAt,
+              displayedComponents: [.hourAndMinute]
+            )
             
             HStack(spacing: 15) {
                 ForEach(PoopColor.allCases, id: \.self) { poopColor in
@@ -78,23 +84,49 @@ struct PoopInputView: View {
             
             
             Button {
-                viewModel.addPoop(
-                    color: color,
-                    shape: shape,
-                    volume: volume,
-                    hardness: hardness,
-                    memo: memo,
-                    createdAt: createdAt
-                )
+                
+                if let poop = poop {
+                    viewModel.updatePoop(
+                        id: poop.wrappedId,
+                        color: color,
+                        shape: shape,
+                        volume: volume,
+                        hardness: hardness,
+                        memo: memo
+                    )
+                } else {
+                    viewModel.addPoop(
+                        color: color,
+                        shape: shape,
+                        volume: volume,
+                        hardness: hardness,
+                        memo: memo,
+                        createdAt: createdAt
+                    )
+                }
                 dismiss()
             } label: {
                 Text("登録")
             }
             
+        }.onAppear {
+            if let poop = poop {
+                color = PoopColor(rawValue: poop.wrappedColor) ?? .undefined
+                shape = PoopShape(rawValue: poop.wrappedShape) ?? .undefined
+                volume = PoopVolume(rawValue: poop.wrappedVolume) ?? .undefined
+                hardness = PoopHardness(rawValue: poop.wrappedHardness) ?? .undefined
+                memo = poop.wrappedMemo
+                createdAt = poop.wrappedCreatedAt
+            }
+            
+            if let theDay = theDay.date {
+                // 現在時間を格納した
+                createdAt = df.combineDateWithCurrentTime(theDay: theDay)
+            }
         }
     }
 }
 
 #Preview {
-    PoopInputView()
+    PoopInputView(theDay: SCDate.demo)
 }

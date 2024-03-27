@@ -9,20 +9,11 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @ObservedObject private var viewModel = SCCalenderViewModel.shared
     @ObservedObject private var poopViewModel = PoopViewModel.shared
     
-    @State var scdate: [SCDate] = []
     var body: some View {
         
         VStack {
-            
-            NavigationLink {
-                PoopInputView()
-            } label: {
-                Text("Input")
-            }
-    
             PoopCalendarView()
          
         }.onAppear {

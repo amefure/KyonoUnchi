@@ -10,6 +10,7 @@ import UIKit
 class DateFormatManager {
 
     private let df = DateFormatter()
+    private let c = Calendar.current
 
     init(format: String = "yyyy-MM-dd") {
         df.dateFormat = format
@@ -27,4 +28,19 @@ class DateFormatManager {
         return df.date(from: str) ?? Date()
     }
 
+}
+
+extension DateFormatManager {
+    
+    // 指定された日付の日付部分と現在の時刻を組み合わたDateオブジェクトを返す
+    public func combineDateWithCurrentTime(theDay: Date) -> Date {
+        let now = Date()
+        guard let newDate = c.date(
+            bySettingHour: c.component(.hour, from: now),
+            minute: c.component(.minute, from: now),
+            second: c.component(.second, from: now),
+            of: theDay
+        ) else { return Date() }
+        return newDate
+    }
 }

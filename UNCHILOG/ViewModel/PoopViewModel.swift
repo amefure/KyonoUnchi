@@ -29,10 +29,12 @@ extension PoopViewModel {
     
     public func addPoop(color: PoopColor, shape: PoopShape, volume: PoopVolume, hardness: PoopHardness, memo: String, createdAt: Date) {
         repository.addPoop(color: color, shape: shape, volume: volume, hardness: hardness, memo: memo, createdAt: createdAt)
+        fetchAllPoops()
     }
 
     public func updatePoop(id : UUID, color: PoopColor, shape: PoopShape, volume: PoopVolume, hardness: PoopHardness, memo: String) {
         repository.updatePoop(id: id, color: color, shape: shape, volume: volume, hardness: hardness, memo: memo)
+        fetchAllPoops()
     }
     
     
@@ -43,5 +45,6 @@ extension PoopViewModel {
     
     public func deletePoop(poop: Poop) {
         repository.deletePoop(id: poop.wrappedId)
+        fetchAllPoops()
     }
 }
