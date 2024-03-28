@@ -17,3 +17,9 @@
 
 "dialog_button_ok" = "OK";
 "dialog_button_cancel" = "キャンセル";
+
+
+"setting_section_calendar_title" = "カレンダー設定";
+"setting_section_calendar_init_week" = "週始まり";
+"setting_section_app_desc" = "・アプリにパスワードを設定してロックをかけることができます。";
+"setting_section_app_lock" = "アプリをロックする";

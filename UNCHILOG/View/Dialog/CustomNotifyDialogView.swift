@@ -38,9 +38,9 @@ struct CustomNotifyDialogView: View {
                         .frame(width: 300)
                         .font(.system(size: 20))
                         .fontWeight(.bold)
-                        .foregroundStyle(.white)
+                        .foregroundStyle(.exText)
                         .padding(.vertical, 20)
-                        .background(.indigo)
+                        .background(.exThema)
                     
                     Spacer()
                     

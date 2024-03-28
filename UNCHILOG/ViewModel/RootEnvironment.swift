@@ -14,11 +14,16 @@ class RootEnvironment: ObservableObject {
     
     public let today = Date()
     
+    // MARK: Calendar ロジック
     @Published var currentDates: [SCDate] = []
-    @Published var currentYearAndMonth: SCYearAndMonth? = nil
-    @Published var dayOfWeekList: [SCWeek] = []
+    @Published private(set) var currentYearAndMonth: SCYearAndMonth? = nil
+    @Published private(set) var dayOfWeekList: [SCWeek] = []
     
+    // MARK: 永続化
+    @Published private(set) var initWeek: SCWeek = .sunday
     @Published private(set) var appLocked = false
+    
+    // MARK: Dialog
     @Published var showOutOfRangeCalendar: Bool = false
    
     private let keyChainRepository: KeyChainRepository
@@ -32,6 +37,9 @@ class RootEnvironment: ObservableObject {
         keyChainRepository = repositoryDependency.keyChainRepository
         userDefaultsRepository = repositoryDependency.userDefaultsRepository
         scCalenderRepository = repositoryDependency.scCalenderRepository
+        
+        
+        getInitWeek()
         
 
         scCalenderRepository.currentDates.sink { _ in
@@ -68,6 +76,14 @@ extension RootEnvironment {
         let result = scCalenderRepository.backMonth()
         showOutOfRangeCalendar = !result
     }
+    
+    /// カレンダー初期表示年月を指定して更新
+    public func moveToDayCalendar() {
+        let today = DateFormatUtility().convertDateComponents(date: today)
+        guard let year = today.year,
+              let month = today.month else { return }
+        scCalenderRepository.moveYearAndMonthCalendar(year: year, month: month)
+    }
 
 }
 
@@ -86,3 +102,19 @@ extension RootEnvironment {
 
 }
 
+
+// MARK: - UserDefaults
+extension RootEnvironment {
+    /// ブラウザを取得
+    private func getInitWeek() {
+        let week = userDefaultsRepository.getIntData(key: UserDefaultsKey.INIT_WEEK)
+        initWeek = SCWeek(rawValue: week) ?? SCWeek.sunday
+    }
+
+    /// ブラウザを登録
+    public func setInitWeek(week: SCWeek) {
+        initWeek = week
+        userDefaultsRepository.setIntData(key: UserDefaultsKey.INIT_WEEK, value: week.rawValue)
+    }
+    
+}

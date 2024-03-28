@@ -32,6 +32,14 @@ internal enum L10n {
   /// うんちの記録を
   /// 更新しました。
   internal static let dialogUpdatePoop = L10n.tr("Localizable", "dialog_update_poop", fallback: "うんちの記録を\n更新しました。")
+  /// ・アプリにパスワードを設定してロックをかけることができます。
+  internal static let settingSectionAppDesc = L10n.tr("Localizable", "setting_section_app_desc", fallback: "・アプリにパスワードを設定してロックをかけることができます。")
+  /// アプリをロックする
+  internal static let settingSectionAppLock = L10n.tr("Localizable", "setting_section_app_lock", fallback: "アプリをロックする")
+  /// 週始まり
+  internal static let settingSectionCalendarInitWeek = L10n.tr("Localizable", "setting_section_calendar_init_week", fallback: "週始まり")
+  /// カレンダー設定
+  internal static let settingSectionCalendarTitle = L10n.tr("Localizable", "setting_section_calendar_title", fallback: "カレンダー設定")
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces

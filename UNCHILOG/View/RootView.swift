@@ -13,33 +13,27 @@ struct RootView: View {
     
     @ObservedObject private var poopViewModel = PoopViewModel.shared
     @ObservedObject private var rootEnvironment = RootEnvironment.shared
-    private var calenderViewModel = SCCalenderRepository()
+    
+    @State private var selectedTab = 1
     
     var body: some View {
         
         VStack {
-            PoopCalendarView()
             
-            HStack {
+            TabView(selection: $selectedTab ) {
                 
-                NavigationLink {
-                    PoopInputView(theDay: Date())
-                } label: {
-                    Text("Input")
-                }
-        
+                PoopCalendarView()
+                    .tag(1)
                 
-                Button {
-                    let today = dateFormatUtility.convertDateComponents(date: rootEnvironment.today)
-                    guard let year = today.year,
-                          let month = today.month else { return }
-                    calenderViewModel.moveYearAndMonthCalendar(year: year, month: month)
-                } label: {
-                    Text("MOVE")
-                }
-
+                SettingView()
+                    .tag(2)
+                
+                SettingView()
+                    .tag(3)
                 
             }
+            
+            FooterView(selectedTab: $selectedTab)
          
         }.dialog(
             isPresented: $rootEnvironment.showOutOfRangeCalendar,
