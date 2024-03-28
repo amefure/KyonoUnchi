@@ -42,6 +42,7 @@ class RootEnvironment: ObservableObject {
         getInitWeek()
         getAppLock()
         
+        
 
         scCalenderRepository.currentDates.sink { _ in
         } receiveValue: {  [weak self] currentDates in
@@ -60,6 +61,8 @@ class RootEnvironment: ObservableObject {
             guard let self else { return }
             self.dayOfWeekList = dayOfWeekList
         }.store(in: &cancellables)
+        
+        setFirstWeek(week: initWeek)
     }
 }
 
@@ -78,6 +81,11 @@ extension RootEnvironment {
         showOutOfRangeCalendar = !result
     }
     
+    /// 週始まりを設定
+    public func setFirstWeek(week: SCWeek) {
+        scCalenderRepository.setFirstWeek(week)
+    }
+    
     /// カレンダー初期表示年月を指定して更新
     public func moveToDayCalendar() {
         let today = DateFormatUtility().convertDateComponents(date: today)
@@ -94,7 +102,6 @@ extension RootEnvironment {
     /// アプリにロックがかけてあるかをチェック
     private func getAppLock() {
         appLocked = keyChainRepository.getData().count == 4
-        print("-----", appLocked)
     }
     
     /// アプリのロック解除
@@ -107,14 +114,14 @@ extension RootEnvironment {
 
 // MARK: - UserDefaults
 extension RootEnvironment {
-    /// ブラウザを取得
+    /// 週始まりを取得
     private func getInitWeek() {
         let week = userDefaultsRepository.getIntData(key: UserDefaultsKey.INIT_WEEK)
         initWeek = SCWeek(rawValue: week) ?? SCWeek.sunday
     }
 
-    /// ブラウザを登録
-    public func setInitWeek(week: SCWeek) {
+    /// 週始まりを登録
+    public func saveInitWeek(week: SCWeek) {
         initWeek = week
         userDefaultsRepository.setIntData(key: UserDefaultsKey.INIT_WEEK, value: week.rawValue)
     }

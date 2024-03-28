@@ -26,6 +26,12 @@ struct FooterView: View {
                 Text("MOVE")
             }
             
+            Button {
+                selectedTab = 0
+            } label: {
+                Image(systemName: "calendar")
+            }
+            
             
             Button {
                 selectedTab = 2

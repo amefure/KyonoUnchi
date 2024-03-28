@@ -9,6 +9,8 @@ import SwiftUI
 import Combine
 
 class SCCalenderRepository {
+    
+    static let shared = SCCalenderRepository()
 
     // MARK: Config
     static let START_YEAR = 2023

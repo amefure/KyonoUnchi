@@ -27,7 +27,8 @@ struct SelectInitWeek: View {
             List {
                 ForEach(SCWeek.allCases, id: \.self) { week in
                     Button {
-                        rootEnvironment.setInitWeek(week: week)
+                        rootEnvironment.saveInitWeek(week: week)
+                        rootEnvironment.setFirstWeek(week: week)
                     } label: {
                         HStack {
                             Text(week.fullSymbols)

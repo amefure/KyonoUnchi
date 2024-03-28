@@ -24,7 +24,6 @@ class SettingViewModel: ObservableObject {
     // MARK: - App Lock
     /// アプリにロックがかけてあるかをチェック
     private func checkAppLock() {
-        print("---")
         isLock = keyChainRepository.getData().count == 4
     }
 

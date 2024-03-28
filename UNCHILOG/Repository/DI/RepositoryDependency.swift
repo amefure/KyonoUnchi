@@ -12,6 +12,6 @@ class RepositoryDependency {
     public let biometricAuthRepository = BiometricAuthRepository()
     public let keyChainRepository = KeyChainRepository()
     public let userDefaultsRepository = UserDefaultsRepository()
-    public let scCalenderRepository = SCCalenderRepository()
+    public let scCalenderRepository = SCCalenderRepository.shared // なぜか2回インスタンス化されるのでシングルトン
 }
 
