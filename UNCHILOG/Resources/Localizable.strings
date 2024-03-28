@@ -23,3 +23,9 @@
 "setting_section_calendar_init_week" = "週始まり";
 "setting_section_app_desc" = "・アプリにパスワードを設定してロックをかけることができます。";
 "setting_section_app_lock" = "アプリをロックする";
+
+"app_lock_face_id" = "Face IDでログインする";
+"app_lock_touch_id" = "Touch IDでログインする";
+"app_lock_failed_password" = "パスワードが違います。";
+"app_lock_input_title" = "パスワード登録";
+"app_lock_input_entry_button" = "登録";

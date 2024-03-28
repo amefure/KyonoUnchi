@@ -11,6 +11,15 @@ struct SettingView: View {
     @ObservedObject private var rootEnvironment = RootEnvironment.shared
     
     @State private var showSelectInitWeek = false
+    
+    // MARK: - ViewModel
+
+    @StateObject private var viewModel = SettingViewModel()
+
+    // MARK: - View
+
+    @State private var isLock: Bool = false
+    
     var body: some View {
         VStack {
             List {
@@ -38,25 +47,26 @@ struct SettingView: View {
                     
                 
             
-//                    HStack {
-//                        Image(systemName: "lock.iphone")
-//                        
-//                        Toggle(isOn: $isLock) {
-//                            Text(L10n.settingSectionAppLock)
-//                        }.onChange(of: isLock, perform: { newValue in
-//                            if newValue {
-//                                viewModel.showPassInput()
-//                            } else {
-//                                viewModel.deletePassword()
-//                            }
-//                        }).tint(.exPositive)
-//                    }.sheet(isPresented: $viewModel.isShowPassInput, content: {
-//                        AppLockInputView(isLock: $isLock)
-//                    })
-//                    .foregroundStyle(.white)
+                    HStack {
+                        Image(systemName: "lock.iphone")
+                        
+                        Toggle(isOn: $isLock) {
+                            Text(L10n.settingSectionAppLock)
+                        }.onChange(of: isLock, perform: { newValue in
+                            if newValue {
+                                viewModel.showPassInput()
+                            } else {
+                                viewModel.deletePassword()
+                            }
+                        }).tint(.exPositive)
+                    }
                 }// .listRowBackground(rootEnvironment.appColor.color)
             }
-        }
+        }.onAppear {
+            isLock = viewModel.isLock
+        }.sheet(isPresented: $viewModel.isShowPassInput, content: {
+            AppLockInputView(isLock: $isLock)
+       })
     }
 }
 

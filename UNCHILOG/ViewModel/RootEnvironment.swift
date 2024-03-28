@@ -40,6 +40,7 @@ class RootEnvironment: ObservableObject {
         
         
         getInitWeek()
+        getAppLock()
         
 
         scCalenderRepository.currentDates.sink { _ in
@@ -93,9 +94,10 @@ extension RootEnvironment {
     /// アプリにロックがかけてあるかをチェック
     private func getAppLock() {
         appLocked = keyChainRepository.getData().count == 4
+        print("-----", appLocked)
     }
     
-    /// アプリにロックがかけてあるかをチェック
+    /// アプリのロック解除
     public func unLockAppLock() {
         appLocked = false
     }

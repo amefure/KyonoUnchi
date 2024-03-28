@@ -10,6 +10,16 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum L10n {
+  /// Face IDでログインする
+  internal static let appLockFaceId = L10n.tr("Localizable", "app_lock_face_id", fallback: "Face IDでログインする")
+  /// パスワードが違います。
+  internal static let appLockFailedPassword = L10n.tr("Localizable", "app_lock_failed_password", fallback: "パスワードが違います。")
+  /// 登録
+  internal static let appLockInputEntryButton = L10n.tr("Localizable", "app_lock_input_entry_button", fallback: "登録")
+  /// パスワード登録
+  internal static let appLockInputTitle = L10n.tr("Localizable", "app_lock_input_title", fallback: "パスワード登録")
+  /// Touch IDでログインする
+  internal static let appLockTouchId = L10n.tr("Localizable", "app_lock_touch_id", fallback: "Touch IDでログインする")
   /// キャンセル
   internal static let dialogButtonCancel = L10n.tr("Localizable", "dialog_button_cancel", fallback: "キャンセル")
   /// OK

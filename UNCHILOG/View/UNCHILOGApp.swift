@@ -22,11 +22,18 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct UNCHILOGApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @ObservedObject private var rootEnvironment = RootEnvironment.shared
 
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                RootView()
+                ZStack {
+                    RootView()
+                    // アプリにロックがかけてあれば表示
+                    if rootEnvironment.appLocked {
+                        AppLockView()
+                    }
+                }
             }
         }
     }
