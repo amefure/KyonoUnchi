@@ -1,5 +1,5 @@
 //
-//  DateFormatManager.swift
+//  DateFormatUtility.swift
 //  UNCHILOG
 //
 //  Created by t&a on 2024/03/26.
@@ -7,15 +7,15 @@
 
 import UIKit
 
-class DateFormatManager {
+class DateFormatUtility {
 
     private let df = DateFormatter()
-    private let c = Calendar.current
+    private let c = Calendar(identifier: .gregorian)
 
     init(format: String = "yyyy-MM-dd") {
         df.dateFormat = format
         df.locale = Locale(identifier: "ja_JP")
-        df.calendar = Calendar(identifier: .gregorian)
+        df.calendar = c
     }
     
     /// JP：yyyy年M月d日  String
@@ -30,7 +30,11 @@ class DateFormatManager {
 
 }
 
-extension DateFormatManager {
+extension DateFormatUtility {
+    
+    public func convertDateComponents(date: Date) -> DateComponents {
+        c.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
+    }
     
     // 指定された日付の日付部分と現在の時刻を組み合わたDateオブジェクトを返す
     public func combineDateWithCurrentTime(theDay: Date) -> Date {

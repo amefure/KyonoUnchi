@@ -26,7 +26,7 @@ struct UNCHILOGApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                ContentView()
+                RootView()
             }
         }
     }

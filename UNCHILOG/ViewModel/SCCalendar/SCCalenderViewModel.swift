@@ -11,7 +11,7 @@ class SCCalenderViewModel: ObservableObject {
     
     static let shared = SCCalenderViewModel()
     
-    static let START_YEAR = 2000
+    static let START_YEAR = 2023
     static let START_MONTH = 1
     
     /// 表示している年月の日付オブジェクト
@@ -28,7 +28,7 @@ class SCCalenderViewModel: ObservableObject {
     private let calendar = Calendar(identifier: .gregorian)
     /// 表示可能な年月配列
     private var selectYearAndMonth: [SCYearAndMonth] = []
-    /// 表示している年月オブジェクトIndez
+    /// 表示している年月オブジェクトIndex
     private var currentYearAndMonthIndex: Int = 0
     
     
@@ -43,13 +43,13 @@ class SCCalenderViewModel: ObservableObject {
         let nowYear = today.year ?? Self.START_YEAR
         let nowMonth = today.month ?? Self.START_MONTH
 
-        
+        // 表示可能な年月情報を生成し保持
         setSelectYearAndMonth(startYear: Self.START_YEAR, endYear: nowYear)
-        currentYearAndMonthIndex = selectYearAndMonth.firstIndex(where: { $0.year == nowYear && $0.month == nowMonth }) ?? selectYearAndMonth.count - 1
-        currentYearAndMonth = selectYearAndMonth[safe: currentYearAndMonthIndex]
-        
-        setFirstWeek(.saturday)
-        
+        // カレンダーの初期表示位置
+        moveYearAndMonthCalendar(year: nowYear, month: nowMonth)
+        // 週の始まりに設定する曜日を指定
+        setFirstWeek(initWeek)
+        // カレンダー更新
         updateCalendar()
     }
 }
@@ -62,8 +62,8 @@ extension SCCalenderViewModel {
     /// - parameter endYear: 終了年月
     private func setSelectYearAndMonth(startYear: Int, endYear: Int) {
         var yearMonthList: [SCYearAndMonth] = []
-        
-        for year in startYear...endYear {
+        // 当年+1年先のカレンダー情報を取得しておく
+        for year in startYear...endYear + 1 {
             for month in 1...12 {
                 yearMonthList.append(SCYearAndMonth(year: year, month: month))
             }
@@ -72,6 +72,7 @@ extension SCCalenderViewModel {
     }
     
     /// カレンダーUIを更新
+    /// 日付情報を取得して配列に格納
     private func updateCalendar() {
         guard let year = currentYearAndMonth?.year,
         let month = currentYearAndMonth?.month else {
@@ -139,25 +140,29 @@ extension SCCalenderViewModel {
 extension SCCalenderViewModel {
         
     /// 年月を1つ進める
-    public func forwardMonth() {
+    /// - Returns: 成功フラグ
+    public func forwardMonth() -> Bool {
         currentYearAndMonthIndex += 1
         guard let nextYearAndMonth = selectYearAndMonth[safe: currentYearAndMonthIndex] else {
             currentYearAndMonthIndex -= 1
-            return
+            return false
         }
         currentYearAndMonth = nextYearAndMonth
         updateCalendar()
+        return true
     }
 
     /// 年月を1つ戻す
-    public func backMonth() {
+    /// - Returns: 成功フラグ
+    public func backMonth() -> Bool {
         currentYearAndMonthIndex -= 1
         guard let nextYearAndMonth = selectYearAndMonth[safe: currentYearAndMonthIndex] else {
             currentYearAndMonthIndex += 1
-            return
+            return false
         }
         currentYearAndMonth = nextYearAndMonth
         updateCalendar()
+        return true
     }
 
     /// 最初に表示したい曜日を設定
@@ -168,4 +173,12 @@ extension SCCalenderViewModel {
         updateCalendar()
     }
 
+    /// カレンダー初期表示年月を指定して更新
+    /// - parameter year: 指定年
+    /// - parameter month: 指定月
+    public func moveYearAndMonthCalendar(year: Int, month: Int) {
+        currentYearAndMonthIndex = selectYearAndMonth.firstIndex(where: { $0.year == year && $0.month == month }) ?? selectYearAndMonth.count - 1
+        currentYearAndMonth = selectYearAndMonth[safe: currentYearAndMonthIndex]
+        updateCalendar()
+    }
 }

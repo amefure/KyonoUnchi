@@ -22,6 +22,8 @@ internal enum L10n {
   /// うんちの記録を
   /// 登録しました。
   internal static let dialogEntryPoop = L10n.tr("Localizable", "dialog_entry_poop", fallback: "うんちの記録を\n登録しました。")
+  /// カレンダーの表示範囲外です。
+  internal static let dialogOutOfRangeCalendar = L10n.tr("Localizable", "dialog_out_of_range_calendar", fallback: "カレンダーの表示範囲外です。")
   /// Localizable.strings
   ///   UNCHILOG
   /// 

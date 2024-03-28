@@ -9,11 +9,11 @@ import SwiftUI
 
 struct PoopInputView: View {
     
-    private let df = DateFormatManager()
+    private let df = DateFormatUtility()
     // MARK: - ViewModel
     @ObservedObject private var viewModel = PoopViewModel.shared
     
-    public var theDay: SCDate
+    public var theDay: Date?
     public var poop: Poop? = nil
     
     @State private var color: PoopColor = .undefined
@@ -119,14 +119,12 @@ struct PoopInputView: View {
                 createdAt = poop.wrappedCreatedAt
             }
             
-            if let theDay = theDay.date {
-                // 現在時間を格納した
-                createdAt = df.combineDateWithCurrentTime(theDay: theDay)
-            }
+            // 現在時間を格納した
+            createdAt = df.combineDateWithCurrentTime(theDay: theDay ?? Date())
         }
     }
 }
 
 #Preview {
-    PoopInputView(theDay: SCDate.demo)
+    PoopInputView(theDay: Date())
 }

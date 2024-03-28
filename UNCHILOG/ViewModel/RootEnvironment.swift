@@ -10,7 +10,11 @@ import UIKit
 class RootEnvironment: ObservableObject {
     
     static let shared = RootEnvironment()
+    
+    public let today = Date()
+    
     @Published private(set) var appLocked = false
+    @Published var showOutOfRangeCalendar: Bool = false
    
     private let keyChainRepository: KeyChainRepository
     private let userDefaultsRepository: UserDefaultsRepository

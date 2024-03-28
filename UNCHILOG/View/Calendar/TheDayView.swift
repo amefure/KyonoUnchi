@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct TheDayView: View {
+    
+    var dateFormatUtility = DateFormatUtility()
+    @ObservedObject private var rootEnvironment = RootEnvironment.shared
+    
     @Binding var theDay: SCDate
     public var poops: [Poop]
     
@@ -19,15 +23,24 @@ struct TheDayView: View {
     func poopCount() -> Int {
         return poopList().count
     }
+    
+    var isToday: Bool {
+        let today = dateFormatUtility.convertDateComponents(date: rootEnvironment.today)
+        guard let year = today.year,
+              let month = today.month,
+              let day = today.day else { return false }
+        return (theDay.year == year && theDay.month == month && theDay.day == day)
+    }
 
     var body: some View {
         VStack {
             if theDay.day == -1 {
                 Text("")
             } else {
+                
                 if poopCount() == 0 {
                     NavigationLink {
-                        PoopInputView(theDay: theDay)
+                        PoopInputView(theDay: theDay.date)
                     } label: {
                         Text("\(theDay.day)")
                             .foregroundStyle(theDay.dayColor())
@@ -43,14 +56,13 @@ struct TheDayView: View {
                     }
                 }
             }
-            
         }
         .frame(maxWidth: .infinity)
         .frame(height: 100)
         .overlay {
             Rectangle()
                 .stroke(.gray, lineWidth: 4)
-        }
+        }.background(isToday ? Color.exNegative : Color.clear)
     }
 }
 

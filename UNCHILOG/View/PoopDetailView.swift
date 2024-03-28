@@ -19,7 +19,7 @@ struct PoopDetailView: View {
             Text(poop.wrappedMemo)
             
             NavigationLink {
-                PoopInputView(theDay: theDay, poop: poop)
+                PoopInputView(theDay: theDay.date, poop: poop)
             } label: {
                 Text("EDIT")
             }
