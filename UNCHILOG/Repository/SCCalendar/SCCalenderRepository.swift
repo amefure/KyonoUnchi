@@ -6,23 +6,37 @@
 //
 
 import SwiftUI
+import Combine
 
-class SCCalenderViewModel: ObservableObject {
-    
-    static let shared = SCCalenderViewModel()
-    
+class SCCalenderRepository {
+
+    // MARK: Config
     static let START_YEAR = 2023
     static let START_MONTH = 1
+    /// 最初に表示したい曜日
+    private var initWeek: SCWeek = .sunday
+
     
     /// 表示している年月の日付オブジェクト
-    @Published var currentDate: [SCDate] = []
+    public var currentDates: AnyPublisher<[SCDate], Never> {
+        _currentDates.eraseToAnyPublisher()
+    }
+    private let _currentDates = CurrentValueSubject<[SCDate], Never>([])
+    
     /// 表示している年月オブジェクト
-    @Published var currentYearAndMonth: SCYearAndMonth? = nil
+    public var currentYearAndMonth: AnyPublisher<SCYearAndMonth?, Never> {
+        _currentYearAndMonth.eraseToAnyPublisher()
+    }
+    private let _currentYearAndMonth = CurrentValueSubject<SCYearAndMonth?, Never>(nil)
+    
     /// 表示している曜日配列(順番はUIに反映される)
-    @Published var dayOfWeekList: [SCWeek] = [.sunday, .monday, .tuesday, .wednesday, .thursday, .friday, .saturday]
+    public var dayOfWeekList: AnyPublisher<[SCWeek], Never> {
+        _dayOfWeekList.eraseToAnyPublisher()
+    }
+    private let _dayOfWeekList = CurrentValueSubject<[SCWeek], Never>([.sunday, .monday, .tuesday, .wednesday, .thursday, .friday, .saturday])
     
     /// 当日の日付情報
-    public let today: DateComponents
+    private let today: DateComponents
     
     /// カレンダー
     private let calendar = Calendar(identifier: .gregorian)
@@ -32,19 +46,16 @@ class SCCalenderViewModel: ObservableObject {
     private var currentYearAndMonthIndex: Int = 0
     
     
-    // MARK: Config
-    /// 最初に表示したい曜日
-    private var initWeek: SCWeek = .sunday
-    
-    
-    init() {
+    init(startYear: Int = START_YEAR, startMonth: Int = START_MONTH, initWeek: SCWeek = .sunday) {
+        
+        self.initWeek = initWeek
         
         today = calendar.dateComponents([.year, .month, .day], from: Date())
-        let nowYear = today.year ?? Self.START_YEAR
-        let nowMonth = today.month ?? Self.START_MONTH
+        let nowYear = today.year ?? startYear
+        let nowMonth = today.month ?? startMonth
 
         // 表示可能な年月情報を生成し保持
-        setSelectYearAndMonth(startYear: Self.START_YEAR, endYear: nowYear)
+        setSelectYearAndMonth(startYear: startYear, endYear: nowYear)
         // カレンダーの初期表示位置
         moveYearAndMonthCalendar(year: nowYear, month: nowMonth)
         // 週の始まりに設定する曜日を指定
@@ -55,7 +66,7 @@ class SCCalenderViewModel: ObservableObject {
 }
 
 
-extension SCCalenderViewModel {
+extension SCCalenderRepository {
     
     /// 指定した年月の範囲の`SCYearAndMonth`オブジェクトを生成
     /// - parameter startYear: 開始年月
@@ -74,8 +85,8 @@ extension SCCalenderViewModel {
     /// カレンダーUIを更新
     /// 日付情報を取得して配列に格納
     private func updateCalendar() {
-        guard let year = currentYearAndMonth?.year,
-        let month = currentYearAndMonth?.month else {
+        guard let year = _currentYearAndMonth.value?.year,
+        let month = _currentYearAndMonth.value?.month else {
             return
         }
         
@@ -113,8 +124,8 @@ extension SCCalenderViewModel {
             dates.append(scDate)
         }
         
-        let firstWeek = dayOfWeekList.firstIndex(of: dates.first!.week!)!
-        let initWeek = dayOfWeekList.firstIndex(of: initWeek)!
+        let firstWeek = _dayOfWeekList.value.firstIndex(of: dates.first!.week!)!
+        let initWeek = _dayOfWeekList.value.firstIndex(of: initWeek)!
         let subun = abs(firstWeek - initWeek)
     
         
@@ -132,12 +143,12 @@ extension SCCalenderViewModel {
                 dates.append(blankScDate)
             }
         }
-        currentDate = dates
+        _currentDates.send(dates)
     }
 }
 
 
-extension SCCalenderViewModel {
+extension SCCalenderRepository {
         
     /// 年月を1つ進める
     /// - Returns: 成功フラグ
@@ -147,7 +158,7 @@ extension SCCalenderViewModel {
             currentYearAndMonthIndex -= 1
             return false
         }
-        currentYearAndMonth = nextYearAndMonth
+        _currentYearAndMonth.send(nextYearAndMonth)
         updateCalendar()
         return true
     }
@@ -160,7 +171,7 @@ extension SCCalenderViewModel {
             currentYearAndMonthIndex += 1
             return false
         }
-        currentYearAndMonth = nextYearAndMonth
+        _currentYearAndMonth.send(nextYearAndMonth)
         updateCalendar()
         return true
     }
@@ -169,7 +180,9 @@ extension SCCalenderViewModel {
     /// - parameter week: 開始曜日
     public func setFirstWeek(_ week: SCWeek) {
         initWeek = week
-        dayOfWeekList.moveWeekToFront(initWeek)
+        var list = _dayOfWeekList.value
+        list.moveWeekToFront(initWeek)
+        _dayOfWeekList.send(list)
         updateCalendar()
     }
 
@@ -178,7 +191,7 @@ extension SCCalenderViewModel {
     /// - parameter month: 指定月
     public func moveYearAndMonthCalendar(year: Int, month: Int) {
         currentYearAndMonthIndex = selectYearAndMonth.firstIndex(where: { $0.year == year && $0.month == month }) ?? selectYearAndMonth.count - 1
-        currentYearAndMonth = selectYearAndMonth[safe: currentYearAndMonthIndex]
+        _currentYearAndMonth.send(selectYearAndMonth[safe: currentYearAndMonthIndex])
         updateCalendar()
     }
 }

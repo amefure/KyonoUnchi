@@ -13,7 +13,7 @@ struct RootView: View {
     
     @ObservedObject private var poopViewModel = PoopViewModel.shared
     @ObservedObject private var rootEnvironment = RootEnvironment.shared
-    @ObservedObject private var calenderViewModel = SCCalenderViewModel.shared
+    private var calenderViewModel = SCCalenderRepository()
     
     var body: some View {
         

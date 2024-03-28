@@ -13,7 +13,7 @@
 		128BB5AF2BB14115009E0FAB /* SCDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5AE2BB14115009E0FAB /* SCDate.swift */; };
 		128BB5B12BB14125009E0FAB /* SCYearAndMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5B02BB14125009E0FAB /* SCYearAndMonth.swift */; };
 		128BB5B32BB14135009E0FAB /* SCWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5B22BB14135009E0FAB /* SCWeek.swift */; };
-		128BB5B62BB141C5009E0FAB /* SCCalenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5B52BB141C5009E0FAB /* SCCalenderViewModel.swift */; };
+		128BB5B62BB141C5009E0FAB /* SCCalenderRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5B52BB141C5009E0FAB /* SCCalenderRepository.swift */; };
 		128BB5B82BB142BB009E0FAB /* EXCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5B72BB142BB009E0FAB /* EXCollection.swift */; };
 		128BB5BC2BB147BB009E0FAB /* Poop+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5BB2BB147BB009E0FAB /* Poop+CoreDataClass.swift */; };
 		128BB5BF2BB1497D009E0FAB /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5BE2BB1497D009E0FAB /* CoreDataRepository.swift */; };
@@ -53,7 +53,7 @@
 		128BB5AE2BB14115009E0FAB /* SCDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCDate.swift; sourceTree = "<group>"; };
 		128BB5B02BB14125009E0FAB /* SCYearAndMonth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCYearAndMonth.swift; sourceTree = "<group>"; };
 		128BB5B22BB14135009E0FAB /* SCWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCWeek.swift; sourceTree = "<group>"; };
-		128BB5B52BB141C5009E0FAB /* SCCalenderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCCalenderViewModel.swift; sourceTree = "<group>"; };
+		128BB5B52BB141C5009E0FAB /* SCCalenderRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCCalenderRepository.swift; sourceTree = "<group>"; };
 		128BB5B72BB142BB009E0FAB /* EXCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EXCollection.swift; sourceTree = "<group>"; };
 		128BB5BB2BB147BB009E0FAB /* Poop+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Poop+CoreDataClass.swift"; path = "/Users/s/Desktop/SwiftApp/UNCHILOG/UNCHILOG/Model/CoreData/Poop+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		128BB5BE2BB1497D009E0FAB /* CoreDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
@@ -154,7 +154,6 @@
 		128BB5A22BAFE371009E0FAB /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				128BB5B42BB141A4009E0FAB /* SCCalendar */,
 				128BB5D72BB289E2009E0FAB /* PoopViewModel.swift */,
 				128BB5E72BB465A2009E0FAB /* RootEnvironment.swift */,
 			);
@@ -164,6 +163,7 @@
 		128BB5A32BAFE37D009E0FAB /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				128BB5B42BB141A4009E0FAB /* SCCalendar */,
 				128BB5CE2BB28854009E0FAB /* DI */,
 				128BB5C02BB282D6009E0FAB /* AppModel */,
 				128BB5BD2BB14973009E0FAB /* DB */,
@@ -198,7 +198,7 @@
 		128BB5B42BB141A4009E0FAB /* SCCalendar */ = {
 			isa = PBXGroup;
 			children = (
-				128BB5B52BB141C5009E0FAB /* SCCalenderViewModel.swift */,
+				128BB5B52BB141C5009E0FAB /* SCCalenderRepository.swift */,
 			);
 			path = SCCalendar;
 			sourceTree = "<group>";
@@ -431,7 +431,7 @@
 				128BB5C52BB28495009E0FAB /* PoopShape.swift in Sources */,
 				128BB5D82BB289E2009E0FAB /* PoopViewModel.swift in Sources */,
 				12CBFBEB2BAFE25B005FE4F1 /* RootView.swift in Sources */,
-				128BB5B62BB141C5009E0FAB /* SCCalenderViewModel.swift in Sources */,
+				128BB5B62BB141C5009E0FAB /* SCCalenderRepository.swift in Sources */,
 				12CBFBF52BAFE25C005FE4F1 /* UNCHILOG.xcdatamodeld in Sources */,
 				128BB5E32BB310D6009E0FAB /* PoopDetailView.swift in Sources */,
 				128BB5EB2BB467B2009E0FAB /* Assets.swift in Sources */,
