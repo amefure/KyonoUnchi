@@ -16,17 +16,25 @@ struct PoopCalendarView: View {
                 Button {
                     rootEnvironment.backMonth()
                 } label: {
-                    Text("Sub")
-                }
+                    Image(systemName: "chevron.backward")
+                }.padding(.leading, 20)
                 
-                 Text(rootEnvironment.currentYearAndMonth?.yearAndMonth ?? "")
+                Spacer()
+                
+                Text(rootEnvironment.currentYearAndMonth?.yearAndMonth ?? "")
+                    .fontWeight(.bold)
+                
+                Spacer()
                 
                 Button {
                     rootEnvironment.forwardMonth()
                 } label: {
-                    Text("add")
-                }
-            }
+                    Image(systemName: "chevron.forward")
+                }.padding(.trailing, 20)
+                    
+            }.padding()
+                .foregroundStyle(.white)
+                .background(.exThema)
             
             LazyVGrid(columns: Array(repeating: GridItem(), count: 7), spacing: 0) {
                 ForEach(rootEnvironment.dayOfWeekList, id: \.self) { week in
@@ -35,7 +43,7 @@ struct PoopCalendarView: View {
             }
             
             ScrollView {
-                LazyVGrid(columns: Array(repeating: GridItem(), count: 7), spacing: 0) {
+                LazyVGrid(columns: Array(repeating: GridItem(spacing: 0), count: 7), spacing: 0) {
                     ForEach($rootEnvironment.currentDates) { theDay in
                         TheDayView(theDay: theDay, poops: poopViewModel.poops)
                     }

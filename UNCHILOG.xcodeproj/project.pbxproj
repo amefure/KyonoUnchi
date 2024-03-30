@@ -47,6 +47,7 @@
 		128BB6032BB5B008009E0FAB /* AppLockInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB6022BB5B008009E0FAB /* AppLockInputViewModel.swift */; };
 		128BB6052BB5B033009E0FAB /* DeviceSizeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB6042BB5B033009E0FAB /* DeviceSizeManager.swift */; };
 		128BB6072BB5B0DD009E0FAB /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB6062BB5B0DD009E0FAB /* SettingViewModel.swift */; };
+		128BB60A2BB79BA2009E0FAB /* UrlLinkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB6092BB79BA2009E0FAB /* UrlLinkConfig.swift */; };
 		12CBFBE92BAFE25B005FE4F1 /* UNCHILOGApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CBFBE82BAFE25B005FE4F1 /* UNCHILOGApp.swift */; };
 		12CBFBEB2BAFE25B005FE4F1 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CBFBEA2BAFE25B005FE4F1 /* RootView.swift */; };
 		12CBFBED2BAFE25C005FE4F1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12CBFBEC2BAFE25C005FE4F1 /* Images.xcassets */; };
@@ -97,6 +98,7 @@
 		128BB6022BB5B008009E0FAB /* AppLockInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLockInputViewModel.swift; sourceTree = "<group>"; };
 		128BB6042BB5B033009E0FAB /* DeviceSizeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSizeManager.swift; sourceTree = "<group>"; };
 		128BB6062BB5B0DD009E0FAB /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		128BB6092BB79BA2009E0FAB /* UrlLinkConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlLinkConfig.swift; sourceTree = "<group>"; };
 		12CBFBE52BAFE25B005FE4F1 /* UNCHILOG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UNCHILOG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12CBFBE82BAFE25B005FE4F1 /* UNCHILOGApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNCHILOGApp.swift; sourceTree = "<group>"; };
 		12CBFBEA2BAFE25B005FE4F1 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 		128BB5A02BAFE361009E0FAB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				128BB6082BB79B98009E0FAB /* Config */,
 				128BB5F72BB5ACE0009E0FAB /* Key */,
 				128BB5AD2BB140F6009E0FAB /* SCCalendar */,
 				128BB5A42BAFE38F009E0FAB /* CoreData */,
@@ -330,6 +333,14 @@
 				128BB6022BB5B008009E0FAB /* AppLockInputViewModel.swift */,
 			);
 			path = AppLock;
+			sourceTree = "<group>";
+		};
+		128BB6082BB79B98009E0FAB /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				128BB6092BB79BA2009E0FAB /* UrlLinkConfig.swift */,
+			);
+			path = Config;
 			sourceTree = "<group>";
 		};
 		12CBFBDC2BAFE25B005FE4F1 = {
@@ -549,6 +560,7 @@
 				128BB5B82BB142BB009E0FAB /* EXCollection.swift in Sources */,
 				128BB5CB2BB284D5009E0FAB /* PoopColor.swift in Sources */,
 				128BB5B12BB14125009E0FAB /* SCYearAndMonth.swift in Sources */,
+				128BB60A2BB79BA2009E0FAB /* UrlLinkConfig.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

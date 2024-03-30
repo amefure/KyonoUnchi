@@ -30,23 +30,23 @@ enum PoopColor: String, CaseIterable {
     public var color: Color {
         return switch self {
         case .undefined:
-            Color.black
+            Color.clear
         case .yellowishBrown:
-            Color.black
+            Color.exPoopYellowishBrown
         case .yellow:
-            Color.black
+            Color.exPoopYellow
         case .brown:
-            Color.black
+            Color.exPoopBrown
         case .darkBrown:
-            Color.black
+            Color.exPoopDarkBrown
         case .black:
-            Color.black
+            Color.exPoopBlack
         case .green:
-            Color.green
+            Color.exPoopGreen
         case .red:
-            Color.red
+            Color.exPoopRed
         case .grayishWhite:
-            Color.black
+            Color.exPoopGrayishWhite
         }
     }
 }

@@ -52,15 +52,65 @@ struct SettingView: View {
                         
                         Toggle(isOn: $isLock) {
                             Text(L10n.settingSectionAppLock)
-                        }.onChange(of: isLock, perform: { newValue in
+                        }.onChange(of: isLock) { newValue in
                             if newValue {
                                 viewModel.showPassInput()
                             } else {
                                 viewModel.deletePassword()
                             }
-                        }).tint(.exPositive)
+                        }.tint(.exPositive)
                     }
                 }// .listRowBackground(rootEnvironment.appColor.color)
+                
+                Section(header: Text("Link"), footer: Text(L10n.settingSectionLinkDesc)) {
+//                    if let url = URL(string: UrlLinkConfig.APP_REVIEW_URL) {
+//                        // 1:レビューページ
+//                        Link(destination: url, label: {
+//                            HStack {
+//                                Image(systemName: "hand.thumbsup")
+//                                Text(L10n.settingSectionLinkReview)
+//                            }
+//                        }).listRowBackground(rootEnvironment.appColor.color)
+//                            .foregroundStyle(.white)
+//                    }
+
+                    // 2:シェアボタン
+//                    Button(action: {
+//                        viewModel.shareApp(
+//                            shareText: "",
+//                            shareLink: ""
+//                        )
+//                    }) {
+//                        HStack {
+//                            Image(systemName: "star.bubble")
+//
+//                            Text(L10n.settingSectionLinkRecommend)
+//                        }
+//                    }.listRowBackground(rootEnvironment.appColor.color)
+//                        .foregroundStyle(.white)
+
+                    if let url = URL(string: UrlLinkConfig.APP_CONTACT_URL) {
+                        // 3:お問い合わせフォーム
+                        Link(destination: url, label: {
+                            HStack {
+                                Image(systemName: "paperplane")
+                                Text(L10n.settingSectionLinkContact)
+                                Image(systemName: "link").font(.caption)
+                            }
+                        })
+                    }
+
+                    if let url = URL(string: UrlLinkConfig.APP_TERMS_OF_SERVICE_URL) {
+                        // 4:利用規約とプライバシーポリシー
+                        Link(destination: url, label: {
+                            HStack {
+                                Image(systemName: "note.text")
+                                Text(L10n.settingSectionLinkTerms)
+                                Image(systemName: "link").font(.caption)
+                            }
+                        })
+                    }
+                }
             }
         }.onAppear {
             isLock = viewModel.isLock

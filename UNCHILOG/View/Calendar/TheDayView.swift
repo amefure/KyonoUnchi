@@ -37,22 +37,27 @@ struct TheDayView: View {
             if theDay.day == -1 {
                 Text("")
             } else {
-                
-                if poopCount() == 0 {
-                    NavigationLink {
+                NavigationLink {
+                    if poopCount() == 0 {
                         PoopInputView(theDay: theDay.date)
-                    } label: {
-                        Text("\(theDay.day)")
-                            .foregroundStyle(theDay.dayColor())
-                    }
-                } else {
-                    NavigationLink {
+                    } else {
                         TheDayDetailView(poops: poopList(), theDay: theDay)
-                    } label: {
-                        Text("\(poopCount())")
+                    }
+                } label: {
+                    VStack {
                         Text("\(theDay.day)")
-                            .foregroundStyle(theDay.dayColor())
-                        Text("\(theDay.week!.shortSymbols)")
+                            .frame(width: 40, height: 40)
+                            .background(isToday ? Color.exNegative : Color.clear)
+                            .clipShape(RoundedRectangle(cornerRadius: 30))
+                            .foregroundStyle(isToday ? Color.white : theDay.dayColor())
+                            .padding(.top, 5)
+                        
+                        Spacer()
+                        
+                        if poopCount() != 0 {
+                            Text("\(poopCount())")
+                        }
+                        
                     }
                 }
             }
@@ -61,8 +66,8 @@ struct TheDayView: View {
         .frame(height: 100)
         .overlay {
             Rectangle()
-                .stroke(.gray, lineWidth: 4)
-        }.background(isToday ? Color.exNegative : Color.clear)
+                .stroke(.gray , lineWidth: 1)
+        }
     }
 }
 

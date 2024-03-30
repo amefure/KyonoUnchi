@@ -50,6 +50,16 @@ internal enum L10n {
   internal static let settingSectionCalendarInitWeek = L10n.tr("Localizable", "setting_section_calendar_init_week", fallback: "週始まり")
   /// カレンダー設定
   internal static let settingSectionCalendarTitle = L10n.tr("Localizable", "setting_section_calendar_title", fallback: "カレンダー設定")
+  /// アプリの不具合はこちら
+  internal static let settingSectionLinkContact = L10n.tr("Localizable", "setting_section_link_contact", fallback: "アプリの不具合はこちら")
+  /// ・アプリに不具合がございましたら「アプリの不具合はこちら」よりお問い合わせください。
+  internal static let settingSectionLinkDesc = L10n.tr("Localizable", "setting_section_link_desc", fallback: "・アプリに不具合がございましたら「アプリの不具合はこちら」よりお問い合わせください。")
+  /// 「うんち記録カレンダー」をオススメする
+  internal static let settingSectionLinkRecommend = L10n.tr("Localizable", "setting_section_link_recommend", fallback: "「うんち記録カレンダー」をオススメする")
+  /// アプリをレビューする
+  internal static let settingSectionLinkReview = L10n.tr("Localizable", "setting_section_link_review", fallback: "アプリをレビューする")
+  /// 利用規約とプライバシーポリシー
+  internal static let settingSectionLinkTerms = L10n.tr("Localizable", "setting_section_link_terms", fallback: "利用規約とプライバシーポリシー")
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces

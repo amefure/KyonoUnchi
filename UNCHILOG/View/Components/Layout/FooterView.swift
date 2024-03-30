@@ -13,24 +13,51 @@ struct FooterView: View {
     @ObservedObject private var rootEnvironment = RootEnvironment.shared
     var body: some View {
         HStack {
-            NavigationLink {
-                PoopInputView(theDay: Date())
-            } label: {
-                Text("Input")
-            }
 
             
-            Button {
-                rootEnvironment.moveToDayCalendar()
-            } label: {
-                Text("MOVE")
-            }
+            Spacer()
             
             Button {
                 selectedTab = 0
             } label: {
+                Image(systemName: "chart.xyaxis.line")
+            }
+
+            Spacer()
+            
+            Button {
+                rootEnvironment.moveToDayCalendar()
+            } label: {
+                Image(systemName: "arrow.uturn.backward.circle")
+            }
+            
+            Spacer()
+            
+            NavigationLink {
+                PoopInputView(theDay: Date())
+            } label: {
+                Text("Input")
+            }.frame(width: 80, height: 80)
+                .background(.exThema)
+                .clipShape(RoundedRectangle(cornerRadius: 80))
+                .overlay{
+                    RoundedRectangle(cornerRadius: 80)
+                        .stroke(style: StrokeStyle(lineWidth: 2))
+                        .foregroundStyle(.white)
+                        .shadow(color: .gray, radius: 3, x: 2, y: 3)
+                }.offset(y: -20)
+           
+            
+            Spacer()
+            
+            Button {
+                selectedTab = 0
+            } label: {
+                
                 Image(systemName: "calendar")
             }
+            
+            Spacer()
             
             
             Button {
@@ -38,7 +65,10 @@ struct FooterView: View {
             } label: {
                 Image(systemName: "gearshape.fill")
             }
-        }.background(.exThema)
+            
+            Spacer()
+        }.frame(height: 50)
+            .background(.exThema)
     }
 }
 

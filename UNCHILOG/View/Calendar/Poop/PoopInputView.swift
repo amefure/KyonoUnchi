@@ -23,62 +23,98 @@ struct PoopInputView: View {
     @State private var memo: String = ""
     @State private var createdAt: Date = Date()
     
+    @State private var selectMode: Int = 0
+    
     // MARK: - Environment
     @Environment(\.dismiss) var dismiss
+    
+    init(theDay: Date?, poop: Poop? = nil) {
+        let appearance = UISegmentedControl.appearance()
+        let font = UIFont.boldSystemFont(ofSize: 12)
+        appearance.selectedSegmentTintColor = .black.withAlphaComponent(0.75)
+        appearance.setTitleTextAttributes([.font: font, .foregroundColor: UIColor.black], for: .normal)
+        appearance.setTitleTextAttributes([.font: font, .foregroundColor: UIColor.white], for: .selected)
+    }
     
     var body: some View {
         VStack {
             
+            Picker(selection: $selectMode) {
+                Text("シンプル").tag(0)
+                Text("詳細").tag(1)
+            } label: {
+                Text("Mode")
+            }.pickerStyle(SegmentedPickerStyle())
+                .frame(width: 300)
+            
+            
             DatePicker("createdAt",
               selection: $createdAt,
               displayedComponents: [.hourAndMinute]
-            )
+            ).frame(width: 300)
+                .labelsHidden()
             
-            HStack(spacing: 15) {
-                ForEach(PoopColor.allCases, id: \.self) { poopColor in
-                    Button {
-                        color = poopColor
-                    } label: {
-                        poopColor.color
-                            .frame(width: 50, height: 50)
-                            .clipShape(RoundedRectangle(cornerRadius: 50))
-                            .overlay {
-                                RoundedRectangle(cornerRadius: 50)
-                                    .stroke(color == poopColor ? Color.white : .clear, lineWidth: 4)
+            ScrollView(.horizontal) {
+                HStack(spacing: 15) {
+                    ForEach(PoopColor.allCases, id: \.self) { poopColor in
+                        if poopColor != .undefined {
+                            Button {
+                                color = poopColor
+                            } label: {
+                                poopColor.color
+                                    .frame(width: 50, height: 50)
+                                    .clipShape(RoundedRectangle(cornerRadius: 50))
+                                    .overlay {
+                                        RoundedRectangle(cornerRadius: 50)
+                                            .stroke(color == poopColor ? Color.white : .clear, lineWidth: 4)
+                                    }
                             }
+                        }
                     }
-                }
-            }.padding(.vertical)
+                }.padding(.vertical)
+            }
+          
+            ScrollView(.horizontal) {
+                HStack(spacing: 15) {
+                    ForEach(PoopShape.allCases, id: \.self) { poopShape in
+                        if poopShape != .undefined {
+                            Button {
+                                shape = poopShape
+                            } label: {
+                                Text("\(poopShape.rawValue)")
+                            }
+                        }
+                    }
+                }.padding(.vertical)
+            }
             
-            HStack(spacing: 15) {
-                ForEach(PoopShape.allCases, id: \.self) { poopShape in
-                    Button {
-                        shape = poopShape
-                    } label: {
-                        Text("\(poopShape.rawValue)")
+            ScrollView(.horizontal) {
+                HStack(spacing: 15) {
+                    ForEach(PoopVolume.allCases, id: \.self) { poopVolume in
+                        if poopVolume != .undefined {
+                            Button {
+                                volume = poopVolume
+                            } label: {
+                                Text("\(poopVolume.rawValue)")
+                            }
+                        }
                     }
-                }
-            }.padding(.vertical)
+                }.padding(.vertical)
+            }
             
-            HStack(spacing: 15) {
-                ForEach(PoopVolume.allCases, id: \.self) { poopVolume in
-                    Button {
-                        volume = poopVolume
-                    } label: {
-                        Text("\(poopVolume.rawValue)")
+            ScrollView(.horizontal) {
+                HStack(spacing: 15) {
+                    ForEach(PoopHardness.allCases, id: \.self) { poopHardness in
+                        if poopHardness != .undefined {
+                            Button {
+                                hardness = poopHardness
+                            } label: {
+                                Text("\(poopHardness.rawValue)")
+                            }
+                        }
                     }
-                }
-            }.padding(.vertical)
-            
-            HStack(spacing: 15) {
-                ForEach(PoopHardness.allCases, id: \.self) { poopHardness in
-                    Button {
-                        hardness = poopHardness
-                    } label: {
-                        Text("\(poopHardness.rawValue)")
-                    }
-                }
-            }.padding(.vertical)
+                }.padding(.vertical)
+            }
             
             TextEditor(text: $memo)
             

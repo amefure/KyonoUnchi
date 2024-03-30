@@ -24,6 +24,14 @@ internal typealias AssetColorTypeAlias = ColorAsset.Color
 internal enum Asset {
   internal enum Colors {
     internal static let exNegative = ColorAsset(name: "ex_negative")
+    internal static let exPoopBlack = ColorAsset(name: "ex_poop_ black")
+    internal static let exPoopBrown = ColorAsset(name: "ex_poop_ brown")
+    internal static let exPoopDarkBrown = ColorAsset(name: "ex_poop_ dark_brown")
+    internal static let exPoopGrayishWhite = ColorAsset(name: "ex_poop_ grayish_white")
+    internal static let exPoopGreen = ColorAsset(name: "ex_poop_ green")
+    internal static let exPoopRed = ColorAsset(name: "ex_poop_ red")
+    internal static let exPoopYellow = ColorAsset(name: "ex_poop_ yellow")
+    internal static let exPoopYellowishBrown = ColorAsset(name: "ex_poop_ yellowish_brown")
     internal static let exPositive = ColorAsset(name: "ex_positive")
     internal static let exText = ColorAsset(name: "ex_text")
     internal static let exThema = ColorAsset(name: "ex_thema")

@@ -18,14 +18,21 @@
 "dialog_button_ok" = "OK";
 "dialog_button_cancel" = "キャンセル";
 
-
 "setting_section_calendar_title" = "カレンダー設定";
 "setting_section_calendar_init_week" = "週始まり";
 "setting_section_app_desc" = "・アプリにパスワードを設定してロックをかけることができます。";
 "setting_section_app_lock" = "アプリをロックする";
+
+"setting_section_link_desc" = "・アプリに不具合がございましたら「アプリの不具合はこちら」よりお問い合わせください。";
+"setting_section_link_review" = "アプリをレビューする";
+"setting_section_link_recommend" = "「うんち記録カレンダー」をオススメする";
+"setting_section_link_contact" = "アプリの不具合はこちら";
+"setting_section_link_terms" = "利用規約とプライバシーポリシー";
 
 "app_lock_face_id" = "Face IDでログインする";
 "app_lock_touch_id" = "Touch IDでログインする";
 "app_lock_failed_password" = "パスワードが違います。";
 "app_lock_input_title" = "パスワード登録";
 "app_lock_input_entry_button" = "登録";
+
+
