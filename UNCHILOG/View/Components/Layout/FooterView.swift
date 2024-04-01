@@ -14,7 +14,6 @@ struct FooterView: View {
     var body: some View {
         HStack {
 
-            
             Spacer()
             
             Button {
@@ -25,40 +24,26 @@ struct FooterView: View {
 
             Spacer()
             
-            Button {
-                rootEnvironment.moveToDayCalendar()
-            } label: {
-                Image(systemName: "arrow.uturn.backward.circle")
-            }
-            
-            Spacer()
-            
-            NavigationLink {
-                PoopInputView(theDay: Date())
-            } label: {
-                Text("Input")
-            }.frame(width: 80, height: 80)
-                .background(.exThema)
-                .clipShape(RoundedRectangle(cornerRadius: 80))
-                .overlay{
-                    RoundedRectangle(cornerRadius: 80)
-                        .stroke(style: StrokeStyle(lineWidth: 2))
-                        .foregroundStyle(.white)
-                        .shadow(color: .gray, radius: 3, x: 2, y: 3)
-                }.offset(y: -20)
-           
-            
-            Spacer()
-            
-            Button {
-                selectedTab = 0
-            } label: {
+            ZStack {
                 
-                Image(systemName: "calendar")
+                Color.exThema
+                    .frame(width: 200, height: 200)
+                        .clipShape(RoundedRectangle(cornerRadius: 200))
+                        .offset(y: 50)
+                
+                Button {
+                    if selectedTab == 1 {
+                        rootEnvironment.moveToDayCalendar()
+                    } else {
+                        selectedTab = 1
+                    }
+                } label: {
+                    Image(systemName: "calendar")
+                        .offset(y: -10)
+                }
             }
             
             Spacer()
-            
             
             Button {
                 selectedTab = 2
@@ -68,7 +53,9 @@ struct FooterView: View {
             
             Spacer()
         }.frame(height: 50)
+            .font(.system(size: 25))
             .background(.exThema)
+            .foregroundStyle(.indigo)
     }
 }
 

@@ -22,15 +22,16 @@ struct RootView: View {
             
             TabView(selection: $selectedTab ) {
                 
+                
+                PoopChartView()
+                    .tag(0)
+                
                 PoopCalendarView()
                     .tag(1)
                 
                 SettingView()
                     .tag(2)
-                
-                SettingView()
-                    .tag(3)
-                
+
             }
             
             FooterView(selectedTab: $selectedTab)

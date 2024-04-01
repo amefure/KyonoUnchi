@@ -10,7 +10,7 @@ import UIKit
 class PoopRepository {
     
     public func fetchAllPoops() -> [Poop] {
-        return CoreDataRepository.fetch(sorts: [NSSortDescriptor(keyPath: \Poop.id, ascending: true)])
+        return CoreDataRepository.fetch(sorts: [NSSortDescriptor(keyPath: \Poop.createdAt, ascending: true)])
     }
     
     public func addPoop(color: PoopColor, shape: PoopShape, volume: PoopVolume, hardness: PoopHardness, memo: String, createdAt: Date) {

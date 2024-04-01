@@ -23,7 +23,7 @@ public class Poop: NSManagedObject {
 
 
 extension Poop {
-    /// デモプレビュー用インスタンス生成メソッド
+    /// 年月日取得
     public func getDate() -> String {
         let str = DateFormatUtility(format: "yyyy-M-d").getString(date: wrappedCreatedAt)
         return str

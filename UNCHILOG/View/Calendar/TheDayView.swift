@@ -46,11 +46,11 @@ struct TheDayView: View {
                 } label: {
                     VStack {
                         Text("\(theDay.day)")
-                            .frame(width: 40, height: 40)
+                            .frame(width: 30, height: 30)
                             .background(isToday ? Color.exNegative : Color.clear)
                             .clipShape(RoundedRectangle(cornerRadius: 30))
                             .foregroundStyle(isToday ? Color.white : theDay.dayColor())
-                            .padding(.top, 5)
+                            .padding(.top, 2)
                         
                         Spacer()
                         
@@ -63,7 +63,7 @@ struct TheDayView: View {
             }
         }
         .frame(maxWidth: .infinity)
-        .frame(height: 100)
+        .frame(height: 80)
         .overlay {
             Rectangle()
                 .stroke(.gray , lineWidth: 1)

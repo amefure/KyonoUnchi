@@ -29,6 +29,8 @@ struct PoopInputView: View {
     @Environment(\.dismiss) var dismiss
     
     init(theDay: Date?, poop: Poop? = nil) {
+        self.theDay = theDay
+        self.poop = poop
         let appearance = UISegmentedControl.appearance()
         let font = UIFont.boldSystemFont(ofSize: 12)
         appearance.selectedSegmentTintColor = .black.withAlphaComponent(0.75)
@@ -47,6 +49,10 @@ struct PoopInputView: View {
             }.pickerStyle(SegmentedPickerStyle())
                 .frame(width: 300)
             
+            DatePicker("createdAt",
+              selection: $createdAt
+            ).frame(width: 300)
+                .labelsHidden()
             
             DatePicker("createdAt",
               selection: $createdAt,
@@ -154,7 +160,6 @@ struct PoopInputView: View {
                 memo = poop.wrappedMemo
                 createdAt = poop.wrappedCreatedAt
             }
-            
             // 現在時間を格納した
             createdAt = df.combineDateWithCurrentTime(theDay: theDay ?? Date())
         }
