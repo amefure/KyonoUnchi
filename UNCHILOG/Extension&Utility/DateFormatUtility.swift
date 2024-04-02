@@ -18,12 +18,12 @@ class DateFormatUtility {
         df.calendar = c
     }
     
-    /// JP：yyyy年M月d日  String
+    /// `Date`型を受け取り`String`型を返す
     public func getString(date: Date) -> String {
         return df.string(from: date)
     }
     
-    /// JP：yyyy年M月d日 Date
+    /// `String`型を受け取り`Date`型を返す
     public func getDate(str: String) -> Date {
         return df.date(from: str) ?? Date()
     }
@@ -32,11 +32,22 @@ class DateFormatUtility {
 
 extension DateFormatUtility {
     
-    public func convertDateComponents(date: Date) -> DateComponents {
-        c.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
+    
+    /// `Date`型を受け取り`DateComponents`型を返す
+    /// - Parameters:
+    ///   - date: 変換対象の`Date`型
+    ///   - components: `DateComponents`で取得したい`Calendar.Component`
+    /// - Returns: `DateComponents`
+    public func convertDateComponents(date: Date, components: Set<Calendar.Component> = [.year, .month, .day, .hour, .minute, .second]) -> DateComponents {
+        c.dateComponents(components, from: date)
     }
     
-    // 指定された日付の日付部分と現在の時刻を組み合わたDateオブジェクトを返す
+    /// `DateComponents`型を受け取り`Date`型を返す
+    public func convertDate(components: DateComponents) -> Date {
+        c.date(from: components) ?? Date()
+    }
+    
+    /// 指定された日付の日付部分と現在の時刻を組み合わたDateオブジェクトを返す
     public func combineDateWithCurrentTime(theDay: Date) -> Date {
         let now = Date()
         guard let newDate = c.date(

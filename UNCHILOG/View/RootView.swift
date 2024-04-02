@@ -16,9 +16,14 @@ struct RootView: View {
     
     @State private var selectedTab = 1
     
+    init() {
+        // タブを非表示
+        UITabBar.appearance().isHidden = true
+    }
+    
     var body: some View {
         
-        VStack {
+        VStack(spacing: 0) {
             
             TabView(selection: $selectedTab ) {
                 

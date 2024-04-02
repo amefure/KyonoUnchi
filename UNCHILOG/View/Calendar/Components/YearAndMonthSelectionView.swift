@@ -31,7 +31,8 @@ struct YearAndMonthSelectionView: View {
                 Image(systemName: "chevron.forward")
             }.padding(.trailing, 20)
                 
-        }.padding()
+        }.padding(.horizontal)
+            .padding(.vertical, 10)
             .foregroundStyle(.indigo)
             .background(.exThema)
     }

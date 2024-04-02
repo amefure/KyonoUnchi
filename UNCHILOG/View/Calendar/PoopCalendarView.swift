@@ -11,7 +11,7 @@ struct PoopCalendarView: View {
     @ObservedObject private var poopViewModel = PoopViewModel.shared
     @ObservedObject private var rootEnvironment = RootEnvironment.shared
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             
             YearAndMonthSelectionView()
             
@@ -21,35 +21,48 @@ struct PoopCalendarView: View {
                 }
             }
             
-            LazyVGrid(columns: Array(repeating: GridItem(spacing: 0), count: 7), spacing: 0) {
-                ForEach($rootEnvironment.currentDates) { theDay in
-                    TheDayView(theDay: theDay, poops: poopViewModel.poops)
+            ScrollView {
+                
+                LazyVGrid(columns: Array(repeating: GridItem(spacing: 0), count: 7), spacing: 0) {
+                    ForEach($rootEnvironment.currentDates) { theDay in
+                        TheDayView(theDay: theDay, poops: poopViewModel.poops)
+                    }
                 }
-            }
-            
-            Spacer()
-            
-            
-            HStack {
-             
-                Spacer()
-                
-                
-                Text("うんちが５日出てないよ")
                 
                 Spacer()
                 
-                NavigationLink {
-                    PoopInputView(theDay: Date())
-                } label: {
-                    Image(systemName: "plus")
-                        .font(.system(size: 25))
-                        .frame(width: 50, height: 50)
-                        .foregroundStyle(.indigo)
-                        .background(.exThema)
-                        .clipShape(RoundedRectangle(cornerRadius: 50))
-                        .shadow(color: .gray, radius: 3, x: 2, y: 2)
-                }.padding(.trailing, 20)
+                
+                HStack {
+                    
+                    Spacer()
+                    
+                    
+                    ZStack {
+                        RoundChatView()
+                            .fill(Color.gray)
+                            .frame(width: 250, height: 50)
+                            .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
+                        Text("うんちが５日出てないよ")
+                            .foregroundStyle(.white)
+                            .offset(x: 10)
+                    }
+                    
+                    
+                    Spacer()
+                    
+                    NavigationLink {
+                        PoopInputView(theDay: Date())
+                    } label: {
+                        Image(systemName: "plus")
+                            .font(.system(size: 25))
+                            .frame(width: 50, height: 50)
+                            .foregroundStyle(.indigo)
+                            .background(.exThema)
+                            .clipShape(RoundedRectangle(cornerRadius: 50))
+                            .shadow(color: .gray, radius: 3, x: 2, y: 2)
+                    }.padding(.trailing, 20)
+                }.padding(.top, 10)
+                    .padding(.bottom, 25)
             }
         }
     }
