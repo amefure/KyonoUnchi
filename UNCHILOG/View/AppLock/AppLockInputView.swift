@@ -18,9 +18,6 @@ struct AppLockInputView: View {
     
     // MARK: - View
     @State private var password: [String] = []
-    
-    // MARK: - Environment
-    @ObservedObject private var rootEnvironment = RootEnvironment.shared
 
     @Environment(\.dismiss) private var dismiss
 

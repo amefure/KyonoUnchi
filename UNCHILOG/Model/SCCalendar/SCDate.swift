@@ -16,8 +16,10 @@ struct SCDate: Identifiable {
     public var week: SCWeek?
     public var holidayName: String = ""
     
-    public func getDate() -> String {
-        "\(year)-\(month)-\(day)"
+    /// 年月日取得
+    public func getDate(format: String = "yyyy-M-d") -> String {
+        let str = DateFormatUtility(format: format).getString(date: date ?? Date())
+        return str
     }
     
     public func dayColor(defaultColor: Color = .gray) -> Color {

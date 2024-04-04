@@ -25,6 +25,8 @@ struct PoopInputView: View {
     
     @State private var selectMode: Int = 0
     
+    @State private var showSuccessAlert: Bool = false
+    
     // MARK: - Environment
     @Environment(\.dismiss) var dismiss
     
@@ -49,80 +51,85 @@ struct PoopInputView: View {
             }.pickerStyle(SegmentedPickerStyle())
                 .frame(width: 300)
             
-            DatePicker("createdAt",
-              selection: $createdAt
-            ).frame(width: 300)
-                .labelsHidden()
-            
-            DatePicker("createdAt",
-              selection: $createdAt,
-              displayedComponents: [.hourAndMinute]
-            ).frame(width: 300)
-                .labelsHidden()
-            
-            ScrollView(.horizontal) {
-                HStack(spacing: 15) {
-                    ForEach(PoopColor.allCases, id: \.self) { poopColor in
-                        if poopColor != .undefined {
-                            Button {
-                                color = poopColor
-                            } label: {
-                                poopColor.color
-                                    .frame(width: 50, height: 50)
-                                    .clipShape(RoundedRectangle(cornerRadius: 50))
-                                    .overlay {
-                                        RoundedRectangle(cornerRadius: 50)
-                                            .stroke(color == poopColor ? Color.white : .clear, lineWidth: 4)
-                                    }
+            if selectMode == 0 {
+                Spacer()
+            } else {
+                DatePicker("createdAt",
+                  selection: $createdAt
+                ).frame(width: 300)
+                    .labelsHidden()
+                
+                DatePicker("createdAt",
+                  selection: $createdAt,
+                  displayedComponents: [.hourAndMinute]
+                ).frame(width: 300)
+                    .labelsHidden()
+                
+                ScrollView(.horizontal) {
+                    HStack(spacing: 15) {
+                        ForEach(PoopColor.allCases, id: \.self) { poopColor in
+                            if poopColor != .undefined {
+                                Button {
+                                    color = poopColor
+                                } label: {
+                                    poopColor.color
+                                        .frame(width: 50, height: 50)
+                                        .clipShape(RoundedRectangle(cornerRadius: 50))
+                                        .overlay {
+                                            RoundedRectangle(cornerRadius: 50)
+                                                .stroke(color == poopColor ? Color.white : .clear, lineWidth: 4)
+                                        }
+                                }
                             }
                         }
-                    }
-                }.padding(.vertical)
-            }
-          
-            ScrollView(.horizontal) {
-                HStack(spacing: 15) {
-                    ForEach(PoopShape.allCases, id: \.self) { poopShape in
-                        if poopShape != .undefined {
-                            Button {
-                                shape = poopShape
-                            } label: {
-                                Text("\(poopShape.rawValue)")
+                    }.padding(.vertical)
+                }
+              
+                ScrollView(.horizontal) {
+                    HStack(spacing: 15) {
+                        ForEach(PoopShape.allCases, id: \.self) { poopShape in
+                            if poopShape != .undefined {
+                                Button {
+                                    shape = poopShape
+                                } label: {
+                                    poopShape.image
+                                }
                             }
                         }
-                    }
-                }.padding(.vertical)
-            }
-            
-            ScrollView(.horizontal) {
-                HStack(spacing: 15) {
-                    ForEach(PoopVolume.allCases, id: \.self) { poopVolume in
-                        if poopVolume != .undefined {
-                            Button {
-                                volume = poopVolume
-                            } label: {
-                                Text("\(poopVolume.rawValue)")
+                    }.padding(.vertical)
+                }
+                
+                ScrollView(.horizontal) {
+                    HStack(spacing: 15) {
+                        ForEach(PoopVolume.allCases, id: \.self) { poopVolume in
+                            if poopVolume != .undefined {
+                                Button {
+                                    volume = poopVolume
+                                } label: {
+                                    poopVolume.image
+                                }
                             }
                         }
-                    }
-                }.padding(.vertical)
-            }
-            
-            ScrollView(.horizontal) {
-                HStack(spacing: 15) {
-                    ForEach(PoopHardness.allCases, id: \.self) { poopHardness in
-                        if poopHardness != .undefined {
-                            Button {
-                                hardness = poopHardness
-                            } label: {
-                                Text("\(poopHardness.rawValue)")
+                    }.padding(.vertical)
+                }
+                
+                ScrollView(.horizontal) {
+                    HStack(spacing: 15) {
+                        ForEach(PoopHardness.allCases, id: \.self) { poopHardness in
+                            if poopHardness != .undefined {
+                                Button {
+                                    hardness = poopHardness
+                                } label: {
+                                    poopHardness.image
+                                }
                             }
                         }
-                    }
-                }.padding(.vertical)
+                    }.padding(.vertical)
+                }
+                
+                TextEditor(text: $memo)
+                    .background(Color.gray)
             }
-            
-            TextEditor(text: $memo)
             
             
             Button {
@@ -146,7 +153,7 @@ struct PoopInputView: View {
                         createdAt: createdAt
                     )
                 }
-                dismiss()
+                showSuccessAlert = true
             } label: {
                 Text("登録")
             }
@@ -162,7 +169,15 @@ struct PoopInputView: View {
             }
             // 現在時間を格納した
             createdAt = df.combineDateWithCurrentTime(theDay: theDay ?? Date())
-        }
+        }.dialog(
+            isPresented: $showSuccessAlert,
+            title: L10n.dialogTitle,
+            message: poop == nil ? L10n.dialogEntryPoop : L10n.dialogUpdatePoop,
+            positiveButtonTitle: L10n.dialogButtonOk,
+            positiveAction: {
+                dismiss()
+            }
+        )
     }
 }
 

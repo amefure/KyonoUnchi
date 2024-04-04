@@ -41,17 +41,8 @@ struct PoopCalendarView: View {
                 
                 Spacer()
                 
-                NavigationLink {
-                    PoopInputView(theDay: Date())
-                } label: {
-                    Image(systemName: "plus")
-                        .font(.system(size: 25))
-                        .frame(width: 50, height: 50)
-                        .foregroundStyle(.indigo)
-                        .background(.exThema)
-                        .clipShape(RoundedRectangle(cornerRadius: 50))
-                        .shadow(color: .gray, radius: 3, x: 2, y: 2)
-                }
+                EntryButton()
+                
             }.padding(20)
 
             

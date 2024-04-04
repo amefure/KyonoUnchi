@@ -19,7 +19,6 @@ class AppLockInputViewModel: ObservableObject {
     public func entryPassword(password: [String]) {
         entryFlag = true
         let pass = password.joined(separator: "")
-        print("-----", pass)
         keyChainRepository.entry(value: pass)
     }
 }

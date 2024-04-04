@@ -17,7 +17,10 @@ class SettingViewModel: ObservableObject {
 
     init(repositoryDependency: RepositoryDependency = RepositoryDependency()) {
         keyChainRepository = repositoryDependency.keyChainRepository
-        
+    }
+    
+    // このアプリはタブViewなのでSettingViewModelのイニシャライザは一度しか呼ばれないため明示的にonAppearから呼び出す
+    public func onAppear() {
         checkAppLock()
     }
 

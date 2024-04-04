@@ -38,11 +38,7 @@ struct TheDayView: View {
                 Text("")
             } else {
                 NavigationLink {
-                    if poopCount() == 0 {
-                        PoopInputView(theDay: theDay.date)
-                    } else {
-                        TheDayDetailView(poops: poopList(), theDay: theDay)
-                    }
+                    TheDayDetailView(theDay: theDay)
                 } label: {
                     VStack {
                         Text("\(theDay.day)")

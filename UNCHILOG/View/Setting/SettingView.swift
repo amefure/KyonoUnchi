@@ -113,6 +113,7 @@ struct SettingView: View {
                 }
             }
         }.onAppear {
+            viewModel.onAppear()
             isLock = viewModel.isLock
         }.sheet(isPresented: $viewModel.isShowPassInput, content: {
             AppLockInputView(isLock: $isLock)

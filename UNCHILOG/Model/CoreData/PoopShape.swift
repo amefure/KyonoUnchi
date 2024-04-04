@@ -15,26 +15,20 @@ enum PoopShape: Int, CaseIterable {
     case semiLiquid = 4
     case liquid = 5
     
-//    public var image: Image {
-//        return switch self {
-//        case .undefined:
-//            Image(<#T##resource: ImageResource##ImageResource#>)
-//        case .yellowishBrown:
-//            Color.black
-//        case .yellow:
-//            Color.black
-//        case .brown:
-//            Color.black
-//        case .darkBrown:
-//            Color.black
-//        case .black:
-//            Color.black
-//        case .green:
-//            Color.green
-//        case .red:
-//            Color.red
-//        case .grayishWhite:
-//            Color.black
-//        }
-//    }
+    public var image: Image {
+        return switch self {
+        case .undefined:
+            Image(systemName: "swift")
+        case .korokoro:
+            Image(systemName: "swift")
+        case .semiKorokoro:
+            Image(systemName: "swift")
+        case .normal:
+            Image(systemName: "swift")
+        case .semiLiquid:
+            Image(systemName: "swift")
+        case .liquid:
+            Image(systemName: "swift")
+        }
+    }
 }

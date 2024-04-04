@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct TheDayDetailView: View {
-    public var poops: [Poop] = []
     public var theDay: SCDate
     
+    var poopList: [Poop] {
+        let list = poopViewModel.poops.filter({ $0.getDate() == theDay.getDate() })
+        return list
+    }
     
     @ObservedObject private var poopViewModel = PoopViewModel.shared
     
@@ -18,32 +21,63 @@ struct TheDayDetailView: View {
     @State private var showDeleteDialog = false
     var body: some View {
         VStack {
-            Text("\(theDay.month)")
-            Text("\(theDay.day)")
+            
+            HStack {
+                
+                Text(theDay.getDate(format: "yyyy年M月d日"))
+                
+                EntryButton(date: theDay.date ?? Date())
+            }
+            
             
             List {
-                ForEach(poops) { poop in
-                    HStack {
-                        NavigationLink {
-                            PoopDetailView(theDay: theDay, poop: poop)
-                        } label: {
-                            Text(poop.getDate())
-                            Text(poop.wrappedId.uuidString)
+                ForEach(poopList) { poop in
+                    NavigationLink {
+                        PoopDetailView(theDay: theDay, poop: poop)
+                    } label: {
+                        HStack {
+                            VStack(spacing: 0) {
+                                Rectangle()
+                                    .frame(width: 2, height: 20)
+                                Text(poop.getTime())
+                                    .frame(width: 90)
+                                Rectangle()
+                                    .frame(width: 2, height: 20)
+                            }
+                            
+                            Spacer()
+                            
+                            if let volume = PoopVolume(rawValue: poop.wrappedVolume),
+                               volume != .undefined {
+                                volume.image
+                            }
+                            
+                            if let shape = PoopShape(rawValue: poop.wrappedShape),
+                               shape != .undefined {
+                                shape.image
+                            }
+                            
+                            if let hardness = PoopHardness(rawValue: poop.wrappedHardness),
+                               hardness != .undefined {
+                                hardness.image
+                            }
+                            
                             Text(poop.wrappedMemo)
                         }
-                    }.listRowBackground(Color.indigo)
-                    
-                        .swipeActions(edge: .trailing, allowsFullSwipe: false) {
-                            // 右スワイプ：削除アクション
-                            Button(role: .none) {
-                                self.poop = poop
-                                showDeleteDialog = true
-                            } label: {
-                                Image(systemName: "trash")
-                            }.tint(.exNegative)
-                        }
+                    }.listRowBackground(Color.clear)
+                        .listRowSeparator(.hidden)
+                        .listRowInsets(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+                    .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                        // 右スワイプ：削除アクション
+                        Button(role: .none) {
+                            self.poop = poop
+                            showDeleteDialog = true
+                        } label: {
+                            Image(systemName: "trash")
+                        }.tint(.exNegative)
+                    }
                 }
-            }
+            }.listStyle(GroupedListStyle())
         }.dialog(
             isPresented: $showDeleteDialog,
             title: L10n.dialogTitle,
