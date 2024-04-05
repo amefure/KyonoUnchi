@@ -16,13 +16,16 @@ struct PoopInputView: View {
     public var theDay: Date?
     public var poop: Poop? = nil
     
-    @State private var color: PoopColor = .undefined
-    @State private var shape: PoopShape = .undefined
-    @State private var volume: PoopVolume = .undefined
-    @State private var hardness: PoopHardness = .undefined
+    @State private var color: PoopColor = .brown
+    @State private var shape: PoopShape = .normal
+    @State private var volume: PoopVolume = .medium
+    @State private var volumeNum: Float = 3
+    @State private var hardness: PoopHardness = .medium
+    @State private var hardnessNum: Float = 3
     @State private var memo: String = ""
     @State private var createdAt: Date = Date()
     
+    @FocusState var isActive: Bool
     @State private var showSuccessAlert: Bool = false
     
     // MARK: - Environment
@@ -31,114 +34,140 @@ struct PoopInputView: View {
     var body: some View {
         VStack {
             
-            DatePicker("createdAt",
-              selection: $createdAt
-            ).frame(width: 300)
-                .labelsHidden()
-            
-            DatePicker("createdAt",
-              selection: $createdAt,
-              displayedComponents: [.hourAndMinute]
-            ).frame(width: 300)
-                .labelsHidden()
-            
-            ScrollView(.horizontal) {
-                HStack(spacing: 15) {
-                    ForEach(PoopColor.allCases, id: \.self) { poopColor in
-                        if poopColor != .undefined {
-                            Button {
-                                color = poopColor
-                            } label: {
-                                poopColor.color
-                                    .frame(width: 50, height: 50)
-                                    .clipShape(RoundedRectangle(cornerRadius: 50))
-                                    .overlay {
-                                        RoundedRectangle(cornerRadius: 50)
-                                            .stroke(color == poopColor ? Color.white : .clear, lineWidth: 4)
-                                    }
-                            }
-                        }
+            HeaderView(
+                trailingIcon: "checkmark",
+                trailingAction: {
+                    if let poop = poop {
+                        viewModel.updatePoop(
+                            id: poop.wrappedId,
+                            color: color,
+                            shape: shape,
+                            volume: volume,
+                            hardness: hardness,
+                            memo: memo
+                        )
+                    } else {
+                        viewModel.addPoop(
+                            color: color,
+                            shape: shape,
+                            volume: volume,
+                            hardness: hardness,
+                            memo: memo,
+                            createdAt: createdAt
+                        )
                     }
-                }.padding(.vertical)
-            }
-          
-            ScrollView(.horizontal) {
-                HStack(spacing: 15) {
-                    ForEach(PoopShape.allCases, id: \.self) { poopShape in
-                        if poopShape != .undefined {
-                            Button {
-                                shape = poopShape
-                            } label: {
-                                poopShape.image
-                            }
-                        }
-                    }
-                }.padding(.vertical)
-            }
-            
-            ScrollView(.horizontal) {
-                HStack(spacing: 15) {
-                    ForEach(PoopVolume.allCases, id: \.self) { poopVolume in
-                        if poopVolume != .undefined {
-                            Button {
-                                volume = poopVolume
-                            } label: {
-                                poopVolume.image
-                            }
-                        }
-                    }
-                }.padding(.vertical)
-            }
-            
-            ScrollView(.horizontal) {
-                HStack(spacing: 15) {
-                    ForEach(PoopHardness.allCases, id: \.self) { poopHardness in
-                        if poopHardness != .undefined {
-                            Button {
-                                hardness = poopHardness
-                            } label: {
-                                poopHardness.image
-                            }
-                        }
-                    }
-                }.padding(.vertical)
-            }
-            
-            TextEditor(text: $memo)
-                .background(Color.gray)
-            
-            Button {
-                if let poop = poop {
-                    viewModel.updatePoop(
-                        id: poop.wrappedId,
-                        color: color,
-                        shape: shape,
-                        volume: volume,
-                        hardness: hardness,
-                        memo: memo
-                    )
-                } else {
-                    viewModel.addPoop(
-                        color: color,
-                        shape: shape,
-                        volume: volume,
-                        hardness: hardness,
-                        memo: memo,
-                        createdAt: createdAt
-                    )
+                    showSuccessAlert = true
+                },
+                content: {
+                    Text("うんち登録")
                 }
-                showSuccessAlert = true
-            } label: {
-                Text("登録")
-            }
+            )
             
-        }.padding(.vertical, 80)
-            .onAppear {
+            ScrollView {
+                
+                
+                InputItemTitleView(title: "時間", subTitle: "Time")
+                
+                DatePicker("createdAt",
+                           selection: $createdAt,
+                           displayedComponents: [.hourAndMinute]
+                ).frame(width: 300)
+                    .labelsHidden()
+                
+                InputItemTitleView(title: "色", subTitle: "Color")
+                
+                
+                ScrollView(.horizontal) {
+                    HStack(spacing: 15) {
+                        ForEach(PoopColor.allCases, id: \.self) { poopColor in
+                            if poopColor != .undefined {
+                                Button {
+                                    color = poopColor
+                                } label: {
+                                    poopColor.color
+                                        .frame(width: 30, height: 30)
+                                        .clipShape(RoundedRectangle(cornerRadius: 30))
+                                        .overlay {
+                                            RoundedRectangle(cornerRadius: 30)
+                                                .stroke(color == poopColor ? .exGray : .clear, lineWidth: 4)
+                                        }
+                                }
+                            }
+                        }
+                    }.padding(.vertical)
+                }.padding(.horizontal)
+                
+                InputItemTitleView(title: "形", subTitle: "Shape")
+                
+                ScrollView(.horizontal) {
+                    HStack(spacing: 15) {
+                        ForEach(PoopShape.allCases, id: \.self) { poopShape in
+                            if poopShape != .undefined {
+                                Button {
+                                    shape = poopShape
+                                } label: {
+                                    poopShape.image
+                                }
+                            }
+                        }
+                    }.padding(.vertical)
+                }.padding(.horizontal)
+                
+                
+                InputItemTitleView(title: "量", subTitle: "Volume")
+                
+                Text(volume.name)
+                    .foregroundStyle(.exText)
+                    .fontWeight(.bold)
+                    .opacity(0.8)
+                
+                Slider(value: $volumeNum, in: 1...Float(PoopVolume.allCases.count - 1), step: 1.0)
+                    .onChange(of: volumeNum) { oldValue, newValue in
+                        volume = PoopVolume(rawValue: Int(newValue)) ?? .medium
+                    }.padding(.horizontal)
+                    .tint(.exSub)
+                
+                
+                InputItemTitleView(title: "硬さ", subTitle: "Hardness")
+                
+                Text(hardness.name)
+                    .foregroundStyle(.exText)
+                    .fontWeight(.bold)
+                    .opacity(0.8)
+                
+                Slider(value: $hardnessNum, in: 1...Float(PoopHardness.allCases.count - 1), step: 1.0)
+                    .onChange(of: hardnessNum) { oldValue, newValue in
+                        hardness = PoopHardness(rawValue: Int(newValue)) ?? .medium
+                    }.padding(.horizontal)
+                    .tint(.exSub)
+                
+                InputItemTitleView(title: "メモ", subTitle: "MEMO")
+                
+                TextEditor(text: $memo)
+                    .frame(height: 200)
+                    .scrollContentBackground(.hidden)
+                    .padding(5)
+                    .overlay {
+                        Rectangle()
+                            .stroke(style: StrokeStyle(lineWidth: 2, dash: [5]))
+                            .foregroundStyle(.exGray)
+                    }
+                    .padding(.horizontal)
+                    .focused($isActive)
+                
+            }.padding(.bottom)
+            
+        }.onTapGesture(perform: {
+            isActive = false
+        })
+        .onAppear {
             if let poop = poop {
-                color = PoopColor(rawValue: poop.wrappedColor) ?? .undefined
-                shape = PoopShape(rawValue: poop.wrappedShape) ?? .undefined
-                volume = PoopVolume(rawValue: poop.wrappedVolume) ?? .undefined
-                hardness = PoopHardness(rawValue: poop.wrappedHardness) ?? .undefined
+                color = PoopColor(rawValue: poop.wrappedColor) ?? .brown
+                shape = PoopShape(rawValue: poop.wrappedShape) ?? .normal
+                volume = PoopVolume(rawValue: poop.wrappedVolume) ?? .medium
+                volumeNum = Float(volume.rawValue)
+                hardness = PoopHardness(rawValue: poop.wrappedHardness) ?? .medium
+                hardnessNum = Float(hardness.rawValue)
                 memo = poop.wrappedMemo
                 createdAt = poop.wrappedCreatedAt
             }
@@ -153,6 +182,36 @@ struct PoopInputView: View {
                 dismiss()
             }
         )
+    }
+}
+
+
+struct InputItemTitleView: View {
+    public var title: String
+    public var subTitle: String
+    var body: some View {
+        VStack(alignment: .leading){
+            HStack {
+                HStack {
+                    Text(title)
+                        .foregroundStyle(.exText)
+                        .fontWeight(.bold)
+                        .opacity(0.8)
+                    Spacer()
+                }.frame(width: 40)
+                
+                Text(subTitle)
+                    .foregroundStyle(.exText)
+                    .fontWeight(.bold)
+                    .opacity(0.3)
+                    .font(.caption)
+                
+                Spacer()
+            }.padding(.leading, 10)
+            
+            Divider()
+            
+        }.padding()
     }
 }
 

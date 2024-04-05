@@ -12,6 +12,16 @@ struct PoopCalendarView: View {
     @ObservedObject private var rootEnvironment = RootEnvironment.shared
     
     private let columns = Array(repeating: GridItem(spacing: 0), count: 7)
+    
+    private func getMessage() -> String {
+        switch poopViewModel.findTodayDifference() {
+        case 0:
+            return "順調♪順調♪"
+        default:
+            return "うんちが\(poopViewModel.findTodayDifference())日出てないよ"
+        }
+    }
+    
     var body: some View {
         VStack(spacing: 0) {
             
@@ -30,11 +40,12 @@ struct PoopCalendarView: View {
                 
                 ZStack {
                     RoundChatView()
-                        .fill(Color.exSub)
+                        .fill(Color.exGray)
                         .frame(width: 250, height: 50)
                         .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
-                    Text("うんちが\(poopViewModel.findTodayDifference())日出てないよ")
-                        .foregroundStyle(.white)
+                        .shadow(color: .gray, radius: 3, x: 2, y: 2)
+                    Text(getMessage())
+                        .foregroundStyle(.exText)
                         .fontWeight(.bold)
                         .offset(x: 10)
                 }
@@ -45,6 +56,7 @@ struct PoopCalendarView: View {
                     PoopChartView()
                 } label: {
                     Image(systemName: "chart.xyaxis.line")
+                        .foregroundStyle(.exSub)
                 }
                 
             }.padding(20)

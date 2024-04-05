@@ -43,6 +43,12 @@ struct PoopChartView: View {
     }
     
     
+    public func getMax() -> Int {
+       return showCurrentData.max(by: { (a, b) -> Bool in
+            return a.count < b.count
+       })?.count ?? showCurrentData.count
+    }
+    
     var body: some View {
         VStack {
             
@@ -70,7 +76,7 @@ struct PoopChartView: View {
                     }
                     
                 }.padding()
-                    .chartYScale(domain: 0...showCurrentData.count + 1)
+                    .chartYScale(domain: 0...getMax())
                     .chartXAxis {
                         AxisMarks(values: .stride(by: .day, count: 2)) {
                             AxisGridLine()

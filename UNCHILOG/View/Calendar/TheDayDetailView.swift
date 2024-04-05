@@ -21,16 +21,26 @@ struct TheDayDetailView: View {
     @State private var showDeleteDialog = false
     @State private var showEditInputView = false
     
+    // MARK: - Environment
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         VStack {
             
-            HStack {
-                
-                Text(theDay.getDate(format: "yyyy年M月d日"))
-                
-                EntryButton(date: theDay.date ?? Date())
-            }
+            HeaderView(
+                leadingIcon: "chevron.backward",
+                leadingAction: {
+                    dismiss()
+                },
+                content: {
+                    Text(theDay.getDate(format: "yyyy年M月d日"))
+                }
+            )
+            
+            
+            Spacer()
+            
+            EntryButton(date: theDay.date ?? Date())
             
             if poopList.count == 0 {
                 Text("うんちの記録がありません。")
@@ -41,7 +51,7 @@ struct TheDayDetailView: View {
                             VStack(spacing: 0) {
                                 Rectangle()
                                     .frame(width: 2, height: 20)
-                                Text(poop.getTime())
+                                Text(poop.getTime(format: "HH:mm"))
                                     .frame(width: 90)
                                 Rectangle()
                                     .frame(width: 2, height: 20)
@@ -51,7 +61,7 @@ struct TheDayDetailView: View {
                             
                             if let volume = PoopVolume(rawValue: poop.wrappedVolume),
                                volume != .undefined {
-                                volume.image
+                                Text(volume.name)
                             }
                             
                             if let shape = PoopShape(rawValue: poop.wrappedShape),
@@ -61,7 +71,7 @@ struct TheDayDetailView: View {
                             
                             if let hardness = PoopHardness(rawValue: poop.wrappedHardness),
                                hardness != .undefined {
-                                hardness.image
+                                Text(hardness.name)
                             }
                             
                             Text(poop.wrappedMemo)
@@ -100,9 +110,9 @@ struct TheDayDetailView: View {
                 poopViewModel.deletePoop(poop: poop)
             },
             negativeAction: { showDeleteDialog = false }
-        ).navigationDestination(isPresented: $showEditInputView) {
+        ).sheet(isPresented: $showEditInputView) {
             PoopInputView(theDay: theDay.date, poop: poop)
-        }
+        }.navigationBarBackButtonHidden()
     }
 }
 

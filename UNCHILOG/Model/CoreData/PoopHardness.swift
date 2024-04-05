@@ -10,19 +10,25 @@ import SwiftUI
 enum PoopHardness: Int, CaseIterable {
     case undefined = 0
     case soft = 1
-    case medium = 2
-    case hard = 3
+    case semisoft = 2
+    case medium = 3
+    case semihard = 4
+    case hard = 5
     
-    public var image: Image {
+    public var name: String {
         return switch self {
         case .undefined:
-            Image(systemName: "swift")
+            "none"
         case .soft:
-            Image(systemName: "swift")
+            "柔らかめ"
+        case .semisoft:
+            "やや柔らかめ"
         case .medium:
-            Image(systemName: "swift")
+            "中くらい"
+        case .semihard:
+            "やや硬め"
         case .hard:
-            Image(systemName: "swift")
+            "硬め"
         }
     }
 }

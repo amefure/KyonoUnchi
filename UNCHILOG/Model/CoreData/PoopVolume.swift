@@ -10,19 +10,25 @@ import SwiftUI
 enum PoopVolume: Int, CaseIterable {
     case undefined = 0
     case small = 1
-    case medium = 2
-    case large = 3
+    case semismall = 2
+    case medium = 3
+    case semilarge = 4
+    case large = 5
     
-    public var image: Image {
+    public var name: String {
         return switch self {
         case .undefined:
-            Image(systemName: "swift")
+            "none"
         case .small:
-            Image(systemName: "swift")
+            "少なめ"
+        case .semismall:
+            "やや少なめ"
         case .medium:
-            Image(systemName: "swift")
+            "中くらい"
+        case .semilarge:
+            "やや多め"
         case .large:
-            Image(systemName: "swift")
+            "多め"
         }
     }
 }
