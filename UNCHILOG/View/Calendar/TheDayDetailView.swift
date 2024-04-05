@@ -19,6 +19,9 @@ struct TheDayDetailView: View {
     
     @State private var poop: Poop? = nil
     @State private var showDeleteDialog = false
+    @State private var showEditInputView = false
+    
+    
     var body: some View {
         VStack {
             
@@ -29,12 +32,11 @@ struct TheDayDetailView: View {
                 EntryButton(date: theDay.date ?? Date())
             }
             
-            
-            List {
-                ForEach(poopList) { poop in
-                    NavigationLink {
-                        PoopDetailView(theDay: theDay, poop: poop)
-                    } label: {
+            if poopList.count == 0 {
+                Text("うんちの記録がありません。")
+            } else {
+                List {
+                    ForEach(poopList) { poop in
                         HStack {
                             VStack(spacing: 0) {
                                 Rectangle()
@@ -64,20 +66,29 @@ struct TheDayDetailView: View {
                             
                             Text(poop.wrappedMemo)
                         }
-                    }.listRowBackground(Color.clear)
+                        .listRowBackground(Color.clear)
                         .listRowSeparator(.hidden)
                         .listRowInsets(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
-                    .swipeActions(edge: .trailing, allowsFullSwipe: false) {
-                        // 右スワイプ：削除アクション
-                        Button(role: .none) {
-                            self.poop = poop
-                            showDeleteDialog = true
-                        } label: {
-                            Image(systemName: "trash")
-                        }.tint(.exNegative)
+                        .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                            // 右スワイプ：削除アクション
+                            Button(role: .none) {
+                                self.poop = poop
+                                showDeleteDialog = true
+                            } label: {
+                                Image(systemName: "trash")
+                            }.tint(.exNegative)
+                        }.swipeActions(edge: .leading, allowsFullSwipe: false) {
+                            // 左スワイプ：編集アクション
+                            Button(role: .none) {
+                                self.poop = poop
+                                showEditInputView = true
+                            } label: {
+                                Image(systemName: "square.and.pencil")
+                            }.tint(.exPositive)
+                        }
                     }
-                }
-            }.listStyle(GroupedListStyle())
+                }.listStyle(GroupedListStyle())
+            }
         }.dialog(
             isPresented: $showDeleteDialog,
             title: L10n.dialogTitle,
@@ -89,8 +100,9 @@ struct TheDayDetailView: View {
                 poopViewModel.deletePoop(poop: poop)
             },
             negativeAction: { showDeleteDialog = false }
-        )
-        
+        ).navigationDestination(isPresented: $showEditInputView) {
+            PoopInputView(theDay: theDay.date, poop: poop)
+        }
     }
 }
 

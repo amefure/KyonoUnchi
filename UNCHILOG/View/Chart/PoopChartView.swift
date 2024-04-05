@@ -46,11 +46,11 @@ struct PoopChartView: View {
     var body: some View {
         VStack {
             
-            YearAndMonthSelectionView()
+            YearAndMonthSelectionView(showBackButton: true)
             
             if showCurrentData.count == 0 {
                 Spacer()
-                Text("記録がありません・")
+                Text("記録がありません。")
                 Spacer()
             } else {
                 Chart(showCurrentData, id: \.createdAt) { poop in
@@ -81,6 +81,7 @@ struct PoopChartView: View {
             }
             
         }.padding(.bottom, 25)
+            .navigationBarBackButtonHidden()
             .onAppear {
                 print(showCurrentData)
             }

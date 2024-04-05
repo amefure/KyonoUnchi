@@ -25,7 +25,7 @@ struct TheDayView: View {
     }
     
     var isToday: Bool {
-        let today = dateFormatUtility.convertDateComponents(date: rootEnvironment.today)
+        let today = dateFormatUtility.convertDateComponents(date: DateFormatUtility.today)
         guard let year = today.year,
               let month = today.month,
               let day = today.day else { return false }

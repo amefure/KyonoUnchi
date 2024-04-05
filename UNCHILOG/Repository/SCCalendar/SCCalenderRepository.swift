@@ -37,13 +37,14 @@ class SCCalenderRepository {
     }
     private let _dayOfWeekList = CurrentValueSubject<[SCWeek], Never>([.sunday, .monday, .tuesday, .wednesday, .thursday, .friday, .saturday])
     
+    /// 表示可能な年月配列
+    public var selectYearAndMonth: [SCYearAndMonth] = []
+    
     /// 当日の日付情報
     private let today: DateComponents
     
     /// カレンダー
     private let calendar = Calendar(identifier: .gregorian)
-    /// 表示可能な年月配列
-    private var selectYearAndMonth: [SCYearAndMonth] = []
     /// 表示している年月オブジェクトIndex
     private var currentYearAndMonthIndex: Int = 0
     

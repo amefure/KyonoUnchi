@@ -12,8 +12,6 @@ struct SelectInitWeek: View {
     var body: some View {
         
         VStack {
-            Spacer()
-
             Text("週始まり")
                 .fontWeight(.bold)
                 .foregroundStyle(.exText)

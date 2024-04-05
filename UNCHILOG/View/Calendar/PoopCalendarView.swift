@@ -21,7 +21,7 @@ struct PoopCalendarView: View {
                 Image(systemName: "swift")
                     .font(.system(size: 25))
                     .frame(width: 50, height: 50)
-                    .foregroundStyle(.indigo)
+                    .foregroundStyle(.exSub)
                     .background(.exThema)
                     .clipShape(RoundedRectangle(cornerRadius: 50))
                     .shadow(color: .gray, radius: 3, x: 2, y: 2)
@@ -30,10 +30,10 @@ struct PoopCalendarView: View {
                 
                 ZStack {
                     RoundChatView()
-                        .fill(Color.indigo)
+                        .fill(Color.exSub)
                         .frame(width: 250, height: 50)
                         .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
-                    Text("うんちが５日出てないよ")
+                    Text("うんちが\(poopViewModel.findTodayDifference())日出てないよ")
                         .foregroundStyle(.white)
                         .fontWeight(.bold)
                         .offset(x: 10)
@@ -41,7 +41,11 @@ struct PoopCalendarView: View {
                 
                 Spacer()
                 
-                EntryButton()
+                NavigationLink {
+                    PoopChartView()
+                } label: {
+                    Image(systemName: "chart.xyaxis.line")
+                }
                 
             }.padding(20)
 

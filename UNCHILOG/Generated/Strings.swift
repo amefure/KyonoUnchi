@@ -44,8 +44,12 @@ internal enum L10n {
   internal static let dialogUpdatePoop = L10n.tr("Localizable", "dialog_update_poop", fallback: "うんちの記録を\n更新しました。")
   /// ・アプリにパスワードを設定してロックをかけることができます。
   internal static let settingSectionAppDesc = L10n.tr("Localizable", "setting_section_app_desc", fallback: "・アプリにパスワードを設定してロックをかけることができます。")
+  /// うんちの登録モードを切り替え
+  internal static let settingSectionAppEntryMode = L10n.tr("Localizable", "setting_section_app_entry_mode", fallback: "うんちの登録モードを切り替え")
   /// アプリをロックする
   internal static let settingSectionAppLock = L10n.tr("Localizable", "setting_section_app_lock", fallback: "アプリをロックする")
+  /// アプリ設定
+  internal static let settingSectionAppTitle = L10n.tr("Localizable", "setting_section_app_title", fallback: "アプリ設定")
   /// 週始まり
   internal static let settingSectionCalendarInitWeek = L10n.tr("Localizable", "setting_section_calendar_init_week", fallback: "週始まり")
   /// カレンダー設定

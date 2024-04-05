@@ -8,19 +8,14 @@
 import SwiftUI
 
 struct FooterView: View {
-    // MARK: - Binding
-    @Binding var selectedTab: Int
+    // MARK: - ViewModel
+    @ObservedObject private var viewModel = PoopViewModel.shared
     @ObservedObject private var rootEnvironment = RootEnvironment.shared
+    
+    @State private var showInputPoopView = false
+    
     var body: some View {
         HStack {
-
-            Spacer()
-            
-            Button {
-                selectedTab = 0
-            } label: {
-                Image(systemName: "chart.xyaxis.line")
-            }
 
             Spacer()
             
@@ -32,33 +27,30 @@ struct FooterView: View {
                         .offset(y: 50)
                 
                 Button {
-                    if selectedTab == 1 {
-                        rootEnvironment.moveToDayCalendar()
+                    if rootEnvironment.entryMode == .simple {
+                        viewModel.addPoop(createdAt: Date())
+                        rootEnvironment.showSimpleEntryDialog = true
                     } else {
-                        selectedTab = 1
+                        showInputPoopView = true
                     }
+                    
                 } label: {
-                    Image(systemName: "calendar")
+                    Text("登録")
                         .offset(y: -10)
                 }
-            }
-            
-            Spacer()
-            
-            Button {
-                selectedTab = 2
-            } label: {
-                Image(systemName: "gearshape.fill")
             }
             
             Spacer()
         }.frame(height: 50)
             .font(.system(size: 25))
             .background(.exThema)
-            .foregroundStyle(.indigo)
+            .foregroundStyle(.exSub)
+            .sheet(isPresented: $showInputPoopView) {
+                PoopInputView(theDay: Date())
+            }
     }
 }
 
 #Preview {
-    FooterView(selectedTab: Binding.constant(0))
+    FooterView()
 }

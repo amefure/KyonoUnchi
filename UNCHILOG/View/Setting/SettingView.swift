@@ -11,7 +11,7 @@ struct SettingView: View {
     @ObservedObject private var rootEnvironment = RootEnvironment.shared
     
     @State private var showSelectInitWeek = false
-    
+    @State private var showSelectEntryMode = false
     // MARK: - ViewModel
 
     @StateObject private var viewModel = SettingViewModel()
@@ -24,8 +24,7 @@ struct SettingView: View {
         VStack {
             List {
                 
-                Section(header: Text(L10n.settingSectionCalendarTitle),
-                        footer: Text(L10n.settingSectionAppDesc)) {
+                Section(header: Text(L10n.settingSectionCalendarTitle)) {
                     
                     HStack {
                         Image(systemName: "calendar")
@@ -38,21 +37,44 @@ struct SettingView: View {
                         
                         Spacer()
                         
-                        
+                        Image(systemName: "chevron.forward")
+                            .foregroundStyle(.gray)
                         
                     }.sheet(isPresented: $showSelectInitWeek, content: {
                         SelectInitWeek()
                     })
-                    .foregroundStyle(.exText)
+    
+                }
+                
+                Section(header: Text(L10n.settingSectionAppTitle),
+                        footer: Text(L10n.settingSectionAppDesc)) {
+                    
+                    
+                    HStack {
+                        Image(systemName: "plus.app")
+                        
+                        Button {
+                            showSelectEntryMode = true
+                        } label: {
+                            Text(L10n.settingSectionAppEntryMode)
+                        }.sheet(isPresented: $showSelectEntryMode, content: {
+                            SelectEntryMode()
+                        })
+                        
+                        Spacer()
+                        
+                        Image(systemName: "chevron.forward")
+                            .foregroundStyle(.gray)
+                    }
                     
                 
             
                     HStack {
-                        Image(systemName: "lock.iphone")
+                        Image(systemName: "lock.app.dashed")
                         
                         Toggle(isOn: $isLock) {
                             Text(L10n.settingSectionAppLock)
-                        }.onChange(of: isLock) { newValue in
+                        }.onChange(of: isLock) { oldValue, newValue in
                             if newValue {
                                 viewModel.showPassInput()
                             } else {
@@ -60,7 +82,7 @@ struct SettingView: View {
                             }
                         }.tint(.exPositive)
                     }
-                }// .listRowBackground(rootEnvironment.appColor.color)
+                }
                 
                 Section(header: Text("Link"), footer: Text(L10n.settingSectionLinkDesc)) {
 //                    if let url = URL(string: UrlLinkConfig.APP_REVIEW_URL) {
@@ -112,7 +134,8 @@ struct SettingView: View {
                     }
                 }
             }
-        }.onAppear {
+        }.foregroundStyle(.exText)
+            .onAppear {
             viewModel.onAppear()
             isLock = viewModel.isLock
         }.sheet(isPresented: $viewModel.isShowPassInput, content: {

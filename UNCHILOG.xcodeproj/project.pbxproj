@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		122B3EE12BBFC53B00167D9E /* SelectEntryMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122B3EE02BBFC53B00167D9E /* SelectEntryMode.swift */; };
+		122B3EE32BBFC62700167D9E /* EntryMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122B3EE22BBFC62700167D9E /* EntryMode.swift */; };
 		125326832BB8050A003A6BB0 /* YearAndMonthSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125326822BB8050A003A6BB0 /* YearAndMonthSelectionView.swift */; };
 		128BB5A62BAFE3B7009E0FAB /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 128BB5A52BAFE3B7009E0FAB /* Colors.xcassets */; };
 		128BB5A82BAFE3CB009E0FAB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 128BB5A72BAFE3CB009E0FAB /* Localizable.strings */; };
@@ -33,7 +35,6 @@
 		128BB5DC2BB306FA009E0FAB /* DateFormatUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5DB2BB306FA009E0FAB /* DateFormatUtility.swift */; };
 		128BB5DE2BB30B72009E0FAB /* TheDayDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5DD2BB30B72009E0FAB /* TheDayDetailView.swift */; };
 		128BB5E12BB30E6E009E0FAB /* TheDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5E02BB30E6E009E0FAB /* TheDayView.swift */; };
-		128BB5E32BB310D6009E0FAB /* PoopDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5E22BB310D6009E0FAB /* PoopDetailView.swift */; };
 		128BB5E62BB46589009E0FAB /* CustomNotifyDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5E52BB46589009E0FAB /* CustomNotifyDialogView.swift */; };
 		128BB5E82BB465A2009E0FAB /* RootEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5E72BB465A2009E0FAB /* RootEnvironment.swift */; };
 		128BB5EB2BB467B2009E0FAB /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5E92BB467B2009E0FAB /* Assets.swift */; };
@@ -61,6 +62,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		122B3EE02BBFC53B00167D9E /* SelectEntryMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectEntryMode.swift; sourceTree = "<group>"; };
+		122B3EE22BBFC62700167D9E /* EntryMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryMode.swift; sourceTree = "<group>"; };
 		125326822BB8050A003A6BB0 /* YearAndMonthSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearAndMonthSelectionView.swift; sourceTree = "<group>"; };
 		128BB5A52BAFE3B7009E0FAB /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		128BB5A72BAFE3CB009E0FAB /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -88,7 +91,6 @@
 		128BB5DB2BB306FA009E0FAB /* DateFormatUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatUtility.swift; sourceTree = "<group>"; };
 		128BB5DD2BB30B72009E0FAB /* TheDayDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheDayDetailView.swift; sourceTree = "<group>"; };
 		128BB5E02BB30E6E009E0FAB /* TheDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheDayView.swift; sourceTree = "<group>"; };
-		128BB5E22BB310D6009E0FAB /* PoopDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopDetailView.swift; sourceTree = "<group>"; };
 		128BB5E52BB46589009E0FAB /* CustomNotifyDialogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNotifyDialogView.swift; sourceTree = "<group>"; };
 		128BB5E72BB465A2009E0FAB /* RootEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootEnvironment.swift; sourceTree = "<group>"; };
 		128BB5E92BB467B2009E0FAB /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
@@ -279,8 +281,8 @@
 				128BB5D92BB2FCEF009E0FAB /* PoopCalendarView.swift */,
 				128BB5E02BB30E6E009E0FAB /* TheDayView.swift */,
 				128BB5DD2BB30B72009E0FAB /* TheDayDetailView.swift */,
+				128BB5CC2BB28833009E0FAB /* PoopInputView.swift */,
 				125326812BB804E5003A6BB0 /* Components */,
-				128BB5F12BB5A10E009E0FAB /* Poop */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -311,19 +313,11 @@
 			path = Layout;
 			sourceTree = "<group>";
 		};
-		128BB5F12BB5A10E009E0FAB /* Poop */ = {
-			isa = PBXGroup;
-			children = (
-				128BB5CC2BB28833009E0FAB /* PoopInputView.swift */,
-				128BB5E22BB310D6009E0FAB /* PoopDetailView.swift */,
-			);
-			path = Poop;
-			sourceTree = "<group>";
-		};
 		128BB5F42BB5AB47009E0FAB /* Setting */ = {
 			isa = PBXGroup;
 			children = (
 				128BB5F22BB5A124009E0FAB /* SettingView.swift */,
+				122B3EE02BBFC53B00167D9E /* SelectEntryMode.swift */,
 				128BB5F52BB5AB58009E0FAB /* SelectInitWeek.swift */,
 			);
 			path = Setting;
@@ -359,6 +353,7 @@
 			isa = PBXGroup;
 			children = (
 				128BB6092BB79BA2009E0FAB /* UrlLinkConfig.swift */,
+				122B3EE22BBFC62700167D9E /* EntryMode.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -562,8 +557,8 @@
 				12CBFBEB2BAFE25B005FE4F1 /* RootView.swift in Sources */,
 				128BB5B62BB141C5009E0FAB /* SCCalenderRepository.swift in Sources */,
 				128BB6012BB5B000009E0FAB /* AppLockViewModel.swift in Sources */,
+				122B3EE12BBFC53B00167D9E /* SelectEntryMode.swift in Sources */,
 				12CBFBF52BAFE25C005FE4F1 /* UNCHILOG.xcdatamodeld in Sources */,
-				128BB5E32BB310D6009E0FAB /* PoopDetailView.swift in Sources */,
 				128BB5EB2BB467B2009E0FAB /* Assets.swift in Sources */,
 				128BB5E12BB30E6E009E0FAB /* TheDayView.swift in Sources */,
 				128BB5C22BB282E7009E0FAB /* PoopRepository.swift in Sources */,
@@ -579,6 +574,7 @@
 				128BB5D02BB2885C009E0FAB /* RepositoryDependency.swift in Sources */,
 				128BB5AF2BB14115009E0FAB /* SCDate.swift in Sources */,
 				128BB5C92BB284CA009E0FAB /* PoopHardness.swift in Sources */,
+				122B3EE32BBFC62700167D9E /* EntryMode.swift in Sources */,
 				128BB5EC2BB467B2009E0FAB /* Strings.swift in Sources */,
 				128BB60D2BB7F88E009E0FAB /* PoopChartView.swift in Sources */,
 				128BB5E62BB46589009E0FAB /* CustomNotifyDialogView.swift in Sources */,

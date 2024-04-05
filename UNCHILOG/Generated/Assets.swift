@@ -33,6 +33,7 @@ internal enum Asset {
     internal static let exPoopYellow = ColorAsset(name: "ex_poop_ yellow")
     internal static let exPoopYellowishBrown = ColorAsset(name: "ex_poop_ yellowish_brown")
     internal static let exPositive = ColorAsset(name: "ex_positive")
+    internal static let exSub = ColorAsset(name: "ex_sub")
     internal static let exText = ColorAsset(name: "ex_text")
     internal static let exThema = ColorAsset(name: "ex_thema")
   }

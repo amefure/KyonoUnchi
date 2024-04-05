@@ -12,19 +12,22 @@ class RootEnvironment: ObservableObject {
     
     static let shared = RootEnvironment()
     
-    public let today = Date()
-    
     // MARK: Calendar ロジック
     @Published var currentDates: [SCDate] = []
     @Published private(set) var currentYearAndMonth: SCYearAndMonth? = nil
     @Published private(set) var dayOfWeekList: [SCWeek] = []
+    public var selectYearAndMonth: [SCYearAndMonth] {
+        scCalenderRepository.selectYearAndMonth
+    }
     
     // MARK: 永続化
     @Published private(set) var initWeek: SCWeek = .sunday
+    @Published private(set) var entryMode: EntryMode = .detail
     @Published private(set) var appLocked = false
     
     // MARK: Dialog
-    @Published var showOutOfRangeCalendar: Bool = false
+    @Published var showOutOfRangeCalendarDialog: Bool = false
+    @Published var showSimpleEntryDialog: Bool = false
    
     private let keyChainRepository: KeyChainRepository
     private let userDefaultsRepository: UserDefaultsRepository
@@ -40,9 +43,8 @@ class RootEnvironment: ObservableObject {
         
         
         getInitWeek()
+        getEntryMode()
         getAppLock()
-        
-        
 
         scCalenderRepository.currentDates.sink { _ in
         } receiveValue: {  [weak self] currentDates in
@@ -72,13 +74,13 @@ extension RootEnvironment {
     /// 年月を1つ進める
     public func forwardMonth() {
         let result = scCalenderRepository.forwardMonth()
-        showOutOfRangeCalendar = !result
+        showOutOfRangeCalendarDialog = !result
     }
 
     /// 年月を1つ戻す
     public func backMonth() {
         let result = scCalenderRepository.backMonth()
-        showOutOfRangeCalendar = !result
+        showOutOfRangeCalendarDialog = !result
     }
     
     /// 週始まりを設定
@@ -87,10 +89,7 @@ extension RootEnvironment {
     }
     
     /// カレンダー初期表示年月を指定して更新
-    public func moveToDayCalendar() {
-        let today = DateFormatUtility().convertDateComponents(date: today)
-        guard let year = today.year,
-              let month = today.month else { return }
+    public func moveToDayCalendar(year: Int, month: Int) {
         scCalenderRepository.moveYearAndMonthCalendar(year: year, month: month)
     }
 
@@ -124,6 +123,18 @@ extension RootEnvironment {
     public func saveInitWeek(week: SCWeek) {
         initWeek = week
         userDefaultsRepository.setIntData(key: UserDefaultsKey.INIT_WEEK, value: week.rawValue)
+    }
+    
+    /// 登録モード取得
+    private func getEntryMode() {
+        let mode = userDefaultsRepository.getIntData(key: UserDefaultsKey.ENTRY_MODE)
+        entryMode = EntryMode(rawValue: mode) ?? EntryMode.detail
+    }
+
+    /// 登録モード登録
+    public func saveEntryMode(mode: EntryMode) {
+        entryMode = mode
+        userDefaultsRepository.setIntData(key: UserDefaultsKey.ENTRY_MODE, value: mode.rawValue)
     }
     
 }
