@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct FooterView: View {
+    
+    public var date = Date()
+    
     // MARK: - ViewModel
     @ObservedObject private var viewModel = PoopViewModel.shared
     @ObservedObject private var rootEnvironment = RootEnvironment.shared
@@ -28,7 +31,7 @@ struct FooterView: View {
                 
                 Button {
                     if rootEnvironment.entryMode == .simple {
-                        viewModel.addPoop(createdAt: Date())
+                        viewModel.addPoop(createdAt: date)
                         rootEnvironment.showSimpleEntryDialog = true
                     } else {
                         showInputPoopView = true
@@ -46,7 +49,7 @@ struct FooterView: View {
             .background(.exThema)
             .foregroundStyle(.exSub)
             .sheet(isPresented: $showInputPoopView) {
-                PoopInputView(theDay: Date())
+                PoopInputView(theDay: date)
             }
     }
 }

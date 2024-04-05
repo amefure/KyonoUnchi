@@ -12,23 +12,27 @@ struct YearAndMonthSelectionView: View {
     public var showBackButton = false
     @ObservedObject private var rootEnvironment = RootEnvironment.shared
     
+    @State private var showChart = false
     @State private var showSetting = false
-    
     
     // MARK: - Environment
     @Environment(\.dismiss) var dismiss
     var body: some View {
         
         HeaderView(
-            leadingIcon: showBackButton ? "arrow.backward" : "",
-            trailingIcon: "gearshape.fill", 
+            leadingIcon: showBackButton ? "arrow.backward" : "chart.xyaxis.line",
+            trailingIcon: showBackButton ? "" : "gearshape.fill",
             leadingAction: {
                 if showBackButton {
                     dismiss()
+                } else {
+                    showChart = true
                 }
             },
             trailingAction: {
-                showSetting = true
+                if !showBackButton {
+                    showSetting = true
+                }
             },
             content: {
                 Button {
@@ -63,6 +67,8 @@ struct YearAndMonthSelectionView: View {
             }
         ).navigationDestination(isPresented: $showSetting) {
             SettingView()
+        }.navigationDestination(isPresented: $showChart) {
+            PoopChartView()
         }
     }
 }

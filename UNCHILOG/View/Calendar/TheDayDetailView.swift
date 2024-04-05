@@ -40,8 +40,6 @@ struct TheDayDetailView: View {
             
             Spacer()
             
-            EntryButton(date: theDay.date ?? Date())
-            
             if poopList.count == 0 {
                 Text("うんちの記録がありません。")
             } else {
@@ -99,6 +97,11 @@ struct TheDayDetailView: View {
                     }
                 }.listStyle(GroupedListStyle())
             }
+            
+            Spacer()
+            
+            FooterView(date: theDay.date ?? Date())
+            
         }.dialog(
             isPresented: $showDeleteDialog,
             title: L10n.dialogTitle,

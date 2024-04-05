@@ -20,7 +20,6 @@ struct AppLockView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            //HeaderView()
 
             Spacer()
 
@@ -67,15 +66,14 @@ struct AppLockView: View {
 
             Spacer()
 
-            NumberKeyboardView(password: $password, color: .exThema)
+            NumberKeyboardView(password: $password)
                 .ignoresSafeArea(.all)
         }.alert(L10n.appLockFailedPassword, isPresented: $viewModel.isShowFailureAlert) {
             Button("OK") {}
         }
         .onAppear { viewModel.onAppear { result in
             rootEnvironment.unLockAppLock()
-        }}
-        .background(.exThema)
+        }}.background(.white)
     }
 }
 

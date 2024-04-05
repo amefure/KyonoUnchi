@@ -52,19 +52,14 @@ struct PoopCalendarView: View {
                 
                 Spacer()
                 
-                NavigationLink {
-                    PoopChartView()
-                } label: {
-                    Image(systemName: "chart.xyaxis.line")
-                        .foregroundStyle(.exSub)
-                }
-                
             }.padding(20)
 
             
             LazyVGrid(columns: columns, spacing: 0) {
                 ForEach(rootEnvironment.dayOfWeekList, id: \.self) { week in
                     Text(week.shortSymbols)
+                        .foregroundStyle(.exText)
+                        .opacity(0.8)
                 }
             }
             
