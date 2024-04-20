@@ -94,7 +94,7 @@ struct SettingView: View {
                             } else {
                                 viewModel.deletePassword()
                             }
-                        }.tint(.exPositive)
+                        }.tint(.exText)
                     }
                 }
                 

@@ -45,14 +45,14 @@ struct AppLockInputView: View {
                     .fontWeight(.bold)
                     .padding(10)
                     .frame(width: 100)
-                    .background(password.count != 4 ? .exText : .exSub)
+                    .background(.exText)
                     .foregroundStyle(password.count != 4 ? .gray : .white)
                     .clipShape(RoundedRectangle(cornerRadius: 8))
                     .overlay {
                         RoundedRectangle(cornerRadius: 8)
                             .stroke(style: StrokeStyle(lineWidth: 2))
                             .frame(width: 100)
-                            .foregroundStyle(password.count != 4 ? .exText : .exSub)
+                            .foregroundStyle(.exText)
                     }.padding(.vertical, 20)
                     .shadow(color: password.count != 4 ? .clear : .gray, radius: 3, x: 4, y: 4)
 
