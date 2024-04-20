@@ -59,6 +59,7 @@
 		12CBFBED2BAFE25C005FE4F1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12CBFBEC2BAFE25C005FE4F1 /* Images.xcassets */; };
 		12CBFBF02BAFE25C005FE4F1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12CBFBEF2BAFE25C005FE4F1 /* Preview Assets.xcassets */; };
 		12CBFBF52BAFE25C005FE4F1 /* UNCHILOG.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 12CBFBF32BAFE25C005FE4F1 /* UNCHILOG.xcdatamodeld */; };
+		12DB3CF62BD391FC0075817A /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 12DB3CF52BD391FC0075817A /* PrivacyInfo.xcprivacy */; };
 		12DCB2C22BBD2B7700AF62CB /* EntryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DCB2C12BBD2B7700AF62CB /* EntryButton.swift */; };
 		C297C18C2F20E9590633A74B /* Pods_UNCHILOG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B70382F8D83335666AC1D3D7 /* Pods_UNCHILOG.framework */; };
 /* End PBXBuildFile section */
@@ -118,6 +119,7 @@
 		12CBFBEC2BAFE25C005FE4F1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		12CBFBEF2BAFE25C005FE4F1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		12CBFBF42BAFE25C005FE4F1 /* UNCHILOG.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UNCHILOG.xcdatamodel; sourceTree = "<group>"; };
+		12DB3CF52BD391FC0075817A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		12DCB2C12BBD2B7700AF62CB /* EntryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryButton.swift; sourceTree = "<group>"; };
 		B70382F8D83335666AC1D3D7 /* Pods_UNCHILOG.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UNCHILOG.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C335F896FB75E0D71E43B745 /* Pods-UNCHILOG.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UNCHILOG.release.xcconfig"; path = "Target Support Files/Pods-UNCHILOG/Pods-UNCHILOG.release.xcconfig"; sourceTree = "<group>"; };
@@ -395,6 +397,7 @@
 			children = (
 				128BB5A92BAFE480009E0FAB /* Info.plist */,
 				128BB5AA2BAFE5C8009E0FAB /* GoogleService-Info.plist */,
+				12DB3CF52BD391FC0075817A /* PrivacyInfo.xcprivacy */,
 				128BB59D2BAFE348009E0FAB /* Generated */,
 				128BB59E2BAFE34E009E0FAB /* Resources */,
 				128BB59F2BAFE357009E0FAB /* Extension&Utility */,
@@ -492,6 +495,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12DB3CF62BD391FC0075817A /* PrivacyInfo.xcprivacy in Resources */,
 				128BB5A62BAFE3B7009E0FAB /* Colors.xcassets in Resources */,
 				128BB5A82BAFE3CB009E0FAB /* Localizable.strings in Resources */,
 				128BB5AB2BAFE5C8009E0FAB /* GoogleService-Info.plist in Resources */,
