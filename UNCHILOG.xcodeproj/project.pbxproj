@@ -10,6 +10,7 @@
 		122B3EE12BBFC53B00167D9E /* SelectEntryMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122B3EE02BBFC53B00167D9E /* SelectEntryMode.swift */; };
 		122B3EE32BBFC62700167D9E /* EntryMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122B3EE22BBFC62700167D9E /* EntryMode.swift */; };
 		122B3EE52BC025C200167D9E /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122B3EE42BC025C200167D9E /* HeaderView.swift */; };
+		122B3EE72BC3B2CF00167D9E /* TheDayDetailPoopRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122B3EE62BC3B2CF00167D9E /* TheDayDetailPoopRowView.swift */; };
 		125326832BB8050A003A6BB0 /* YearAndMonthSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125326822BB8050A003A6BB0 /* YearAndMonthSelectionView.swift */; };
 		128BB5A62BAFE3B7009E0FAB /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 128BB5A52BAFE3B7009E0FAB /* Colors.xcassets */; };
 		128BB5A82BAFE3CB009E0FAB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 128BB5A72BAFE3CB009E0FAB /* Localizable.strings */; };
@@ -66,6 +67,7 @@
 		122B3EE02BBFC53B00167D9E /* SelectEntryMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectEntryMode.swift; sourceTree = "<group>"; };
 		122B3EE22BBFC62700167D9E /* EntryMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryMode.swift; sourceTree = "<group>"; };
 		122B3EE42BC025C200167D9E /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		122B3EE62BC3B2CF00167D9E /* TheDayDetailPoopRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheDayDetailPoopRowView.swift; sourceTree = "<group>"; };
 		125326822BB8050A003A6BB0 /* YearAndMonthSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearAndMonthSelectionView.swift; sourceTree = "<group>"; };
 		128BB5A52BAFE3B7009E0FAB /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		128BB5A72BAFE3CB009E0FAB /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 				128BB5D92BB2FCEF009E0FAB /* PoopCalendarView.swift */,
 				128BB5E02BB30E6E009E0FAB /* TheDayView.swift */,
 				128BB5DD2BB30B72009E0FAB /* TheDayDetailView.swift */,
+				122B3EE62BC3B2CF00167D9E /* TheDayDetailPoopRowView.swift */,
 				128BB5CC2BB28833009E0FAB /* PoopInputView.swift */,
 				125326812BB804E5003A6BB0 /* Components */,
 			);
@@ -558,6 +561,7 @@
 				128BB5D82BB289E2009E0FAB /* PoopViewModel.swift in Sources */,
 				128BB5F92BB5ACF3009E0FAB /* UserDefaultsKey.swift in Sources */,
 				12CBFBEB2BAFE25B005FE4F1 /* RootView.swift in Sources */,
+				122B3EE72BC3B2CF00167D9E /* TheDayDetailPoopRowView.swift in Sources */,
 				128BB5B62BB141C5009E0FAB /* SCCalenderRepository.swift in Sources */,
 				128BB6012BB5B000009E0FAB /* AppLockViewModel.swift in Sources */,
 				122B3EE12BBFC53B00167D9E /* SelectEntryMode.swift in Sources */,

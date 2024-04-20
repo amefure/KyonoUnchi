@@ -10,12 +10,16 @@ import SwiftUI
 struct FooterView: View {
     
     public var date = Date()
+    public var isRoot = true
+    
+    private let df = DateFormatUtility()
     
     // MARK: - ViewModel
     @ObservedObject private var viewModel = PoopViewModel.shared
     @ObservedObject private var rootEnvironment = RootEnvironment.shared
     
     @State private var showInputPoopView = false
+    @State private var createdAt = Date()
     
     var body: some View {
         HStack {
@@ -31,8 +35,13 @@ struct FooterView: View {
                 
                 Button {
                     if rootEnvironment.entryMode == .simple {
-                        viewModel.addPoop(createdAt: date)
-                        rootEnvironment.showSimpleEntryDialog = true
+                        viewModel.addPoop(createdAt: createdAt)
+                        if isRoot {
+                            rootEnvironment.showSimpleEntryDialog = true
+                        } else {
+                            rootEnvironment.showSimpleEntryDetailDialog = true
+                        }
+                        
                     } else {
                         showInputPoopView = true
                     }
@@ -44,11 +53,15 @@ struct FooterView: View {
             }
             
             Spacer()
-        }.frame(height: 50)
+        }.onAppear {
+            // 現在時間を格納した該当の日付を生成
+            createdAt = df.combineDateWithCurrentTime(theDay: date)
+        }
+        .frame(height: 50)
             .font(.system(size: 25))
             .background(.exThema)
             .foregroundStyle(.exSub)
-            .sheet(isPresented: $showInputPoopView) {
+            .fullScreenCover(isPresented: $showInputPoopView) {
                 PoopInputView(theDay: date)
             }
     }

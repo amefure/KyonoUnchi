@@ -28,6 +28,8 @@ class RootEnvironment: ObservableObject {
     // MARK: Dialog
     @Published var showOutOfRangeCalendarDialog: Bool = false
     @Published var showSimpleEntryDialog: Bool = false
+    // 詳細ページで表示するダイアログ
+    @Published var showSimpleEntryDetailDialog: Bool = false
    
     private let keyChainRepository: KeyChainRepository
     private let userDefaultsRepository: UserDefaultsRepository

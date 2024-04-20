@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// 更新時対象のPoopオブジェクトはViewModelを介してやり取りする
+// 値渡しにすると正常に渡せない時がある
 struct PoopInputView: View {
     
     private let df = DateFormatUtility()
@@ -14,7 +16,6 @@ struct PoopInputView: View {
     @ObservedObject private var viewModel = PoopViewModel.shared
     
     public var theDay: Date?
-    public var poop: Poop? = nil
     
     @State private var color: PoopColor = .brown
     @State private var shape: PoopShape = .normal
@@ -35,9 +36,14 @@ struct PoopInputView: View {
         VStack {
             
             HeaderView(
+                leadingIcon: "chevron.backward",
                 trailingIcon: "checkmark",
+                leadingAction: {
+                    dismiss()
+                },
                 trailingAction: {
-                    if let poop = poop {
+                    isActive = false
+                    if let poop = viewModel.selectPoop {
                         viewModel.updatePoop(
                             id: poop.wrappedId,
                             color: color,
@@ -161,7 +167,7 @@ struct PoopInputView: View {
             isActive = false
         })
         .onAppear {
-            if let poop = poop {
+            if let poop = viewModel.selectPoop {
                 color = PoopColor(rawValue: poop.wrappedColor) ?? .brown
                 shape = PoopShape(rawValue: poop.wrappedShape) ?? .normal
                 volume = PoopVolume(rawValue: poop.wrappedVolume) ?? .medium
@@ -170,13 +176,14 @@ struct PoopInputView: View {
                 hardnessNum = Float(hardness.rawValue)
                 memo = poop.wrappedMemo
                 createdAt = poop.wrappedCreatedAt
+            } else {
+                // 現在時間を格納した該当の日付を生成
+                createdAt = df.combineDateWithCurrentTime(theDay: theDay ?? Date())
             }
-            // 現在時間を格納した
-            createdAt = df.combineDateWithCurrentTime(theDay: theDay ?? Date())
         }.dialog(
             isPresented: $showSuccessAlert,
             title: L10n.dialogTitle,
-            message: poop == nil ? L10n.dialogEntryPoop : L10n.dialogUpdatePoop,
+            message: viewModel.selectPoop == nil ? L10n.dialogEntryPoop : L10n.dialogUpdatePoop,
             positiveButtonTitle: L10n.dialogButtonOk,
             positiveAction: {
                 dismiss()

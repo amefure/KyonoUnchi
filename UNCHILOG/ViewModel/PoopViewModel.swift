@@ -14,6 +14,8 @@ class PoopViewModel: ObservableObject {
     @Published private(set) var poops: [Poop] = []
 
     private var repository: PoopRepository
+    // 削除/更新対象のPoop
+    @Published var selectPoop: Poop? = nil
     
    
     private let dateFormatUtility = DateFormatUtility()
@@ -28,20 +30,20 @@ extension PoopViewModel {
     // 今日を起点として何日うんちが出ていないか
     public func findTodayDifference() -> Int {
         
-        let dates = poops.map({ $0.wrappedCreatedAt })
+        let dates = poops.map({ $0.wrappedCreatedAt }).filter({ $0 < DateFormatUtility.today })
         // 今日と同じ日付があれば0を返す
         if dates.contains(where: { dateFormatUtility.checkInSameDayAs(date: $0 )}) {
             return 0
         }
-        
-        var closestPastDateDifference = -1
+        // 昨日でていれば0,一昨日出ていれば1になるように計算
+        var closestPastDateDifference = Int.max
         for date in dates {
             let difference = dateFormatUtility.daysDifferenceFromToday(date: date)
             if difference > 0 && difference < closestPastDateDifference {
                 closestPastDateDifference = difference
             }
         }
-        return closestPastDateDifference
+        return closestPastDateDifference == Int.max ? 0 : closestPastDateDifference - 1
     }
 }
 
@@ -65,6 +67,7 @@ extension PoopViewModel {
 
     public func updatePoop(id : UUID, color: PoopColor, shape: PoopShape, volume: PoopVolume, hardness: PoopHardness, memo: String) {
         repository.updatePoop(id: id, color: color, shape: shape, volume: volume, hardness: hardness, memo: memo)
+        selectPoop = nil
         fetchAllPoops()
     }
     
@@ -76,6 +79,7 @@ extension PoopViewModel {
     
     public func deletePoop(poop: Poop) {
         repository.deletePoop(id: poop.wrappedId)
+        selectPoop = nil
         fetchAllPoops()
     }
 }

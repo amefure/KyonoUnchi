@@ -10,14 +10,15 @@ import UIKit
 class DateFormatUtility {
     
     private let df = DateFormatter()
-    private let c = Calendar(identifier: .gregorian)
+    private var c = Calendar(identifier: .gregorian)
     
     static let today: Date = Date()
     
     init(format: String = "yyyy-MM-dd") {
         df.dateFormat = format
         df.locale = Locale(identifier: "ja_JP")
-        df.calendar = c
+        c.timeZone = TimeZone(identifier: "Asia/Tokyo")!
+        df.calendar = c   
     }
 }
     
