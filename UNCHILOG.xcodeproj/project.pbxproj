@@ -60,6 +60,7 @@
 		12CBFBF02BAFE25C005FE4F1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12CBFBEF2BAFE25C005FE4F1 /* Preview Assets.xcassets */; };
 		12CBFBF52BAFE25C005FE4F1 /* UNCHILOG.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 12CBFBF32BAFE25C005FE4F1 /* UNCHILOG.xcdatamodeld */; };
 		12DB3CF62BD391FC0075817A /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 12DB3CF52BD391FC0075817A /* PrivacyInfo.xcprivacy */; };
+		12DB3CF82BD392A90075817A /* AdMobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB3CF72BD392A90075817A /* AdMobView.swift */; };
 		12DCB2C22BBD2B7700AF62CB /* EntryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DCB2C12BBD2B7700AF62CB /* EntryButton.swift */; };
 		C297C18C2F20E9590633A74B /* Pods_UNCHILOG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B70382F8D83335666AC1D3D7 /* Pods_UNCHILOG.framework */; };
 /* End PBXBuildFile section */
@@ -120,6 +121,7 @@
 		12CBFBEF2BAFE25C005FE4F1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		12CBFBF42BAFE25C005FE4F1 /* UNCHILOG.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UNCHILOG.xcdatamodel; sourceTree = "<group>"; };
 		12DB3CF52BD391FC0075817A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		12DB3CF72BD392A90075817A /* AdMobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobView.swift; sourceTree = "<group>"; };
 		12DCB2C12BBD2B7700AF62CB /* EntryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryButton.swift; sourceTree = "<group>"; };
 		B70382F8D83335666AC1D3D7 /* Pods_UNCHILOG.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UNCHILOG.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C335F896FB75E0D71E43B745 /* Pods-UNCHILOG.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UNCHILOG.release.xcconfig"; path = "Target Support Files/Pods-UNCHILOG/Pods-UNCHILOG.release.xcconfig"; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 				128BB5EE2BB59F83009E0FAB /* Layout */,
 				12A43E162BBAF51700AB19A4 /* RoundMessageView.swift */,
 				12DCB2C12BBD2B7700AF62CB /* EntryButton.swift */,
+				12DB3CF72BD392A90075817A /* AdMobView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -599,6 +602,7 @@
 				128BB5BC2BB147BB009E0FAB /* Poop+CoreDataClass.swift in Sources */,
 				128BB5B82BB142BB009E0FAB /* EXCollection.swift in Sources */,
 				128BB5CB2BB284D5009E0FAB /* PoopColor.swift in Sources */,
+				12DB3CF82BD392A90075817A /* AdMobView.swift in Sources */,
 				128BB5B12BB14125009E0FAB /* SCYearAndMonth.swift in Sources */,
 				128BB60A2BB79BA2009E0FAB /* UrlLinkConfig.swift in Sources */,
 			);
