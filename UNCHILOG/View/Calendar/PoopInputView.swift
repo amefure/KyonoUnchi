@@ -14,6 +14,7 @@ struct PoopInputView: View {
     private let df = DateFormatUtility()
     // MARK: - ViewModel
     @ObservedObject private var viewModel = PoopViewModel.shared
+    @ObservedObject private var rootEnvironment = RootEnvironment.shared
     
     public var theDay: Date?
     
@@ -188,6 +189,9 @@ struct PoopInputView: View {
             positiveButtonTitle: L10n.dialogButtonOk,
             positiveAction: {
                 viewModel.selectPoop = nil
+                
+                rootEnvironment.addCountInterstitial()
+                
                 dismiss()
             }
         )

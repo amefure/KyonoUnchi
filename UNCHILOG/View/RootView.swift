@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct RootView: View {
     
@@ -13,7 +14,10 @@ struct RootView: View {
     
     @ObservedObject private var poopViewModel = PoopViewModel.shared
     @ObservedObject private var rootEnvironment = RootEnvironment.shared
+    @ObservedObject private var interstitial = AdmobInterstitialView()
     
+    // MARK: - Combine
+    @State private var cancellables: Set<AnyCancellable> = []
     
     init() {
         // タブを非表示
@@ -39,9 +43,20 @@ struct RootView: View {
             title: L10n.dialogTitle,
             message: L10n.dialogEntryPoop,
             positiveButtonTitle: L10n.dialogButtonOk,
-            positiveAction: { rootEnvironment.showSimpleEntryDialog = false }
+            positiveAction: {
+                rootEnvironment.addCountInterstitial()
+                rootEnvironment.showSimpleEntryDialog = false
+            }
         ).onAppear {
             poopViewModel.fetchAllPoops()
+            
+            interstitial.loadInterstitial()
+            rootEnvironment.$showInterstitial.sink { result in
+                if result {
+                    interstitial.presentInterstitial()
+                    rootEnvironment.resetShowInterstitial()
+                }
+            }.store(in: &cancellables)
         }
     }
 }

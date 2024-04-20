@@ -25,11 +25,15 @@ class RootEnvironment: ObservableObject {
     @Published private(set) var entryMode: EntryMode = .detail
     @Published private(set) var appLocked = false
     
+
+    
     // MARK: Dialog
     @Published var showOutOfRangeCalendarDialog: Bool = false
     @Published var showSimpleEntryDialog: Bool = false
     // 詳細ページで表示するダイアログ
     @Published var showSimpleEntryDetailDialog: Bool = false
+    @Published private(set) var showInterstitial = false
+    private var countInterstitial: Int = 0
    
     private let keyChainRepository: KeyChainRepository
     private let userDefaultsRepository: UserDefaultsRepository
@@ -115,6 +119,34 @@ extension RootEnvironment {
 
 // MARK: - UserDefaults
 extension RootEnvironment {
+    
+    /// インタースティシャル広告表示完了済みにする
+    public func resetShowInterstitial() {
+        showInterstitial = false
+    }
+    
+    /// インタースティシャルリセット
+    public func resetCountInterstitial() {
+        userDefaultsRepository.setIntData(key: UserDefaultsKey.COUNT_INTERSTITIAL, value: 0)
+    }
+    
+    /// インタースティシャルカウント
+    public func addCountInterstitial() {
+        countInterstitial += 1
+        userDefaultsRepository.setIntData(key: UserDefaultsKey.COUNT_INTERSTITIAL, value: countInterstitial)
+        
+        if countInterstitial >= AdsConfig.COUNT_INTERSTITIAL {
+            showInterstitial = true
+            resetCountInterstitial()
+            getCountInterstitial()
+        }
+    }
+    
+    /// インタースティシャル取得
+    public func getCountInterstitial() {
+        countInterstitial = userDefaultsRepository.getIntData(key: UserDefaultsKey.COUNT_INTERSTITIAL)
+    }
+    
     /// 週始まりを取得
     private func getInitWeek() {
         let week = userDefaultsRepository.getIntData(key: UserDefaultsKey.INIT_WEEK)
