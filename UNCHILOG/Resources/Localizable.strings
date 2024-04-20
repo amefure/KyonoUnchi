@@ -13,6 +13,8 @@
 "dialog_entry_poop" = "うんちの記録を\n登録しました。";
 "dialog_update_poop" = "うんちの記録を\n更新しました。";
 "dialog_out_of_range_calendar" = "カレンダーの表示範囲外です。";
+"dialog_update_entry_mode_%@" = "「%@」モードに\n変更しました。";
+"dialog_update_init_week_%@" = "週始まりを「%@」に\n変更しました。";
 
 
 "dialog_button_ok" = "OK";

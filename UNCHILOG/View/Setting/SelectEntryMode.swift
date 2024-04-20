@@ -11,10 +11,15 @@ struct SelectEntryMode: View {
     @ObservedObject private var rootEnvironment = RootEnvironment.shared
     @State private var selectMode: EntryMode = .detail
     
+    @State private var showSuccessAlert = false
+    
+    // MARK: - Environment
+    @Environment(\.dismiss) var dismiss
+    
     init() {
         let appearance = UISegmentedControl.appearance()
         let font = UIFont.boldSystemFont(ofSize: 12)
-        appearance.selectedSegmentTintColor = .black.withAlphaComponent(0.75)
+        appearance.selectedSegmentTintColor = .exText.withAlphaComponent(0.75)
         appearance.setTitleTextAttributes([.font: font, .foregroundColor: UIColor.black], for: .normal)
         appearance.setTitleTextAttributes([.font: font, .foregroundColor: UIColor.white], for: .selected)
     }
@@ -39,19 +44,49 @@ struct SelectEntryMode: View {
                 Text("EntryMode")
             }.pickerStyle(SegmentedPickerStyle())
                 .frame(width: 300)
-                .onChange(of: selectMode) { oldValue, newValue in
-                    rootEnvironment.saveEntryMode(mode: newValue)
-                }
             
             switch selectMode {
             case .simple:
-                Text("シンプルモードに設定するとカレンダー画面の登録ボタンを押下した際に現在時刻で記録が登録されます。\n登録の際に細かい設定はできませんが、登録後から編集することは可能なっているので詳細モードと同じ内容を追記することが可能です。").padding(25)
+                Text("「シンプルモード」に設定するとカレンダー画面の登録ボタンを押下した際に現在時刻で記録が登録されます。\n登録の際に細かい設定はできませんが、登録後から編集することは可能になっているので詳細モードと同じ内容を追記することが可能です。").padding(25)
+                    .frame(height: 200)
             case .detail:
-                Text("詳細モードに設定するとカレンダー画面の登録ボタンを押下した際に登録画面が表示され、うんちの硬さや色、形、MEMOなどを入力することが可能です。").padding(25)
+                Text("「詳細モード」に設定するとカレンダー画面の登録ボタンを押下した際に登録画面が表示され、うんちの硬さや色、形、MEMOなどを入力することが可能です。").padding(25)
+                    .frame(height: 200)
+            }
+            
+            Button {
+                rootEnvironment.saveEntryMode(mode: selectMode)
+                showSuccessAlert = true
+            } label: {
+                Text(L10n.appLockInputEntryButton)
+                    .fontWeight(.bold)
+                    .padding(10)
+                    .frame(width: 100)
+                    .background(.exText)
+                    .foregroundStyle(.white)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(style: StrokeStyle(lineWidth: 2))
+                            .frame(width: 100)
+                            .foregroundStyle(.exText)
+                    }.padding(.vertical, 20)
+                    .shadow(color: .gray, radius: 3, x: 4, y: 4)
+            }
+            
+            // ダイアログを全体に表示させるための
+            HStack {
+                Spacer()
             }
             
             Spacer()
-        }.onAppear {
+        }.dialog(
+            isPresented: $showSuccessAlert,
+            title: L10n.dialogTitle,
+            message: L10n.dialogUpdateEntryMode(selectMode.name),
+            positiveButtonTitle: L10n.dialogButtonOk,
+            positiveAction: { dismiss() }
+        ).onAppear {
             selectMode = rootEnvironment.entryMode
         }
     }

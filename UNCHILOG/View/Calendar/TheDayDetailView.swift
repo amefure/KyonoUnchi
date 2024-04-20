@@ -45,31 +45,9 @@ struct TheDayDetailView: View {
                 
                 Spacer()
                 MrPoopMessageView(msg: "うんちの記録がありません。")
-            } else {
                 
-                HStack(spacing: 0) {
-                    Text("時間")
-                        .frame(width: 90)
-                    Divider()
-                    
-                    Text("色")
-                        .frame(width: 40)
-                    
-                    Divider()
-                    
-                    Text("形")
-                        .frame(width: 40)
-                    
-                    Divider()
-                    
-                    Text("量")
-                        .frame(width: 60)
-                    
-                    Spacer()
-                }.frame(height: 50)
-                    .padding(.horizontal, 10)
-                    .background(Color.white)
-                    .zIndex(3)
+                Spacer()
+            } else {
                 
                 List {
                     ForEach(poopList) { poop in
@@ -78,11 +56,7 @@ struct TheDayDetailView: View {
                 }.listStyle(GroupedListStyle())
                     .scrollContentBackground(.hidden)
                     .background(Color.clear)
-                    .offset(y: -30)
-                    .zIndex(1)
             }
-            
-            Spacer()
             
             FooterView(date: theDay.date ?? Date(), isRoot: false)
             

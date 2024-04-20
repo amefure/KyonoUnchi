@@ -54,7 +54,7 @@ struct SettingView: View {
                         Image(systemName: "chevron.forward")
                             .foregroundStyle(.gray)
                         
-                    }.sheet(isPresented: $showSelectInitWeek, content: {
+                    }.fullScreenCover(isPresented: $showSelectInitWeek, content: {
                         SelectInitWeek()
                     })
                     
@@ -71,7 +71,7 @@ struct SettingView: View {
                             showSelectEntryMode = true
                         } label: {
                             Text(L10n.settingSectionAppEntryMode)
-                        }.sheet(isPresented: $showSelectEntryMode, content: {
+                        }.fullScreenCover(isPresented: $showSelectEntryMode, content: {
                             SelectEntryMode()
                         })
                         

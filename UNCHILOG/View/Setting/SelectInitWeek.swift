@@ -9,6 +9,10 @@ import SwiftUI
 
 struct SelectInitWeek: View {
     @ObservedObject private var rootEnvironment = RootEnvironment.shared
+    @State private var selectWeek: SCWeek = .sunday
+    @State private var showSuccessAlert = false
+    // MARK: - Environment
+    @Environment(\.dismiss) var dismiss
     var body: some View {
         
         VStack {
@@ -25,23 +29,51 @@ struct SelectInitWeek: View {
             List {
                 ForEach(SCWeek.allCases, id: \.self) { week in
                     Button {
-                        rootEnvironment.saveInitWeek(week: week)
-                        rootEnvironment.setFirstWeek(week: week)
+                        selectWeek = week
                     } label: {
                         HStack {
                             Text(week.fullSymbols)
                             
                             Spacer()
-                            
-                            if rootEnvironment.initWeek == week {
+
+                            if selectWeek == week {
                                 Image(systemName: "checkmark")
                                     .foregroundStyle(.exText)
                             }
                         }
-                        
                     }
                 }.foregroundStyle(.exText)
             }
+            
+            Button {
+                rootEnvironment.saveInitWeek(week: selectWeek)
+                rootEnvironment.setFirstWeek(week: selectWeek)
+                showSuccessAlert = true
+            } label: {
+                Text(L10n.appLockInputEntryButton)
+                    .fontWeight(.bold)
+                    .padding(10)
+                    .frame(width: 100)
+                    .background(.exText)
+                    .foregroundStyle(.white)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(style: StrokeStyle(lineWidth: 2))
+                            .frame(width: 100)
+                            .foregroundStyle(.exText)
+                    }.padding(.vertical, 20)
+                    .shadow(color: .gray, radius: 3, x: 4, y: 4)
+            }
+            
+        }.dialog(
+            isPresented: $showSuccessAlert,
+            title: L10n.dialogTitle,
+            message: L10n.dialogUpdateInitWeek(selectWeek.fullSymbols),
+            positiveButtonTitle: L10n.dialogButtonOk,
+            positiveAction: { dismiss() }
+        ).onAppear {
+            selectWeek = rootEnvironment.initWeek
         }
     }
 }

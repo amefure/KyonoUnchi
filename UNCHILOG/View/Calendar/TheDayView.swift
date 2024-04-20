@@ -9,27 +9,31 @@ import SwiftUI
 
 struct TheDayView: View {
     
-    var dateFormatUtility = DateFormatUtility()
+    private let dateFormatUtility = DateFormatUtility()
     @ObservedObject private var rootEnvironment = RootEnvironment.shared
     
     @Binding var theDay: SCDate
     public var poops: [Poop]
     
-    func poopList() -> [Poop] {
+    private func poopList() -> [Poop] {
         let list = poops.filter({ $0.getDate() == theDay.getDate() })
         return list
     }
     
-    func poopCount() -> Int {
+    private func poopCount() -> Int {
         return poopList().count
     }
     
-    var isToday: Bool {
+    private var isToday: Bool {
         let today = dateFormatUtility.convertDateComponents(date: DateFormatUtility.today)
         guard let year = today.year,
               let month = today.month,
               let day = today.day else { return false }
         return (theDay.year == year && theDay.month == month && theDay.day == day)
+    }
+    
+    private var poopIconWidth: CGFloat {
+        DeviceSizeManager.deviceWidth / 7
     }
 
     var body: some View {
@@ -55,13 +59,14 @@ struct TheDayView: View {
                                 Image("noface_poop")
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(width: 50)
+                                    .frame(width: poopIconWidth)
+                                    .scaleEffect(1.3)
                                 
                                 Text("\(poopCount())")
                                     .fontWeight(.bold)
                                     .foregroundStyle(.white)
                                     .offset(y: 5)
-                            }
+                            }.frame(width: poopIconWidth)
                         }
                         
                     }

@@ -172,6 +172,15 @@ struct PoopInputView: View {
                 volumeNum = Float(volume.rawValue)
                 memo = poop.wrappedMemo
                 createdAt = poop.wrappedCreatedAt
+                
+                // シンプルで登録された場合は自動で初期値を設定しておく
+                if color == .undefined {
+                    color = .darkBrown
+                    shape = .normal
+                    volume = .medium
+                    volumeNum = Float(volume.rawValue)
+                }
+                
             } else {
                 // 現在時間を格納した該当の日付を生成
                 createdAt = df.combineDateWithCurrentTime(theDay: theDay ?? Date())

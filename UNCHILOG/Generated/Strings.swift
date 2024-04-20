@@ -39,6 +39,16 @@ internal enum L10n {
   /// 
   ///   Created by t&a on 2024/03/24.
   internal static let dialogTitle = L10n.tr("Localizable", "dialog_title", fallback: "お知らせ")
+  /// 「%@」モードに
+  /// 変更しました。
+  internal static func dialogUpdateEntryMode(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "dialog_update_entry_mode_%@", String(describing: p1), fallback: "「%@」モードに\n変更しました。")
+  }
+  /// 週始まりを「%@」に
+  /// 変更しました。
+  internal static func dialogUpdateInitWeek(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "dialog_update_init_week_%@", String(describing: p1), fallback: "週始まりを「%@」に\n変更しました。")
+  }
   /// うんちの記録を
   /// 更新しました。
   internal static let dialogUpdatePoop = L10n.tr("Localizable", "dialog_update_poop", fallback: "うんちの記録を\n更新しました。")
