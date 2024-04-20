@@ -24,7 +24,7 @@ struct SettingView: View {
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             
             HeaderView(
                 leadingIcon: "chevron.backward",

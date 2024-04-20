@@ -96,8 +96,8 @@ struct TheDayDetailPoopRowView: View {
             } label: {
                 Image(systemName: "trash")
             }.tint(.exNegative)
-        }.swipeActions(edge: .leading, allowsFullSwipe: false) {
-            // 左スワイプ：編集アクション
+            
+            // 右スワイプ：編集アクション
             Button(role: .none) {
                 poopViewModel.selectPoop = poop
                 showEditInputView = true

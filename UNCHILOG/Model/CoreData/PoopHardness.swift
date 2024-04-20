@@ -18,7 +18,7 @@ enum PoopHardness: Int, CaseIterable {
     public var name: String {
         return switch self {
         case .undefined:
-            "none"
+            "未選択"
         case .soft:
             "柔らかめ"
         case .semisoft:

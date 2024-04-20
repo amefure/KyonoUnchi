@@ -18,7 +18,7 @@ enum PoopVolume: Int, CaseIterable {
     public var name: String {
         return switch self {
         case .undefined:
-            "none"
+            "未選択"
         case .small:
             "少なめ"
         case .semismall:

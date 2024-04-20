@@ -17,7 +17,7 @@ struct PoopInputView: View {
     
     public var theDay: Date?
     
-    @State private var color: PoopColor = .brown
+    @State private var color: PoopColor = .darkBrown
     @State private var shape: PoopShape = .normal
     @State private var volume: PoopVolume = .medium
     @State private var volumeNum: Float = 3
@@ -65,7 +65,7 @@ struct PoopInputView: View {
                     showSuccessAlert = true
                 },
                 content: {
-                    Text("うんち登録")
+                    Text(viewModel.selectPoop == nil ? "うんち登録" : "うんち記録編集" )
                 }
             )
             
@@ -95,12 +95,13 @@ struct PoopInputView: View {
                                         .clipShape(RoundedRectangle(cornerRadius: 30))
                                         .overlay {
                                             RoundedRectangle(cornerRadius: 30)
-                                                .stroke(color == poopColor ? .exGray : .clear, lineWidth: 4)
+                                                .stroke(color == poopColor ? poopColor.color : .clear, lineWidth: 6)
                                         }
                                 }
                             }
                         }
                     }.padding(.vertical)
+                        .padding(.leading, 10)
                 }.padding(.horizontal)
                 
                 InputItemTitleView(title: "形", subTitle: "Shape")
@@ -186,6 +187,7 @@ struct PoopInputView: View {
             message: viewModel.selectPoop == nil ? L10n.dialogEntryPoop : L10n.dialogUpdatePoop,
             positiveButtonTitle: L10n.dialogButtonOk,
             positiveAction: {
+                viewModel.selectPoop = nil
                 dismiss()
             }
         )
@@ -199,19 +201,17 @@ struct InputItemTitleView: View {
     var body: some View {
         VStack(alignment: .leading){
             HStack {
-                HStack {
-                    Text(title)
-                        .foregroundStyle(.exText)
-                        .fontWeight(.bold)
-                        .opacity(0.8)
-                    Spacer()
-                }.frame(width: 40)
+                Text(title)
+                    .foregroundStyle(.exText)
+                    .fontWeight(.bold)
+                    .opacity(0.8)
+                    .frame(width: 40, alignment: .leading)
                 
                 Text(subTitle)
                     .foregroundStyle(.exText)
                     .fontWeight(.bold)
                     .opacity(0.3)
-                    .font(.caption)
+                    .font(.system(size: 18))
                 
                 Spacer()
             }.padding(.leading, 10)

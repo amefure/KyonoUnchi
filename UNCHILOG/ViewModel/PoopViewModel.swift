@@ -67,7 +67,8 @@ extension PoopViewModel {
 
     public func updatePoop(id : UUID, color: PoopColor, shape: PoopShape, volume: PoopVolume, hardness: PoopHardness, memo: String) {
         repository.updatePoop(id: id, color: color, shape: shape, volume: volume, hardness: hardness, memo: memo)
-        selectPoop = nil
+        // ここでは選択状態を変更しない
+        // selectPoop = nil
         fetchAllPoops()
     }
     
