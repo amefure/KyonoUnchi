@@ -45,6 +45,9 @@ struct TheDayDetailPoopRowView: View {
                     if let shape = PoopShape(rawValue: poop.wrappedShape),
                        shape != .undefined {
                         shape.image
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 40)
                             .padding(.horizontal, 10)
                     }
                     

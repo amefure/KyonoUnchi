@@ -117,7 +117,10 @@ struct PoopInputView: View {
                                     poopShape.image
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(width: 60)
+                                        .frame(width: 55)
+                                        .padding(5)
+                                        .background(shape == poopShape ? .exGray : .clear)
+                                        .clipShape(RoundedRectangle(cornerRadius: 60))
                                 }
                             }
                         }
