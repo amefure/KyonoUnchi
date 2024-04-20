@@ -46,8 +46,8 @@ struct YearAndMonthSelectionView: View {
             },
             content: {
                 Spacer()
-                    .frame(width: 40)
-                    .padding(.horizontal, 20)
+                    .frame(width: 30)
+                    .padding(.horizontal, 10)
                 
                 Button {
                     rootEnvironment.backMonth()
@@ -86,7 +86,7 @@ struct YearAndMonthSelectionView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 30)
-                }.padding(.horizontal, 20)
+                }.padding(.horizontal, 10)
             }
         ).navigationDestination(isPresented: $showSetting) {
             SettingView()

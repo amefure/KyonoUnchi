@@ -85,21 +85,30 @@ struct PoopInputView: View {
                     HStack(spacing: 15) {
                         ForEach(PoopColor.allCases, id: \.self) { poopColor in
                             if poopColor != .undefined {
+                                
                                 Button {
                                     color = poopColor
                                 } label: {
-                                    poopColor.color
-                                        .frame(width: 30, height: 30)
-                                        .clipShape(RoundedRectangle(cornerRadius: 30))
-                                        .overlay {
-                                            RoundedRectangle(cornerRadius: 30)
-                                                .stroke(color == poopColor ? poopColor.color : .clear, lineWidth: 6)
+                                    VStack {
+                                        if color == poopColor {
+                                            Image(systemName: "arrowshape.down.fill")
+                                                .resizable()
+                                                .scaledToFit()
+                                                .foregroundStyle(.exText)
+                                                .frame(height: 20, alignment: .center)
+                                        } else {
+                                            Spacer()
+                                                .frame(height: 20)
                                         }
+                                        poopColor.color
+                                            .frame(width: 30, height: 30)
+                                            .clipShape(RoundedRectangle(cornerRadius: 30))
+                                    }
                                 }
                             }
                         }
                     }.padding(.vertical)
-                        .padding(.leading, 10)
+                        .padding(.horizontal, 10)
                 }.padding(.horizontal)
                 
                 InputItemTitleView(title: "形", subTitle: "Shape")
