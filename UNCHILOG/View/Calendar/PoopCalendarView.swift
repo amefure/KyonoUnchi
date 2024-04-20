@@ -69,7 +69,18 @@ struct PoopCalendarView: View {
                         TheDayView(theDay: theDay, poops: poopViewModel.poops)
                     }
                 }.padding(.bottom, 25)
-            }
+            }.simultaneousGesture(
+                DragGesture()
+                    .onEnded {value in
+                        let start = value.startLocation.x
+                        let end = value.location.x
+                        if start > end {
+                            rootEnvironment.forwardMonth()
+                        } else if start < end {
+                            rootEnvironment.backMonth()
+                        }
+                    }
+            )
         }
     }
 }
