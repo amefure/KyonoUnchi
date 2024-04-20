@@ -148,6 +148,10 @@ struct SettingView: View {
                     }
                 }
             }
+            
+            AdMobBannerView()
+                .frame(height: 60)
+            
         }.foregroundStyle(.exText)
             .onAppear {
                 viewModel.onAppear()

@@ -38,6 +38,9 @@ struct TheDayDetailView: View {
                 }
             )
             
+            AdMobBannerView()
+                .frame(height: 60)
+            
             if poopList.count == 0 {
                 
                 Spacer()

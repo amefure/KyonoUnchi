@@ -34,7 +34,7 @@ struct PoopChartView: View {
             let components = dateFormatUtility.convertDateComponents(date: poop.wrappedCreatedAt, components: [.year, .month, .day])
             return dateFormatUtility.convertDate(components: components)
         }.mapValues { $0.count }
-
+        
         // タプルに変換
         let result = groupedCounts.map { (createdAt, count) in
             return (createdAt: createdAt, count: count)
@@ -44,9 +44,9 @@ struct PoopChartView: View {
     
     
     public func getMax() -> Int {
-       return showCurrentData.max(by: { (a, b) -> Bool in
+        return showCurrentData.max(by: { (a, b) -> Bool in
             return a.count < b.count
-       })?.count ?? showCurrentData.count
+        })?.count ?? showCurrentData.count
     }
     
     var body: some View {
@@ -54,37 +54,56 @@ struct PoopChartView: View {
             
             YearAndMonthSelectionView(showBackButton: true)
             
-            if showCurrentData.count == 0 {
-                Spacer()
-                Text("記録がありません。")
-                Spacer()
-            } else {
-                Chart(showCurrentData, id: \.createdAt) { poop in
-                    LineMark(
-                        x: .value("年月日", poop.createdAt),
-                        y: .value("回数", poop.count)
-                    ).foregroundStyle(.gray)
-                    
-                    // ポインタマーク
-                    PointMark(
-                        x: .value("年月日", poop.createdAt),
-                        y: .value("回数", poop.count)
-                    ).symbol {
-                        Circle()
-                            .fill()
-                            .frame(width: 10, height: 10)
+            VStack {
+                if showCurrentData.count == 0 {
+                    ZStack {
+                        // スワイプジェスチャーを聞かせるために全体に広がる白色のView
+                        Color.white
+                        Text("記録がありません。")
                     }
-                    
-                }.padding()
-                    .chartYScale(domain: 0...getMax())
-                    .chartXAxis {
-                        AxisMarks(values: .stride(by: .day, count: 2)) {
-                            AxisGridLine()
-                            AxisTick()
-                            AxisValueLabel(format: .dateTime.day())
+                } else {
+                    Chart(showCurrentData, id: \.createdAt) { poop in
+                        LineMark(
+                            x: .value("年月日", poop.createdAt),
+                            y: .value("回数", poop.count)
+                        ).foregroundStyle(.gray)
+                        
+                        // ポインタマーク
+                        PointMark(
+                            x: .value("年月日", poop.createdAt),
+                            y: .value("回数", poop.count)
+                        ).symbol {
+                            Circle()
+                                .fill()
+                                .frame(width: 10, height: 10)
+                        }
+                        
+                    }.padding()
+                        .chartYScale(domain: 0...getMax())
+                        .chartXAxis {
+                            AxisMarks(values: .stride(by: .day, count: 2)) {
+                                AxisGridLine()
+                                AxisTick()
+                                AxisValueLabel(format: .dateTime.day())
+                            }
+                        }
+                }
+                
+            }.simultaneousGesture(
+                DragGesture()
+                    .onEnded {value in
+                        let start = value.startLocation.x
+                        let end = value.location.x
+                        if start > end {
+                            rootEnvironment.forwardMonth()
+                        } else if start < end {
+                            rootEnvironment.backMonth()
                         }
                     }
-            }
+            )
+            
+            AdMobBannerView()
+                .frame(height: 60)
             
         }.padding(.bottom, 25)
             .navigationBarBackButtonHidden()
