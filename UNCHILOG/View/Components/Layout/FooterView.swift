@@ -50,23 +50,23 @@ struct FooterView: View {
                     
                     ZStack {
                      
-                        Text("と")
-                            .font(.system(size: 16))
-                            .rotationEffect(Angle(degrees: -40))
-                            .position(x: -5, y: 10)
-                        Text("う")
+                        Text("登")
                             .font(.system(size: 16))
                             .rotationEffect(Angle(degrees: -20))
-                            .position(x: 20, y: -5)
-                        
-                        Text("ろ")
+                            .position(x: 10, y: 5)
+//                        Text("う")
+//                            .font(.system(size: 16))
+//                            .rotationEffect(Angle(degrees: -20))
+//                            .position(x: 20, y: -5)
+//                        
+//                        Text("ろ")
+//                            .font(.system(size: 16))
+//                            .rotationEffect(Angle(degrees: 20))
+//                            .position(x: 50, y: -5)
+                        Text("録")
                             .font(.system(size: 16))
                             .rotationEffect(Angle(degrees: 20))
-                            .position(x: 50, y: -5)
-                        Text("く")
-                            .font(.system(size: 16))
-                            .rotationEffect(Angle(degrees: 40))
-                            .position(x: 75, y: 10)
+                            .position(x: 60, y: 5)
                         
                         Image("smile_poop")
                             .resizable()
