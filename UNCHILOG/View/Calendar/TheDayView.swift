@@ -55,7 +55,12 @@ struct TheDayView: View {
                         }
                         
                     }
-                }
+                }.simultaneousGesture(
+                    TapGesture()
+                        .onEnded({ _ in
+                            rootEnvironment.addCountInterstitial()
+                        })
+                )
             }
         }
         .frame(maxWidth: .infinity)

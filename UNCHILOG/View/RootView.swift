@@ -43,10 +43,7 @@ struct RootView: View {
             title: L10n.dialogTitle,
             message: L10n.dialogEntryPoop,
             positiveButtonTitle: L10n.dialogButtonOk,
-            positiveAction: {
-                rootEnvironment.addCountInterstitial()
-                rootEnvironment.showSimpleEntryDialog = false
-            }
+            positiveAction: { rootEnvironment.showSimpleEntryDialog = false }
         ).onAppear {
             poopViewModel.fetchAllPoops()
             

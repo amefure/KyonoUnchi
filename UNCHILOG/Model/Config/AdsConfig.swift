@@ -8,5 +8,5 @@
 import UIKit
 
 class AdsConfig {
-    static let COUNT_INTERSTITIAL = 2
+    static let COUNT_INTERSTITIAL = 5
 }

@@ -40,8 +40,8 @@ struct PoopCalendarView: View {
                 
                 ZStack {
                     RoundChatView()
-                        .fill(Color.exGray)
-                        .frame(width: 250, height: 50)
+                        .fill(Color.white)
+                        .frame(width: DeviceSizeManager.deviceWidth - 120, height: 50)
                         .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
                         .shadow(color: .gray, radius: 3, x: 2, y: 2)
                     Text(getMessage())
@@ -49,8 +49,6 @@ struct PoopCalendarView: View {
                         .fontWeight(.bold)
                         .offset(x: 10)
                 }
-                
-                Spacer()
                 
             }.padding(20)
 
