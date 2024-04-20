@@ -58,15 +58,14 @@ extension PoopViewModel {
     public func addPoop(color: PoopColor = .undefined,
                         shape: PoopShape = .undefined,
                         volume: PoopVolume = .undefined,
-                        hardness: PoopHardness = .undefined,
                         memo: String = "",
                         createdAt: Date) {
-        repository.addPoop(color: color, shape: shape, volume: volume, hardness: hardness, memo: memo, createdAt: createdAt)
+        repository.addPoop(color: color, shape: shape, volume: volume, memo: memo, createdAt: createdAt)
         fetchAllPoops()
     }
 
-    public func updatePoop(id : UUID, color: PoopColor, shape: PoopShape, volume: PoopVolume, hardness: PoopHardness, memo: String) {
-        repository.updatePoop(id: id, color: color, shape: shape, volume: volume, hardness: hardness, memo: memo)
+    public func updatePoop(id : UUID, color: PoopColor, shape: PoopShape, volume: PoopVolume, memo: String) {
+        repository.updatePoop(id: id, color: color, shape: shape, volume: volume, memo: memo)
         // ここでは選択状態を変更しない
         // selectPoop = nil
         fetchAllPoops()

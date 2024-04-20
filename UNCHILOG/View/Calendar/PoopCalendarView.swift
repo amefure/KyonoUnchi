@@ -27,31 +27,7 @@ struct PoopCalendarView: View {
             
             YearAndMonthSelectionView()
             
-            HStack {
-                Image(systemName: "swift")
-                    .font(.system(size: 25))
-                    .frame(width: 50, height: 50)
-                    .foregroundStyle(.exSub)
-                    .background(.exThema)
-                    .clipShape(RoundedRectangle(cornerRadius: 50))
-                    .shadow(color: .gray, radius: 3, x: 2, y: 2)
-                
-                Spacer()
-                
-                ZStack {
-                    RoundChatView()
-                        .fill(Color.white)
-                        .frame(width: DeviceSizeManager.deviceWidth - 120, height: 50)
-                        .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
-                        .shadow(color: .gray, radius: 3, x: 2, y: 2)
-                    Text(getMessage())
-                        .foregroundStyle(.exText)
-                        .fontWeight(.bold)
-                        .offset(x: 10)
-                }
-                
-            }.padding(20)
-
+            MrPoopMessageView(msg: getMessage())
             
             LazyVGrid(columns: columns, spacing: 0) {
                 ForEach(rootEnvironment.dayOfWeekList, id: \.self) { week in

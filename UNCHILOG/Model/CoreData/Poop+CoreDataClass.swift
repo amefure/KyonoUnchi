@@ -16,7 +16,6 @@ public class Poop: NSManagedObject {
     public var wrappedColor: String { color ?? PoopColor.undefined.rawValue }
     public var wrappedShape: Int { Int(shape) }
     public var wrappedVolume: Int { Int(volume) }
-    public var wrappedHardness: Int { Int(hardness) }
     public var wrappedMemo: String { memo ?? "" }
     public var wrappedCreatedAt: Date { createdAt ?? Date() }
 }

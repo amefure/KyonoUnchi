@@ -59,7 +59,7 @@ struct PoopChartView: View {
                     ZStack {
                         // スワイプジェスチャーを聞かせるために全体に広がる白色のView
                         Color.white
-                        Text("記録がありません。")
+                        MrPoopMessageView(msg: "うんちの記録がありません。")
                     }
                 } else {
                     Chart(showCurrentData, id: \.createdAt) { poop in

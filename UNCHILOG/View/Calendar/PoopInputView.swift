@@ -22,7 +22,6 @@ struct PoopInputView: View {
     @State private var shape: PoopShape = .normal
     @State private var volume: PoopVolume = .medium
     @State private var volumeNum: Float = 3
-    @State private var hardness: PoopHardness = .medium
     @State private var hardnessNum: Float = 3
     @State private var memo: String = ""
     @State private var createdAt: Date = Date()
@@ -50,7 +49,6 @@ struct PoopInputView: View {
                             color: color,
                             shape: shape,
                             volume: volume,
-                            hardness: hardness,
                             memo: memo
                         )
                     } else {
@@ -58,7 +56,6 @@ struct PoopInputView: View {
                             color: color,
                             shape: shape,
                             volume: volume,
-                            hardness: hardness,
                             memo: memo,
                             createdAt: createdAt
                         )
@@ -114,13 +111,20 @@ struct PoopInputView: View {
                                 Button {
                                     shape = poopShape
                                 } label: {
-                                    poopShape.image
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 55)
-                                        .padding(5)
-                                        .background(shape == poopShape ? .exGray : .clear)
-                                        .clipShape(RoundedRectangle(cornerRadius: 60))
+                                    VStack(spacing: 0) {
+                                        
+                                        Text(poopShape.name)
+                                            .font(.caption)
+                                            .foregroundStyle(.exText)
+                                     
+                                        poopShape.image
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 55)
+                                            .padding(5)
+                                            .background(shape == poopShape ? .exGray : .clear)
+                                            .clipShape(RoundedRectangle(cornerRadius: 60))
+                                    }
                                 }
                             }
                         }
@@ -138,20 +142,6 @@ struct PoopInputView: View {
                 Slider(value: $volumeNum, in: 1...Float(PoopVolume.allCases.count - 1), step: 1.0)
                     .onChange(of: volumeNum) { oldValue, newValue in
                         volume = PoopVolume(rawValue: Int(newValue)) ?? .medium
-                    }.padding(.horizontal)
-                    .tint(.exSub)
-                
-                
-                InputItemTitleView(title: "硬さ", subTitle: "Hardness")
-                
-                Text(hardness.name)
-                    .foregroundStyle(.exText)
-                    .fontWeight(.bold)
-                    .opacity(0.8)
-                
-                Slider(value: $hardnessNum, in: 1...Float(PoopHardness.allCases.count - 1), step: 1.0)
-                    .onChange(of: hardnessNum) { oldValue, newValue in
-                        hardness = PoopHardness(rawValue: Int(newValue)) ?? .medium
                     }.padding(.horizontal)
                     .tint(.exSub)
                 
@@ -180,8 +170,6 @@ struct PoopInputView: View {
                 shape = PoopShape(rawValue: poop.wrappedShape) ?? .normal
                 volume = PoopVolume(rawValue: poop.wrappedVolume) ?? .medium
                 volumeNum = Float(volume.rawValue)
-                hardness = PoopHardness(rawValue: poop.wrappedHardness) ?? .medium
-                hardnessNum = Float(hardness.rawValue)
                 memo = poop.wrappedMemo
                 createdAt = poop.wrappedCreatedAt
             } else {

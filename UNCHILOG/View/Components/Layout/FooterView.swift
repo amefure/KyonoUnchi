@@ -47,8 +47,33 @@ struct FooterView: View {
                     }
                     
                 } label: {
-                    Text("登録")
-                        .offset(y: -10)
+                    
+                    ZStack {
+                     
+                        Text("と")
+                            .font(.system(size: 16))
+                            .rotationEffect(Angle(degrees: -40))
+                            .position(x: -5, y: 10)
+                        Text("う")
+                            .font(.system(size: 16))
+                            .rotationEffect(Angle(degrees: -20))
+                            .position(x: 20, y: -5)
+                        
+                        Text("ろ")
+                            .font(.system(size: 16))
+                            .rotationEffect(Angle(degrees: 20))
+                            .position(x: 50, y: -5)
+                        Text("く")
+                            .font(.system(size: 16))
+                            .rotationEffect(Angle(degrees: 40))
+                            .position(x: 75, y: 10)
+                        
+                        Image("mr_poop")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 70, height: 70)
+                            .offset(y: -5)
+                    }.frame(width: 70, height: 70)
                 }
             }
             

@@ -31,4 +31,21 @@ enum PoopShape: Int, CaseIterable {
             Image("poop_shape5")
         }
     }
+    
+    public var name: String {
+        return switch self {
+        case .undefined:
+            "未選択"
+        case .korokoro:
+            "硬め"
+        case .semiKorokoro:
+            "やや硬め"
+        case .normal:
+            "中くらい"
+        case .semiLiquid:
+            "やや柔らかめ"
+        case .liquid:
+            "柔らかめ"
+        }
+    }
 }

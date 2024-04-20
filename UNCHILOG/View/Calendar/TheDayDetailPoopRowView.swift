@@ -58,14 +58,6 @@ struct TheDayDetailPoopRowView: View {
                             .frame(width: 40)
                     }
                     
-                    
-                    if let hardness = PoopHardness(rawValue: poop.wrappedHardness),
-                       hardness != .undefined {
-                        Text(hardness.name)
-                            .font(.system(size: 13))
-                            .frame(width: 40)
-                    }
-                    
                     if !poop.wrappedMemo.isEmpty {
                         Button {
                             isShowMemo.toggle()

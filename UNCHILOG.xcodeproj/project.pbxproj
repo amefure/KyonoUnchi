@@ -25,7 +25,6 @@
 		128BB5C22BB282E7009E0FAB /* PoopRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5C12BB282E7009E0FAB /* PoopRepository.swift */; };
 		128BB5C52BB28495009E0FAB /* PoopShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5C42BB28495009E0FAB /* PoopShape.swift */; };
 		128BB5C72BB284AC009E0FAB /* PoopVolume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5C62BB284AC009E0FAB /* PoopVolume.swift */; };
-		128BB5C92BB284CA009E0FAB /* PoopHardness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5C82BB284CA009E0FAB /* PoopHardness.swift */; };
 		128BB5CB2BB284D5009E0FAB /* PoopColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5CA2BB284D5009E0FAB /* PoopColor.swift */; };
 		128BB5CD2BB28833009E0FAB /* PoopInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5CC2BB28833009E0FAB /* PoopInputView.swift */; };
 		128BB5D02BB2885C009E0FAB /* RepositoryDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5CF2BB2885C009E0FAB /* RepositoryDependency.swift */; };
@@ -62,6 +61,7 @@
 		12DB3CF62BD391FC0075817A /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 12DB3CF52BD391FC0075817A /* PrivacyInfo.xcprivacy */; };
 		12DB3CF82BD392A90075817A /* AdMobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB3CF72BD392A90075817A /* AdMobView.swift */; };
 		12DB3CFA2BD394870075817A /* AdsConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB3CF92BD394870075817A /* AdsConfig.swift */; };
+		12DB3CFC2BD3AD070075817A /* MrPoopMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB3CFB2BD3AD070075817A /* MrPoopMessageView.swift */; };
 		12DCB2C22BBD2B7700AF62CB /* EntryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DCB2C12BBD2B7700AF62CB /* EntryButton.swift */; };
 		C297C18C2F20E9590633A74B /* Pods_UNCHILOG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B70382F8D83335666AC1D3D7 /* Pods_UNCHILOG.framework */; };
 /* End PBXBuildFile section */
@@ -86,7 +86,6 @@
 		128BB5C12BB282E7009E0FAB /* PoopRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopRepository.swift; sourceTree = "<group>"; };
 		128BB5C42BB28495009E0FAB /* PoopShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopShape.swift; sourceTree = "<group>"; };
 		128BB5C62BB284AC009E0FAB /* PoopVolume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopVolume.swift; sourceTree = "<group>"; };
-		128BB5C82BB284CA009E0FAB /* PoopHardness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopHardness.swift; sourceTree = "<group>"; };
 		128BB5CA2BB284D5009E0FAB /* PoopColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopColor.swift; sourceTree = "<group>"; };
 		128BB5CC2BB28833009E0FAB /* PoopInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopInputView.swift; sourceTree = "<group>"; };
 		128BB5CF2BB2885C009E0FAB /* RepositoryDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDependency.swift; sourceTree = "<group>"; };
@@ -124,6 +123,7 @@
 		12DB3CF52BD391FC0075817A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		12DB3CF72BD392A90075817A /* AdMobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobView.swift; sourceTree = "<group>"; };
 		12DB3CF92BD394870075817A /* AdsConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsConfig.swift; sourceTree = "<group>"; };
+		12DB3CFB2BD3AD070075817A /* MrPoopMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MrPoopMessageView.swift; sourceTree = "<group>"; };
 		12DCB2C12BBD2B7700AF62CB /* EntryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryButton.swift; sourceTree = "<group>"; };
 		B70382F8D83335666AC1D3D7 /* Pods_UNCHILOG.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UNCHILOG.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C335F896FB75E0D71E43B745 /* Pods-UNCHILOG.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UNCHILOG.release.xcconfig"; path = "Target Support Files/Pods-UNCHILOG/Pods-UNCHILOG.release.xcconfig"; sourceTree = "<group>"; };
@@ -234,7 +234,6 @@
 				128BB5BB2BB147BB009E0FAB /* Poop+CoreDataClass.swift */,
 				128BB5C42BB28495009E0FAB /* PoopShape.swift */,
 				128BB5CA2BB284D5009E0FAB /* PoopColor.swift */,
-				128BB5C82BB284CA009E0FAB /* PoopHardness.swift */,
 				128BB5C62BB284AC009E0FAB /* PoopVolume.swift */,
 				12CBFBF32BAFE25C005FE4F1 /* UNCHILOG.xcdatamodeld */,
 			);
@@ -312,6 +311,7 @@
 				128BB5EE2BB59F83009E0FAB /* Layout */,
 				12A43E162BBAF51700AB19A4 /* RoundMessageView.swift */,
 				12DCB2C12BBD2B7700AF62CB /* EntryButton.swift */,
+				12DB3CFB2BD3AD070075817A /* MrPoopMessageView.swift */,
 				12DB3CF72BD392A90075817A /* AdMobView.swift */,
 			);
 			path = Components;
@@ -592,12 +592,12 @@
 				128BB5D42BB2899C009E0FAB /* KeyChainRepository.swift in Sources */,
 				128BB5D02BB2885C009E0FAB /* RepositoryDependency.swift in Sources */,
 				128BB5AF2BB14115009E0FAB /* SCDate.swift in Sources */,
-				128BB5C92BB284CA009E0FAB /* PoopHardness.swift in Sources */,
 				122B3EE32BBFC62700167D9E /* EntryMode.swift in Sources */,
 				128BB5EC2BB467B2009E0FAB /* Strings.swift in Sources */,
 				128BB60D2BB7F88E009E0FAB /* PoopChartView.swift in Sources */,
 				128BB5E62BB46589009E0FAB /* CustomNotifyDialogView.swift in Sources */,
 				128BB5D22BB28882009E0FAB /* UserDefaultsRepository.swift in Sources */,
+				12DB3CFC2BD3AD070075817A /* MrPoopMessageView.swift in Sources */,
 				128BB6032BB5B008009E0FAB /* AppLockInputViewModel.swift in Sources */,
 				128BB5FC2BB5AFC5009E0FAB /* AppLockView.swift in Sources */,
 				128BB5FE2BB5AFD0009E0FAB /* AppLockInputView.swift in Sources */,

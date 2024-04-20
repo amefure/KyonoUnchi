@@ -44,7 +44,7 @@ struct TheDayDetailView: View {
             if poopList.count == 0 {
                 
                 Spacer()
-                Text("うんちの記録がありません。")
+                MrPoopMessageView(msg: "うんちの記録がありません。")
             } else {
                 
                 HStack(spacing: 0) {
@@ -64,11 +64,6 @@ struct TheDayDetailView: View {
                     
                     Text("量")
                         .frame(width: 60)
-                    
-                    Divider()
-                    
-                    Text("硬さ")
-                        .frame(width: 40)
                     
                     Spacer()
                 }.frame(height: 50)
