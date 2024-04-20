@@ -43,7 +43,7 @@ struct TheDayView: View {
                     VStack {
                         Text("\(theDay.day)")
                             .frame(width: 30, height: 30)
-                            .background(isToday ? Color.exNegative : Color.clear)
+                            .background(isToday ? Color.exSub : Color.clear)
                             .clipShape(RoundedRectangle(cornerRadius: 30))
                             .foregroundStyle(isToday ? Color.white : theDay.dayColor())
                             .padding(.top, 2)
@@ -51,7 +51,17 @@ struct TheDayView: View {
                         Spacer()
                         
                         if poopCount() != 0 {
-                            Text("\(poopCount())")
+                            ZStack {
+                                Image("noface_poop")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 50)
+                                
+                                Text("\(poopCount())")
+                                    .fontWeight(.bold)
+                                    .foregroundStyle(.white)
+                                    .offset(y: 5)
+                            }
                         }
                         
                     }
