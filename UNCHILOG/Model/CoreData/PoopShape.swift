@@ -20,15 +20,15 @@ enum PoopShape: Int, CaseIterable {
         case .undefined:
             Image(systemName: "swift")
         case .korokoro:
-            Image(systemName: "swift")
+            Image("poop_shape1")
         case .semiKorokoro:
-            Image(systemName: "swift")
+            Image("poop_shape2")
         case .normal:
-            Image(systemName: "swift")
+            Image("poop_shape3")
         case .semiLiquid:
-            Image(systemName: "swift")
+            Image("poop_shape4")
         case .liquid:
-            Image(systemName: "swift")
+            Image("poop_shape5")
         }
     }
 }

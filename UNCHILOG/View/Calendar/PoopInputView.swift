@@ -115,6 +115,9 @@ struct PoopInputView: View {
                                     shape = poopShape
                                 } label: {
                                     poopShape.image
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 60)
                                 }
                             }
                         }
