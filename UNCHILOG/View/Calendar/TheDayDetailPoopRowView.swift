@@ -17,6 +17,7 @@ struct TheDayDetailPoopRowView: View {
     @Binding var showDeleteDialog: Bool
     @Binding var showEditInputView: Bool
     @State private var isShowMemo = false
+    @State private var memoLineLimit = 1
     
     var body: some View {
         Menu {
@@ -33,6 +34,18 @@ struct TheDayDetailPoopRowView: View {
                 showDeleteDialog = true
             } label: {
                 Label("削除", systemImage: "trash")
+            }
+            
+            if !poop.wrappedMemo.isEmpty {
+                Button(role: .none) {
+                    if memoLineLimit == 100 {
+                        memoLineLimit = 1
+                    } else {
+                        memoLineLimit = 100
+                    }
+                } label: {
+                    Label(memoLineLimit != 100 ? "MEMO表示" : "戻す", systemImage: "doc.plaintext")
+                }
             }
         } label: {
             
@@ -57,7 +70,7 @@ struct TheDayDetailPoopRowView: View {
                         
                         Rectangle()
                             .fill(.exThema)
-                            .frame(width: 2, height: 20)
+                            .frame(width: 2, height: memoLineLimit != 100 ? 20 : .infinity)
                     }
                     
                     VStack {
@@ -100,25 +113,16 @@ struct TheDayDetailPoopRowView: View {
                                     .frame(width: 50)
                             }
                             
-                            if !poop.wrappedMemo.isEmpty {
-                                Button {
-                                    isShowMemo.toggle()
-                                } label: {
-                                    Image(systemName: "doc.plaintext.fill")
-                                }.buttonStyle(.borderless)
-                            }
-                            
                             Spacer()
                         }
                         
                         // MARK: - MEMO：メモ
-                        if isShowMemo {
-                            Divider() // 境界線
-                            
-                            HStack{
-                                Text(poop.wrappedMemo)
-                                Spacer()
-                            }
+                        if !poop.wrappedMemo.isEmpty {
+                            Text(poop.wrappedMemo)
+                                .multilineTextAlignment(.leading)
+                                .foregroundStyle(.exText)
+                                .lineLimit(memoLineLimit)
+                                .padding(.leading)
                         }
                     }
                 }
