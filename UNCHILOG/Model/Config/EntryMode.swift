@@ -9,8 +9,8 @@ import UIKit
 
 // うんち登録モード
 enum EntryMode: Int {
-    case simple = 0
-    case detail = 1
+    case simple = 1
+    case detail = 2
     
     var name: String {
         switch self {
