@@ -150,7 +150,7 @@ struct PoopInputView: View {
                     .opacity(0.8)
                 
                 Slider(value: $volumeNum, in: 1...Float(PoopVolume.allCases.count - 1), step: 1.0)
-                    .onChange(of: volumeNum) { oldValue, newValue in
+                    .onChange(of: volumeNum) { newValue in
                         volume = PoopVolume(rawValue: Int(newValue)) ?? .medium
                     }.padding(.horizontal)
                     .tint(.exSub)

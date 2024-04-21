@@ -88,7 +88,7 @@ struct SettingView: View {
                         
                         Toggle(isOn: $isLock) {
                             Text(L10n.settingSectionAppLock)
-                        }.onChange(of: isLock) { oldValue, newValue in
+                        }.onChange(of: isLock) { newValue in
                             if newValue {
                                 viewModel.showPassInput()
                             } else {
