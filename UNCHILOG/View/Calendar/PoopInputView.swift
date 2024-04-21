@@ -49,7 +49,8 @@ struct PoopInputView: View {
                             color: color,
                             shape: shape,
                             volume: volume,
-                            memo: memo
+                            memo: memo,
+                            createdAt: createdAt
                         )
                     } else {
                         viewModel.addPoop(

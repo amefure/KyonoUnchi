@@ -110,7 +110,7 @@ struct TheDayDetailPoopRowView: View {
                                     .font(.system(size: 13))
                                     .fontWeight(.bold)
                                     .foregroundStyle(.exText)
-                                    .frame(width: 50)
+                                    .frame(width: 70)
                             }
                             
                             Spacer()

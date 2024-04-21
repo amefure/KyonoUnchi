@@ -25,13 +25,14 @@ class PoopRepository {
         CoreDataRepository.save()
     }
     
-    public func updatePoop(id : UUID, color: PoopColor, shape: PoopShape, volume: PoopVolume, memo: String) {
+    public func updatePoop(id : UUID, color: PoopColor, shape: PoopShape, volume: PoopVolume, memo: String, createdAt: Date) {
         let predicate = NSPredicate(format: "id == %@", id as CVarArg)
         guard let poop: Poop = CoreDataRepository.fetchSingle(predicate: predicate) else { return }
         poop.color = color.rawValue
         poop.shape = Int16(shape.rawValue)
         poop.volume = Int16(volume.rawValue)
         poop.memo = memo
+        poop.createdAt = createdAt
         CoreDataRepository.save()
     }
 
