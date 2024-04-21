@@ -16,10 +16,16 @@ struct SelectInitWeek: View {
     var body: some View {
         
         VStack {
-            Text("週始まり")
-                .fontWeight(.bold)
-                .foregroundStyle(.exText)
-                .padding(.top, 70)
+            
+            HeaderView(
+                leadingIcon: "chevron.backward",
+                leadingAction: {
+                    dismiss()
+                },
+                content: {
+                    Text("週始まり")
+                }
+            )
             
             Text("カレンダーの週の始まりの曜日を変更することができます。")
                 .foregroundStyle(.exText)

@@ -54,14 +54,25 @@ extension DateFormatUtility {
         c.date(from: components) ?? Date()
     }
     
+    /// 日付時間を23:59:59にリセットして返す
+    public func endOfDay(for date: Date) -> Date {
+        c.date(bySettingHour: 23, minute: 59, second: 59, of: date) ?? DateFormatUtility.today
+    }
+    
     /// 受け取った日付が今日と同じかどうか
     public func checkInSameDayAs(date: Date) -> Bool {
-        c.isDate(date, inSameDayAs: DateFormatUtility.today)
+        // 時間をリセットしておく
+        let resetDate = c.startOfDay(for: date)
+        let resetToDay = c.startOfDay(for: DateFormatUtility.today)
+        return c.isDate(resetDate, inSameDayAs: resetToDay)
     }
     
     /// 受け取った日付が今日とどれだけ離れているか
     public func daysDifferenceFromToday(date: Date) -> Int {
-        c.dateComponents([.day], from: date, to: DateFormatUtility.today).day ?? 0
+        // 時間をリセットしておく
+        let resetDate = c.startOfDay(for: date)
+        let resetToDay = c.startOfDay(for: DateFormatUtility.today)
+        return c.dateComponents([.day], from: resetDate, to: resetToDay).day ?? 0
     }
     
     /// 指定された日付の日付部分と現在の時刻を組み合わたDateオブジェクトを返す

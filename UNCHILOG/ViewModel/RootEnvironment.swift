@@ -26,7 +26,6 @@ class RootEnvironment: ObservableObject {
     @Published private(set) var appLocked = false
     
 
-    
     // MARK: Dialog
     @Published var showOutOfRangeCalendarDialog: Bool = false
     @Published var showSimpleEntryDialog: Bool = false

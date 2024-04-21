@@ -73,13 +73,18 @@ struct PoopChartView: View {
                             x: .value("年月日", poop.createdAt),
                             y: .value("回数", poop.count)
                         ).symbol {
-                            Circle()
-                                .fill()
-                                .frame(width: 10, height: 10)
+                            Image("noface_poop")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 30, height: 30)
+                        }.annotation {
+                            Text("\(poop.count)")
+                                .foregroundStyle(.exText)
+                                .offset(y: 12)
                         }
                         
                     }.padding()
-                        .chartYScale(domain: 0...getMax())
+                        .chartYScale(domain: 0...getMax() + 1)
                         .chartXAxis {
                             AxisMarks(values: .stride(by: .day, count: 2)) {
                                 AxisGridLine()

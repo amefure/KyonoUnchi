@@ -29,8 +29,9 @@ class PoopViewModel: ObservableObject {
 extension PoopViewModel {
     // 今日を起点として何日うんちが出ていないか
     public func findTodayDifference() -> Int {
-        
-        let dates = poops.map({ $0.wrappedCreatedAt }).filter({ $0 < DateFormatUtility.today })
+        // 今日の日付の23:59を取得
+        let endDay = dateFormatUtility.endOfDay(for: DateFormatUtility.today)
+        let dates = poops.map({ $0.wrappedCreatedAt }).filter({ $0 < endDay })
         // 今日と同じ日付があれば0を返す
         if dates.contains(where: { dateFormatUtility.checkInSameDayAs(date: $0 )}) {
             return 0
@@ -43,7 +44,7 @@ extension PoopViewModel {
                 closestPastDateDifference = difference
             }
         }
-        return closestPastDateDifference == Int.max ? 0 : closestPastDateDifference - 1
+        return closestPastDateDifference == Int.max ? 0 : closestPastDateDifference
     }
 }
 

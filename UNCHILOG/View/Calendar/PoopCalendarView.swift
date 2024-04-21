@@ -14,11 +14,15 @@ struct PoopCalendarView: View {
     private let columns = Array(repeating: GridItem(spacing: 0), count: 7)
     
     private func getMessage() -> String {
-        switch poopViewModel.findTodayDifference() {
+        let diffrence = poopViewModel.findTodayDifference()
+        switch diffrence {
         case 0:
             return "順調♪順調♪"
+        case 30...:
+            let months = diffrence / 30
+            return "うんちが\(months)ヶ月出てないよ！？"
         default:
-            return "うんちが\(poopViewModel.findTodayDifference())日出てないよ"
+            return "うんちが\(diffrence)日出てないよ！"
         }
     }
     

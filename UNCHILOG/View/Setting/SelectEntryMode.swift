@@ -27,10 +27,16 @@ struct SelectEntryMode: View {
     var body: some View {
         
         VStack {
-            Text("登録モード")
-                .fontWeight(.bold)
-                .foregroundStyle(.exText)
-                .padding(.top, 70)
+            
+            HeaderView(
+                leadingIcon: "chevron.backward",
+                leadingAction: {
+                    dismiss()
+                },
+                content: {
+                    Text("登録モード")
+                }
+            )
             
             Text("うんちの記録を登録するモードを変更することができます。")
                 .foregroundStyle(.exText)
