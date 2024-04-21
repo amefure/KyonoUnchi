@@ -53,12 +53,27 @@ struct SelectEntryMode: View {
             
             switch selectMode {
             case .simple:
-                Text("「シンプルモード」に設定するとカレンダー画面の登録ボタンを押下した際に現在時刻で記録が登録されます。\n登録の際に細かい設定はできませんが、登録後から編集することは可能になっているので詳細モードと同じ内容を追記することが可能です。").padding(25)
-                    .frame(height: 200)
+                Text("「シンプルモード」に設定するとカレンダー画面の登録ボタン(赤枠)を押下した際に現在時刻でうんちの記録が登録されます。\n登録の際に細かい設定はできませんが、登録後から編集することは可能になっているので詳細モードと同じ内容を追記することが可能です。")
+                    .frame(height: 130)
+                    .padding(.horizontal, 25)
+                    
+                
+                Image("ss_simple_mode")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: DeviceSizeManager.deviceHeight / 2.3)
             case .detail:
-                Text("「詳細モード」に設定するとカレンダー画面の登録ボタンを押下した際に登録画面が表示され、うんちの硬さや色、形、MEMOなどを入力することが可能です。").padding(25)
-                    .frame(height: 200)
+                Text("「詳細モード」に設定するとカレンダー画面の登録ボタンを押下した際に以下の登録画面が表示され、うんちの色、形、量、MEMOなどを入力することが可能です。")
+                    .frame(height: 130)
+                    .padding(.horizontal, 25)
+                    
+                    
+                Image("ss_detail_mode")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: DeviceSizeManager.deviceHeight / 2.3)
             }
+            
             
             Button {
                 rootEnvironment.saveEntryMode(mode: selectMode)
