@@ -94,8 +94,8 @@ internal enum L10n {
   internal static let settingSectionLinkContact = L10n.tr("Localizable", "setting_section_link_contact", fallback: "アプリの不具合はこちら")
   /// ・アプリに不具合がございましたら「アプリの不具合はこちら」よりお問い合わせください。
   internal static let settingSectionLinkDesc = L10n.tr("Localizable", "setting_section_link_desc", fallback: "・アプリに不具合がございましたら「アプリの不具合はこちら」よりお問い合わせください。")
-  /// 「うんち記録カレンダー」をオススメする
-  internal static let settingSectionLinkRecommend = L10n.tr("Localizable", "setting_section_link_recommend", fallback: "「うんち記録カレンダー」をオススメする")
+  /// 「今日のうんち」をオススメする
+  internal static let settingSectionLinkRecommend = L10n.tr("Localizable", "setting_section_link_recommend", fallback: "「今日のうんち」をオススメする")
   /// アプリをレビューする
   internal static let settingSectionLinkReview = L10n.tr("Localizable", "setting_section_link_review", fallback: "アプリをレビューする")
   /// 利用規約とプライバシーポリシー

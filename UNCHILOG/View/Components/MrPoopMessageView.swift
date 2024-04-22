@@ -25,6 +25,7 @@ struct MrPoopMessageView: View {
                     .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
                     .shadow(color: .gray, radius: 3, x: 2, y: 2)
                 Text(msg)
+                    .frame(width: DeviceSizeManager.deviceWidth - 140, height: 50)
                     .foregroundStyle(.exText)
                     .fontWeight(.bold)
                     .offset(x: 10)
