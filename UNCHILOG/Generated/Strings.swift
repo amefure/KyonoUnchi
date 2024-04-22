@@ -52,6 +52,32 @@ internal enum L10n {
   /// うんちの記録を
   /// 更新しました。
   internal static let dialogUpdatePoop = L10n.tr("Localizable", "dialog_update_poop", fallback: "うんちの記録を\n更新しました。")
+  /// 順調♪順調♪
+  internal static let poopMessage1 = L10n.tr("Localizable", "poop_message_1", fallback: "順調♪順調♪")
+  /// 自分のうんちを把握するのは大事だよ
+  internal static let poopMessage10 = L10n.tr("Localizable", "poop_message_10", fallback: "自分のうんちを把握するのは大事だよ")
+  /// 今日のあなたは大吉だよ
+  internal static let poopMessage11 = L10n.tr("Localizable", "poop_message_11", fallback: "今日のあなたは大吉だよ")
+  /// お腹を冷やさないようにね
+  internal static let poopMessage12 = L10n.tr("Localizable", "poop_message_12", fallback: "お腹を冷やさないようにね")
+  /// バナナうんちは良いうんち！
+  internal static let poopMessage2 = L10n.tr("Localizable", "poop_message_2", fallback: "バナナうんちは良いうんち！")
+  /// ぶりっ♪
+  internal static let poopMessage3 = L10n.tr("Localizable", "poop_message_3", fallback: "ぶりっ♪")
+  /// 健康うんちは75％が水分なんだって
+  internal static let poopMessage4 = L10n.tr("Localizable", "poop_message_4", fallback: "健康うんちは75％が水分なんだって")
+  /// 1日に150~250g出すのがベスト！
+  internal static let poopMessage5 = L10n.tr("Localizable", "poop_message_5", fallback: "1日に150~250g出すのがベスト！")
+  /// うんちが%@日出てないよ！
+  internal static func poopMessage6(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "poop_message_6_%@", String(describing: p1), fallback: "うんちが%@日出てないよ！")
+  }
+  /// 今日は何回でた？
+  internal static let poopMessage7 = L10n.tr("Localizable", "poop_message_7", fallback: "今日は何回でた？")
+  /// 今日も良い1日になりますように
+  internal static let poopMessage8 = L10n.tr("Localizable", "poop_message_8", fallback: "今日も良い1日になりますように")
+  /// 記録を続けていてすごい！
+  internal static let poopMessage9 = L10n.tr("Localizable", "poop_message_9", fallback: "記録を続けていてすごい！")
   /// ・アプリにパスワードを設定してロックをかけることができます。
   internal static let settingSectionAppDesc = L10n.tr("Localizable", "setting_section_app_desc", fallback: "・アプリにパスワードを設定してロックをかけることができます。")
   /// うんちの登録モードを切り替え

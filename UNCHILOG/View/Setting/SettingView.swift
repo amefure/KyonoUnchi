@@ -99,31 +99,29 @@ struct SettingView: View {
                 }
                 
                 Section(header: Text("Link"), footer: Text(L10n.settingSectionLinkDesc)) {
-                    //                    if let url = URL(string: UrlLinkConfig.APP_REVIEW_URL) {
-                    //                        // 1:レビューページ
-                    //                        Link(destination: url, label: {
-                    //                            HStack {
-                    //                                Image(systemName: "hand.thumbsup")
-                    //                                Text(L10n.settingSectionLinkReview)
-                    //                            }
-                    //                        }).listRowBackground(rootEnvironment.appColor.color)
-                    //                            .foregroundStyle(.white)
-                    //                    }
+                    if let url = URL(string: UrlLinkConfig.APP_REVIEW_URL) {
+                        // 1:レビューページ
+                        Link(destination: url, label: {
+                            HStack {
+                                Image(systemName: "hand.thumbsup")
+                                Text(L10n.settingSectionLinkReview)
+                            }
+                        })
+                    }
                     
                     // 2:シェアボタン
-                    //                    Button(action: {
-                    //                        viewModel.shareApp(
-                    //                            shareText: "",
-                    //                            shareLink: ""
-                    //                        )
-                    //                    }) {
-                    //                        HStack {
-                    //                            Image(systemName: "star.bubble")
-                    //
-                    //                            Text(L10n.settingSectionLinkRecommend)
-                    //                        }
-                    //                    }.listRowBackground(rootEnvironment.appColor.color)
-                    //                        .foregroundStyle(.white)
+                    Button(action: {
+                        viewModel.shareApp(
+                            shareText: "今日のうんちはうんちの記録を管理できるアプリだよ♪",
+                            shareLink: UrlLinkConfig.APP_REVIEW_URL
+                        )
+                    }) {
+                        HStack {
+                            Image(systemName: "star.bubble")
+                            
+                            Text(L10n.settingSectionLinkRecommend)
+                        }
+                    }
                     
                     if let url = URL(string: UrlLinkConfig.APP_CONTACT_URL) {
                         // 3:お問い合わせフォーム

@@ -53,6 +53,7 @@
 		128BB60A2BB79BA2009E0FAB /* UrlLinkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB6092BB79BA2009E0FAB /* UrlLinkConfig.swift */; };
 		128BB60D2BB7F88E009E0FAB /* PoopChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB60C2BB7F88E009E0FAB /* PoopChartView.swift */; };
 		12A43E172BBAF51800AB19A4 /* RoundMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A43E162BBAF51700AB19A4 /* RoundMessageView.swift */; };
+		12B29BCE2BD521A900DD7E20 /* PoopMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B29BCD2BD521A900DD7E20 /* PoopMessage.swift */; };
 		12CBFBE92BAFE25B005FE4F1 /* UNCHILOGApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CBFBE82BAFE25B005FE4F1 /* UNCHILOGApp.swift */; };
 		12CBFBEB2BAFE25B005FE4F1 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CBFBEA2BAFE25B005FE4F1 /* RootView.swift */; };
 		12CBFBED2BAFE25C005FE4F1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12CBFBEC2BAFE25C005FE4F1 /* Images.xcassets */; };
@@ -114,6 +115,7 @@
 		128BB6092BB79BA2009E0FAB /* UrlLinkConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlLinkConfig.swift; sourceTree = "<group>"; };
 		128BB60C2BB7F88E009E0FAB /* PoopChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopChartView.swift; sourceTree = "<group>"; };
 		12A43E162BBAF51700AB19A4 /* RoundMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundMessageView.swift; sourceTree = "<group>"; };
+		12B29BCD2BD521A900DD7E20 /* PoopMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopMessage.swift; sourceTree = "<group>"; };
 		12CBFBE52BAFE25B005FE4F1 /* UNCHILOG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UNCHILOG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12CBFBE82BAFE25B005FE4F1 /* UNCHILOGApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNCHILOGApp.swift; sourceTree = "<group>"; };
 		12CBFBEA2BAFE25B005FE4F1 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -368,6 +370,7 @@
 				128BB6092BB79BA2009E0FAB /* UrlLinkConfig.swift */,
 				12DB3CF92BD394870075817A /* AdsConfig.swift */,
 				122B3EE22BBFC62700167D9E /* EntryMode.swift */,
+				12B29BCD2BD521A900DD7E20 /* PoopMessage.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -604,6 +607,7 @@
 				128BB5C72BB284AC009E0FAB /* PoopVolume.swift in Sources */,
 				128BB6072BB5B0DD009E0FAB /* SettingViewModel.swift in Sources */,
 				128BB5BC2BB147BB009E0FAB /* Poop+CoreDataClass.swift in Sources */,
+				12B29BCE2BD521A900DD7E20 /* PoopMessage.swift in Sources */,
 				128BB5B82BB142BB009E0FAB /* EXCollection.swift in Sources */,
 				128BB5CB2BB284D5009E0FAB /* PoopColor.swift in Sources */,
 				12DB3CF82BD392A90075817A /* AdMobView.swift in Sources */,

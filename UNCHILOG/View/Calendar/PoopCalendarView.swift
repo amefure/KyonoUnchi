@@ -13,25 +13,17 @@ struct PoopCalendarView: View {
     
     private let columns = Array(repeating: GridItem(spacing: 0), count: 7)
     
-    private func getMessage() -> String {
-        let diffrence = poopViewModel.findTodayDifference()
-        switch diffrence {
-        case 0:
-            return "順調♪順調♪"
-        case 30...:
-            let months = diffrence / 30
-            return "うんちが\(months)ヶ月出てないよ！？"
-        default:
-            return "うんちが\(diffrence)日出てないよ！"
-        }
-    }
+    @State private var msg = ""
     
     var body: some View {
         VStack(spacing: 0) {
             
             YearAndMonthSelectionView()
             
-            MrPoopMessageView(msg: getMessage())
+            MrPoopMessageView(msg: msg)
+                .onTapGesture {
+                    msg = poopViewModel.getMessage()
+                }
             
             LazyVGrid(columns: columns, spacing: 0) {
                 ForEach(rootEnvironment.dayOfWeekList, id: \.self) { week in
@@ -59,6 +51,8 @@ struct PoopCalendarView: View {
                         }
                     }
             )
+        }.onAppear {
+            msg = poopViewModel.getMessage()
         }
     }
 }

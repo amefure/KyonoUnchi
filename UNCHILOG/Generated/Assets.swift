@@ -41,6 +41,7 @@ internal enum Asset {
     internal static let exThema = ColorAsset(name: "ex_thema")
   }
   internal enum Images {
+    internal static let backToday = ImageAsset(name: "back_today")
     internal static let mrPoop = ImageAsset(name: "mr_poop")
     internal static let nofacePoop = ImageAsset(name: "noface_poop")
     internal static let poopShape1 = ImageAsset(name: "poop_shape1")
@@ -49,6 +50,8 @@ internal enum Asset {
     internal static let poopShape4 = ImageAsset(name: "poop_shape4")
     internal static let poopShape5 = ImageAsset(name: "poop_shape5")
     internal static let smilePoop = ImageAsset(name: "smile_poop")
+    internal static let ssDetailMode = ImageAsset(name: "ss_detail_mode")
+    internal static let ssSimpleMode = ImageAsset(name: "ss_simple_mode")
   }
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
