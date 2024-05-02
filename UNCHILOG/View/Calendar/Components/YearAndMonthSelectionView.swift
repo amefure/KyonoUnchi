@@ -59,13 +59,13 @@ struct YearAndMonthSelectionView: View {
                 
                 
                 Menu {
-                    ForEach(rootEnvironment.selectYearAndMonth.reversed()) { yearAndMonth in
-                        Button {
-                            rootEnvironment.moveToDayCalendar(year: yearAndMonth.year, month: yearAndMonth.month)
-                        } label: {
-                            Text(yearAndMonth.yearAndMonth)
-                        }
-                    }
+//                    ForEach(rootEnvironment.selectYearAndMonth.reversed()) { yearAndMonth in
+//                        Button {
+//                            rootEnvironment.moveToDayCalendar(year: yearAndMonth.year, month: yearAndMonth.month)
+//                        } label: {
+//                            Text(yearAndMonth.yearAndMonth)
+//                        }
+//                    }
                 } label: {
                     Text(rootEnvironment.getCurrentYearAndMonth())
                         .fontWeight(.bold)

@@ -12,19 +12,18 @@ struct TheDayView: View {
     private let dateFormatUtility = DateFormatUtility()
     @ObservedObject private var rootEnvironment = RootEnvironment.shared
     
-    @Binding var theDay: SCDate
+    public var theDay: SCDate
     public var poops: [Poop]
     
-    private func poopList() -> [Poop] {
-        let list = poops.filter({ $0.getDate() == theDay.getDate() })
-        return list
-    }
+    @State private var isToday = false
+    @State private var count = 0
     
     private func poopCount() -> Int {
-        return poopList().count
+        let list = poops.filter({ $0.getDate() == theDay.getDate() })
+        return list.count
     }
     
-    private var isToday: Bool {
+    private func getIsToday() -> Bool {
         let today = dateFormatUtility.convertDateComponents(date: DateFormatUtility.today)
         guard let year = today.year,
               let month = today.month,
@@ -39,7 +38,7 @@ struct TheDayView: View {
     var body: some View {
         VStack {
             if theDay.day == -1 {
-                Text("")
+                EmptyView()
             } else {
                 NavigationLink {
                     TheDayDetailView(theDay: theDay)
@@ -54,7 +53,7 @@ struct TheDayView: View {
                         
                         Spacer()
                         
-                        if poopCount() != 0 {
+                        if count != 0 {
                             ZStack {
                                 Image("noface_poop")
                                     .resizable()
@@ -62,7 +61,7 @@ struct TheDayView: View {
                                     .frame(width: poopIconWidth)
                                     .scaleEffect(1.3)
                                 
-                                Text("\(poopCount())")
+                                Text("\(count)")
                                     .fontWeight(.bold)
                                     .foregroundStyle(.white)
                                     .offset(y: 5)
@@ -82,11 +81,15 @@ struct TheDayView: View {
         .frame(height: 80)
         .overlay {
             Rectangle()
-                .stroke(.gray , lineWidth: 1)
+                .stroke(.gray , lineWidth: 0.5)
+        }
+        .onAppear {
+            count = poopCount()
+            isToday = getIsToday()
         }
     }
 }
 
 #Preview {
-    TheDayView(theDay: Binding.constant(SCDate.demo), poops: [])
+    TheDayView(theDay: SCDate.demo, poops: [])
 }

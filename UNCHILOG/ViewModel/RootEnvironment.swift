@@ -14,11 +14,8 @@ class RootEnvironment: ObservableObject {
     
     // MARK: Calendar ロジック
     @Published var currentDates: [[SCDate]] = []
-    @Published private(set) var currentYearAndMonth: [SCYearAndMonth?] = []
+    @Published private(set) var currentYearAndMonth: [SCYearAndMonth] = []
     @Published private(set) var dayOfWeekList: [SCWeek] = []
-    public var selectYearAndMonth: [SCYearAndMonth] {
-        scCalenderRepository.selectYearAndMonth
-    }
     
     // MARK: 永続化
     @Published private(set) var initWeek: SCWeek = .sunday
@@ -78,7 +75,7 @@ extension RootEnvironment {
     
     /// 年月を1つ進める
     public func getCurrentYearAndMonth() -> String {
-        return currentYearAndMonth[safe: 1]??.yearAndMonth ?? ""
+        return currentYearAndMonth[safe: 1]?.yearAndMonth ?? ""
     }
    
     /// 年月を1つ進める

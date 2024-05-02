@@ -13,6 +13,7 @@ class SCCalenderRepository {
     static let shared = SCCalenderRepository()
 
     // MARK: Config
+    // 初期表示位置デモ値
     static let START_YEAR = 2023
     static let START_MONTH = 1
     /// 最初に表示したい曜日
@@ -28,11 +29,10 @@ class SCCalenderRepository {
     
     /// 表示している前後3ヶ月の年月オブジェクト
     ///  `[2024.2 , 2024.3 , 2024.4]`
-    ///  `[nil , 2023.1 , 2023.2]`
-    public var currentYearAndMonth: AnyPublisher<[SCYearAndMonth?], Never> {
+    public var currentYearAndMonth: AnyPublisher<[SCYearAndMonth], Never> {
         _currentYearAndMonth.eraseToAnyPublisher()
     }
-    private let _currentYearAndMonth = CurrentValueSubject<[SCYearAndMonth?], Never>([])
+    private let _currentYearAndMonth = CurrentValueSubject<[SCYearAndMonth], Never>([])
     
     /// 表示している曜日配列(順番はUIに反映される)
     public var dayOfWeekList: AnyPublisher<[SCWeek], Never> {
@@ -40,16 +40,11 @@ class SCCalenderRepository {
     }
     private let _dayOfWeekList = CurrentValueSubject<[SCWeek], Never>([.sunday, .monday, .tuesday, .wednesday, .thursday, .friday, .saturday])
     
-    /// 表示可能な年月配列
-    public var selectYearAndMonth: [SCYearAndMonth] = []
-    
     /// 当日の日付情報
     private let today: DateComponents
     
     /// カレンダー
     private let calendar = Calendar(identifier: .gregorian)
-    /// 表示している年月オブジェクトIndex
-    private var currentYearAndMonthIndex: Int = 0
     
     
     init(startYear: Int = START_YEAR, startMonth: Int = START_MONTH, initWeek: SCWeek = .sunday) {
@@ -60,8 +55,6 @@ class SCCalenderRepository {
         let nowYear = today.year ?? startYear
         let nowMonth = today.month ?? startMonth
 
-        // 表示可能な年月情報を生成し保持
-        setSelectYearAndMonth(startYear: startYear, endYear: nowYear)
         // カレンダーの初期表示位置
         moveYearAndMonthCalendar(year: nowYear, month: nowMonth)
         // 週の始まりに設定する曜日を指定
@@ -74,20 +67,6 @@ class SCCalenderRepository {
 
 extension SCCalenderRepository {
     
-    /// 指定した年月の範囲の`SCYearAndMonth`オブジェクトを生成
-    /// - parameter startYear: 開始年月
-    /// - parameter endYear: 終了年月
-    private func setSelectYearAndMonth(startYear: Int, endYear: Int) {
-        var yearMonthList: [SCYearAndMonth] = []
-        // 当年+1年先のカレンダー情報を取得しておく
-        for year in startYear...endYear + 1 {
-            for month in 1...12 {
-                yearMonthList.append(SCYearAndMonth(year: year, month: month))
-            }
-        }
-        selectYearAndMonth = yearMonthList
-    }
-    
     /// カレンダーUIを更新
     /// 日付情報を取得して配列に格納
     private func updateCalendar() {
@@ -95,11 +74,8 @@ extension SCCalenderRepository {
         
         var datesList: [[SCDate]] = []
         for yearAndMonth in yearAndMonths {
-            guard let year = yearAndMonth?.year,
-                  let month = yearAndMonth?.month else {
-                datesList.append([])
-                continue
-            }
+            let year = yearAndMonth.year
+            let month = yearAndMonth.month
             
             // 指定された年月の最初の日を取得
             var components = DateComponents()
@@ -169,19 +145,17 @@ extension SCCalenderRepository {
     /// 年月を1つ進める
     /// - Returns: 成功フラグ
     public func forwardMonth() -> Bool {
-        currentYearAndMonthIndex += 1
-        // 現在の年月より1つ先が存在しない場合は範囲外エラーとする
-        guard selectYearAndMonth[safe: currentYearAndMonthIndex] != nil else {
-            currentYearAndMonthIndex -= 1
-            return false
-        }
-        // 現在の年月より2つ先は存在しなくても取得する
-        let nextYearAndMonth = selectYearAndMonth[safe: currentYearAndMonthIndex + 1]
+        
         var value = _currentYearAndMonth.value
-        value.removeFirst()
-        value.append(nextYearAndMonth)
+        guard let last = value.last else { return false }
+        if last.month + 1 == 13 {
+            value.removeFirst()
+            value.append(SCYearAndMonth(year: last.year + 1, month: 1))
+        } else {
+            value.removeFirst()
+            value.append(SCYearAndMonth(year: last.year, month: last.month + 1))
+        }
         _currentYearAndMonth.send(value)
-        print("--",_currentYearAndMonth.value)
         updateCalendar()
         return true
     }
@@ -189,19 +163,16 @@ extension SCCalenderRepository {
     /// 年月を1つ戻す
     /// - Returns: 成功フラグ
     public func backMonth() -> Bool {
-        currentYearAndMonthIndex -= 1
-        // 現在の年月より1つ先が存在しない場合は範囲外エラーとする
-        guard selectYearAndMonth[safe: currentYearAndMonthIndex] != nil else {
-            currentYearAndMonthIndex += 1
-            return false
-        }
-        // 現在の年月より2つ前は存在しなくても取得する
-        let nextYearAndMonth = selectYearAndMonth[safe: currentYearAndMonthIndex - 1]
         var value = _currentYearAndMonth.value
-        value.removeLast()
-        value.insert(nextYearAndMonth, at: 0)
+        guard let first = value.first else { return false }
+        if first.month - 1 == 0 {
+            value.removeLast()
+            value.insert(SCYearAndMonth(year: first.year - 1, month: 12), at: 0)
+        } else {
+            value.removeLast()
+            value.insert(SCYearAndMonth(year: first.year, month: first.month - 1), at: 0)
+        }
         _currentYearAndMonth.send(value)
-        print("--",_currentYearAndMonth.value)
         updateCalendar()
         return true
     }
@@ -220,11 +191,23 @@ extension SCCalenderRepository {
     /// - parameter year: 指定年
     /// - parameter month: 指定月
     public func moveYearAndMonthCalendar(year: Int, month: Int) {
-        currentYearAndMonthIndex = selectYearAndMonth.firstIndex(where: { $0.year == year && $0.month == month }) ?? selectYearAndMonth.count - 1
-        let middle = selectYearAndMonth[safe: currentYearAndMonthIndex]
-        let first = selectYearAndMonth[safe: currentYearAndMonthIndex - 1]
-        let last = selectYearAndMonth[safe: currentYearAndMonthIndex + 1]
-        _currentYearAndMonth.send([first, middle, last])
+        var value: [SCYearAndMonth] = []
+        let middle = SCYearAndMonth(year: year, month: month)
+        value.append(middle)
+        
+        if middle.month + 1 == 13 {
+            value.append(SCYearAndMonth(year: middle.year + 1, month: 1))
+        } else {
+            value.append(SCYearAndMonth(year: middle.year, month: middle.month + 1))
+        }
+        
+        if middle.month - 1 == 0 {
+            value.insert(SCYearAndMonth(year: middle.year - 1, month: 12), at: 0)
+        } else {
+            value.insert(SCYearAndMonth(year: middle.year, month: middle.month - 1), at: 0)
+        }
+        
+        _currentYearAndMonth.send(value)
         updateCalendar()
     }
 }
