@@ -14,7 +14,7 @@ struct PoopChartView: View {
     
     // チャートで表示する年月のデータのみ抽出
     private var showCurrentData: [(createdAt: Date, count: Int)] {
-        guard let currentYearAndMonth = rootEnvironment.currentYearAndMonth?.yearAndMonth else { return [] }
+        let currentYearAndMonth = rootEnvironment.getCurrentYearAndMonth()
         
         let dateFormatUtility = DateFormatUtility(format: "yyyy年MM月")
         let currentDate = dateFormatUtility.getDate(str: currentYearAndMonth)

@@ -67,7 +67,7 @@ struct YearAndMonthSelectionView: View {
                         }
                     }
                 } label: {
-                    Text(rootEnvironment.currentYearAndMonth?.yearAndMonth ?? "")
+                    Text(rootEnvironment.getCurrentYearAndMonth())
                         .fontWeight(.bold)
                 }
                 

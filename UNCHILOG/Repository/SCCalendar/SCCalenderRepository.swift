@@ -18,18 +18,21 @@ class SCCalenderRepository {
     /// 最初に表示したい曜日
     private var initWeek: SCWeek = .sunday
 
-    
-    /// 表示している年月の日付オブジェクト
-    public var currentDates: AnyPublisher<[SCDate], Never> {
+    /// 表示している前後3ヶ月の年月の日付オブジェクト
+    ///  `[[2月の日付情報] , [3月の日付情報] , [4月の日付情報]]`
+    ///  `[[] , [1月の日付情報] , [2月の日付情報]]`
+    public var currentDates: AnyPublisher<[[SCDate]], Never> {
         _currentDates.eraseToAnyPublisher()
     }
-    private let _currentDates = CurrentValueSubject<[SCDate], Never>([])
+    private let _currentDates = CurrentValueSubject<[[SCDate]], Never>([])
     
-    /// 表示している年月オブジェクト
-    public var currentYearAndMonth: AnyPublisher<SCYearAndMonth?, Never> {
+    /// 表示している前後3ヶ月の年月オブジェクト
+    ///  `[2024.2 , 2024.3 , 2024.4]`
+    ///  `[nil , 2023.1 , 2023.2]`
+    public var currentYearAndMonth: AnyPublisher<[SCYearAndMonth?], Never> {
         _currentYearAndMonth.eraseToAnyPublisher()
     }
-    private let _currentYearAndMonth = CurrentValueSubject<SCYearAndMonth?, Never>(nil)
+    private let _currentYearAndMonth = CurrentValueSubject<[SCYearAndMonth?], Never>([])
     
     /// 表示している曜日配列(順番はUIに反映される)
     public var dayOfWeekList: AnyPublisher<[SCWeek], Never> {
@@ -88,65 +91,75 @@ extension SCCalenderRepository {
     /// カレンダーUIを更新
     /// 日付情報を取得して配列に格納
     private func updateCalendar() {
-        guard let year = _currentYearAndMonth.value?.year,
-        let month = _currentYearAndMonth.value?.month else {
-            return
-        }
+        let yearAndMonths = _currentYearAndMonth.value
         
-        // 指定された年月の最初の日を取得
-        var components = DateComponents()
-        components.year = year
-        components.month = month
-        components.day = 1
-        guard let startDate = calendar.date(from: components) else {
-            return
-        }
-        
-        // 指定された年月の日数を取得
-        guard let range = calendar.range(of: .day, in: .month, for: startDate) else {
-            return
-        }
-        
-        
-        // 日にち情報を格納する配列を準備
-        var dates: [SCDate] = []
-        
-        // 月の初めから最後の日までループして日にち情報を作成
-        for day in 1...range.count {
-            components.year = year
-            components.month = month
-            components.day = day
-            guard let date = calendar.date(from: components) else {
+        var datesList: [[SCDate]] = []
+        for yearAndMonth in yearAndMonths {
+            guard let year = yearAndMonth?.year,
+                  let month = yearAndMonth?.month else {
+                datesList.append([])
                 continue
             }
-            let dayOfWeek = calendar.component(.weekday, from: date)
-            let week = SCWeek(rawValue: dayOfWeek - 1)!
             
-            let holidayName = "" // ここに祝日名を取得する処理を追加する
-            let scDate = SCDate(year: year, month: month, day: day, date: date,week: week, holidayName: holidayName)
-            dates.append(scDate)
-        }
-        
-        let firstWeek = _dayOfWeekList.value.firstIndex(of: dates.first!.week!)!
-        let initWeek = _dayOfWeekList.value.firstIndex(of: initWeek)!
-        let subun = abs(firstWeek - initWeek)
-    
-        
-        if subun != 0 {
-            for _ in 0..<subun {
-                let blankScDate = SCDate(year: -1, month: -1, day: -1)
-                dates.insert(blankScDate, at: 0)
+            // 指定された年月の最初の日を取得
+            var components = DateComponents()
+            components.year = year
+            components.month = month
+            components.day = 1
+            guard let startDate = calendar.date(from: components) else {
+                datesList.append([])
+                continue
             }
-        }
-        
-        if dates.count % 7 != 0 {
-            let space = 7 - dates.count % 7
-            for _ in 0..<space {
-                let blankScDate = SCDate(year: -1, month: -1, day: -1)
-                dates.append(blankScDate)
+            
+            // 指定された年月の日数を取得
+            guard let range = calendar.range(of: .day, in: .month, for: startDate) else {
+                datesList.append([])
+                continue
             }
+            
+            
+            // 日にち情報を格納する配列を準備
+            var dates: [SCDate] = []
+            
+            // 月の初めから最後の日までループして日にち情報を作成
+            for day in 1...range.count {
+                components.year = year
+                components.month = month
+                components.day = day
+                guard let date = calendar.date(from: components) else {
+                    datesList.append([])
+                    continue
+                }
+                let dayOfWeek = calendar.component(.weekday, from: date)
+                let week = SCWeek(rawValue: dayOfWeek - 1)!
+                
+                let holidayName = "" // ここに祝日名を取得する処理を追加する
+                let scDate = SCDate(year: year, month: month, day: day, date: date,week: week, holidayName: holidayName)
+                dates.append(scDate)
+            }
+            
+            let firstWeek = _dayOfWeekList.value.firstIndex(of: dates.first!.week!)!
+            let initWeek = _dayOfWeekList.value.firstIndex(of: initWeek)!
+            let subun = abs(firstWeek - initWeek)
+        
+            
+            if subun != 0 {
+                for _ in 0..<subun {
+                    let blankScDate = SCDate(year: -1, month: -1, day: -1)
+                    dates.insert(blankScDate, at: 0)
+                }
+            }
+            
+            if dates.count % 7 != 0 {
+                let space = 7 - dates.count % 7
+                for _ in 0..<space {
+                    let blankScDate = SCDate(year: -1, month: -1, day: -1)
+                    dates.append(blankScDate)
+                }
+            }
+            datesList.append(dates)
         }
-        _currentDates.send(dates)
+        _currentDates.send(datesList)
     }
 }
 
@@ -157,11 +170,18 @@ extension SCCalenderRepository {
     /// - Returns: 成功フラグ
     public func forwardMonth() -> Bool {
         currentYearAndMonthIndex += 1
-        guard let nextYearAndMonth = selectYearAndMonth[safe: currentYearAndMonthIndex] else {
+        // 現在の年月より1つ先が存在しない場合は範囲外エラーとする
+        guard selectYearAndMonth[safe: currentYearAndMonthIndex] != nil else {
             currentYearAndMonthIndex -= 1
             return false
         }
-        _currentYearAndMonth.send(nextYearAndMonth)
+        // 現在の年月より2つ先は存在しなくても取得する
+        let nextYearAndMonth = selectYearAndMonth[safe: currentYearAndMonthIndex + 1]
+        var value = _currentYearAndMonth.value
+        value.removeFirst()
+        value.append(nextYearAndMonth)
+        _currentYearAndMonth.send(value)
+        print("--",_currentYearAndMonth.value)
         updateCalendar()
         return true
     }
@@ -170,11 +190,18 @@ extension SCCalenderRepository {
     /// - Returns: 成功フラグ
     public func backMonth() -> Bool {
         currentYearAndMonthIndex -= 1
-        guard let nextYearAndMonth = selectYearAndMonth[safe: currentYearAndMonthIndex] else {
+        // 現在の年月より1つ先が存在しない場合は範囲外エラーとする
+        guard selectYearAndMonth[safe: currentYearAndMonthIndex] != nil else {
             currentYearAndMonthIndex += 1
             return false
         }
-        _currentYearAndMonth.send(nextYearAndMonth)
+        // 現在の年月より2つ前は存在しなくても取得する
+        let nextYearAndMonth = selectYearAndMonth[safe: currentYearAndMonthIndex - 1]
+        var value = _currentYearAndMonth.value
+        value.removeLast()
+        value.insert(nextYearAndMonth, at: 0)
+        _currentYearAndMonth.send(value)
+        print("--",_currentYearAndMonth.value)
         updateCalendar()
         return true
     }
@@ -194,7 +221,10 @@ extension SCCalenderRepository {
     /// - parameter month: 指定月
     public func moveYearAndMonthCalendar(year: Int, month: Int) {
         currentYearAndMonthIndex = selectYearAndMonth.firstIndex(where: { $0.year == year && $0.month == month }) ?? selectYearAndMonth.count - 1
-        _currentYearAndMonth.send(selectYearAndMonth[safe: currentYearAndMonthIndex])
+        let middle = selectYearAndMonth[safe: currentYearAndMonthIndex]
+        let first = selectYearAndMonth[safe: currentYearAndMonthIndex - 1]
+        let last = selectYearAndMonth[safe: currentYearAndMonthIndex + 1]
+        _currentYearAndMonth.send([first, middle, last])
         updateCalendar()
     }
 }
