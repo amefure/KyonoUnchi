@@ -86,4 +86,12 @@ extension DateFormatUtility {
         ) else { return Date() }
         return newDate
     }
+    
+    /// 今日の年月をタプルで取得
+    public func getTodayYearAndMonth() -> (year: Int, month: Int) {
+        let today = convertDateComponents(date: DateFormatUtility.today)
+        guard let year = today.year,
+              let month = today.month else { return (2024, 8) }
+        return (year, month)
+    }
 }

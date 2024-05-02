@@ -12,7 +12,7 @@ struct FooterView: View {
     public var date = Date()
     public var isRoot = true
     
-    private let df = DateFormatUtility()
+    private let dateFormatUtility = DateFormatUtility()
     
     // MARK: - ViewModel
     @ObservedObject private var viewModel = PoopViewModel.shared
@@ -37,6 +37,8 @@ struct FooterView: View {
                     if rootEnvironment.entryMode == .simple {
                         viewModel.addPoop(createdAt: createdAt)
                         if isRoot {
+                            let (year, month) = dateFormatUtility.getTodayYearAndMonth()
+                            rootEnvironment.moveToDayCalendar(year: year, month: month)
                             rootEnvironment.showSimpleEntryDialog = true
                         } else {
                             rootEnvironment.showSimpleEntryDetailDialog = true
@@ -54,15 +56,6 @@ struct FooterView: View {
                             .font(.system(size: 16))
                             .rotationEffect(Angle(degrees: -20))
                             .position(x: 10, y: 5)
-//                        Text("う")
-//                            .font(.system(size: 16))
-//                            .rotationEffect(Angle(degrees: -20))
-//                            .position(x: 20, y: -5)
-//                        
-//                        Text("ろ")
-//                            .font(.system(size: 16))
-//                            .rotationEffect(Angle(degrees: 20))
-//                            .position(x: 50, y: -5)
                         Text("録")
                             .font(.system(size: 16))
                             .rotationEffect(Angle(degrees: 20))
@@ -80,7 +73,7 @@ struct FooterView: View {
             Spacer()
         }.onAppear {
             // 現在時間を格納した該当の日付を生成
-            createdAt = df.combineDateWithCurrentTime(theDay: date)
+            createdAt = dateFormatUtility.combineDateWithCurrentTime(theDay: date)
         }
         .frame(height: 50)
             .font(.system(size: 25))

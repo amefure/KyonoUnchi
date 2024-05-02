@@ -58,7 +58,6 @@ extension PoopViewModel {
     
     public func fetchAllPoops() {
         poops = repository.fetchAllPoops()
-    
     }
     
     public func addPoop(

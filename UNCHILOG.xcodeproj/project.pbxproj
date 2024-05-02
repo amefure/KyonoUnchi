@@ -52,6 +52,7 @@
 		128BB6072BB5B0DD009E0FAB /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB6062BB5B0DD009E0FAB /* SettingViewModel.swift */; };
 		128BB60A2BB79BA2009E0FAB /* UrlLinkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB6092BB79BA2009E0FAB /* UrlLinkConfig.swift */; };
 		128BB60D2BB7F88E009E0FAB /* PoopChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB60C2BB7F88E009E0FAB /* PoopChartView.swift */; };
+		12978DEC2BE3CEF700D25AA4 /* CarouselCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12978DEB2BE3CEF700D25AA4 /* CarouselCalendarView.swift */; };
 		12A43E172BBAF51800AB19A4 /* RoundMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A43E162BBAF51700AB19A4 /* RoundMessageView.swift */; };
 		12B29BCE2BD521A900DD7E20 /* PoopMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B29BCD2BD521A900DD7E20 /* PoopMessage.swift */; };
 		12CBFBE92BAFE25B005FE4F1 /* UNCHILOGApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CBFBE82BAFE25B005FE4F1 /* UNCHILOGApp.swift */; };
@@ -114,6 +115,7 @@
 		128BB6062BB5B0DD009E0FAB /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		128BB6092BB79BA2009E0FAB /* UrlLinkConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlLinkConfig.swift; sourceTree = "<group>"; };
 		128BB60C2BB7F88E009E0FAB /* PoopChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopChartView.swift; sourceTree = "<group>"; };
+		12978DEB2BE3CEF700D25AA4 /* CarouselCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCalendarView.swift; sourceTree = "<group>"; };
 		12A43E162BBAF51700AB19A4 /* RoundMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundMessageView.swift; sourceTree = "<group>"; };
 		12B29BCD2BD521A900DD7E20 /* PoopMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopMessage.swift; sourceTree = "<group>"; };
 		12CBFBE52BAFE25B005FE4F1 /* UNCHILOG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UNCHILOG.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -290,6 +292,7 @@
 			isa = PBXGroup;
 			children = (
 				128BB5D92BB2FCEF009E0FAB /* PoopCalendarView.swift */,
+				12978DEB2BE3CEF700D25AA4 /* CarouselCalendarView.swift */,
 				128BB5E02BB30E6E009E0FAB /* TheDayView.swift */,
 				128BB5DD2BB30B72009E0FAB /* TheDayDetailView.swift */,
 				122B3EE62BC3B2CF00167D9E /* TheDayDetailPoopRowView.swift */,
@@ -590,6 +593,7 @@
 				128BB5B32BB14135009E0FAB /* SCWeek.swift in Sources */,
 				128BB5F62BB5AB58009E0FAB /* SelectInitWeek.swift in Sources */,
 				12DCB2C22BBD2B7700AF62CB /* EntryButton.swift in Sources */,
+				12978DEC2BE3CEF700D25AA4 /* CarouselCalendarView.swift in Sources */,
 				128BB6052BB5B033009E0FAB /* DeviceSizeManager.swift in Sources */,
 				122B3EE52BC025C200167D9E /* HeaderView.swift in Sources */,
 				128BB5D42BB2899C009E0FAB /* KeyChainRepository.swift in Sources */,

@@ -9,27 +9,8 @@ import SwiftUI
 
 struct TheDayView: View {
     
-    private let dateFormatUtility = DateFormatUtility()
     @ObservedObject private var rootEnvironment = RootEnvironment.shared
-    
-    public var theDay: SCDate
-    public var poops: [Poop]
-    
-    @State private var isToday = false
-    @State private var count = 0
-    
-    private func poopCount() -> Int {
-        let list = poops.filter({ $0.getDate() == theDay.getDate() })
-        return list.count
-    }
-    
-    private func getIsToday() -> Bool {
-        let today = dateFormatUtility.convertDateComponents(date: DateFormatUtility.today)
-        guard let year = today.year,
-              let month = today.month,
-              let day = today.day else { return false }
-        return (theDay.year == year && theDay.month == month && theDay.day == day)
-    }
+    public let theDay: SCDate
     
     private var poopIconWidth: CGFloat {
         DeviceSizeManager.deviceWidth / 7
@@ -45,27 +26,31 @@ struct TheDayView: View {
                 } label: {
                     VStack {
                         Text("\(theDay.day)")
-                            .frame(width: 30, height: 30)
-                            .background(isToday ? Color.exSub : Color.clear)
-                            .clipShape(RoundedRectangle(cornerRadius: 30))
-                            .foregroundStyle(isToday ? Color.white : theDay.dayColor())
-                            .padding(.top, 2)
+                            .frame(width: 27, height: 27)
+                            .background(theDay.isToday ? Color.exSub : Color.clear)
+                            .font(.system(size: 14))
+                            .clipShape(RoundedRectangle(cornerRadius: 27))
+                            .foregroundStyle(theDay.isToday ? Color.white : theDay.dayColor())
+                            .padding(.top, 5)
+                            
                         
-                        Spacer()
-                        
-                        if count != 0 {
+                        if theDay.count != 0 {
                             ZStack {
                                 Image("noface_poop")
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(width: poopIconWidth)
-                                    .scaleEffect(1.3)
+                                    .frame(height: 35)
+                                    .offset(y: -5)
+    
                                 
-                                Text("\(count)")
+                                Text("\(theDay.count)")
+                                    .font(.system(size: 14))
                                     .fontWeight(.bold)
                                     .foregroundStyle(.white)
-                                    .offset(y: 5)
-                            }.frame(width: poopIconWidth)
+
+                            }// .frame(width: poopIconWidth)
+                        } else {
+                            Spacer()
                         }
                         
                     }
@@ -78,18 +63,14 @@ struct TheDayView: View {
             }
         }
         .frame(maxWidth: .infinity)
-        .frame(height: 80)
+        .frame(height: 68)
         .overlay {
             Rectangle()
                 .stroke(.gray , lineWidth: 0.5)
-        }
-        .onAppear {
-            count = poopCount()
-            isToday = getIsToday()
         }
     }
 }
 
 #Preview {
-    TheDayView(theDay: SCDate.demo, poops: [])
+    TheDayView(theDay: SCDate.demo)
 }

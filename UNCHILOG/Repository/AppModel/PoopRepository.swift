@@ -13,6 +13,16 @@ class PoopRepository {
         return CoreDataRepository.fetch(sorts: [NSSortDescriptor(keyPath: \Poop.createdAt, ascending: true)])
     }
     
+    public func getTheDateCount(date: Date) -> Int {
+        // 指定した日付
+        let specifiedDate = Calendar(identifier: .gregorian).startOfDay(for: date)
+        let nextDay = Calendar.current.date(byAdding: .day, value: 1, to: specifiedDate)!
+
+        let predicate = NSPredicate(format: "createdAt >= %@ AND createdAt < %@", specifiedDate as NSDate, nextDay as NSDate)
+        let list: [Poop] = CoreDataRepository.fetch(predicate: predicate)
+        return list.count
+    }
+    
     public func addPoop(color: PoopColor, shape: PoopShape, volume: PoopVolume, memo: String, createdAt: Date) {
         let entity: Poop = CoreDataRepository.entity()
         entity.id = UUID()

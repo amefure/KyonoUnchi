@@ -72,6 +72,9 @@ extension SCCalenderRepository {
     private func updateCalendar() {
         let yearAndMonths = _currentYearAndMonth.value
         
+        let df = DateFormatUtility()
+        let poopRepository = PoopRepository()
+        
         var datesList: [[SCDate]] = []
         for yearAndMonth in yearAndMonths {
             let year = yearAndMonth.year
@@ -108,9 +111,11 @@ extension SCCalenderRepository {
                 }
                 let dayOfWeek = calendar.component(.weekday, from: date)
                 let week = SCWeek(rawValue: dayOfWeek - 1)!
-                
+                let isToday = df.checkInSameDayAs(date: date)
                 let holidayName = "" // ここに祝日名を取得する処理を追加する
-                let scDate = SCDate(year: year, month: month, day: day, date: date,week: week, holidayName: holidayName)
+                // 表示するカウントを取得
+                let count = poopRepository.getTheDateCount(date: date)
+                let scDate = SCDate(year: year, month: month, day: day, date: date, week: week, holidayName: holidayName, count: count, isToday: isToday)
                 dates.append(scDate)
             }
             

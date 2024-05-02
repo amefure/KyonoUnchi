@@ -17,14 +17,6 @@ struct YearAndMonthSelectionView: View {
     @State private var showChart = false
     @State private var showSetting = false
     
-    
-    private var isTodayYearAndMonth: (year: Int, month: Int) {
-        let today = dateFormatUtility.convertDateComponents(date: DateFormatUtility.today)
-        guard let year = today.year,
-              let month = today.month else { return (2024, 8) }
-        return (year, month)
-    }
-    
     // MARK: - Environment
     @Environment(\.dismiss) var dismiss
     var body: some View {
@@ -68,6 +60,7 @@ struct YearAndMonthSelectionView: View {
 //                    }
                 } label: {
                     Text(rootEnvironment.getCurrentYearAndMonth())
+                        .frame(width: 100)
                         .fontWeight(.bold)
                 }
                 
@@ -80,7 +73,8 @@ struct YearAndMonthSelectionView: View {
                 }
                 
                 Button {
-                    rootEnvironment.moveToDayCalendar(year: isTodayYearAndMonth.year, month: isTodayYearAndMonth.month)
+                    let (year, month) = dateFormatUtility.getTodayYearAndMonth()
+                    rootEnvironment.moveToDayCalendar(year: year, month: month)
                 } label: {
                     Image("back_today")
                         .resizable()

@@ -14,7 +14,7 @@ struct MrPoopMessageView: View {
             Image("mr_poop")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 70, height: 70)
+                .frame(width: 65, height: 65)
             
             Spacer()
             
@@ -31,7 +31,8 @@ struct MrPoopMessageView: View {
                     .offset(x: 10)
             }
             
-        }.padding(20)
+        }.padding(8)
+            .padding(.horizontal, 20)
     }
 }
 

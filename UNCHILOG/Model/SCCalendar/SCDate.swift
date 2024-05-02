@@ -15,6 +15,9 @@ struct SCDate: Identifiable {
     public var date: Date?
     public var week: SCWeek?
     public var holidayName: String = ""
+    // 登録されているPoopの量
+    public var count: Int = 0
+    public var isToday: Bool = false
     
     /// 年月日取得
     public func getDate(format: String = "yyyy-M-d") -> String {
@@ -36,5 +39,5 @@ struct SCDate: Identifiable {
 }
 
 extension SCDate {
-    static let demo: SCDate = SCDate(year: 2024, month: 12, day: 25)
+    static let demo: SCDate = SCDate(year: 2024, month: 12, day: 25, count: 10, isToday: true)
 }
