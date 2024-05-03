@@ -19,19 +19,20 @@ struct TheDayView: View {
     var body: some View {
         VStack {
             if theDay.day == -1 {
-                EmptyView()
+                Color.gray
+                    .opacity(0.2)
             } else {
                 NavigationLink {
                     TheDayDetailView(theDay: theDay)
                 } label: {
-                    VStack {
+                    VStack(spacing: 0) {
                         Text("\(theDay.day)")
-                            .frame(width: 27, height: 27)
+                            .frame(width: 25, height: 25)
                             .background(theDay.isToday ? Color.exSub : Color.clear)
                             .font(.system(size: DeviceSizeManager.isSESize ? 14 : 18))
-                            .clipShape(RoundedRectangle(cornerRadius: 27))
+                            .clipShape(RoundedRectangle(cornerRadius: 25))
                             .foregroundStyle(theDay.isToday ? Color.white : theDay.dayColor())
-                            .padding(.top, 5)
+                            .padding(.top, 3)
                             
                         Spacer()
                         
@@ -49,8 +50,10 @@ struct TheDayView: View {
                                     .fontWeight(.bold)
                                     .foregroundStyle(.white)
                             }
+                        } else {
+                            Spacer()
+                                .frame(height: DeviceSizeManager.isSESize ? 35 : 40)
                         }
-                        
                     }
                 }.simultaneousGesture(
                     TapGesture()
@@ -64,7 +67,7 @@ struct TheDayView: View {
         .frame(height: DeviceSizeManager.isSESize ? 68 : 80)
         .overlay {
             Rectangle()
-                .stroke(.gray , lineWidth: 0.5)
+                .stroke(.gray, lineWidth: 0.5)
         }
     }
 }
