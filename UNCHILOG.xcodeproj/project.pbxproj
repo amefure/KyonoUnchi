@@ -11,6 +11,11 @@
 		122B3EE32BBFC62700167D9E /* EntryMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122B3EE22BBFC62700167D9E /* EntryMode.swift */; };
 		122B3EE52BC025C200167D9E /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122B3EE42BC025C200167D9E /* HeaderView.swift */; };
 		122B3EE72BC3B2CF00167D9E /* TheDayDetailPoopRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122B3EE62BC3B2CF00167D9E /* TheDayDetailPoopRowView.swift */; };
+		124778C32BE5194800559205 /* UNCHILOGWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124778C22BE5194800559205 /* UNCHILOGWatchApp.swift */; };
+		124778C52BE5194800559205 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124778C42BE5194800559205 /* ContentView.swift */; };
+		124778C72BE5194A00559205 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 124778C62BE5194A00559205 /* Assets.xcassets */; };
+		124778CA2BE5194A00559205 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 124778C92BE5194A00559205 /* Preview Assets.xcassets */; };
+		124778CD2BE5194A00559205 /* UNCHILOGWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 124778C02BE5194800559205 /* UNCHILOGWatch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		125326832BB8050A003A6BB0 /* YearAndMonthSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125326822BB8050A003A6BB0 /* YearAndMonthSelectionView.swift */; };
 		128BB5A62BAFE3B7009E0FAB /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 128BB5A52BAFE3B7009E0FAB /* Colors.xcassets */; };
 		128BB5A82BAFE3CB009E0FAB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 128BB5A72BAFE3CB009E0FAB /* Localizable.strings */; };
@@ -68,11 +73,40 @@
 		C297C18C2F20E9590633A74B /* Pods_UNCHILOG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B70382F8D83335666AC1D3D7 /* Pods_UNCHILOG.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		124778CB2BE5194A00559205 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 12CBFBDD2BAFE25B005FE4F1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 124778BF2BE5194800559205;
+			remoteInfo = "UNCHILOGWatch Watch App";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		124778CE2BE5194A00559205 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				124778CD2BE5194A00559205 /* UNCHILOGWatch Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		122B3EE02BBFC53B00167D9E /* SelectEntryMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectEntryMode.swift; sourceTree = "<group>"; };
 		122B3EE22BBFC62700167D9E /* EntryMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryMode.swift; sourceTree = "<group>"; };
 		122B3EE42BC025C200167D9E /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		122B3EE62BC3B2CF00167D9E /* TheDayDetailPoopRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheDayDetailPoopRowView.swift; sourceTree = "<group>"; };
+		124778C02BE5194800559205 /* UNCHILOGWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UNCHILOGWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		124778C22BE5194800559205 /* UNCHILOGWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNCHILOGWatchApp.swift; sourceTree = "<group>"; };
+		124778C42BE5194800559205 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		124778C62BE5194A00559205 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		124778C92BE5194A00559205 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		125326822BB8050A003A6BB0 /* YearAndMonthSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearAndMonthSelectionView.swift; sourceTree = "<group>"; };
 		128BB5A52BAFE3B7009E0FAB /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		128BB5A72BAFE3CB009E0FAB /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -135,6 +169,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		124778BD2BE5194800559205 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		12CBFBE22BAFE25B005FE4F1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -146,6 +187,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		124778C12BE5194800559205 /* UNCHILOGWatch Watch App */ = {
+			isa = PBXGroup;
+			children = (
+				124778C22BE5194800559205 /* UNCHILOGWatchApp.swift */,
+				124778C42BE5194800559205 /* ContentView.swift */,
+				124778C62BE5194A00559205 /* Assets.xcassets */,
+				124778C82BE5194A00559205 /* Preview Content */,
+			);
+			path = "UNCHILOGWatch Watch App";
+			sourceTree = "<group>";
+		};
+		124778C82BE5194A00559205 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				124778C92BE5194A00559205 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		125326812BB804E5003A6BB0 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -390,6 +450,7 @@
 			isa = PBXGroup;
 			children = (
 				12CBFBE72BAFE25B005FE4F1 /* UNCHILOG */,
+				124778C12BE5194800559205 /* UNCHILOGWatch Watch App */,
 				12CBFBE62BAFE25B005FE4F1 /* Products */,
 				1966409B7BAB9EB294D87360 /* Pods */,
 				6DBA257C95B27BCA3EAE7CCB /* Frameworks */,
@@ -400,6 +461,7 @@
 			isa = PBXGroup;
 			children = (
 				12CBFBE52BAFE25B005FE4F1 /* UNCHILOG.app */,
+				124778C02BE5194800559205 /* UNCHILOGWatch Watch App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -450,6 +512,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		124778BF2BE5194800559205 /* UNCHILOGWatch Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 124778D12BE5194A00559205 /* Build configuration list for PBXNativeTarget "UNCHILOGWatch Watch App" */;
+			buildPhases = (
+				124778BC2BE5194800559205 /* Sources */,
+				124778BD2BE5194800559205 /* Frameworks */,
+				124778BE2BE5194800559205 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "UNCHILOGWatch Watch App";
+			productName = "UNCHILOGWatch Watch App";
+			productReference = 124778C02BE5194800559205 /* UNCHILOGWatch Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
 		12CBFBE42BAFE25B005FE4F1 /* UNCHILOG */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 12CBFBF82BAFE25C005FE4F1 /* Build configuration list for PBXNativeTarget "UNCHILOG" */;
@@ -459,10 +538,12 @@
 				12CBFBE22BAFE25B005FE4F1 /* Frameworks */,
 				12CBFBE32BAFE25B005FE4F1 /* Resources */,
 				CD277CC31CE15987174DBBA6 /* [CP] Embed Pods Frameworks */,
+				124778CE2BE5194A00559205 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				124778CC2BE5194A00559205 /* PBXTargetDependency */,
 			);
 			name = UNCHILOG;
 			productName = UNCHILOG;
@@ -479,6 +560,9 @@
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
+					124778BF2BE5194800559205 = {
+						CreatedOnToolsVersion = 15.0.1;
+					};
 					12CBFBE42BAFE25B005FE4F1 = {
 						CreatedOnToolsVersion = 15.0.1;
 					};
@@ -498,11 +582,21 @@
 			projectRoot = "";
 			targets = (
 				12CBFBE42BAFE25B005FE4F1 /* UNCHILOG */,
+				124778BF2BE5194800559205 /* UNCHILOGWatch Watch App */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		124778BE2BE5194800559205 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				124778CA2BE5194A00559205 /* Preview Assets.xcassets in Resources */,
+				124778C72BE5194A00559205 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		12CBFBE32BAFE25B005FE4F1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -561,6 +655,15 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		124778BC2BE5194800559205 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				124778C52BE5194800559205 /* ContentView.swift in Sources */,
+				124778C32BE5194800559205 /* UNCHILOGWatchApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		12CBFBE12BAFE25B005FE4F1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -622,7 +725,75 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		124778CC2BE5194A00559205 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 124778BF2BE5194800559205 /* UNCHILOGWatch Watch App */;
+			targetProxy = 124778CB2BE5194A00559205 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		124778CF2BE5194A00559205 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"UNCHILOGWatch Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = CGD79LB65H;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = UNCHILOGWatch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.ame.UNCHILOG;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ame.UNCHILOG.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		124778D02BE5194A00559205 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"UNCHILOGWatch Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = CGD79LB65H;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = UNCHILOGWatch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.ame.UNCHILOG;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ame.UNCHILOG.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
 		12CBFBF62BAFE25C005FE4F1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -746,6 +917,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FFAB3A2F64D4F2AEF273AC17 /* Pods-UNCHILOG.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -785,6 +957,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C335F896FB75E0D71E43B745 /* Pods-UNCHILOG.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -823,6 +996,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		124778D12BE5194A00559205 /* Build configuration list for PBXNativeTarget "UNCHILOGWatch Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				124778CF2BE5194A00559205 /* Debug */,
+				124778D02BE5194A00559205 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		12CBFBE02BAFE25B005FE4F1 /* Build configuration list for PBXProject "UNCHILOG" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
