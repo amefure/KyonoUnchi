@@ -11,7 +11,7 @@ import SwiftUI
 // 値渡しにすると正常に渡せない時がある
 struct PoopInputView: View {
     
-    private let df = DateFormatUtility()
+    private let df = DateFormatUtility(format: "M月d日")
     // MARK: - ViewModel
     @ObservedObject private var viewModel = PoopViewModel.shared
     @ObservedObject private var rootEnvironment = RootEnvironment.shared
@@ -60,11 +60,15 @@ struct PoopInputView: View {
                             memo: memo,
                             createdAt: createdAt
                         )
+                        rootEnvironment.addPoopUpdateCalender(createdAt: createdAt)
+                        if df.checkInSameDayAs(date: createdAt) {
+                            rootEnvironment.moveToDayYearAndMonthCalendar()
+                        }
                     }
                     showSuccessAlert = true
                 },
                 content: {
-                    Text(viewModel.selectPoop == nil ? "うんち登録" : "うんち記録編集" )
+                    Text(viewModel.selectPoop == nil ? "うんち登録：\(df.getString(date: createdAt))" : "うんち記録編集：\(df.getString(date: createdAt))" )
                 }
             )
             

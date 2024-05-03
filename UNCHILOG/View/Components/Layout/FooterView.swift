@@ -36,9 +36,9 @@ struct FooterView: View {
                 Button {
                     if rootEnvironment.entryMode == .simple {
                         viewModel.addPoop(createdAt: createdAt)
+                        rootEnvironment.addPoopUpdateCalender(createdAt: createdAt)
                         if isRoot {
-                            let (year, month) = dateFormatUtility.getTodayYearAndMonth()
-                            rootEnvironment.moveToDayCalendar(year: year, month: month)
+                            rootEnvironment.moveToDayYearAndMonthCalendar()
                             rootEnvironment.showSimpleEntryDialog = true
                         } else {
                             rootEnvironment.showSimpleEntryDetailDialog = true

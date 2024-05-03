@@ -12,6 +12,8 @@ class RootEnvironment: ObservableObject {
     
     static let shared = RootEnvironment()
     
+    private let dateFormatUtility = DateFormatUtility()
+    
     // MARK: Calendar ロジック
     @Published var currentDates: [[SCDate]] = []
     @Published private(set) var currentYearAndMonth: [SCYearAndMonth] = []
@@ -95,11 +97,50 @@ extension RootEnvironment {
         scCalenderRepository.setFirstWeek(week)
     }
     
-    /// カレンダー初期表示年月を指定して更新
-    public func moveToDayCalendar(year: Int, month: Int) {
+    /// カレンダー表示年月を指定して更新
+    public func moveYearAndMonthCalendar(year: Int, month: Int) {
         scCalenderRepository.moveYearAndMonthCalendar(year: year, month: month)
     }
-
+    
+    /// 今月にカレンダーを移動
+    public func moveToDayYearAndMonthCalendar() {
+        guard let current = currentYearAndMonth[safe: 1] else { return  }
+        let (year, month) = dateFormatUtility.getDateYearAndMonth()
+        // 今月を表示しているなら更新しない
+        if current.month != month {
+            moveYearAndMonthCalendar(year: year, month: month)
+        }
+    }
+    
+    /// Poopが追加された際にカレンダー構成用のデータも更新
+    public func addPoopUpdateCalender(createdAt: Date) {
+        let (year, date) = getUpdateCurrentDateIndex(createdAt: createdAt)
+        if year != -1 && date != -1 {
+            currentDates[year][date].count += 1
+        }
+    }
+    /// Poopが削除された際にカレンダー構成用のデータも更新
+    public func deletePoopUpdateCalender(createdAt: Date) {
+        let (year, date) = getUpdateCurrentDateIndex(createdAt: createdAt)
+        if year != -1 && date != -1 {
+            currentDates[year][date].count -= 1
+        }
+    }
+    
+    // 更新対象のインデックス番号を取得する
+    private func getUpdateCurrentDateIndex(createdAt: Date) -> (Int, Int) {
+        // 月でフィルタリング
+        guard let index = currentYearAndMonth.firstIndex(where: { $0.month == dateFormatUtility.getDateYearAndMonth(date: createdAt).month }) else { return (-1, -1) }
+        // 更新対象のSCDateを取得
+        guard let index2 = currentDates[index].firstIndex(where: {
+            if let date = $0.date {
+                return dateFormatUtility.checkInSameDayAs(date: date, sameDay: createdAt)
+            } else {
+                return false
+            }
+        }) else { return (-1, -1) }
+        return (index, index2)
+    }
 }
 
 // MARK: - Status

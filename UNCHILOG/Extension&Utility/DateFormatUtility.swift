@@ -59,11 +59,11 @@ extension DateFormatUtility {
         c.date(bySettingHour: 23, minute: 59, second: 59, of: date) ?? DateFormatUtility.today
     }
     
-    /// 受け取った日付が今日と同じかどうか
-    public func checkInSameDayAs(date: Date) -> Bool {
+    /// 受け取った日付が指定した日と同じかどうか
+    public func checkInSameDayAs(date: Date, sameDay: Date = DateFormatUtility.today) -> Bool {
         // 時間をリセットしておく
         let resetDate = c.startOfDay(for: date)
-        let resetToDay = c.startOfDay(for: DateFormatUtility.today)
+        let resetToDay = c.startOfDay(for: sameDay)
         return c.isDate(resetDate, inSameDayAs: resetToDay)
     }
     
@@ -87,9 +87,9 @@ extension DateFormatUtility {
         return newDate
     }
     
-    /// 今日の年月をタプルで取得
-    public func getTodayYearAndMonth() -> (year: Int, month: Int) {
-        let today = convertDateComponents(date: DateFormatUtility.today)
+    /// 指定した日付の年月をタプルで取得
+    public func getDateYearAndMonth(date: Date = DateFormatUtility.today) -> (year: Int, month: Int) {
+        let today = convertDateComponents(date: date)
         guard let year = today.year,
               let month = today.month else { return (2024, 8) }
         return (year, month)

@@ -28,29 +28,27 @@ struct TheDayView: View {
                         Text("\(theDay.day)")
                             .frame(width: 27, height: 27)
                             .background(theDay.isToday ? Color.exSub : Color.clear)
-                            .font(.system(size: 14))
+                            .font(.system(size: DeviceSizeManager.isSESize ? 14 : 18))
                             .clipShape(RoundedRectangle(cornerRadius: 27))
                             .foregroundStyle(theDay.isToday ? Color.white : theDay.dayColor())
                             .padding(.top, 5)
                             
+                        Spacer()
                         
                         if theDay.count != 0 {
                             ZStack {
                                 Image("noface_poop")
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: 35)
+                                    .frame(height: DeviceSizeManager.isSESize ? 35 : 40)
                                     .offset(y: -5)
     
                                 
                                 Text("\(theDay.count)")
-                                    .font(.system(size: 14))
+                                    .font(.system(size: DeviceSizeManager.isSESize ? 14 : 18))
                                     .fontWeight(.bold)
                                     .foregroundStyle(.white)
-
-                            }// .frame(width: poopIconWidth)
-                        } else {
-                            Spacer()
+                            }
                         }
                         
                     }
@@ -63,7 +61,7 @@ struct TheDayView: View {
             }
         }
         .frame(maxWidth: .infinity)
-        .frame(height: 68)
+        .frame(height: DeviceSizeManager.isSESize ? 68 : 80)
         .overlay {
             Rectangle()
                 .stroke(.gray , lineWidth: 0.5)

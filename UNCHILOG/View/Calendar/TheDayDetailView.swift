@@ -70,6 +70,8 @@ struct TheDayDetailView: View {
             negativeButtonTitle: L10n.dialogButtonCancel,
             positiveAction: {
                 guard let poop = poopViewModel.selectPoop else { return }
+                guard let createdAt = poop.createdAt else { return }
+                rootEnvironment.deletePoopUpdateCalender(createdAt: createdAt)
                 poopViewModel.deletePoop(poop: poop)
             },
             negativeAction: { showDeleteDialog = false }

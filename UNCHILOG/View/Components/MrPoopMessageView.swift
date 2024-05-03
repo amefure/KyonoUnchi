@@ -31,7 +31,7 @@ struct MrPoopMessageView: View {
                     .offset(x: 10)
             }
             
-        }.padding(8)
+        }.padding(.vertical, DeviceSizeManager.isSESize ? 8 : 20)
             .padding(.horizontal, 20)
     }
 }

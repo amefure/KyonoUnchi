@@ -62,8 +62,8 @@ internal enum L10n {
   internal static let poopMessage12 = L10n.tr("Localizable", "poop_message_12", fallback: "お腹を冷やさないようにね")
   /// バナナうんちは良いうんち！
   internal static let poopMessage2 = L10n.tr("Localizable", "poop_message_2", fallback: "バナナうんちは良いうんち！")
-  /// ぶりっ♪
-  internal static let poopMessage3 = L10n.tr("Localizable", "poop_message_3", fallback: "ぶりっ♪")
+  /// ぷりっ♪
+  internal static let poopMessage3 = L10n.tr("Localizable", "poop_message_3", fallback: "ぷりっ♪")
   /// 健康うんちは75％が水分なんだって
   internal static let poopMessage4 = L10n.tr("Localizable", "poop_message_4", fallback: "健康うんちは75％が水分なんだって")
   /// 1日に150~250g出すのがベスト！

@@ -11,7 +11,6 @@ struct YearAndMonthSelectionView: View {
     
     public var showBackButton = false
     
-    private let dateFormatUtility = DateFormatUtility()
     @ObservedObject private var rootEnvironment = RootEnvironment.shared
     
     @State private var showChart = false
@@ -50,7 +49,7 @@ struct YearAndMonthSelectionView: View {
                 Spacer()
                 
                 
-                Menu {
+//                Menu {
 //                    ForEach(rootEnvironment.selectYearAndMonth.reversed()) { yearAndMonth in
 //                        Button {
 //                            rootEnvironment.moveToDayCalendar(year: yearAndMonth.year, month: yearAndMonth.month)
@@ -58,11 +57,11 @@ struct YearAndMonthSelectionView: View {
 //                            Text(yearAndMonth.yearAndMonth)
 //                        }
 //                    }
-                } label: {
+//                } label: {
                     Text(rootEnvironment.getCurrentYearAndMonth())
                         .frame(width: 100)
                         .fontWeight(.bold)
-                }
+//                }
                 
                 Spacer()
                 
@@ -73,8 +72,7 @@ struct YearAndMonthSelectionView: View {
                 }
                 
                 Button {
-                    let (year, month) = dateFormatUtility.getTodayYearAndMonth()
-                    rootEnvironment.moveToDayCalendar(year: year, month: month)
+                    rootEnvironment.moveToDayYearAndMonthCalendar()
                 } label: {
                     Image("back_today")
                         .resizable()
