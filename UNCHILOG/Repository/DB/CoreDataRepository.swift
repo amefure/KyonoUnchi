@@ -28,6 +28,16 @@ class CoreDataRepository {
     public static var context: NSManagedObjectContext {
         return CoreDataRepository.persistenceController.viewContext
     }
+    
+    private static var bgContext: NSManagedObjectContext?
+    
+    private static var getBgContext: NSManagedObjectContext {
+        if CoreDataRepository.bgContext == nil {
+            CoreDataRepository.bgContext = CoreDataRepository.persistenceController.newBackgroundContext()
+            CoreDataRepository.bgContext?.automaticallyMergesChangesFromParent = true
+        }
+        return CoreDataRepository.bgContext!
+    }
 }
 
 

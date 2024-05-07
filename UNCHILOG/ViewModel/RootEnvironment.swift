@@ -224,10 +224,3 @@ extension RootEnvironment {
     }
     
 }
-
-// MARK: - Watch
-extension RootEnvironment {
-    public func send(_ poops: [Poop]) {
-        watchConnectRepository.send(poops)
-    }
-}

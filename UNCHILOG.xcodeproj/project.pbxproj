@@ -29,7 +29,6 @@
 		124778E22BE5200900559205 /* SCDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5AE2BB14115009E0FAB /* SCDate.swift */; };
 		124778E32BE5200B00559205 /* SCYearAndMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5B02BB14125009E0FAB /* SCYearAndMonth.swift */; };
 		124778E42BE5200D00559205 /* SCWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5B22BB14135009E0FAB /* SCWeek.swift */; };
-		124778E62BE5226900559205 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124778E52BE5226900559205 /* FooterView.swift */; };
 		124778E82BE523A400559205 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124778E72BE523A400559205 /* RootView.swift */; };
 		124778EA2BE5BDA300559205 /* PoopInputTodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124778E92BE5BDA300559205 /* PoopInputTodayView.swift */; };
 		124778ED2BE9FC9C00559205 /* CommunicationKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124778EC2BE9FC9C00559205 /* CommunicationKey.swift */; };
@@ -143,7 +142,6 @@
 		124778C62BE5194A00559205 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		124778C92BE5194A00559205 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		124778E02BE51C3E00559205 /* DeviceSizeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSizeManager.swift; sourceTree = "<group>"; };
-		124778E52BE5226900559205 /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		124778E72BE523A400559205 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		124778E92BE5BDA300559205 /* PoopInputTodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopInputTodayView.swift; sourceTree = "<group>"; };
 		124778EC2BE9FC9C00559205 /* CommunicationKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationKey.swift; sourceTree = "<group>"; };
@@ -264,9 +262,8 @@
 			children = (
 				124778C22BE5194800559205 /* UNCHILOGWatchApp.swift */,
 				124778E72BE523A400559205 /* RootView.swift */,
-				124778C42BE5194800559205 /* PoopWeekListView.swift */,
 				124778E92BE5BDA300559205 /* PoopInputTodayView.swift */,
-				124778E52BE5226900559205 /* FooterView.swift */,
+				124778C42BE5194800559205 /* PoopWeekListView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -793,7 +790,6 @@
 				124778C52BE5194800559205 /* PoopWeekListView.swift in Sources */,
 				124778D82BE51ABA00559205 /* CoreDataRepository.swift in Sources */,
 				124778D52BE51A9600559205 /* PoopColor.swift in Sources */,
-				124778E62BE5226900559205 /* FooterView.swift in Sources */,
 				124778E12BE51C3E00559205 /* DeviceSizeManager.swift in Sources */,
 				124778D32BE51A7400559205 /* Poop+CoreDataClass.swift in Sources */,
 				124778C32BE5194800559205 /* UNCHILOGWatchApp.swift in Sources */,

@@ -13,7 +13,7 @@ struct PoopWeekListView: View {
     var body: some View {
         VStack {
             
-            Text("今日のうんち")
+            Text("1週間のうんち記録")
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 0) {
@@ -21,6 +21,13 @@ struct PoopWeekListView: View {
                         VStack {
                             Spacer()
                             Text("\(theDay.day)")
+                                .frame(width: 25, height: 25)
+                                .background(theDay.isToday ? Color.exSub : Color.clear)
+                                .clipShape(RoundedRectangle(cornerRadius: 25))
+                                .foregroundStyle(theDay.isToday ? Color.white : theDay.dayColor())
+                                .padding(.top, 3)
+                            
+                            Spacer()
                             
                             if theDay.count != 0 {
                                 ZStack {
@@ -36,6 +43,9 @@ struct PoopWeekListView: View {
                                         .fontWeight(.bold)
                                         .foregroundStyle(.white)
                                 }
+                            } else {
+                                Spacer()
+                                    .frame(height: 40)
                             }
                             Spacer()
                         }.frame(width: DeviceSizeManager.deviceWidth / 3)

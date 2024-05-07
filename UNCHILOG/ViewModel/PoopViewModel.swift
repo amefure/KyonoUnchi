@@ -72,6 +72,7 @@ extension PoopViewModel {
     
     public func fetchAllPoops() {
         poops = repository.fetchAllPoops()
+        sendWatchWeekPoops()
     }
     
     public func addPoop(
@@ -109,5 +110,18 @@ extension PoopViewModel {
         repository.deletePoop(id: poop.wrappedId)
         selectPoop = nil
         fetchAllPoops()
+    }
+}
+
+extension PoopViewModel {
+    public func sendWatchWeekPoops() {
+        if watchConnectRepository.isReachable() {
+            let endToday = dateFormatUtility.endOfDay(for: Date())
+            let oneWeekAgo = dateFormatUtility.calcDate(date: endToday, value: -7)
+            let weekPoops = poops.filter { poop in
+                poop.wrappedCreatedAt >= oneWeekAgo && poop.wrappedCreatedAt <= endToday
+            }
+            watchConnectRepository.send(weekPoops)
+        }
     }
 }

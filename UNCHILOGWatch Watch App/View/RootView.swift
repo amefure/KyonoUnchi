@@ -16,16 +16,15 @@ struct RootView: View {
     var body: some View {
         NavigationStack {
             
-            if selectPage == 0 {
+            TabView(selection: $selectPage) {
                 PoopInputTodayView()
-            } else {
+                    .tag(0)
                 PoopWeekListView()
-            }
+                    .tag(1)
+            }.tabViewStyle(.carousel)
             
             Spacer()
             
-            // MARK: - ページ選択タブビュー
-            FooterView(selectPage: $selectPage)
         }.ignoresSafeArea(edges: [.bottom])
     }
 }

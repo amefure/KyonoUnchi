@@ -26,6 +26,10 @@ class WatchConnectRepository: NSObject {
     }
     private let _errorPublisher = PassthroughSubject<WatchError, Never>()
     
+    public func isReachable() -> Bool {
+        session.isReachable
+    }
+    
     override init() {
         super.init()
         if WCSession.isSupported() {

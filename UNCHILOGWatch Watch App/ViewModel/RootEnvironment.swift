@@ -28,13 +28,13 @@ class RootEnvironment: ObservableObject {
         poopRepository = repositoryDependency.poopRepository
         weekPoopList = poopRepository.fetchAllPoops()
 
-        scWeekDayRepository.currentDates.sink { _ in
+        scWeekDayRepository.currentDates.receive(on: DispatchQueue.main).sink { _ in
         } receiveValue: { [weak self] currentDates in
             guard let self else { return }
             self.currentDates = currentDates
         }.store(in: &cancellables)
         
-        iosConnectRepository.poopList.sink { _ in
+        iosConnectRepository.poopList.receive(on: DispatchQueue.main).sink { _ in
         } receiveValue: { [weak self] poopList in
             guard let self else { return }
             // poopListに値が流れた時点で保存まで完了している

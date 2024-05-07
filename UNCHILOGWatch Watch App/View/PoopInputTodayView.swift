@@ -22,9 +22,7 @@ struct PoopInputTodayView: View {
                     showFailedDialog = true
                 }
             } label: {
-                
                 ZStack {
-                 
                     Text("登")
                         .font(.system(size: 25))
                         .fontWeight(.bold)
@@ -46,8 +44,7 @@ struct PoopInputTodayView: View {
             }.buttonStyle(.borderless)
                     .background(.exThema)
                     .foregroundStyle(.exSub)
-                    .clipShape(RoundedRectangle(cornerRadius: 100))
-
+                    .clipShape(RoundedRectangle(cornerRadius: DeviceSizeManager.deviceHeight / 2))
             
             Spacer()
         }.alert("うんちを登録しました。", isPresented: $showSuccessDialog) {
