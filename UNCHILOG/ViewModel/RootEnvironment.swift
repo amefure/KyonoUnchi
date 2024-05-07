@@ -36,6 +36,8 @@ class RootEnvironment: ObservableObject {
     private let keyChainRepository: KeyChainRepository
     private let userDefaultsRepository: UserDefaultsRepository
     private let scCalenderRepository: SCCalenderRepository
+    private let poopRepository: PoopRepository
+    private let watchConnectRepository: WatchConnectRepository
     
     private var cancellables: Set<AnyCancellable> = []
     
@@ -44,31 +46,39 @@ class RootEnvironment: ObservableObject {
         keyChainRepository = repositoryDependency.keyChainRepository
         userDefaultsRepository = repositoryDependency.userDefaultsRepository
         scCalenderRepository = repositoryDependency.scCalenderRepository
-        
+        poopRepository = repositoryDependency.poopRepository
+        watchConnectRepository = repositoryDependency.watchConnectRepository
         
         getInitWeek()
         getEntryMode()
         getAppLock()
 
         scCalenderRepository.currentDates.sink { _ in
-        } receiveValue: {  [weak self] currentDates in
+        } receiveValue: { [weak self] currentDates in
             guard let self else { return }
             self.currentDates = currentDates
         }.store(in: &cancellables)
         
         scCalenderRepository.currentYearAndMonth.sink { _ in
-        } receiveValue: {  [weak self] currentYearAndMonth in
+        } receiveValue: { [weak self] currentYearAndMonth in
             guard let self else { return }
             self.currentYearAndMonth = currentYearAndMonth
         }.store(in: &cancellables)
         
         scCalenderRepository.dayOfWeekList.sink { _ in
-        } receiveValue: {  [weak self] dayOfWeekList in
+        } receiveValue: { [weak self] dayOfWeekList in
             guard let self else { return }
             self.dayOfWeekList = dayOfWeekList
         }.store(in: &cancellables)
         
         setFirstWeek(week: initWeek)
+        
+        watchConnectRepository.entryDate.sink { _ in
+        } receiveValue: { [weak self] date in
+            guard let self else { return }
+            self.poopRepository.addPoop(createdAt: date)
+            self.scCalenderRepository.updateCalendar()
+        }.store(in: &cancellables)
     }
 }
 
@@ -213,4 +223,11 @@ extension RootEnvironment {
         userDefaultsRepository.setIntData(key: UserDefaultsKey.ENTRY_MODE, value: mode.rawValue)
     }
     
+}
+
+// MARK: - Watch
+extension RootEnvironment {
+    public func send(_ poops: [Poop]) {
+        watchConnectRepository.send(poops)
+    }
 }

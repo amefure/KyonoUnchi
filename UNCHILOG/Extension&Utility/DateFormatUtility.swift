@@ -94,4 +94,9 @@ extension DateFormatUtility {
               let month = today.month else { return (2024, 8) }
         return (year, month)
     }
+    
+    /// 指定した日付の年月をタプルで取得
+    public func calcDate(date: Date, value: Int) -> Date {
+        return c.date(byAdding: .day, value: value, to: date) ?? Date()
+    }
 }

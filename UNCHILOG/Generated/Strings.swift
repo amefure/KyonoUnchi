@@ -20,6 +20,12 @@ internal enum L10n {
   internal static let appLockInputTitle = L10n.tr("Localizable", "app_lock_input_title", fallback: "パスワード登録")
   /// Touch IDでログインする
   internal static let appLockTouchId = L10n.tr("Localizable", "app_lock_touch_id", fallback: "Touch IDでログインする")
+  /// iPhoneとApple Watchの同期に失敗しました。何度も繰り返される場合はアプリを起動し直して再度実行してみてください。
+  internal static let connectErrorActivateFailedMessage = L10n.tr("Localizable", "connect_error_activate_failed_message", fallback: "iPhoneとApple Watchの同期に失敗しました。何度も繰り返される場合はアプリを起動し直して再度実行してみてください。")
+  /// iPhoneとApple Watchの接続に失敗しました。Bletoothのペアリング状況を確認してください。
+  internal static let connectErrorConnectFailedMessage = L10n.tr("Localizable", "connect_error_connect_failed_message", fallback: "iPhoneとApple Watchの接続に失敗しました。Bletoothのペアリング状況を確認してください。")
+  /// 通信エラー
+  internal static let connectErrorTitle = L10n.tr("Localizable", "connect_error_title", fallback: "通信エラー")
   /// キャンセル
   internal static let dialogButtonCancel = L10n.tr("Localizable", "dialog_button_cancel", fallback: "キャンセル")
   /// OK
@@ -78,6 +84,16 @@ internal enum L10n {
   internal static let poopMessage8 = L10n.tr("Localizable", "poop_message_8", fallback: "今日も良い1日になりますように")
   /// 記録を続けていてすごい！
   internal static let poopMessage9 = L10n.tr("Localizable", "poop_message_9", fallback: "記録を続けていてすごい！")
+  /// データの不整合エラーが発生しました。何度も繰り返される場合はアプリを起動し直して再度実行してみてください。
+  internal static let sessionErrorJsonFailedMessage = L10n.tr("Localizable", "session_error_json_failed_message", fallback: "データの不整合エラーが発生しました。何度も繰り返される場合はアプリを起動し直して再度実行してみてください。")
+  /// データの受信に失敗しました。何度も繰り返される場合はアプリを起動し直して再度実行してみてください。
+  internal static let sessionErrorNotExistHeaderMessage = L10n.tr("Localizable", "session_error_not_exist_header_message", fallback: "データの受信に失敗しました。何度も繰り返される場合はアプリを起動し直して再度実行してみてください。")
+  /// データの送信に失敗しました。何度も繰り返される場合はアプリを起動し直して再度実行してみてください。
+  internal static let sessionErrorSendFailedMessage = L10n.tr("Localizable", "session_error_send_failed_message", fallback: "データの送信に失敗しました。何度も繰り返される場合はアプリを起動し直して再度実行してみてください。")
+  /// セッションエラー
+  internal static let sessionErrorTitle = L10n.tr("Localizable", "session_error_title", fallback: "セッションエラー")
+  /// 予期せぬエラーが発生しました。何度も繰り返される場合はアプリを起動し直して再度実行してみてください。
+  internal static let sessionErrorUnidentifiedMessage = L10n.tr("Localizable", "session_error_unidentified_message", fallback: "予期せぬエラーが発生しました。何度も繰り返される場合はアプリを起動し直して再度実行してみてください。")
   /// ・アプリにパスワードを設定してロックをかけることができます。
   internal static let settingSectionAppDesc = L10n.tr("Localizable", "setting_section_app_desc", fallback: "・アプリにパスワードを設定してロックをかけることができます。")
   /// うんちの登録モードを切り替え

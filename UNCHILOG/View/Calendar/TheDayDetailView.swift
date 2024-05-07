@@ -10,7 +10,7 @@ import SwiftUI
 struct TheDayDetailView: View {
     public var theDay: SCDate
     
-    var poopList: [Poop] {
+    public var poopList: [Poop] {
         let list = poopViewModel.poops.filter({ $0.getDate() == theDay.getDate() })
         return list
     }

@@ -23,7 +23,13 @@ class PoopRepository {
         return list.count
     }
     
-    public func addPoop(color: PoopColor, shape: PoopShape, volume: PoopVolume, memo: String, createdAt: Date) {
+    public func addPoop(
+        color: PoopColor = .undefined,
+        shape: PoopShape = .undefined,
+        volume: PoopVolume = .undefined,
+        memo: String = "",
+        createdAt: Date
+    ) {
         let entity: Poop = CoreDataRepository.entity()
         entity.id = UUID()
         entity.color = color.rawValue

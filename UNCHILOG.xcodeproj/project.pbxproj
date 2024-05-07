@@ -12,10 +12,45 @@
 		122B3EE52BC025C200167D9E /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122B3EE42BC025C200167D9E /* HeaderView.swift */; };
 		122B3EE72BC3B2CF00167D9E /* TheDayDetailPoopRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122B3EE62BC3B2CF00167D9E /* TheDayDetailPoopRowView.swift */; };
 		124778C32BE5194800559205 /* UNCHILOGWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124778C22BE5194800559205 /* UNCHILOGWatchApp.swift */; };
-		124778C52BE5194800559205 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124778C42BE5194800559205 /* ContentView.swift */; };
+		124778C52BE5194800559205 /* PoopWeekListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124778C42BE5194800559205 /* PoopWeekListView.swift */; };
 		124778C72BE5194A00559205 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 124778C62BE5194A00559205 /* Assets.xcassets */; };
 		124778CA2BE5194A00559205 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 124778C92BE5194A00559205 /* Preview Assets.xcassets */; };
 		124778CD2BE5194A00559205 /* UNCHILOGWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 124778C02BE5194800559205 /* UNCHILOGWatch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		124778D22BE51A6E00559205 /* UNCHILOG.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 12CBFBF32BAFE25C005FE4F1 /* UNCHILOG.xcdatamodeld */; };
+		124778D32BE51A7400559205 /* Poop+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5BB2BB147BB009E0FAB /* Poop+CoreDataClass.swift */; };
+		124778D42BE51A9400559205 /* PoopShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5C42BB28495009E0FAB /* PoopShape.swift */; };
+		124778D52BE51A9600559205 /* PoopColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5CA2BB284D5009E0FAB /* PoopColor.swift */; };
+		124778D62BE51A9800559205 /* PoopVolume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5C62BB284AC009E0FAB /* PoopVolume.swift */; };
+		124778D72BE51AAB00559205 /* DateFormatUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5DB2BB306FA009E0FAB /* DateFormatUtility.swift */; };
+		124778D82BE51ABA00559205 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5BE2BB1497D009E0FAB /* CoreDataRepository.swift */; };
+		124778D92BE51ACA00559205 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 128BB5A52BAFE3B7009E0FAB /* Colors.xcassets */; };
+		124778DA2BE51ACD00559205 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12CBFBEC2BAFE25C005FE4F1 /* Images.xcassets */; };
+		124778E12BE51C3E00559205 /* DeviceSizeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124778E02BE51C3E00559205 /* DeviceSizeManager.swift */; };
+		124778E22BE5200900559205 /* SCDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5AE2BB14115009E0FAB /* SCDate.swift */; };
+		124778E32BE5200B00559205 /* SCYearAndMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5B02BB14125009E0FAB /* SCYearAndMonth.swift */; };
+		124778E42BE5200D00559205 /* SCWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5B22BB14135009E0FAB /* SCWeek.swift */; };
+		124778E62BE5226900559205 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124778E52BE5226900559205 /* FooterView.swift */; };
+		124778E82BE523A400559205 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124778E72BE523A400559205 /* RootView.swift */; };
+		124778EA2BE5BDA300559205 /* PoopInputTodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124778E92BE5BDA300559205 /* PoopInputTodayView.swift */; };
+		124778ED2BE9FC9C00559205 /* CommunicationKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124778EC2BE9FC9C00559205 /* CommunicationKey.swift */; };
+		124778F02BE9FD7900559205 /* SCWeekDayRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124778EF2BE9FD7900559205 /* SCWeekDayRepository.swift */; };
+		124778F32BEA00E700559205 /* RepositoryDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124778F22BEA00E700559205 /* RepositoryDependency.swift */; };
+		124778F72BEA028A00559205 /* iOSConnectRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124778F62BEA028A00559205 /* iOSConnectRepository.swift */; };
+		124778F92BEA02DE00559205 /* SessionDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124778F82BEA02DE00559205 /* SessionDataError.swift */; };
+		124778FC2BEA034300559205 /* PoopError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124778FB2BEA034300559205 /* PoopError.swift */; };
+		124778FF2BEA037700559205 /* WatchErrorr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124778FE2BEA037700559205 /* WatchErrorr.swift */; };
+		124779002BEA03A300559205 /* PoopError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124778FB2BEA034300559205 /* PoopError.swift */; };
+		124779022BEA03BC00559205 /* ConnectError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124779012BEA03BC00559205 /* ConnectError.swift */; };
+		124779042BEA041000559205 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5EA2BB467B2009E0FAB /* Strings.swift */; };
+		124779062BEA062300559205 /* WatchConnectRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124779052BEA062300559205 /* WatchConnectRepository.swift */; };
+		124779072BEA063B00559205 /* WatchErrorr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124778FE2BEA037700559205 /* WatchErrorr.swift */; };
+		124779082BEA063D00559205 /* SessionDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124778F82BEA02DE00559205 /* SessionDataError.swift */; };
+		124779092BEA064000559205 /* ConnectError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124779012BEA03BC00559205 /* ConnectError.swift */; };
+		1247790A2BEA066000559205 /* CommunicationKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124778EC2BE9FC9C00559205 /* CommunicationKey.swift */; };
+		1247790C2BEA4B7800559205 /* WatchLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1247790B2BEA4B7800559205 /* WatchLogger.swift */; };
+		1247790D2BEA527200559205 /* PoopRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5C12BB282E7009E0FAB /* PoopRepository.swift */; };
+		1247790F2BEA5CDE00559205 /* RootEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1247790E2BEA5CDE00559205 /* RootEnvironment.swift */; };
+		124779102BEA600700559205 /* WatchLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1247790B2BEA4B7800559205 /* WatchLogger.swift */; };
 		125326832BB8050A003A6BB0 /* YearAndMonthSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125326822BB8050A003A6BB0 /* YearAndMonthSelectionView.swift */; };
 		128BB5A62BAFE3B7009E0FAB /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 128BB5A52BAFE3B7009E0FAB /* Colors.xcassets */; };
 		128BB5A82BAFE3CB009E0FAB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 128BB5A72BAFE3CB009E0FAB /* Localizable.strings */; };
@@ -104,9 +139,24 @@
 		122B3EE62BC3B2CF00167D9E /* TheDayDetailPoopRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheDayDetailPoopRowView.swift; sourceTree = "<group>"; };
 		124778C02BE5194800559205 /* UNCHILOGWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UNCHILOGWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		124778C22BE5194800559205 /* UNCHILOGWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNCHILOGWatchApp.swift; sourceTree = "<group>"; };
-		124778C42BE5194800559205 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		124778C42BE5194800559205 /* PoopWeekListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopWeekListView.swift; sourceTree = "<group>"; };
 		124778C62BE5194A00559205 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		124778C92BE5194A00559205 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		124778E02BE51C3E00559205 /* DeviceSizeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSizeManager.swift; sourceTree = "<group>"; };
+		124778E52BE5226900559205 /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
+		124778E72BE523A400559205 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		124778E92BE5BDA300559205 /* PoopInputTodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopInputTodayView.swift; sourceTree = "<group>"; };
+		124778EC2BE9FC9C00559205 /* CommunicationKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationKey.swift; sourceTree = "<group>"; };
+		124778EF2BE9FD7900559205 /* SCWeekDayRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCWeekDayRepository.swift; sourceTree = "<group>"; };
+		124778F22BEA00E700559205 /* RepositoryDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDependency.swift; sourceTree = "<group>"; };
+		124778F62BEA028A00559205 /* iOSConnectRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSConnectRepository.swift; sourceTree = "<group>"; };
+		124778F82BEA02DE00559205 /* SessionDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDataError.swift; sourceTree = "<group>"; };
+		124778FB2BEA034300559205 /* PoopError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopError.swift; sourceTree = "<group>"; };
+		124778FE2BEA037700559205 /* WatchErrorr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchErrorr.swift; sourceTree = "<group>"; };
+		124779012BEA03BC00559205 /* ConnectError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectError.swift; sourceTree = "<group>"; };
+		124779052BEA062300559205 /* WatchConnectRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectRepository.swift; sourceTree = "<group>"; };
+		1247790B2BEA4B7800559205 /* WatchLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchLogger.swift; sourceTree = "<group>"; };
+		1247790E2BEA5CDE00559205 /* RootEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootEnvironment.swift; sourceTree = "<group>"; };
 		125326822BB8050A003A6BB0 /* YearAndMonthSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearAndMonthSelectionView.swift; sourceTree = "<group>"; };
 		128BB5A52BAFE3B7009E0FAB /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		128BB5A72BAFE3CB009E0FAB /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -190,8 +240,11 @@
 		124778C12BE5194800559205 /* UNCHILOGWatch Watch App */ = {
 			isa = PBXGroup;
 			children = (
-				124778C22BE5194800559205 /* UNCHILOGWatchApp.swift */,
-				124778C42BE5194800559205 /* ContentView.swift */,
+				124778DF2BE51C2500559205 /* Extension&Utility */,
+				124778EB2BE9FC8000559205 /* Model */,
+				124778DD2BE51C1400559205 /* View */,
+				124778DE2BE51C1B00559205 /* ViewModel */,
+				124778EE2BE9FD5000559205 /* Repository */,
 				124778C62BE5194A00559205 /* Assets.xcassets */,
 				124778C82BE5194A00559205 /* Preview Content */,
 			);
@@ -204,6 +257,80 @@
 				124778C92BE5194A00559205 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		124778DD2BE51C1400559205 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				124778C22BE5194800559205 /* UNCHILOGWatchApp.swift */,
+				124778E72BE523A400559205 /* RootView.swift */,
+				124778C42BE5194800559205 /* PoopWeekListView.swift */,
+				124778E92BE5BDA300559205 /* PoopInputTodayView.swift */,
+				124778E52BE5226900559205 /* FooterView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		124778DE2BE51C1B00559205 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1247790E2BEA5CDE00559205 /* RootEnvironment.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		124778DF2BE51C2500559205 /* Extension&Utility */ = {
+			isa = PBXGroup;
+			children = (
+				124778E02BE51C3E00559205 /* DeviceSizeManager.swift */,
+				1247790B2BEA4B7800559205 /* WatchLogger.swift */,
+			);
+			path = "Extension&Utility";
+			sourceTree = "<group>";
+		};
+		124778EB2BE9FC8000559205 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				124778EC2BE9FC9C00559205 /* CommunicationKey.swift */,
+				124778FD2BEA036200559205 /* Error */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		124778EE2BE9FD5000559205 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				124778EF2BE9FD7900559205 /* SCWeekDayRepository.swift */,
+				124778F62BEA028A00559205 /* iOSConnectRepository.swift */,
+				124778F12BEA00DF00559205 /* DI */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		124778F12BEA00DF00559205 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				124778F22BEA00E700559205 /* RepositoryDependency.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
+		124778FA2BEA033400559205 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				124778FB2BEA034300559205 /* PoopError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		124778FD2BEA036200559205 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				124778FE2BEA037700559205 /* WatchErrorr.swift */,
+				124778F82BEA02DE00559205 /* SessionDataError.swift */,
+				124779012BEA03BC00559205 /* ConnectError.swift */,
+			);
+			path = Error;
 			sourceTree = "<group>";
 		};
 		125326812BB804E5003A6BB0 /* Components */ = {
@@ -246,6 +373,7 @@
 		128BB5A02BAFE361009E0FAB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				124778FA2BEA033400559205 /* Error */,
 				128BB6082BB79B98009E0FAB /* Config */,
 				128BB5F72BB5ACE0009E0FAB /* Key */,
 				128BB5AD2BB140F6009E0FAB /* SCCalendar */,
@@ -288,6 +416,7 @@
 				128BB5C02BB282D6009E0FAB /* AppModel */,
 				128BB5BD2BB14973009E0FAB /* DB */,
 				128BB5D52BB289AF009E0FAB /* BiometricAuthRepository.swift */,
+				124779052BEA062300559205 /* WatchConnectRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -592,6 +721,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				124778D92BE51ACA00559205 /* Colors.xcassets in Resources */,
+				124778DA2BE51ACD00559205 /* Images.xcassets in Resources */,
 				124778CA2BE5194A00559205 /* Preview Assets.xcassets in Resources */,
 				124778C72BE5194A00559205 /* Assets.xcassets in Resources */,
 			);
@@ -659,8 +790,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				124778C52BE5194800559205 /* ContentView.swift in Sources */,
+				124778C52BE5194800559205 /* PoopWeekListView.swift in Sources */,
+				124778D82BE51ABA00559205 /* CoreDataRepository.swift in Sources */,
+				124778D52BE51A9600559205 /* PoopColor.swift in Sources */,
+				124778E62BE5226900559205 /* FooterView.swift in Sources */,
+				124778E12BE51C3E00559205 /* DeviceSizeManager.swift in Sources */,
+				124778D32BE51A7400559205 /* Poop+CoreDataClass.swift in Sources */,
 				124778C32BE5194800559205 /* UNCHILOGWatchApp.swift in Sources */,
+				124779022BEA03BC00559205 /* ConnectError.swift in Sources */,
+				1247790D2BEA527200559205 /* PoopRepository.swift in Sources */,
+				124778D22BE51A6E00559205 /* UNCHILOG.xcdatamodeld in Sources */,
+				124778EA2BE5BDA300559205 /* PoopInputTodayView.swift in Sources */,
+				124779042BEA041000559205 /* Strings.swift in Sources */,
+				124778E82BE523A400559205 /* RootView.swift in Sources */,
+				1247790F2BEA5CDE00559205 /* RootEnvironment.swift in Sources */,
+				124778E22BE5200900559205 /* SCDate.swift in Sources */,
+				124778E32BE5200B00559205 /* SCYearAndMonth.swift in Sources */,
+				124778F72BEA028A00559205 /* iOSConnectRepository.swift in Sources */,
+				124778F32BEA00E700559205 /* RepositoryDependency.swift in Sources */,
+				124778E42BE5200D00559205 /* SCWeek.swift in Sources */,
+				124778F92BEA02DE00559205 /* SessionDataError.swift in Sources */,
+				124779002BEA03A300559205 /* PoopError.swift in Sources */,
+				124778ED2BE9FC9C00559205 /* CommunicationKey.swift in Sources */,
+				124778FF2BEA037700559205 /* WatchErrorr.swift in Sources */,
+				124778D72BE51AAB00559205 /* DateFormatUtility.swift in Sources */,
+				1247790C2BEA4B7800559205 /* WatchLogger.swift in Sources */,
+				124778D42BE51A9400559205 /* PoopShape.swift in Sources */,
+				124778F02BE9FD7900559205 /* SCWeekDayRepository.swift in Sources */,
+				124778D62BE51A9800559205 /* PoopVolume.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -673,9 +830,13 @@
 				128BB5E82BB465A2009E0FAB /* RootEnvironment.swift in Sources */,
 				125326832BB8050A003A6BB0 /* YearAndMonthSelectionView.swift in Sources */,
 				128BB5DC2BB306FA009E0FAB /* DateFormatUtility.swift in Sources */,
+				124778FC2BEA034300559205 /* PoopError.swift in Sources */,
+				124779092BEA064000559205 /* ConnectError.swift in Sources */,
 				128BB5D62BB289AF009E0FAB /* BiometricAuthRepository.swift in Sources */,
 				128BB5BF2BB1497D009E0FAB /* CoreDataRepository.swift in Sources */,
 				128BB5F32BB5A124009E0FAB /* SettingView.swift in Sources */,
+				124779082BEA063D00559205 /* SessionDataError.swift in Sources */,
+				124779072BEA063B00559205 /* WatchErrorr.swift in Sources */,
 				128BB5C52BB28495009E0FAB /* PoopShape.swift in Sources */,
 				128BB5D82BB289E2009E0FAB /* PoopViewModel.swift in Sources */,
 				128BB5F92BB5ACF3009E0FAB /* UserDefaultsKey.swift in Sources */,
@@ -708,13 +869,16 @@
 				128BB5E62BB46589009E0FAB /* CustomNotifyDialogView.swift in Sources */,
 				128BB5D22BB28882009E0FAB /* UserDefaultsRepository.swift in Sources */,
 				12DB3CFC2BD3AD070075817A /* MrPoopMessageView.swift in Sources */,
+				1247790A2BEA066000559205 /* CommunicationKey.swift in Sources */,
 				128BB6032BB5B008009E0FAB /* AppLockInputViewModel.swift in Sources */,
 				128BB5FC2BB5AFC5009E0FAB /* AppLockView.swift in Sources */,
 				128BB5FE2BB5AFD0009E0FAB /* AppLockInputView.swift in Sources */,
 				128BB5C72BB284AC009E0FAB /* PoopVolume.swift in Sources */,
+				124779102BEA600700559205 /* WatchLogger.swift in Sources */,
 				128BB6072BB5B0DD009E0FAB /* SettingViewModel.swift in Sources */,
 				128BB5BC2BB147BB009E0FAB /* Poop+CoreDataClass.swift in Sources */,
 				12B29BCE2BD521A900DD7E20 /* PoopMessage.swift in Sources */,
+				124779062BEA062300559205 /* WatchConnectRepository.swift in Sources */,
 				128BB5B82BB142BB009E0FAB /* EXCollection.swift in Sources */,
 				128BB5CB2BB284D5009E0FAB /* PoopColor.swift in Sources */,
 				12DB3CF82BD392A90075817A /* AdMobView.swift in Sources */,
@@ -760,7 +924,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Debug;
 		};
@@ -790,7 +954,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Release;
 		};
@@ -854,6 +1018,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Debug;
 		};
@@ -910,6 +1075,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Release;
 		};

@@ -53,3 +53,14 @@
 "poop_message_10" = "自分のうんちを把握するのは大事だよ";
 "poop_message_11" = "今日のあなたは大吉だよ";
 "poop_message_12" = "お腹を冷やさないようにね";
+
+// MARK: - Error
+"connect_error_title" = "通信エラー";
+"connect_error_connect_failed_message" = "iPhoneとApple Watchの接続に失敗しました。Bletoothのペアリング状況を確認してください。";
+"connect_error_activate_failed_message" = "iPhoneとApple Watchの同期に失敗しました。何度も繰り返される場合はアプリを起動し直して再度実行してみてください。";
+
+"session_error_title" = "セッションエラー";
+"session_error_json_failed_message" = "データの不整合エラーが発生しました。何度も繰り返される場合はアプリを起動し直して再度実行してみてください。";
+"session_error_send_failed_message" = "データの送信に失敗しました。何度も繰り返される場合はアプリを起動し直して再度実行してみてください。";
+"session_error_not_exist_header_message" = "データの受信に失敗しました。何度も繰り返される場合はアプリを起動し直して再度実行してみてください。";
+"session_error_unidentified_message" = "予期せぬエラーが発生しました。何度も繰り返される場合はアプリを起動し直して再度実行してみてください。";

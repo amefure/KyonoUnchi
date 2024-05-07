@@ -47,7 +47,8 @@ struct FooterView: View {
                     } else {
                         showInputPoopView = true
                     }
-                    
+                    print("---送信")
+                    rootEnvironment.send(viewModel.poops)
                 } label: {
                     
                     ZStack {

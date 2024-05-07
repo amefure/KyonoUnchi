@@ -6,22 +6,33 @@
 //
 
 import UIKit
+import Combine
 
 class PoopViewModel: ObservableObject {
     
     static let shared = PoopViewModel()
     
+    /// 
     @Published private(set) var poops: [Poop] = []
-
-    private var repository: PoopRepository
-    // 削除/更新対象のPoop
+    /// 削除/更新対象のPoop
     @Published var selectPoop: Poop? = nil
     
-   
     private let dateFormatUtility = DateFormatUtility()
+    
+    private var repository: PoopRepository
+    private let watchConnectRepository: WatchConnectRepository
+    
+    private var cancellables: Set<AnyCancellable> = []
     
     init(repositoryDependency: RepositoryDependency = RepositoryDependency()) {
         repository = repositoryDependency.poopRepository
+        watchConnectRepository = repositoryDependency.watchConnectRepository
+        
+        watchConnectRepository.entryDate.sink { _ in
+        } receiveValue: { [weak self] date in
+            guard let self else { return }
+            self.fetchAllPoops()
+        }.store(in: &cancellables)
     }
 }
 

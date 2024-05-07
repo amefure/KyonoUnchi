@@ -13,5 +13,6 @@ class RepositoryDependency {
     public let keyChainRepository = KeyChainRepository()
     public let userDefaultsRepository = UserDefaultsRepository()
     public let scCalenderRepository = SCCalenderRepository.shared // なぜか2回インスタンス化されるのでシングルトン
+    public let watchConnectRepository = WatchConnectRepository.shared
 }
 
