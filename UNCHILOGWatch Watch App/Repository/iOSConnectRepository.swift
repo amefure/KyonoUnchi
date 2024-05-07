@@ -34,8 +34,8 @@ class iOSConnectRepository: NSObject {
         WatchLogger.debug(items: session.isReachable)
         guard session.isReachable == true else { return false }
         let requestDic: [String: Date] = [CommunicationKey.W_REQUEST_REGISTER_POOP: Date()]
-        // self.session.transferUserInfo(requestDic)
-        self.session.sendMessage(requestDic, replyHandler: { _ in })
+        self.session.transferUserInfo(requestDic)
+        // self.session.sendMessage(requestDic, replyHandler: { _ in })
         return true
     }
 }
