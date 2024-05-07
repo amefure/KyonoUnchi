@@ -36,15 +36,13 @@ public class Poop: NSManagedObject, Decodable, Encodable {
     }
     
     required public convenience init(from decoder: Decoder) throws {
-        
-       guard let context = decoder.userInfo[CodingUserInfoKey(rawValue: "managedObjectContext")!] as? NSManagedObjectContext else { fatalError() }
-        
-       self.init(context: context)
-        
-       let container = try decoder.container(keyedBy: CodingKeys.self)
+        // CoreDataをJSONにデコードするにはuserInfoからcontextを取得する
+        guard let context = decoder.userInfo[CodingUserInfoKey(rawValue: "managedObjectContext")!] as? NSManagedObjectContext else { fatalError() }
+        self.init(context: context)
+        let container = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try container.decode(UUID.self, forKey: .id)
         self.createdAt = try container.decode(Date.self, forKey: .createdAt)
-   }
+    }
 }
 
 

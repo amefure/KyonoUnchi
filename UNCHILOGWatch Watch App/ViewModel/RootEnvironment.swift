@@ -49,7 +49,7 @@ class RootEnvironment: ObservableObject {
         }.store(in: &cancellables)
     }
     
-    public func requestRegisterPoop() {
+    public func requestRegisterPoop() -> Bool {
         iosConnectRepository.requestRegisterPoop()
     }
 }

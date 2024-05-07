@@ -9,14 +9,18 @@ import SwiftUI
 
 struct PoopInputTodayView: View {
     @State private var showSuccessDialog = false
+    @State private var showFailedDialog = false
     @ObservedObject private var rootEnvironment = RootEnvironment.shared
     var body: some View {
         VStack {
             Spacer()
             
             Button {
-                rootEnvironment.requestRegisterPoop()
-                showSuccessDialog = true
+                if rootEnvironment.requestRegisterPoop() {
+                    showSuccessDialog = true
+                } else {
+                    showFailedDialog = true
+                }
             } label: {
                 
                 ZStack {
@@ -47,13 +51,13 @@ struct PoopInputTodayView: View {
             
             Spacer()
         }.alert("うんちを登録しました。", isPresented: $showSuccessDialog) {
-            Button {
-                print("アラートが閉じられました。")
-            } label: {
-                Text("OK")
-            }
+            Button("OK") { }
         } message: {
             
+        }.alert("うんちの登録に失敗しました。", isPresented: $showFailedDialog) {
+            Button("OK") { }
+        } message: {
+            Text("時間を置いてから再度試してください。")
         }
     }
 }

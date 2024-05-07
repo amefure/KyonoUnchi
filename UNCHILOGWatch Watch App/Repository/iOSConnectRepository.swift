@@ -30,12 +30,13 @@ class iOSConnectRepository: NSObject {
     
     // iOS側のデータ要求(transferUserInfoならキューとして貯まる)
     // transferUserInfoはシミュレーターでは動作しないので注意
-    public func requestRegisterPoop() {
+    public func requestRegisterPoop() -> Bool {
         WatchLogger.debug(items: session.isReachable)
-        guard session.isReachable == true else { return }
+        guard session.isReachable == true else { return false }
         let requestDic: [String: Date] = [CommunicationKey.W_REQUEST_REGISTER_POOP: Date()]
         // self.session.transferUserInfo(requestDic)
         self.session.sendMessage(requestDic, replyHandler: { _ in })
+        return true
     }
 }
 
@@ -54,7 +55,7 @@ extension iOSConnectRepository: WCSessionDelegate {
         WatchLogger.debug(items: "通信状態が変化：\(session.isReachable)")
     }
     
-    /// sendMessageメソッドで送信されたデータを受け取るデリゲートメソッド
+    /// sendMessageメソッドで送信されたデータを受け取るデリゲートメソッド(使用されていない)
     func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
         savePoopList(message)
     }

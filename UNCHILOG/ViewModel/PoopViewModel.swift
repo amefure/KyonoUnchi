@@ -31,7 +31,10 @@ class PoopViewModel: ObservableObject {
         watchConnectRepository.entryDate.sink { _ in
         } receiveValue: { [weak self] date in
             guard let self else { return }
-            self.fetchAllPoops()
+            // 1秒遅延させて保存を待ってからUIを更新
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                self.fetchAllPoops()
+            }
         }.store(in: &cancellables)
     }
 }

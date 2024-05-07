@@ -23,14 +23,16 @@ struct CarouselCalendarView: View {
             LazyHStack(spacing: 0) {
                 ForEach(Array(yearAndMonths.enumerated()), id: \.element.id) { index, element in
                     VStack(spacing: 0) {
-                        // LazyVGridだとスワイプ時の描画が重くなる
-                        ForEach(0..<dates[index].count / 7) { rowIndex in
-                            HStack(spacing: 0) {
-                                ForEach(0..<7) { columnIndex in
-                                    let dataIndex = rowIndex * 7 + columnIndex
-                                    if dataIndex < dates[index].count {
-                                        let theDay = dates[index][dataIndex]
-                                        TheDayView(theDay: theDay)
+                        if dates[safe: index] != nil {
+                            // LazyVGridだとスワイプ時の描画が重くなる
+                            ForEach(0..<dates[index].count / 7) { rowIndex in
+                                HStack(spacing: 0) {
+                                    ForEach(0..<7) { columnIndex in
+                                        let dataIndex = rowIndex * 7 + columnIndex
+                                        if dataIndex < dates[index].count {
+                                            let theDay = dates[index][dataIndex]
+                                            TheDayView(theDay: theDay)
+                                        }
                                     }
                                 }
                             }

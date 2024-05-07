@@ -53,7 +53,7 @@ class RootEnvironment: ObservableObject {
         getEntryMode()
         getAppLock()
 
-        scCalenderRepository.currentDates.sink { _ in
+        scCalenderRepository.currentDates.receive(on: DispatchQueue.main).sink { _ in
         } receiveValue: { [weak self] currentDates in
             guard let self else { return }
             self.currentDates = currentDates

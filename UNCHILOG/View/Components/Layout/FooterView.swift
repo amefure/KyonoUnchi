@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FooterView: View {
     
-    public var date = Date()
+    public var date: Date? = nil
     public var isRoot = true
     
     private let dateFormatUtility = DateFormatUtility()
@@ -19,7 +19,6 @@ struct FooterView: View {
     @ObservedObject private var rootEnvironment = RootEnvironment.shared
     
     @State private var showInputPoopView = false
-    @State private var createdAt = Date()
     
     var body: some View {
         HStack {
@@ -35,8 +34,18 @@ struct FooterView: View {
                 
                 Button {
                     if rootEnvironment.entryMode == .simple {
-                        viewModel.addPoop(createdAt: createdAt)
-                        rootEnvironment.addPoopUpdateCalender(createdAt: createdAt)
+                        if let date = date {
+                            // 現在時間を格納した該当の日付を生成して登録
+                            let createdAt = dateFormatUtility.combineDateWithCurrentTime(theDay: date)
+                            viewModel.addPoop(createdAt: createdAt)
+                            rootEnvironment.addPoopUpdateCalender(createdAt: createdAt)
+                        } else {
+                            // 現在時刻を取得して登録
+                            let createdAt = Date()
+                            viewModel.addPoop(createdAt: createdAt)
+                            rootEnvironment.addPoopUpdateCalender(createdAt: createdAt)
+                        }
+                        
                         if isRoot {
                             rootEnvironment.moveToDayYearAndMonthCalendar()
                             rootEnvironment.showSimpleEntryDialog = true
@@ -47,8 +56,6 @@ struct FooterView: View {
                     } else {
                         showInputPoopView = true
                     }
-                    print("---送信")
-                    rootEnvironment.send(viewModel.poops)
                 } label: {
                     
                     ZStack {
@@ -72,16 +79,13 @@ struct FooterView: View {
             }
             
             Spacer()
-        }.onAppear {
-            // 現在時間を格納した該当の日付を生成
-            createdAt = dateFormatUtility.combineDateWithCurrentTime(theDay: date)
         }
         .frame(height: 50)
             .font(.system(size: 25))
             .background(.exThema)
             .foregroundStyle(.exSub)
             .fullScreenCover(isPresented: $showInputPoopView) {
-                PoopInputView(theDay: date)
+                PoopInputView(theDay: date ?? Date())
             }
     }
 }
