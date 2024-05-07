@@ -77,15 +77,17 @@ extension iOSConnectRepository: WCSessionDelegate {
             _poopList.send(completion: .failure(.jsonConversionFailed))
             return
         }
-        let decoder = JSONDecoder()
-        decoder.userInfo[CodingUserInfoKey(rawValue: "managedObjectContext")!] = CoreDataRepository.context
-        // JSONデータを構造体に準拠した形式に変換
-        if let lives = try? decoder.decode([Poop].self, from: jsonData) {
-            // この時点で保存される
-            CoreDataRepository.save()
-            _poopList.send(lives)
-        } else {
-            _poopList.send(completion: .failure(.jsonConversionFailed))
+        DispatchQueue.main.async {
+            let decoder = JSONDecoder()
+            decoder.userInfo[CodingUserInfoKey(rawValue: "managedObjectContext")!] = CoreDataRepository.context
+            // JSONデータを構造体に準拠した形式に変換
+            if let lives = try? decoder.decode([Poop].self, from: jsonData) {
+                // この時点で保存される
+                CoreDataRepository.save()
+                self._poopList.send(lives)
+            } else {
+                self._poopList.send(completion: .failure(.jsonConversionFailed))
+            }
         }
     }
 }

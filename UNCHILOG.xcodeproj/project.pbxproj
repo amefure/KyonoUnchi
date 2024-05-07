@@ -15,7 +15,7 @@
 		124778C52BE5194800559205 /* PoopWeekListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124778C42BE5194800559205 /* PoopWeekListView.swift */; };
 		124778C72BE5194A00559205 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 124778C62BE5194A00559205 /* Assets.xcassets */; };
 		124778CA2BE5194A00559205 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 124778C92BE5194A00559205 /* Preview Assets.xcassets */; };
-		124778CD2BE5194A00559205 /* UNCHILOGWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 124778C02BE5194800559205 /* UNCHILOGWatch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		124778CD2BE5194A00559205 /* 今日のうんちWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 124778C02BE5194800559205 /* 今日のうんちWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		124778D22BE51A6E00559205 /* UNCHILOG.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 12CBFBF32BAFE25C005FE4F1 /* UNCHILOG.xcdatamodeld */; };
 		124778D32BE51A7400559205 /* Poop+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5BB2BB147BB009E0FAB /* Poop+CoreDataClass.swift */; };
 		124778D42BE51A9400559205 /* PoopShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5C42BB28495009E0FAB /* PoopShape.swift */; };
@@ -124,7 +124,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				124778CD2BE5194A00559205 /* UNCHILOGWatch Watch App.app in Embed Watch Content */,
+				124778CD2BE5194A00559205 /* 今日のうんちWatch.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -136,7 +136,7 @@
 		122B3EE22BBFC62700167D9E /* EntryMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryMode.swift; sourceTree = "<group>"; };
 		122B3EE42BC025C200167D9E /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		122B3EE62BC3B2CF00167D9E /* TheDayDetailPoopRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheDayDetailPoopRowView.swift; sourceTree = "<group>"; };
-		124778C02BE5194800559205 /* UNCHILOGWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UNCHILOGWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		124778C02BE5194800559205 /* 今日のうんちWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "今日のうんちWatch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		124778C22BE5194800559205 /* UNCHILOGWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNCHILOGWatchApp.swift; sourceTree = "<group>"; };
 		124778C42BE5194800559205 /* PoopWeekListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopWeekListView.swift; sourceTree = "<group>"; };
 		124778C62BE5194A00559205 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -587,7 +587,7 @@
 			isa = PBXGroup;
 			children = (
 				12CBFBE52BAFE25B005FE4F1 /* UNCHILOG.app */,
-				124778C02BE5194800559205 /* UNCHILOGWatch Watch App.app */,
+				124778C02BE5194800559205 /* 今日のうんちWatch.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -652,7 +652,7 @@
 			);
 			name = "UNCHILOGWatch Watch App";
 			productName = "UNCHILOGWatch Watch App";
-			productReference = 124778C02BE5194800559205 /* UNCHILOGWatch Watch App.app */;
+			productReference = 124778C02BE5194800559205 /* 今日のうんちWatch.app */;
 			productType = "com.apple.product-type.application";
 		};
 		12CBFBE42BAFE25B005FE4F1 /* UNCHILOG */ = {
@@ -905,7 +905,6 @@
 				DEVELOPMENT_TEAM = CGD79LB65H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = UNCHILOGWatch;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.ame.UNCHILOG;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -914,7 +913,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ame.UNCHILOG.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "今日のうんちWatch";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -935,7 +934,6 @@
 				DEVELOPMENT_TEAM = CGD79LB65H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = UNCHILOGWatch;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.ame.UNCHILOG;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -944,7 +942,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ame.UNCHILOG.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "今日のうんちWatch";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
