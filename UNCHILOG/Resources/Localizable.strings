@@ -64,3 +64,11 @@
 "session_error_send_failed_message" = "データの送信に失敗しました。何度も繰り返される場合はアプリを起動し直して再度実行してみてください。";
 "session_error_not_exist_header_message" = "データの受信に失敗しました。何度も繰り返される場合はアプリを起動し直して再度実行してみてください。";
 "session_error_unidentified_message" = "予期せぬエラーが発生しました。何度も繰り返される場合はアプリを起動し直して再度実行してみてください。";
+
+
+// MARK: - Watch
+"dialog_entry_failed" = "うんちの登録に失敗しました。";
+"dialog_entry_failed_message" = "時間を置いてから再度試してください。";
+"watch_week_title" = "1週間のうんち記録";
+
+

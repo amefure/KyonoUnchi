@@ -25,15 +25,22 @@ class iOSConnectRepository: NSObject {
         if WCSession.isSupported() {
             self.session.delegate = self
             self.session.activate()
+            self.requestPoopData()
         }
     }
     
     // iOS側のデータ要求(transferUserInfoならキューとして貯まる)
     // transferUserInfoはシミュレーターでは動作しないので注意
+    private func requestPoopData() {
+        let requestDic: [String: Bool] = [CommunicationKey.W_REQUEST_WEEK_POOPS.rawValue: true]
+        self.session.transferUserInfo(requestDic)
+        // self.session.sendMessage(requestDic, replyHandler: { _ in })
+    }
+
+    
+    /// うんち登録リクエスト
     public func requestRegisterPoop() -> Bool {
-        WatchLogger.debug(items: session.isReachable)
-        guard session.isReachable == true else { return false }
-        let requestDic: [String: Date] = [CommunicationKey.W_REQUEST_REGISTER_POOP: Date()]
+        let requestDic: [String: Date] = [CommunicationKey.W_REQUEST_REGISTER_POOP.rawValue: Date()]
         self.session.transferUserInfo(requestDic)
         // self.session.sendMessage(requestDic, replyHandler: { _ in })
         return true
@@ -67,10 +74,13 @@ extension iOSConnectRepository: WCSessionDelegate {
     
     private func savePoopList(_ dic: [String : Any]) {
         WatchLogger.debug(items: "データ受信：\(dic)")
+        
+        guard let key = CommunicationKey.checkForKeyValue(dic) else {
+            return _poopList.send(completion: .failure(.notExistHeader))
+        }
         // iOSからデータを取得
-        guard let json = dic[CommunicationKey.I_SEND_SCDATE] as? String else {
-            _poopList.send(completion: .failure(.notExistHeader))
-            return
+        guard let json = dic[key.rawValue] as? String else {
+            return _poopList.send(completion: .failure(.notExistHeader))
         }
         // JSONデータをString型→Data型に変換
         guard let jsonData = String(json).data(using: .utf8) else {

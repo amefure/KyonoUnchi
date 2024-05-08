@@ -47,14 +47,14 @@ struct PoopInputTodayView: View {
                     .clipShape(RoundedRectangle(cornerRadius: DeviceSizeManager.deviceHeight / 2))
             
             Spacer()
-        }.alert("うんちを登録しました。", isPresented: $showSuccessDialog) {
-            Button("OK") { }
+        }.alert(L10n.dialogEntryPoop, isPresented: $showSuccessDialog) {
+            Button(L10n.dialogButtonOk) { }
         } message: {
             
-        }.alert("うんちの登録に失敗しました。", isPresented: $showFailedDialog) {
-            Button("OK") { }
+        }.alert(L10n.dialogEntryFailed, isPresented: $showFailedDialog) {
+            Button(L10n.dialogButtonOk) { }
         } message: {
-            Text("時間を置いてから再度試してください。")
+            Text(L10n.dialogEntryFailedMessage)
         }
     }
 }

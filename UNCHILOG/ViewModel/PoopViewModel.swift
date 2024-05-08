@@ -36,6 +36,12 @@ class PoopViewModel: ObservableObject {
                 self.fetchAllPoops()
             }
         }.store(in: &cancellables)
+        
+        watchConnectRepository.sendPoopDataFlag.sink { _ in
+        } receiveValue: { [weak self] date in
+            guard let self else { return }
+            self.sendWatchWeekPoops()
+        }.store(in: &cancellables)
     }
 }
 
@@ -113,8 +119,9 @@ extension PoopViewModel {
     }
 }
 
+// Watch
 extension PoopViewModel {
-    public func sendWatchWeekPoops() {
+    private func sendWatchWeekPoops() {
         if watchConnectRepository.isReachable() {
             let endToday = dateFormatUtility.endOfDay(for: Date())
             let oneWeekAgo = dateFormatUtility.calcDate(date: endToday, value: -7)

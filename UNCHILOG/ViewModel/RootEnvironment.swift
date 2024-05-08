@@ -52,6 +52,7 @@ class RootEnvironment: ObservableObject {
         getInitWeek()
         getEntryMode()
         getAppLock()
+        getCountInterstitial()
 
         scCalenderRepository.currentDates.receive(on: DispatchQueue.main).sink { _ in
         } receiveValue: { [weak self] currentDates in

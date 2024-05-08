@@ -13,7 +13,7 @@ struct PoopWeekListView: View {
     var body: some View {
         VStack {
             
-            Text("1週間のうんち記録")
+            Text(L10n.watchWeekTitle)
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 0) {

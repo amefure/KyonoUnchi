@@ -19,6 +19,12 @@ class WatchConnectRepository: NSObject {
         _entryDate.eraseToAnyPublisher()
     }
     private let _entryDate = PassthroughSubject<Date, Never>()
+    
+    /// Poop情報を送信要求フラグ
+    public var sendPoopDataFlag: AnyPublisher<Bool, Never> {
+        _sendPoopDataFlag.eraseToAnyPublisher()
+    }
+    private let _sendPoopDataFlag = PassthroughSubject<Bool, Never>()
 
     /// Errorを外部へ公開する
     public var errorPublisher: AnyPublisher<WatchError, Never> {
@@ -58,7 +64,7 @@ class WatchConnectRepository: NSObject {
         guard session.isReachable == true else { return }
         do {
             let json = try jsonConverter(poops: poops)
-            let poopDic: [String: String] = [CommunicationKey.I_SEND_SCDATE: json]
+            let poopDic: [String: String] = [CommunicationKey.I_SEND_WEEK_POOPS.rawValue: json]
             self.session.transferUserInfo(poopDic)
             // self.session.sendMessage(poopDic) { _ in }
         } catch {
@@ -88,24 +94,33 @@ extension WatchConnectRepository: WCSessionDelegate {
     
     /// sendMessageメソッドで送信されたデータを受け取るデリゲートメソッド(使用されていない)
     func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
-        guard let date = message[CommunicationKey.W_REQUEST_REGISTER_POOP] as? Date else {
-            _errorPublisher.send(SessionDataError.notExistHeader)
-            return
-        }
-        _entryDate.send(date)
+        receiveMessage(message)
     }
     
     /// transferUserInfoメソッドで送信されたデータを受け取るデリゲートメソッド(バックグラウンドでもキューとして残る)
     func session(_ session: WCSession, didReceiveUserInfo userInfo: [String : Any] = [:]) {
-        guard let date = userInfo[CommunicationKey.W_REQUEST_REGISTER_POOP] as? Date else {
-            _errorPublisher.send(SessionDataError.notExistHeader)
-            return
-        }
-        _entryDate.send(date)
+        receiveMessage(userInfo)
     }
     
     func sessionDidBecomeInactive(_ session: WCSession) { }
     
     func sessionDidDeactivate(_ session: WCSession) { }
     
+    private func receiveMessage(_ dic:  [String : Any]) {
+        
+        guard let key = CommunicationKey.checkForKeyValue(dic) else { return }
+        
+        switch key {
+        case .I_SEND_WEEK_POOPS:
+            break
+        case .W_REQUEST_WEEK_POOPS:
+            _sendPoopDataFlag.send(true)
+        case .W_REQUEST_REGISTER_POOP:
+            guard let date = dic[key.rawValue] as? Date else {
+                _errorPublisher.send(SessionDataError.notExistHeader)
+                return
+            }
+            _entryDate.send(date)
+        }
+    }
 }

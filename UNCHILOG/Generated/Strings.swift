@@ -35,6 +35,10 @@ internal enum L10n {
   /// うんちの記録を本当に削除しますか？
   /// 削除するとリンクも全てなくなります。
   internal static let dialogDeleteTheday = L10n.tr("Localizable", "dialog_delete_theday", fallback: "うんちの記録を本当に削除しますか？\n削除するとリンクも全てなくなります。")
+  /// うんちの登録に失敗しました。
+  internal static let dialogEntryFailed = L10n.tr("Localizable", "dialog_entry_failed", fallback: "うんちの登録に失敗しました。")
+  /// 時間を置いてから再度試してください。
+  internal static let dialogEntryFailedMessage = L10n.tr("Localizable", "dialog_entry_failed_message", fallback: "時間を置いてから再度試してください。")
   /// うんちの記録を
   /// 登録しました。
   internal static let dialogEntryPoop = L10n.tr("Localizable", "dialog_entry_poop", fallback: "うんちの記録を\n登録しました。")
@@ -116,6 +120,8 @@ internal enum L10n {
   internal static let settingSectionLinkReview = L10n.tr("Localizable", "setting_section_link_review", fallback: "アプリをレビューする")
   /// 利用規約とプライバシーポリシー
   internal static let settingSectionLinkTerms = L10n.tr("Localizable", "setting_section_link_terms", fallback: "利用規約とプライバシーポリシー")
+  /// 1週間のうんち記録
+  internal static let watchWeekTitle = L10n.tr("Localizable", "watch_week_title", fallback: "1週間のうんち記録")
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces
