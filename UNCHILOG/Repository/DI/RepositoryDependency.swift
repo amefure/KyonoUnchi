@@ -8,11 +8,27 @@
 import UIKit
 
 class RepositoryDependency {
-    public let poopRepository = PoopRepository()
-    public let biometricAuthRepository = BiometricAuthRepository()
-    public let keyChainRepository = KeyChainRepository()
-    public let userDefaultsRepository = UserDefaultsRepository()
-    public let scCalenderRepository = SCCalenderRepository.shared // なぜか2回インスタンス化されるのでシングルトン
-    public let watchConnectRepository = WatchConnectRepository.shared
+    public let poopRepository: PoopRepository
+    public let biometricAuthRepository: BiometricAuthRepository
+    public let keyChainRepository: KeyChainRepository
+    public let userDefaultsRepository: UserDefaultsRepository
+    public let scCalenderRepository: SCCalenderRepository
+    public let watchConnectRepository: WatchConnectRepository
+    
+    static let sharedPoopRepository = PoopRepository()
+    static let sharedBiometricAuthRepository = BiometricAuthRepository()
+    static let sharedKeyChainRepository = KeyChainRepository()
+    static let sharedUserDefaultsRepository = UserDefaultsRepository()
+    static let sharedScCalenderRepository = SCCalenderRepository()
+    static let sharedWatchConnectRepository = WatchConnectRepository()
+    
+    init() {
+        poopRepository = RepositoryDependency.sharedPoopRepository
+        biometricAuthRepository = RepositoryDependency.sharedBiometricAuthRepository
+        keyChainRepository = RepositoryDependency.sharedKeyChainRepository
+        userDefaultsRepository = RepositoryDependency.sharedUserDefaultsRepository
+        scCalenderRepository = RepositoryDependency.sharedScCalenderRepository
+        watchConnectRepository = RepositoryDependency.sharedWatchConnectRepository
+    }
 }
 

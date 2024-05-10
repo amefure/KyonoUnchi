@@ -9,8 +9,6 @@ import SwiftUI
 import Combine
 
 class SCCalenderRepository {
-    
-    static let shared = SCCalenderRepository()
 
     // MARK: Config
     // 初期表示位置デモ値

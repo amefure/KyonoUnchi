@@ -10,8 +10,6 @@ import WatchConnectivity
 
 class WatchConnectRepository: NSObject {
     
-    static let shared = WatchConnectRepository()
-    
     private var session: WCSession = .default
     
     /// 登録する日付情報

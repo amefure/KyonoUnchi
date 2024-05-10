@@ -10,8 +10,6 @@ import WatchConnectivity
 
 class iOSConnectRepository: NSObject {
     
-    static let shared = iOSConnectRepository()
-    
     private var session: WCSession = .default
     
     /// iOSから1週間の取得したPoopリスト
