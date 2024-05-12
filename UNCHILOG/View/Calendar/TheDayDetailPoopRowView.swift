@@ -63,10 +63,10 @@ struct TheDayDetailPoopRowView: View {
                         Text(poop.getTime(format: "HH:mm"))
                             .fontWeight(.bold)
                             .foregroundStyle(.exSub)
-                            .frame(width: 90)
-                            .padding()
+                            .frame(width: 70)
+                            .padding(10)
                             .background(.exThema)
-                            .clipShape(RoundedRectangle(cornerRadius: 40))
+                            .clipShape(RoundedRectangle(cornerRadius: 5))
                         
                         Rectangle()
                             .fill(.exThema)
