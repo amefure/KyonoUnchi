@@ -54,6 +54,11 @@ extension DateFormatUtility {
         c.date(from: components) ?? Date()
     }
     
+    /// `Date`型を受け取りその日の00:00:00の`Date`型を返す
+    public func startOfDay(_ date: Date) -> Date {
+        return c.startOfDay(for: date)
+    }
+    
     /// 日付時間を23:59:59にリセットして返す
     public func endOfDay(for date: Date) -> Date {
         c.date(bySettingHour: 23, minute: 59, second: 59, of: date) ?? DateFormatUtility.today

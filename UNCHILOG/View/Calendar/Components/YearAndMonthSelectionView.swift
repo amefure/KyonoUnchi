@@ -49,19 +49,13 @@ struct YearAndMonthSelectionView: View {
                 Spacer()
                 
                 
-//                Menu {
-//                    ForEach(rootEnvironment.selectYearAndMonth.reversed()) { yearAndMonth in
-//                        Button {
-//                            rootEnvironment.moveToDayCalendar(year: yearAndMonth.year, month: yearAndMonth.month)
-//                        } label: {
-//                            Text(yearAndMonth.yearAndMonth)
-//                        }
-//                    }
-//                } label: {
+                NavigationLink {
+                    TheMonthPoopTimelineView(currentMonth: rootEnvironment.currentYearAndMonth[safe: 1] ?? SCYearAndMonth(year: 2024, month: 12))
+                } label: {
                     Text(rootEnvironment.getCurrentYearAndMonth())
                         .frame(width: 100)
                         .fontWeight(.bold)
-//                }
+                }
                 
                 Spacer()
                 

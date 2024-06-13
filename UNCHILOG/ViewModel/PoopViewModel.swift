@@ -17,7 +17,7 @@ class PoopViewModel: ObservableObject {
     /// 削除/更新対象のPoop
     @Published var selectPoop: Poop? = nil
     
-    private let dateFormatUtility = DateFormatUtility()
+    private let dateFormatUtility = DateFormatUtility(format: "yyyy年M月dd日")
     
     private var repository: PoopRepository
     private let watchConnectRepository: WatchConnectRepository
@@ -70,6 +70,17 @@ extension PoopViewModel {
     public func getMessage() -> String {
         let diffrence = findTodayDifference()
         return PoopMessage.random().name(difference: diffrence)
+    }
+    
+    /// うんち情報を辞書型に変換する
+    public func dayNotifyDictionary(currentMonth: SCYearAndMonth) -> [String: [Poop]] {
+        // 月毎にフィルタリング
+        let filterPoops = poops.filter({ $0.getDate(format: "yyyy年M月") == currentMonth.yearAndMonth })
+        let groupedRecords = Dictionary(grouping: filterPoops) { poop in
+            // yyyy年M月d日の文字列とする
+            return dateFormatUtility.getString(date:  dateFormatUtility.startOfDay(poop.wrappedCreatedAt))
+        }
+        return groupedRecords
     }
 }
 
