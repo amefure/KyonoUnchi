@@ -16,5 +16,7 @@ class UserDefaultsKey {
     static let ENTRY_MODE = "ENTRY_MODE"
     /// アプリカラー
     static let APP_COLOR = "APP_COLOR"
+    /// アプリアイコン
+    static let APP_ICON_NAME = "APP_ICON_NAME"
 }
 

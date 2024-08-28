@@ -41,6 +41,11 @@ internal enum Asset {
     internal static let exThema = ColorAsset(name: "ex_thema")
   }
   internal enum Images {
+    internal static let appIconImg1 = ImageAsset(name: "app_icon_img1")
+    internal static let appIconImg2 = ImageAsset(name: "app_icon_img2")
+    internal static let appIconImg3 = ImageAsset(name: "app_icon_img3")
+    internal static let appIconImg4 = ImageAsset(name: "app_icon_img4")
+    internal static let appIconImg5 = ImageAsset(name: "app_icon_img5")
     internal static let backToday = ImageAsset(name: "back_today")
     internal static let mrPoop = ImageAsset(name: "mr_poop")
     internal static let nofacePoop = ImageAsset(name: "noface_poop")

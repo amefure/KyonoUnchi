@@ -224,4 +224,13 @@ extension RootEnvironment {
         userDefaultsRepository.setIntData(key: UserDefaultsKey.ENTRY_MODE, value: mode.rawValue)
     }
     
+    /// アプリアイコン取得
+    public func getAppIcon() -> String {
+        userDefaultsRepository.getStringData(key: UserDefaultsKey.APP_ICON_NAME, initialValue: "AppIcon")
+    }
+
+    /// アプリアイコン登録
+    public func saveAppIcon(iconName: String) {
+        userDefaultsRepository.setStringData(key: UserDefaultsKey.APP_ICON_NAME, value: iconName)
+    }
 }

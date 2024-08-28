@@ -11,6 +11,7 @@ struct SettingView: View {
     @ObservedObject private var rootEnvironment = RootEnvironment.shared
     
     @State private var showSelectInitWeek = false
+    @State private var showSelectAppIconView = false
     @State private var showSelectEntryMode = false
     // MARK: - ViewModel
     
@@ -81,6 +82,22 @@ struct SettingView: View {
                             .foregroundStyle(.gray)
                     }
                     
+                    HStack {
+                        Image(systemName: "app")
+                        
+                        Button {
+                            showSelectAppIconView = true
+                        } label: {
+                            Text("アプリアイコンを変更する")
+                        }.fullScreenCover(isPresented: $showSelectAppIconView, content: {
+                            SelectAppIconView()
+                        })
+                        
+                        Spacer()
+                        
+                        Image(systemName: "chevron.forward")
+                            .foregroundStyle(.gray)
+                    }
                     
                     
                     HStack {
