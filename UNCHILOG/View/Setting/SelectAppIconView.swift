@@ -37,7 +37,8 @@ struct SelectAppIconView: View {
             List {
                 Button {
                     appIconName = AppIconName.icon1.rawValue
-                    UIApplication.shared.setAlternateIconName(appIconName)
+                    UIApplication.shared.setAlternateIconName(nil)
+                    rootEnvironment.saveAppIcon(iconName: appIconName)
                 } label: {
                     HStack {
                         Asset.Images.appIconImg1.swiftUIImage
@@ -61,6 +62,7 @@ struct SelectAppIconView: View {
                 Button {
                     appIconName = AppIconName.icon2.rawValue
                     UIApplication.shared.setAlternateIconName(appIconName)
+                    rootEnvironment.saveAppIcon(iconName: appIconName)
                 } label: {
                     HStack {
                         Asset.Images.appIconImg2.swiftUIImage
@@ -83,6 +85,7 @@ struct SelectAppIconView: View {
                 Button {
                     appIconName = AppIconName.icon3.rawValue
                     UIApplication.shared.setAlternateIconName(appIconName)
+                    rootEnvironment.saveAppIcon(iconName: appIconName)
                 } label: {
                     HStack {
                         Asset.Images.appIconImg3.swiftUIImage
@@ -104,6 +107,7 @@ struct SelectAppIconView: View {
                 Button {
                     appIconName = AppIconName.icon4.rawValue
                     UIApplication.shared.setAlternateIconName(appIconName)
+                    rootEnvironment.saveAppIcon(iconName: appIconName)
                 } label: {
                     HStack {
                         Asset.Images.appIconImg4.swiftUIImage
