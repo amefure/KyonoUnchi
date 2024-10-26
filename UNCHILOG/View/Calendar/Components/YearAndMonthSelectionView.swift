@@ -44,7 +44,7 @@ struct YearAndMonthSelectionView: View {
                     rootEnvironment.backMonth()
                 } label: {
                     Image(systemName: "chevron.backward")
-                }
+                }.frame(width: 10)
                 
                 Spacer()
                 
@@ -55,7 +55,7 @@ struct YearAndMonthSelectionView: View {
                     Text(rootEnvironment.getCurrentYearAndMonth())
                         .frame(width: 100)
                         .fontWeight(.bold)
-                }
+                }.frame(width: 100)
                 
                 Spacer()
                 
@@ -63,7 +63,7 @@ struct YearAndMonthSelectionView: View {
                     rootEnvironment.forwardMonth()
                 } label: {
                     Image(systemName: "chevron.forward")
-                }
+                }.frame(width: 10)
                 
                 Button {
                     rootEnvironment.moveToDayYearAndMonthCalendar()
@@ -73,6 +73,7 @@ struct YearAndMonthSelectionView: View {
                         .scaledToFit()
                         .frame(width: 30)
                 }.padding(.horizontal, 10)
+                    .frame(width: 30)
             }
         ).navigationDestination(isPresented: $showSetting) {
             SettingView()

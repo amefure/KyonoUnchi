@@ -43,8 +43,9 @@ struct HeaderView<Content: View>: View {
                 } label: {
                     Image(systemName: leadingIcon)
                         .font(.system(size: 18))
-                }.padding(.leading, 5)
-                    .frame(width: 50)
+                        .padding(.leading, 5)
+                        .frame(width: 50)
+                }.frame(width: 50)
             } else if !trailingIcon.isEmpty {
                 Spacer()
                     .frame(width: 50)
@@ -62,8 +63,9 @@ struct HeaderView<Content: View>: View {
                 } label: {
                     Image(systemName: trailingIcon)
                         .font(.system(size: 18))
-                }.padding(.trailing, 5)
-                    .frame(width: 50)
+                        .padding(.trailing, 5)
+                        .frame(width: 50)
+                }.frame(width: 50)
                 
             } else if !leadingIcon.isEmpty {
                 Spacer()
