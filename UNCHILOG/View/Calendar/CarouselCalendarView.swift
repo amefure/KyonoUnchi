@@ -17,6 +17,8 @@ struct CarouselCalendarView: View {
     @GestureState private var dragOffset: CGFloat = 0
     // 初期描画のUI崩れ隠し用(1秒後に表示
     @State private var opacity: Double = 0
+    @State private var isSwipe: Bool = false
+    
     
     var body: some View {
         GeometryReader { geometry in
@@ -43,13 +45,15 @@ struct CarouselCalendarView: View {
             }
             // X方向にスワイプされた量だけHStackをずらす
             // dragOffsetにはスワイプされている間だけその値が格納されスワイプが終了すると0になる
-            .offset(x: dragOffset)
+            // iOS18以降からかスワイプ終了あとに0にならなくなったのでスワイプ中のみオフセットするように変更
+            .offset(x: isSwipe ? dragOffset : 0)
             // スワイプが完了してcurrentIndexが変化すると[currentIndex * width]分だけHStackをずらす
             .offset(x: -(geometry.size.width))
             .gesture(
                 DragGesture(minimumDistance: 0)
                     // スワイプの変化を観測しスワイプの変化分をHStackのoffsetに反映(スワイプでビューが動く部分を実装)
                     .updating(self.$dragOffset, body: { (value, state, _) in
+                        isSwipe = true
                         // スワイプ変化量をdragOffsetに反映
                         state = value.translation.width
                         // スワイプが完了するとdragOffsetの値は0になる
@@ -57,6 +61,7 @@ struct CarouselCalendarView: View {
                     .onEnded { value in
                         let newIndex = value.translation.width > 0 ? 1 : 0
                         parentFunction(newIndex)
+                        isSwipe = false
                     }
             )
         }.animation(.interpolatingSpring(mass: 0.6, stiffness: 150, damping: 80, initialVelocity: 0.1))
