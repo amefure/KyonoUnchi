@@ -27,7 +27,7 @@ struct CarouselCalendarView: View {
                     VStack(spacing: 0) {
                         if dates[safe: index] != nil {
                             // LazyVGridだとスワイプ時の描画が重くなる
-                            ForEach(0..<dates[index].count / 7) { rowIndex in
+                            ForEach(0..<dates[index].count / 7, id: \.self) { rowIndex in
                                 HStack(spacing: 0) {
                                     ForEach(0..<7) { columnIndex in
                                         let dataIndex = rowIndex * 7 + columnIndex
@@ -64,7 +64,7 @@ struct CarouselCalendarView: View {
                         isSwipe = false
                     }
             )
-        }.animation(.interpolatingSpring(mass: 0.6, stiffness: 150, damping: 80, initialVelocity: 0.1))
+        }.animation(.interpolatingSpring(mass: 0.6, stiffness: 150, damping: 80, initialVelocity: 0.1), value: dragOffset)
             .clipped()
             .opacity(opacity)
             .onAppear {
