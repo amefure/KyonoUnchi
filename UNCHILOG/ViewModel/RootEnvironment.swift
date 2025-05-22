@@ -18,6 +18,8 @@ class RootEnvironment: ObservableObject {
     @Published var currentDates: [[SCDate]] = []
     @Published private(set) var currentYearAndMonth: [SCYearAndMonth] = []
     @Published private(set) var dayOfWeekList: [SCWeek] = []
+    /// アプリに表示しているカレンダー年月インデックス番号
+    @Published var displayCalendarIndex: CGFloat = 0
     
     // MARK: 永続化
     @Published private(set) var initWeek: SCWeek = .sunday
@@ -54,32 +56,39 @@ class RootEnvironment: ObservableObject {
         getAppLock()
         getCountInterstitial()
 
-        scCalenderRepository.currentDates.receive(on: DispatchQueue.main).sink { _ in
-        } receiveValue: { [weak self] currentDates in
-            guard let self else { return }
-            self.currentDates = currentDates
-        }.store(in: &cancellables)
+        scCalenderRepository.currentDates
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] dates in
+                guard let self else { return }
+                self.currentDates = dates
+            }.store(in: &cancellables)
         
-        scCalenderRepository.currentYearAndMonth.sink { _ in
-        } receiveValue: { [weak self] currentYearAndMonth in
-            guard let self else { return }
-            self.currentYearAndMonth = currentYearAndMonth
-        }.store(in: &cancellables)
+        scCalenderRepository.currentYearAndMonth
+            .sink { [weak self] currentYearAndMonth in
+                guard let self else { return }
+                self.currentYearAndMonth = currentYearAndMonth
+            }.store(in: &cancellables)
         
-        scCalenderRepository.dayOfWeekList.sink { _ in
-        } receiveValue: { [weak self] dayOfWeekList in
-            guard let self else { return }
-            self.dayOfWeekList = dayOfWeekList
-        }.store(in: &cancellables)
+        scCalenderRepository.dayOfWeekList
+            .sink { [weak self] list in
+                guard let self else { return }
+                self.dayOfWeekList = list
+            }.store(in: &cancellables)
+        
+        scCalenderRepository.displayCalendarIndex
+            .sink { [weak self] index in
+                guard let self else { return }
+                self.displayCalendarIndex = CGFloat(index)
+            }.store(in: &cancellables)
         
         setFirstWeek(week: initWeek)
         
-        watchConnectRepository.entryDate.sink { _ in
-        } receiveValue: { [weak self] date in
-            guard let self else { return }
-            self.poopRepository.addPoop(createdAt: date)
-            self.scCalenderRepository.updateCalendar()
-        }.store(in: &cancellables)
+        watchConnectRepository.entryDate
+            .sink { [weak self] date in
+                guard let self else { return }
+                self.poopRepository.addPoop(createdAt: date)
+                self.scCalenderRepository.updateCalendar()
+            }.store(in: &cancellables)
     }
 }
 
@@ -87,19 +96,38 @@ class RootEnvironment: ObservableObject {
 extension RootEnvironment {
     
     /// 年月を1つ進める
-    public func getCurrentYearAndMonth() -> String {
-        return currentYearAndMonth[safe: 1]?.yearAndMonth ?? ""
+    public func forwardMonthPage() {
+        let count: Int = currentYearAndMonth.count
+        displayCalendarIndex = min(displayCalendarIndex + 1, CGFloat(count))
+        print("左スワイプ", displayCalendarIndex)
+        if displayCalendarIndex == CGFloat(count) - 2 {
+            addNextMonth()
+        }
+    }
+    
+    /// 年月を1つ戻す
+    public func backMonthPage() {
+        displayCalendarIndex = max(displayCalendarIndex - 1, 0)
+        print("右スワイプ", displayCalendarIndex)
+        if displayCalendarIndex == 2 {
+            addPreMonth()
+        }
+    }
+    
+    /// 年月を1つ進める
+    public func getCurrentYearAndMonth() -> SCYearAndMonth {
+        return currentYearAndMonth[safe: Int(displayCalendarIndex)] ?? SCYearAndMonth(year: 2025, month: 1)
     }
    
-    /// 年月を1つ進める
-    public func forwardMonth() {
-        let result = scCalenderRepository.forwardMonth()
+    /// 格納済みの最新月の翌月を追加する
+    private func addNextMonth() {
+        let result = scCalenderRepository.addNextMonth()
         showOutOfRangeCalendarDialog = !result
     }
 
-    /// 年月を1つ戻す
-    public func backMonth() {
-        let result = scCalenderRepository.backMonth()
+    /// 格納済みの最古月の前月を追加する
+    private func addPreMonth() {
+        let result = scCalenderRepository.addPreMonth()
         showOutOfRangeCalendarDialog = !result
     }
     
@@ -107,20 +135,17 @@ extension RootEnvironment {
     public func setFirstWeek(week: SCWeek) {
         scCalenderRepository.setFirstWeek(week)
     }
-    
-    /// カレンダー表示年月を指定して更新
-    public func moveYearAndMonthCalendar(year: Int, month: Int) {
-        scCalenderRepository.moveYearAndMonthCalendar(year: year, month: month)
-    }
-    
+        
     /// 今月にカレンダーを移動
-    public func moveToDayYearAndMonthCalendar() {
-        guard let current = currentYearAndMonth[safe: 1] else { return  }
+    public func moveTodayCalendar() {
+        // 今月の年月を取得
         let (year, month) = dateFormatUtility.getDateYearAndMonth()
+        
+        guard let displayYearAndMonth = currentYearAndMonth[safe: Int(displayCalendarIndex)] else { return }
         // 今月を表示しているなら更新しない
-        if current.month != month {
-            moveYearAndMonthCalendar(year: year, month: month)
-        }
+        guard displayYearAndMonth.month != month else { return }
+        guard let todayIndex = currentYearAndMonth.firstIndex(where: { $0.year == year && $0.month == month }) else { return }
+        displayCalendarIndex = CGFloat(todayIndex)
     }
     
     /// Poopが追加された際にカレンダー構成用のデータも更新

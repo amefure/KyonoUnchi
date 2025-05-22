@@ -47,7 +47,7 @@ struct FooterView: View {
                         }
                         
                         if isRoot {
-                            rootEnvironment.moveToDayYearAndMonthCalendar()
+                            rootEnvironment.moveTodayCalendar()
                             rootEnvironment.showSimpleEntryDialog = true
                         } else {
                             rootEnvironment.showSimpleEntryDetailDialog = true

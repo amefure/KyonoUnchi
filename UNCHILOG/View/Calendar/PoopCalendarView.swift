@@ -33,15 +33,7 @@ struct PoopCalendarView: View {
                 }
             }
             
-            CarouselCalendarView(
-                yearAndMonths: rootEnvironment.currentYearAndMonth,
-                dates: rootEnvironment.currentDates) { index  in
-                    if index == 1 {
-                        rootEnvironment.backMonth()
-                    } else {
-                        rootEnvironment.forwardMonth()
-                    }
-                }
+            CarouselCalendarView()
             
             Spacer()
             
