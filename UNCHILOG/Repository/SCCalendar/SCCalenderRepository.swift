@@ -196,7 +196,7 @@ extension SCCalenderRepository {
 
 extension SCCalenderRepository {
         
-    /// 格納済みの最新月の翌月を追加する
+    /// 格納済みの最新月の翌月を1ヶ月分追加する
     /// - Returns: 成功フラグ
     public func addNextMonth() -> Bool {
         
@@ -212,15 +212,18 @@ extension SCCalenderRepository {
         return true
     }
 
-    /// 格納済みの最古月の前月を追加する
+    /// 格納済みの最古月の前月を12ヶ月分追加する
     /// - Returns: 成功フラグ
     public func addPreMonth() -> Bool {
         var value = _currentYearAndMonth.value
-        guard let first = value.first else { return false }
-        if first.month - 1 == 0 {
-            value.insert(SCYearAndMonth(year: first.year - 1, month: 12), at: 0)
-        } else {
-            value.insert(SCYearAndMonth(year: first.year, month: first.month - 1), at: 0)
+        // 12ヶ月分一気に追加する
+        for _ in 1..<12 {
+            guard let first = value.first else { return false }
+            if first.month - 1 == 0 {
+                value.insert(SCYearAndMonth(year: first.year - 1, month: 12), at: 0)
+            } else {
+                value.insert(SCYearAndMonth(year: first.year, month: first.month - 1), at: 0)
+            }
         }
         _currentYearAndMonth.send(value)
         updateCalendar()

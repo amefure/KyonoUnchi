@@ -95,26 +95,29 @@ class RootEnvironment: ObservableObject {
 // MARK: - SCCalender
 extension RootEnvironment {
     
-    /// 年月を1つ進める
+    /// 年月ページを1つ進める
     public func forwardMonthPage() {
         let count: Int = currentYearAndMonth.count
         displayCalendarIndex = min(displayCalendarIndex + 1, CGFloat(count))
-        print("左スワイプ", displayCalendarIndex)
+        // 最大年月まで2になったら翌月を追加する
         if displayCalendarIndex == CGFloat(count) - 2 {
             addNextMonth()
         }
     }
     
-    /// 年月を1つ戻す
+    /// 年月ページを1つ戻る
     public func backMonthPage() {
-        displayCalendarIndex = max(displayCalendarIndex - 1, 0)
-        print("右スワイプ", displayCalendarIndex)
         if displayCalendarIndex == 2 {
+            // 残り年月が2になったら前月を12ヶ月分追加する
             addPreMonth()
+            // 2のタイミングで12ヶ月分追加するのでインデックスを+10
+            displayCalendarIndex = displayCalendarIndex + 10
+        } else {
+            displayCalendarIndex = displayCalendarIndex - 1
         }
     }
     
-    /// 年月を1つ進める
+    /// 現在表示中の年月を取得する
     public func getCurrentYearAndMonth() -> SCYearAndMonth {
         return currentYearAndMonth[safe: Int(displayCalendarIndex)] ?? SCYearAndMonth(year: 2025, month: 1)
     }
@@ -125,7 +128,7 @@ extension RootEnvironment {
         showOutOfRangeCalendarDialog = !result
     }
 
-    /// 格納済みの最古月の前月を追加する
+    /// 格納済みの最古月の前月を12ヶ月分追加する
     private func addPreMonth() {
         let result = scCalenderRepository.addPreMonth()
         showOutOfRangeCalendarDialog = !result

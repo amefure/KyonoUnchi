@@ -106,6 +106,7 @@
 		12DB3CFA2BD394870075817A /* AdsConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB3CF92BD394870075817A /* AdsConfig.swift */; };
 		12DB3CFC2BD3AD070075817A /* MrPoopMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB3CFB2BD3AD070075817A /* MrPoopMessageView.swift */; };
 		12DCB2C22BBD2B7700AF62CB /* EntryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DCB2C12BBD2B7700AF62CB /* EntryButton.swift */; };
+		12E36B232DE0A589007F6E81 /* ExView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E36B222DE0A586007F6E81 /* ExView.swift */; };
 		12ED29B92C19701900A1293D /* TheMonthPoopTimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ED29B82C19701900A1293D /* TheMonthPoopTimelineView.swift */; };
 		C297C18C2F20E9590633A74B /* Pods_UNCHILOG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B70382F8D83335666AC1D3D7 /* Pods_UNCHILOG.framework */; };
 /* End PBXBuildFile section */
@@ -216,6 +217,7 @@
 		12DB3CF92BD394870075817A /* AdsConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsConfig.swift; sourceTree = "<group>"; };
 		12DB3CFB2BD3AD070075817A /* MrPoopMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MrPoopMessageView.swift; sourceTree = "<group>"; };
 		12DCB2C12BBD2B7700AF62CB /* EntryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryButton.swift; sourceTree = "<group>"; };
+		12E36B222DE0A586007F6E81 /* ExView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExView.swift; sourceTree = "<group>"; };
 		12ED29B82C19701900A1293D /* TheMonthPoopTimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMonthPoopTimelineView.swift; sourceTree = "<group>"; };
 		B70382F8D83335666AC1D3D7 /* Pods_UNCHILOG.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UNCHILOG.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C335F896FB75E0D71E43B745 /* Pods-UNCHILOG.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UNCHILOG.release.xcconfig"; path = "Target Support Files/Pods-UNCHILOG/Pods-UNCHILOG.release.xcconfig"; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 			isa = PBXGroup;
 			children = (
 				128BB5B72BB142BB009E0FAB /* EXCollection.swift */,
+				12E36B222DE0A586007F6E81 /* ExView.swift */,
 				128BB5DB2BB306FA009E0FAB /* DateFormatUtility.swift */,
 				128BB6042BB5B033009E0FAB /* DeviceSizeManager.swift */,
 			);
@@ -781,9 +784,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-UNCHILOG/Pods-UNCHILOG-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-UNCHILOG/Pods-UNCHILOG-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -876,6 +883,7 @@
 				128BB60D2BB7F88E009E0FAB /* PoopChartView.swift in Sources */,
 				128BB5E62BB46589009E0FAB /* CustomNotifyDialogView.swift in Sources */,
 				128BB5D22BB28882009E0FAB /* UserDefaultsRepository.swift in Sources */,
+				12E36B232DE0A589007F6E81 /* ExView.swift in Sources */,
 				12DB3CFC2BD3AD070075817A /* MrPoopMessageView.swift in Sources */,
 				1247790A2BEA066000559205 /* CommunicationKey.swift in Sources */,
 				129C63882C7F35F800D9CB39 /* AppIconName.swift in Sources */,
