@@ -41,7 +41,7 @@ struct YearAndMonthSelectionView: View {
                     .padding(.horizontal, 10)
                 
                 Button {
-                    rootEnvironment.backMonth()
+                    rootEnvironment.backMonthPage()
                 } label: {
                     Image(systemName: "chevron.backward")
                 }.frame(width: 10)
@@ -50,9 +50,9 @@ struct YearAndMonthSelectionView: View {
                 
                 
                 NavigationLink {
-                    TheMonthPoopTimelineView(currentMonth: rootEnvironment.currentYearAndMonth[safe: 1] ?? SCYearAndMonth(year: 2024, month: 12))
+                    TheMonthPoopTimelineView(currentMonth: rootEnvironment.getCurrentYearAndMonth())
                 } label: {
-                    Text(rootEnvironment.getCurrentYearAndMonth())
+                    Text(rootEnvironment.getCurrentYearAndMonth().yearAndMonth)
                         .frame(width: 100)
                         .fontWeight(.bold)
                 }.frame(width: 100)
@@ -60,13 +60,13 @@ struct YearAndMonthSelectionView: View {
                 Spacer()
                 
                 Button {
-                    rootEnvironment.forwardMonth()
+                    rootEnvironment.forwardMonthPage()
                 } label: {
                     Image(systemName: "chevron.forward")
                 }.frame(width: 10)
                 
                 Button {
-                    rootEnvironment.moveToDayYearAndMonthCalendar()
+                    rootEnvironment.moveTodayCalendar()
                 } label: {
                     Image("back_today")
                         .resizable()

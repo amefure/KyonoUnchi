@@ -62,7 +62,7 @@ struct PoopInputView: View {
                         )
                         rootEnvironment.addPoopUpdateCalender(createdAt: createdAt)
                         if df.checkInSameDayAs(date: createdAt) {
-                            rootEnvironment.moveToDayYearAndMonthCalendar()
+                            rootEnvironment.moveTodayCalendar()
                         }
                     }
                     showSuccessAlert = true
