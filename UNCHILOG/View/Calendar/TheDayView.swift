@@ -12,6 +12,8 @@ struct TheDayView: View {
     @ObservedObject private var rootEnvironment = RootEnvironment.shared
     public let theDay: SCDate
     
+    @State private var isShowDetailView: Bool = false
+    
     private var poopIconWidth: CGFloat {
         DeviceSizeManager.deviceWidth / 7
     }
@@ -22,42 +24,39 @@ struct TheDayView: View {
                 Color.gray
                     .opacity(0.2)
             } else {
-                NavigationLink {
-                    TheDayDetailView(theDay: theDay)
-                } label: {
-                    VStack(spacing: 0) {
-                        Text("\(theDay.day)")
-                            .frame(width: 25, height: 25)
-                            .background(theDay.isToday ? Color.exSub : Color.clear)
-                            .font(.system(size: DeviceSizeManager.isSESize ? 14 : 18))
-                            .clipShape(RoundedRectangle(cornerRadius: 25))
-                            .foregroundStyle(theDay.isToday ? Color.white : theDay.dayColor())
-                            .padding(.top, 3)
-                            
-                        Spacer()
+                VStack(spacing: 0) {
+                    Text("\(theDay.day)")
+                        .frame(width: 25, height: 25)
+                        .background(theDay.isToday ? Color.exSub : Color.clear)
+                        .font(.system(size: DeviceSizeManager.isSESize ? 14 : 18))
+                        .clipShape(RoundedRectangle(cornerRadius: 25))
+                        .foregroundStyle(theDay.isToday ? Color.white : theDay.dayColor())
+                        .padding(.top, 3)
                         
-                        if theDay.count != 0 {
-                            ZStack {
-                                Image("noface_poop")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(height: DeviceSizeManager.isSESize ? 35 : 40)
-                                    .offset(y: -5)
-    
-                                
-                                Text("\(theDay.count)")
-                                    .font(.system(size: DeviceSizeManager.isSESize ? 14 : 18))
-                                    .fontWeight(.bold)
-                                    .foregroundStyle(.white)
-                            }
-                        } else {
-                            Spacer()
+                    Spacer()
+                    
+                    if theDay.count != 0 {
+                        ZStack {
+                            Image("noface_poop")
+                                .resizable()
+                                .scaledToFit()
                                 .frame(height: DeviceSizeManager.isSESize ? 35 : 40)
+                                .offset(y: -5)
+
+                            
+                            Text("\(theDay.count)")
+                                .font(.system(size: DeviceSizeManager.isSESize ? 14 : 18))
+                                .fontWeight(.bold)
+                                .foregroundStyle(.white)
                         }
+                    } else {
+                        Color.white
+                            .frame(height: DeviceSizeManager.isSESize ? 35 : 40)
                     }
                 }.simultaneousGesture(
                     TapGesture()
                         .onEnded({ _ in
+                            isShowDetailView = true
                             rootEnvironment.addCountInterstitial()
                         })
                 )
@@ -68,6 +67,8 @@ struct TheDayView: View {
         .overlay {
             Rectangle()
                 .stroke(.gray, lineWidth: 0.5)
+        }.navigationDestination(isPresented: $isShowDetailView) {
+            TheDayDetailView(theDay: theDay)
         }
     }
 }

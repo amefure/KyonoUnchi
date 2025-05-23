@@ -50,7 +50,10 @@ struct CarouselCalendarView: View {
         // スワイプ完了後にバナーコンテナ自体を移動した後に固定するためのオフセット
         .offset(x: -(rootEnvironment.displayCalendarIndex * deviceWidth))
         // スワイプ完了後の動作をなめらかにするためのアニメーション
-        .animation(.linear(duration: 0.2), value: rootEnvironment.displayCalendarIndex * deviceWidth)
+        .animation(
+            .linear(duration: 0.2),
+            value: rootEnvironment.displayCalendarIndex * deviceWidth
+        )
         .gesture(
             DragGesture(minimumDistance: 0)
                 // スワイプの変化を観測しスワイプの変化分をHStackのoffsetに反映(スワイプでビューが動く部分を実装)
