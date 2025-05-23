@@ -16,7 +16,9 @@ struct PoopChartView: View {
     private var showCurrentData: [(createdAt: Date, count: Int)] {
         let targetYearAndMonth = rootEnvironment.getCurrentYearAndMonth().yearAndMonth
         
-        guard let currentDates = rootEnvironment.currentDates[safe: 1] else { return [] }
+        let index: Int = Int(rootEnvironment.displayCalendarIndex)
+        
+        guard let currentDates = rootEnvironment.currentDates[safe: index] else { return [] }
         
         let dateFormatUtility = DateFormatUtility(format: "yyyy年MM月")
         let targetDate = dateFormatUtility.getDate(str: targetYearAndMonth)
