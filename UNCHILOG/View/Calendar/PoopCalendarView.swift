@@ -13,17 +13,10 @@ struct PoopCalendarView: View {
     
     private let columns = Array(repeating: GridItem(spacing: 0), count: 7)
     
-    @State private var msg = ""
-    
     var body: some View {
         VStack(spacing: 0) {
             
             YearAndMonthSelectionView()
-            
-            MrPoopMessageView(msg: msg)
-                .onTapGesture {
-                    msg = poopViewModel.getMessage()
-                }
             
             LazyVGrid(columns: columns, spacing: 0) {
                 ForEach(rootEnvironment.dayOfWeekList, id: \.self) { week in
@@ -31,14 +24,12 @@ struct PoopCalendarView: View {
                         .foregroundStyle(.exText)
                         .opacity(0.8)
                 }
-            }
+            }.padding(.top, 30)
             
             CarouselCalendarView()
             
             Spacer()
             
-        }.onAppear {
-            msg = poopViewModel.getMessage()
         }
     }
 }

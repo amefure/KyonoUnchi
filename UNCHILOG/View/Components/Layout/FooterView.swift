@@ -69,10 +69,10 @@ struct FooterView: View {
                             .rotationEffect(Angle(degrees: 20))
                             .position(x: 60, y: 5)
                         
-                        Image("smile_poop")
+                        Image(systemName: "plus")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 70, height: 70)
+                            .frame(width: 30, height: 30)
                             .offset(y: -5)
                     }.frame(width: 70, height: 70)
                 }

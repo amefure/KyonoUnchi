@@ -83,7 +83,7 @@ struct NumberKeyboardView: View {
     public var color: Color = .exText
 
     private var height: CGFloat {
-        DeviceSizeManager.isSESize ? 60 : 80
+        DeviceSizeUtility.isSESize ? 60 : 80
     }
 
     var body: some View {
@@ -103,7 +103,7 @@ struct NumberKeyboardView: View {
             }
 
             Rectangle()
-                .frame(width: DeviceSizeManager.deviceWidth, height: 1)
+                .frame(width: DeviceSizeUtility.deviceWidth, height: 1)
 
             HStack(spacing: 0) {
                 NumberButton(number: "4", password: $password, color: color)
@@ -120,7 +120,7 @@ struct NumberKeyboardView: View {
             }
 
             Rectangle()
-                .frame(width: DeviceSizeManager.deviceWidth, height: 1)
+                .frame(width: DeviceSizeUtility.deviceWidth, height: 1)
 
             HStack(spacing: 0) {
                 NumberButton(number: "7", password: $password, color: color)
@@ -137,7 +137,7 @@ struct NumberKeyboardView: View {
             }
 
             Rectangle()
-                .frame(width: DeviceSizeManager.deviceWidth, height: 1)
+                .frame(width: DeviceSizeUtility.deviceWidth, height: 1)
 
             HStack(spacing: 0) {
                 NumberButton(number: "-", password: $password, color: color)
@@ -154,7 +154,7 @@ struct NumberKeyboardView: View {
                     password = password.dropLast()
                 } label: {
                     Image(systemName: "delete.backward")
-                        .frame(width: DeviceSizeManager.deviceWidth / 3, height: height)
+                        .frame(width: DeviceSizeUtility.deviceWidth / 3, height: height)
                         .background(color)
                 }
             }
@@ -185,7 +185,7 @@ struct NumberButton: View {
     public var color: Color = .exText
 
     private var height: CGFloat {
-        DeviceSizeManager.isSESize ? 60 : 80
+        DeviceSizeUtility.isSESize ? 60 : 80
     }
 
     var body: some View {
@@ -195,7 +195,7 @@ struct NumberButton: View {
             }
         } label: {
             Text(number)
-                .frame(width: DeviceSizeManager.deviceWidth / 3, height: height)
+                .frame(width: DeviceSizeUtility.deviceWidth / 3, height: height)
                 .background(color)
         }
     }

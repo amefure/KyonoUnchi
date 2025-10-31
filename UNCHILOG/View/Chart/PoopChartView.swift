@@ -100,7 +100,7 @@ struct PoopChartView: View {
                                 }
                             }
                             
-                        }.frame(width: DeviceSizeManager.deviceWidth * 2.5)
+                        }.frame(width: DeviceSizeUtility.deviceWidth * 2.5)
                             .padding()
                         // iOS17以降のみ　表示範囲を狭めて横スクロール可能にする
                         // 今は暫定的にScrollViewで対応

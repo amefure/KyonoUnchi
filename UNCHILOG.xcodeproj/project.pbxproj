@@ -21,7 +21,6 @@
 		124778D42BE51A9400559205 /* PoopShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5C42BB28495009E0FAB /* PoopShape.swift */; };
 		124778D52BE51A9600559205 /* PoopColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5CA2BB284D5009E0FAB /* PoopColor.swift */; };
 		124778D62BE51A9800559205 /* PoopVolume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5C62BB284AC009E0FAB /* PoopVolume.swift */; };
-		124778D72BE51AAB00559205 /* DateFormatUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5DB2BB306FA009E0FAB /* DateFormatUtility.swift */; };
 		124778D82BE51ABA00559205 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5BE2BB1497D009E0FAB /* CoreDataRepository.swift */; };
 		124778D92BE51ACA00559205 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 128BB5A52BAFE3B7009E0FAB /* Colors.xcassets */; };
 		124778DA2BE51ACD00559205 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12CBFBEC2BAFE25C005FE4F1 /* Images.xcassets */; };
@@ -58,7 +57,6 @@
 		128BB5B12BB14125009E0FAB /* SCYearAndMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5B02BB14125009E0FAB /* SCYearAndMonth.swift */; };
 		128BB5B32BB14135009E0FAB /* SCWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5B22BB14135009E0FAB /* SCWeek.swift */; };
 		128BB5B62BB141C5009E0FAB /* SCCalenderRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5B52BB141C5009E0FAB /* SCCalenderRepository.swift */; };
-		128BB5B82BB142BB009E0FAB /* EXCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5B72BB142BB009E0FAB /* EXCollection.swift */; };
 		128BB5BC2BB147BB009E0FAB /* Poop+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5BB2BB147BB009E0FAB /* Poop+CoreDataClass.swift */; };
 		128BB5BF2BB1497D009E0FAB /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5BE2BB1497D009E0FAB /* CoreDataRepository.swift */; };
 		128BB5C22BB282E7009E0FAB /* PoopRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5C12BB282E7009E0FAB /* PoopRepository.swift */; };
@@ -72,7 +70,6 @@
 		128BB5D62BB289AF009E0FAB /* BiometricAuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5D52BB289AF009E0FAB /* BiometricAuthRepository.swift */; };
 		128BB5D82BB289E2009E0FAB /* PoopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5D72BB289E2009E0FAB /* PoopViewModel.swift */; };
 		128BB5DA2BB2FCEF009E0FAB /* PoopCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5D92BB2FCEF009E0FAB /* PoopCalendarView.swift */; };
-		128BB5DC2BB306FA009E0FAB /* DateFormatUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5DB2BB306FA009E0FAB /* DateFormatUtility.swift */; };
 		128BB5DE2BB30B72009E0FAB /* TheDayDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5DD2BB30B72009E0FAB /* TheDayDetailView.swift */; };
 		128BB5E12BB30E6E009E0FAB /* TheDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5E02BB30E6E009E0FAB /* TheDayView.swift */; };
 		128BB5E62BB46589009E0FAB /* CustomNotifyDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5E52BB46589009E0FAB /* CustomNotifyDialogView.swift */; };
@@ -87,13 +84,22 @@
 		128BB5FE2BB5AFD0009E0FAB /* AppLockInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5FD2BB5AFD0009E0FAB /* AppLockInputView.swift */; };
 		128BB6012BB5B000009E0FAB /* AppLockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB6002BB5B000009E0FAB /* AppLockViewModel.swift */; };
 		128BB6032BB5B008009E0FAB /* AppLockInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB6022BB5B008009E0FAB /* AppLockInputViewModel.swift */; };
-		128BB6052BB5B033009E0FAB /* DeviceSizeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB6042BB5B033009E0FAB /* DeviceSizeManager.swift */; };
 		128BB6072BB5B0DD009E0FAB /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB6062BB5B0DD009E0FAB /* SettingViewModel.swift */; };
 		128BB60A2BB79BA2009E0FAB /* UrlLinkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB6092BB79BA2009E0FAB /* UrlLinkConfig.swift */; };
 		128BB60D2BB7F88E009E0FAB /* PoopChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB60C2BB7F88E009E0FAB /* PoopChartView.swift */; };
 		12978DEC2BE3CEF700D25AA4 /* CarouselCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12978DEB2BE3CEF700D25AA4 /* CarouselCalendarView.swift */; };
 		129C63862C7F316200D9CB39 /* SelectAppIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129C63852C7F316200D9CB39 /* SelectAppIconView.swift */; };
 		129C63882C7F35F800D9CB39 /* AppIconName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129C63872C7F35F800D9CB39 /* AppIconName.swift */; };
+		129FA0982EB4EB24009712F1 /* ExView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129FA0942EB4EB24009712F1 /* ExView.swift */; };
+		129FA09A2EB4EB24009712F1 /* ExFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129FA0932EB4EB24009712F1 /* ExFontSize.swift */; };
+		129FA09B2EB4EB24009712F1 /* ExUIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129FA0902EB4EB24009712F1 /* ExUIApplication.swift */; };
+		129FA09C2EB4EB24009712F1 /* ExCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129FA0952EB4EB24009712F1 /* ExCollection.swift */; };
+		129FA09D2EB4EB24009712F1 /* ExPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129FA0912EB4EB24009712F1 /* ExPublisher.swift */; };
+		129FA0A82EB4EB31009712F1 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129FA09F2EB4EB31009712F1 /* Logger.swift */; };
+		129FA0A92EB4EB31009712F1 /* DateFormatUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129FA0A22EB4EB31009712F1 /* DateFormatUtility.swift */; };
+		129FA0AB2EB4EB31009712F1 /* ShareInfoUtillity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129FA0A42EB4EB31009712F1 /* ShareInfoUtillity.swift */; };
+		129FA0AC2EB4EB31009712F1 /* DeviceSizeUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129FA0A02EB4EB31009712F1 /* DeviceSizeUtility.swift */; };
+		129FA0AE2EB4EC4B009712F1 /* DateFormatUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129FA0A22EB4EB31009712F1 /* DateFormatUtility.swift */; };
 		12A43E172BBAF51800AB19A4 /* RoundMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A43E162BBAF51700AB19A4 /* RoundMessageView.swift */; };
 		12B29BCE2BD521A900DD7E20 /* PoopMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B29BCD2BD521A900DD7E20 /* PoopMessage.swift */; };
 		12CBFBE92BAFE25B005FE4F1 /* UNCHILOGApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CBFBE82BAFE25B005FE4F1 /* UNCHILOGApp.swift */; };
@@ -106,7 +112,6 @@
 		12DB3CFA2BD394870075817A /* AdsConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB3CF92BD394870075817A /* AdsConfig.swift */; };
 		12DB3CFC2BD3AD070075817A /* MrPoopMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB3CFB2BD3AD070075817A /* MrPoopMessageView.swift */; };
 		12DCB2C22BBD2B7700AF62CB /* EntryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DCB2C12BBD2B7700AF62CB /* EntryButton.swift */; };
-		12E36B232DE0A589007F6E81 /* ExView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E36B222DE0A586007F6E81 /* ExView.swift */; };
 		12ED29B92C19701900A1293D /* TheMonthPoopTimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ED29B82C19701900A1293D /* TheMonthPoopTimelineView.swift */; };
 		C297C18C2F20E9590633A74B /* Pods_UNCHILOG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B70382F8D83335666AC1D3D7 /* Pods_UNCHILOG.framework */; };
 /* End PBXBuildFile section */
@@ -168,7 +173,6 @@
 		128BB5B02BB14125009E0FAB /* SCYearAndMonth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCYearAndMonth.swift; sourceTree = "<group>"; };
 		128BB5B22BB14135009E0FAB /* SCWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCWeek.swift; sourceTree = "<group>"; };
 		128BB5B52BB141C5009E0FAB /* SCCalenderRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCCalenderRepository.swift; sourceTree = "<group>"; };
-		128BB5B72BB142BB009E0FAB /* EXCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EXCollection.swift; sourceTree = "<group>"; };
 		128BB5BB2BB147BB009E0FAB /* Poop+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Poop+CoreDataClass.swift"; path = "/Users/s/Desktop/SwiftApp/UNCHILOG/UNCHILOG/Model/CoreData/Poop+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		128BB5BE2BB1497D009E0FAB /* CoreDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
 		128BB5C12BB282E7009E0FAB /* PoopRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopRepository.swift; sourceTree = "<group>"; };
@@ -182,7 +186,6 @@
 		128BB5D52BB289AF009E0FAB /* BiometricAuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricAuthRepository.swift; sourceTree = "<group>"; };
 		128BB5D72BB289E2009E0FAB /* PoopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopViewModel.swift; sourceTree = "<group>"; };
 		128BB5D92BB2FCEF009E0FAB /* PoopCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopCalendarView.swift; sourceTree = "<group>"; };
-		128BB5DB2BB306FA009E0FAB /* DateFormatUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatUtility.swift; sourceTree = "<group>"; };
 		128BB5DD2BB30B72009E0FAB /* TheDayDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheDayDetailView.swift; sourceTree = "<group>"; };
 		128BB5E02BB30E6E009E0FAB /* TheDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheDayView.swift; sourceTree = "<group>"; };
 		128BB5E52BB46589009E0FAB /* CustomNotifyDialogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNotifyDialogView.swift; sourceTree = "<group>"; };
@@ -197,13 +200,21 @@
 		128BB5FD2BB5AFD0009E0FAB /* AppLockInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLockInputView.swift; sourceTree = "<group>"; };
 		128BB6002BB5B000009E0FAB /* AppLockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLockViewModel.swift; sourceTree = "<group>"; };
 		128BB6022BB5B008009E0FAB /* AppLockInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLockInputViewModel.swift; sourceTree = "<group>"; };
-		128BB6042BB5B033009E0FAB /* DeviceSizeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSizeManager.swift; sourceTree = "<group>"; };
 		128BB6062BB5B0DD009E0FAB /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		128BB6092BB79BA2009E0FAB /* UrlLinkConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlLinkConfig.swift; sourceTree = "<group>"; };
 		128BB60C2BB7F88E009E0FAB /* PoopChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopChartView.swift; sourceTree = "<group>"; };
 		12978DEB2BE3CEF700D25AA4 /* CarouselCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCalendarView.swift; sourceTree = "<group>"; };
 		129C63852C7F316200D9CB39 /* SelectAppIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAppIconView.swift; sourceTree = "<group>"; };
 		129C63872C7F35F800D9CB39 /* AppIconName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconName.swift; sourceTree = "<group>"; };
+		129FA0902EB4EB24009712F1 /* ExUIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExUIApplication.swift; sourceTree = "<group>"; };
+		129FA0912EB4EB24009712F1 /* ExPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExPublisher.swift; sourceTree = "<group>"; };
+		129FA0932EB4EB24009712F1 /* ExFontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExFontSize.swift; sourceTree = "<group>"; };
+		129FA0942EB4EB24009712F1 /* ExView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExView.swift; sourceTree = "<group>"; };
+		129FA0952EB4EB24009712F1 /* ExCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExCollection.swift; sourceTree = "<group>"; };
+		129FA09F2EB4EB31009712F1 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		129FA0A02EB4EB31009712F1 /* DeviceSizeUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSizeUtility.swift; sourceTree = "<group>"; };
+		129FA0A22EB4EB31009712F1 /* DateFormatUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatUtility.swift; sourceTree = "<group>"; };
+		129FA0A42EB4EB31009712F1 /* ShareInfoUtillity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareInfoUtillity.swift; sourceTree = "<group>"; };
 		12A43E162BBAF51700AB19A4 /* RoundMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundMessageView.swift; sourceTree = "<group>"; };
 		12B29BCD2BD521A900DD7E20 /* PoopMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopMessage.swift; sourceTree = "<group>"; };
 		12CBFBE52BAFE25B005FE4F1 /* UNCHILOG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UNCHILOG.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -217,7 +228,6 @@
 		12DB3CF92BD394870075817A /* AdsConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsConfig.swift; sourceTree = "<group>"; };
 		12DB3CFB2BD3AD070075817A /* MrPoopMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MrPoopMessageView.swift; sourceTree = "<group>"; };
 		12DCB2C12BBD2B7700AF62CB /* EntryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryButton.swift; sourceTree = "<group>"; };
-		12E36B222DE0A586007F6E81 /* ExView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExView.swift; sourceTree = "<group>"; };
 		12ED29B82C19701900A1293D /* TheMonthPoopTimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMonthPoopTimelineView.swift; sourceTree = "<group>"; };
 		B70382F8D83335666AC1D3D7 /* Pods_UNCHILOG.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UNCHILOG.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C335F896FB75E0D71E43B745 /* Pods-UNCHILOG.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UNCHILOG.release.xcconfig"; path = "Target Support Files/Pods-UNCHILOG/Pods-UNCHILOG.release.xcconfig"; sourceTree = "<group>"; };
@@ -368,10 +378,8 @@
 		128BB59F2BAFE357009E0FAB /* Extension&Utility */ = {
 			isa = PBXGroup;
 			children = (
-				128BB5B72BB142BB009E0FAB /* EXCollection.swift */,
-				12E36B222DE0A586007F6E81 /* ExView.swift */,
-				128BB5DB2BB306FA009E0FAB /* DateFormatUtility.swift */,
-				128BB6042BB5B033009E0FAB /* DeviceSizeManager.swift */,
+				129FA0972EB4EB24009712F1 /* Extenstion */,
+				129FA0A62EB4EB31009712F1 /* Utility */,
 			);
 			path = "Extension&Utility";
 			sourceTree = "<group>";
@@ -582,6 +590,29 @@
 				128BB60C2BB7F88E009E0FAB /* PoopChartView.swift */,
 			);
 			path = Chart;
+			sourceTree = "<group>";
+		};
+		129FA0972EB4EB24009712F1 /* Extenstion */ = {
+			isa = PBXGroup;
+			children = (
+				129FA0902EB4EB24009712F1 /* ExUIApplication.swift */,
+				129FA0912EB4EB24009712F1 /* ExPublisher.swift */,
+				129FA0932EB4EB24009712F1 /* ExFontSize.swift */,
+				129FA0942EB4EB24009712F1 /* ExView.swift */,
+				129FA0952EB4EB24009712F1 /* ExCollection.swift */,
+			);
+			path = Extenstion;
+			sourceTree = "<group>";
+		};
+		129FA0A62EB4EB31009712F1 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				129FA09F2EB4EB31009712F1 /* Logger.swift */,
+				129FA0A02EB4EB31009712F1 /* DeviceSizeUtility.swift */,
+				129FA0A22EB4EB31009712F1 /* DateFormatUtility.swift */,
+				129FA0A42EB4EB31009712F1 /* ShareInfoUtillity.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 		12CBFBDC2BAFE25B005FE4F1 = {
@@ -826,11 +857,11 @@
 				124779002BEA03A300559205 /* PoopError.swift in Sources */,
 				124778ED2BE9FC9C00559205 /* CommunicationKey.swift in Sources */,
 				124778FF2BEA037700559205 /* WatchErrorr.swift in Sources */,
-				124778D72BE51AAB00559205 /* DateFormatUtility.swift in Sources */,
 				1247790C2BEA4B7800559205 /* WatchLogger.swift in Sources */,
 				124778D42BE51A9400559205 /* PoopShape.swift in Sources */,
 				124778F02BE9FD7900559205 /* SCWeekDayRepository.swift in Sources */,
 				124778D62BE51A9800559205 /* PoopVolume.swift in Sources */,
+				129FA0AE2EB4EC4B009712F1 /* DateFormatUtility.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -842,7 +873,6 @@
 				12A43E172BBAF51800AB19A4 /* RoundMessageView.swift in Sources */,
 				128BB5E82BB465A2009E0FAB /* RootEnvironment.swift in Sources */,
 				125326832BB8050A003A6BB0 /* YearAndMonthSelectionView.swift in Sources */,
-				128BB5DC2BB306FA009E0FAB /* DateFormatUtility.swift in Sources */,
 				124778FC2BEA034300559205 /* PoopError.swift in Sources */,
 				124779092BEA064000559205 /* ConnectError.swift in Sources */,
 				128BB5D62BB289AF009E0FAB /* BiometricAuthRepository.swift in Sources */,
@@ -872,7 +902,6 @@
 				128BB5F62BB5AB58009E0FAB /* SelectInitWeek.swift in Sources */,
 				12DCB2C22BBD2B7700AF62CB /* EntryButton.swift in Sources */,
 				12978DEC2BE3CEF700D25AA4 /* CarouselCalendarView.swift in Sources */,
-				128BB6052BB5B033009E0FAB /* DeviceSizeManager.swift in Sources */,
 				122B3EE52BC025C200167D9E /* HeaderView.swift in Sources */,
 				128BB5D42BB2899C009E0FAB /* KeyChainRepository.swift in Sources */,
 				128BB5D02BB2885C009E0FAB /* RepositoryDependency.swift in Sources */,
@@ -883,20 +912,27 @@
 				128BB60D2BB7F88E009E0FAB /* PoopChartView.swift in Sources */,
 				128BB5E62BB46589009E0FAB /* CustomNotifyDialogView.swift in Sources */,
 				128BB5D22BB28882009E0FAB /* UserDefaultsRepository.swift in Sources */,
-				12E36B232DE0A589007F6E81 /* ExView.swift in Sources */,
 				12DB3CFC2BD3AD070075817A /* MrPoopMessageView.swift in Sources */,
 				1247790A2BEA066000559205 /* CommunicationKey.swift in Sources */,
 				129C63882C7F35F800D9CB39 /* AppIconName.swift in Sources */,
 				128BB6032BB5B008009E0FAB /* AppLockInputViewModel.swift in Sources */,
 				128BB5FC2BB5AFC5009E0FAB /* AppLockView.swift in Sources */,
 				128BB5FE2BB5AFD0009E0FAB /* AppLockInputView.swift in Sources */,
+				129FA0982EB4EB24009712F1 /* ExView.swift in Sources */,
+				129FA09A2EB4EB24009712F1 /* ExFontSize.swift in Sources */,
+				129FA09B2EB4EB24009712F1 /* ExUIApplication.swift in Sources */,
+				129FA09C2EB4EB24009712F1 /* ExCollection.swift in Sources */,
+				129FA09D2EB4EB24009712F1 /* ExPublisher.swift in Sources */,
+				129FA0A82EB4EB31009712F1 /* Logger.swift in Sources */,
+				129FA0A92EB4EB31009712F1 /* DateFormatUtility.swift in Sources */,
+				129FA0AB2EB4EB31009712F1 /* ShareInfoUtillity.swift in Sources */,
+				129FA0AC2EB4EB31009712F1 /* DeviceSizeUtility.swift in Sources */,
 				128BB5C72BB284AC009E0FAB /* PoopVolume.swift in Sources */,
 				124779102BEA600700559205 /* WatchLogger.swift in Sources */,
 				128BB6072BB5B0DD009E0FAB /* SettingViewModel.swift in Sources */,
 				128BB5BC2BB147BB009E0FAB /* Poop+CoreDataClass.swift in Sources */,
 				12B29BCE2BD521A900DD7E20 /* PoopMessage.swift in Sources */,
 				124779062BEA062300559205 /* WatchConnectRepository.swift in Sources */,
-				128BB5B82BB142BB009E0FAB /* EXCollection.swift in Sources */,
 				128BB5CB2BB284D5009E0FAB /* PoopColor.swift in Sources */,
 				12DB3CF82BD392A90075817A /* AdMobView.swift in Sources */,
 				128BB5B12BB14125009E0FAB /* SCYearAndMonth.swift in Sources */,
@@ -921,7 +957,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_ASSET_PATHS = "\"UNCHILOGWatch Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = CGD79LB65H;
 				ENABLE_PREVIEWS = YES;
@@ -950,7 +986,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_ASSET_PATHS = "\"UNCHILOGWatch Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = CGD79LB65H;
 				ENABLE_PREVIEWS = YES;
@@ -1103,7 +1139,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_ASSET_PATHS = "\"UNCHILOG/Preview Content\"";
 				DEVELOPMENT_TEAM = CGD79LB65H;
 				ENABLE_PREVIEWS = YES;
@@ -1144,7 +1180,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_ASSET_PATHS = "\"UNCHILOG/Preview Content\"";
 				DEVELOPMENT_TEAM = CGD79LB65H;
 				ENABLE_PREVIEWS = YES;

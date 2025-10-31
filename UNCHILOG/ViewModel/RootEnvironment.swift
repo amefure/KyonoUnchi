@@ -23,7 +23,7 @@ class RootEnvironment: ObservableObject {
     
     // MARK: 永続化
     @Published private(set) var initWeek: SCWeek = .sunday
-    @Published private(set) var entryMode: EntryMode = .detail
+    @Published private(set) var entryMode: EntryMode = .simple
     @Published private(set) var appLocked = false
     
 

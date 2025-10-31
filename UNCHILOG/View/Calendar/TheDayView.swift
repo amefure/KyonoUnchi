@@ -15,7 +15,7 @@ struct TheDayView: View {
     @State private var isShowDetailView: Bool = false
     
     private var poopIconWidth: CGFloat {
-        DeviceSizeManager.deviceWidth / 7
+        DeviceSizeUtility.deviceWidth / 7
     }
 
     var body: some View {
@@ -28,7 +28,7 @@ struct TheDayView: View {
                     Text("\(theDay.day)")
                         .frame(width: 25, height: 25)
                         .background(theDay.isToday ? Color.exSub : Color.clear)
-                        .font(.system(size: DeviceSizeManager.isSESize ? 14 : 18))
+                        .font(.system(size: DeviceSizeUtility.isSESize ? 14 : 18))
                         .clipShape(RoundedRectangle(cornerRadius: 25))
                         .foregroundStyle(theDay.isToday ? Color.white : theDay.dayColor())
                         .padding(.top, 3)
@@ -40,18 +40,18 @@ struct TheDayView: View {
                             Image("noface_poop")
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: DeviceSizeManager.isSESize ? 35 : 40)
+                                .frame(height: DeviceSizeUtility.isSESize ? 35 : 40)
                                 .offset(y: -5)
 
                             
                             Text("\(theDay.count)")
-                                .font(.system(size: DeviceSizeManager.isSESize ? 14 : 18))
+                                .font(.system(size: DeviceSizeUtility.isSESize ? 14 : 18))
                                 .fontWeight(.bold)
                                 .foregroundStyle(.white)
                         }
                     } else {
                         Color.white
-                            .frame(height: DeviceSizeManager.isSESize ? 35 : 40)
+                            .frame(height: DeviceSizeUtility.isSESize ? 35 : 40)
                     }
                 }.simultaneousGesture(
                     TapGesture()
@@ -63,7 +63,7 @@ struct TheDayView: View {
             }
         }
         .frame(maxWidth: .infinity)
-        .frame(height: DeviceSizeManager.isSESize ? 68 : 80)
+        .frame(height: DeviceSizeUtility.isSESize ? 68 : 80)
         .overlay {
             Rectangle()
                 .stroke(.gray, lineWidth: 0.5)

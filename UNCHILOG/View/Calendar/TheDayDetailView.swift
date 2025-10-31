@@ -44,7 +44,8 @@ struct TheDayDetailView: View {
             if poopList.count == 0 {
                 
                 Spacer()
-                MrPoopMessageView(msg: "うんちの記録がありません。")
+                
+                Text("うんちの記録がありません。")
                 
                 Spacer()
             } else {

@@ -16,7 +16,7 @@ struct CarouselCalendarView: View {
 
     /// スワイプ中かどうか
     @State private var isSwipe: Bool = false
-    private let deviceWidth = DeviceSizeManager.deviceWidth
+    private let deviceWidth = DeviceSizeUtility.deviceWidth
     
     var body: some View {
         

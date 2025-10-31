@@ -61,7 +61,7 @@ struct SelectEntryMode: View {
                 Image("ss_simple_mode")
                     .resizable()
                     .scaledToFit()
-                    .frame(height: DeviceSizeManager.deviceHeight / 2.3)
+                    .frame(height: DeviceSizeUtility.deviceHeight / 2.3)
             case .detail:
                 Text("「詳細モード」に設定するとカレンダー画面の登録ボタンを押下した際に以下の登録画面が表示され、うんちの色、形、量、MEMOなどを入力することが可能です。")
                     .frame(height: 130)
@@ -71,7 +71,7 @@ struct SelectEntryMode: View {
                 Image("ss_detail_mode")
                     .resizable()
                     .scaledToFit()
-                    .frame(height: DeviceSizeManager.deviceHeight / 2.3)
+                    .frame(height: DeviceSizeUtility.deviceHeight / 2.3)
             }
             
             
