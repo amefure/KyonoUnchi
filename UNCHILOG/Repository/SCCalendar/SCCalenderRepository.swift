@@ -8,12 +8,15 @@
 import SwiftUI
 import Combine
 
-class SCCalenderRepository {
+final class SCCalenderRepository: @unchecked Sendable {
 
     // MARK: Config
     // 初期表示位置デモ値
     static let START_YEAR = 2023
     static let START_MONTH = 1
+    
+    ///  カレンダーの週行数を`42(7行)`に固定する
+    static let WEEK_ROW_COUNT = 42
     /// 最初に表示したい曜日
     private var initWeek: SCWeek = .sunday
 
@@ -173,6 +176,7 @@ extension SCCalenderRepository {
             let subun: Int = abs(firstWeek - initWeek)
         
             
+            // 月始まりの曜日より前にブランクを追加
             if subun != 0 {
                 for _ in 0..<subun {
                     let blankScDate = SCDate(year: -1, month: -1, day: -1)
@@ -180,6 +184,7 @@ extension SCCalenderRepository {
                 }
             }
             
+            // 月終わりの曜日より後にブランクを追加
             if dates.count % 7 != 0 {
                 let space = 7 - dates.count % 7
                 for _ in 0..<space {
@@ -187,6 +192,17 @@ extension SCCalenderRepository {
                     dates.append(blankScDate)
                 }
             }
+            
+            // カレンダーの週行数を`42(7行)`に固定する
+            if dates.count < 42 {
+                let blankCount = 42 - dates.count
+                for _ in 0 ..< blankCount {
+                    let blankScDate = SCDate(year: -1, month: -1, day: -1)
+                    dates.append(blankScDate)
+                }
+            }
+
+            
             datesList.append(dates)
         }
         _currentDates.send(datesList)
