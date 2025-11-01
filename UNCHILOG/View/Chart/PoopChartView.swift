@@ -64,7 +64,7 @@ struct PoopChartView: View {
     var body: some View {
         VStack {
             
-            YearAndMonthSelectionView(showBackButton: true)
+            YearAndMonthSelectionView()
             
             VStack {
                 if getMax() == 0 {
@@ -153,7 +153,8 @@ struct PoopChartView: View {
                 .frame(height: 60)
             
         }.padding(.bottom, 25)
-            .navigationBarBackButtonHidden()
+            .toolbarBackground(.exFoundation, for: .navigationBar)
+                .toolbarBackground(.visible, for: .navigationBar) // iOS18以降はtoolbarVisibility
     }
 }
 

@@ -33,7 +33,7 @@ struct UNCHILOGApp: App {
                     if rootEnvironment.appLocked {
                         AppLockView()
                     }
-                }
+                }.ignoresSafeArea(edges: [.bottom])
             }
         }
     }

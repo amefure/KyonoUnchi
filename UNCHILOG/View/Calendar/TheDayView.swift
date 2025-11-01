@@ -63,7 +63,7 @@ struct TheDayView: View {
             }
         }
         .frame(maxWidth: .infinity)
-        .frame(height: DeviceSizeUtility.isSESize ? 68 : 80)
+        //.frame(height: DeviceSizeUtility.isSESize ? 68 : 80)
         .overlay {
             Rectangle()
                 .stroke(.gray, lineWidth: 0.5)

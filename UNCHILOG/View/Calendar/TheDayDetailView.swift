@@ -22,21 +22,8 @@ struct TheDayDetailView: View {
     @State private var showEditInputView = false
     @State private var isShowMemo = false
     
-    // MARK: - Environment
-    @Environment(\.dismiss) var dismiss
-    
     var body: some View {
         VStack(spacing: 0) {
-            
-            HeaderView(
-                leadingIcon: "chevron.backward",
-                leadingAction: {
-                    dismiss()
-                },
-                content: {
-                    Text(theDay.getDate(format: "yyyy年M月d日"))
-                }
-            )
             
             AdMobBannerView()
                 .frame(height: 60)
@@ -76,13 +63,15 @@ struct TheDayDetailView: View {
                 poopViewModel.deletePoop(poop: poop)
             },
             negativeAction: { showDeleteDialog = false }
-        ).dialog(
+        ).alert(
             isPresented: $rootEnvironment.showSimpleEntryDetailDialog,
             title: L10n.dialogTitle,
             message: L10n.dialogEntryPoop,
             positiveButtonTitle: L10n.dialogButtonOk,
             positiveAction: { rootEnvironment.showSimpleEntryDetailDialog = false }
-        ).navigationBarBackButtonHidden()
+        ).toolbarBackground(.exFoundation, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar) // iOS18以降はtoolbarVisibility
+            .navigationTitle(theDay.getDate(format: "yyyy年M月d日"))
     }
 }
 

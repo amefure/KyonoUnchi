@@ -18,17 +18,7 @@ struct SelectAppIconView: View {
     var body: some View {
         
         VStack {
-            
-            HeaderView(
-                leadingIcon: "chevron.backward",
-                leadingAction: {
-                    dismiss()
-                },
-                content: {
-                    Text("アプリアイコン変更")
-                }
-            )
-            
+
             Text("アプリアイコンを変更することができます。")
                 .foregroundStyle(.exText)
                 .padding(.top, 10)
@@ -58,6 +48,7 @@ struct SelectAppIconView: View {
                     }
                     
                 }.buttonStyle(PlainButtonStyle())
+                    .listRowBackground(Color.exFoundation)
                 
                 Button {
                     appIconName = AppIconName.icon2.rawValue
@@ -81,6 +72,7 @@ struct SelectAppIconView: View {
                         }
                     }
                 }.buttonStyle(PlainButtonStyle())
+                    .listRowBackground(Color.exFoundation)
 
                 Button {
                     appIconName = AppIconName.icon3.rawValue
@@ -100,10 +92,11 @@ struct SelectAppIconView: View {
                         if appIconName == AppIconName.icon3.rawValue {
                             Spacer()
                             Image(systemName: "checkmark")
-                                .foregroundStyle(.exText)
                         }
                     }
                 }.buttonStyle(PlainButtonStyle())
+                    .listRowBackground(Color.exFoundation)
+                
                 Button {
                     appIconName = AppIconName.icon4.rawValue
                     UIApplication.shared.setAlternateIconName(appIconName)
@@ -126,6 +119,8 @@ struct SelectAppIconView: View {
                         }
                     }
                 }.buttonStyle(PlainButtonStyle())
+                    .listRowBackground(Color.exFoundation)
+                
                 Button {
                     appIconName = AppIconName.icon5.rawValue
                     UIApplication.shared.setAlternateIconName(appIconName)
@@ -148,12 +143,18 @@ struct SelectAppIconView: View {
                         }
                     }
                 }.buttonStyle(PlainButtonStyle())
-            }
+                    .listRowBackground(Color.exFoundation)
+            }.scrollContentBackground(.hidden)
+                .background(.white)
                
             Spacer()
-        }.onAppear {
-            appIconName = rootEnvironment.getAppIcon()
-        }
+        }.foregroundStyle(.exText)
+            .fontM(bold: true)
+            .onAppear {
+                appIconName = rootEnvironment.getAppIcon()
+            }.toolbarBackground(.exFoundation, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar) // iOS18以降はtoolbarVisibility
+            .navigationTitle("アプリアイコン変更")
     }
 }
 

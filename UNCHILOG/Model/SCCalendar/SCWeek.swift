@@ -16,6 +16,14 @@ enum SCWeek: Int, CaseIterable {
     case friday = 5
     case saturday = 6
     
+    public var isSunday: Bool {
+        return self == .sunday
+    }
+    
+    public var isSaturday: Bool {
+        return self == .saturday
+    }
+    
     public var fullSymbols: String {
         switch self {
         case .sunday: return "日曜日"

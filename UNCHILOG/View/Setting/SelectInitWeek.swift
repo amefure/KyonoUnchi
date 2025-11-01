@@ -16,17 +16,6 @@ struct SelectInitWeek: View {
     var body: some View {
         
         VStack {
-            
-            HeaderView(
-                leadingIcon: "chevron.backward",
-                leadingAction: {
-                    dismiss()
-                },
-                content: {
-                    Text("週始まり")
-                }
-            )
-            
             Text("カレンダーの週の始まりの曜日を変更することができます。")
                 .foregroundStyle(.exText)
                 .padding(.top, 10)
@@ -44,12 +33,12 @@ struct SelectInitWeek: View {
 
                             if selectWeek == week {
                                 Image(systemName: "checkmark")
-                                    .foregroundStyle(.exText)
                             }
                         }
-                    }
+                    }.listRowBackground(Color.exFoundation)
                 }.foregroundStyle(.exText)
-            }
+            }.scrollContentBackground(.hidden)
+                .background(.white)
             
             Button {
                 rootEnvironment.saveInitWeek(week: selectWeek)
@@ -72,15 +61,19 @@ struct SelectInitWeek: View {
                     .shadow(color: .gray, radius: 3, x: 4, y: 4)
             }
             
-        }.dialog(
-            isPresented: $showSuccessAlert,
-            title: L10n.dialogTitle,
-            message: L10n.dialogUpdateInitWeek(selectWeek.fullSymbols),
-            positiveButtonTitle: L10n.dialogButtonOk,
-            positiveAction: { dismiss() }
-        ).onAppear {
-            selectWeek = rootEnvironment.initWeek
-        }
+        }.foregroundStyle(.exText)
+            .fontM(bold: true)
+            .alert(
+                isPresented: $showSuccessAlert,
+                title: L10n.dialogTitle,
+                message: L10n.dialogUpdateInitWeek(selectWeek.fullSymbols),
+                positiveButtonTitle: L10n.dialogButtonOk,
+                positiveAction: { dismiss() }
+            ).onAppear {
+                selectWeek = rootEnvironment.initWeek
+            }.toolbarBackground(.exFoundation, for: .navigationBar)
+                .toolbarBackground(.visible, for: .navigationBar) // iOS18以降はtoolbarVisibility
+                .navigationTitle("週始まり変更")
     }
 }
 

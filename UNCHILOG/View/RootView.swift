@@ -12,33 +12,34 @@ struct RootView: View {
     
     private var dateFormatUtility = DateFormatUtility()
     
-    @ObservedObject private var poopViewModel = PoopViewModel.shared
+    @ObservedObject private var viewModel = PoopViewModel.shared
     @ObservedObject private var rootEnvironment = RootEnvironment.shared
     @ObservedObject private var interstitial = AdmobInterstitialView()
     
-    // MARK: - Combine
+    @State private var showInputPoopView = false
+    @State private var showSetting = false
+    @State private var showChart = false
+    
+    
     @State private var cancellables: Set<AnyCancellable> = []
-    
-    init() {
-        // タブを非表示
-        UITabBar.appearance().isHidden = true
-    }
-    
+        
     var body: some View {
         
         VStack(spacing: 0) {
             
             PoopCalendarView()
             
-            FooterView()
-         
-        }.dialog(
+            Spacer()
+        
+            Color.exThema
+                .frame(height: 100)
+        }.alert(
             isPresented: $rootEnvironment.showOutOfRangeCalendarDialog,
             title: L10n.dialogTitle,
             message: L10n.dialogOutOfRangeCalendar,
             positiveButtonTitle: L10n.dialogButtonOk,
             positiveAction: { rootEnvironment.showOutOfRangeCalendarDialog = false }
-        ).dialog(
+        ).alert(
             isPresented: $rootEnvironment.showSimpleEntryDialog,
             title: L10n.dialogTitle,
             message: L10n.dialogEntryPoop,
@@ -48,7 +49,7 @@ struct RootView: View {
                 rootEnvironment.addCountInterstitial()
             }
         ).onAppear {
-            poopViewModel.fetchAllPoops()
+            viewModel.fetchAllPoops()
             
             interstitial.loadInterstitial()
             rootEnvironment.$showInterstitial.sink { result in
@@ -57,7 +58,59 @@ struct RootView: View {
                     rootEnvironment.resetShowInterstitial()
                 }
             }.store(in: &cancellables)
-        }
+        }.toolbar {
+            
+            ToolbarItemGroup(placement: .topBarLeading) {
+                Button {
+                    showChart = true
+                } label: {
+                    Image(systemName: "chart.xyaxis.line")
+                        .foregroundStyle(.exThema)
+                }
+            }
+                
+ 
+            ToolbarItemGroup(placement: .topBarTrailing) {
+                Button {
+                    showSetting = true
+                } label: {
+                    Image(systemName: "gearshape.fill")
+                        .foregroundStyle(.exThema)
+                }
+            }
+            
+            
+            ToolbarItemGroup(placement: .bottomBar) {
+                Spacer()
+                Button {
+                    if rootEnvironment.entryMode == .simple {
+                        // 現在時刻を取得して登録
+                        let createdAt = Date()
+                        viewModel.addPoop(createdAt: createdAt)
+                        rootEnvironment.addPoopUpdateCalender(createdAt: createdAt)
+                        
+                        rootEnvironment.moveTodayCalendar()
+                        rootEnvironment.showSimpleEntryDialog = true
+                    } else {
+                        showInputPoopView = true
+                    }
+                } label: {
+                    VStack {
+                        Image(systemName: "plus")
+                        Text("登録")
+                    }.foregroundStyle(.white)
+                        .fontM(bold: true)
+                }
+            }
+
+        }.fullScreenCover(isPresented: $showInputPoopView) {
+            PoopInputView(theDay: Date())
+        }.navigationDestination(isPresented: $showSetting) {
+            SettingView()
+        }.navigationDestination(isPresented: $showChart) {
+            PoopChartView()
+        }.toolbarBackground(.exFoundation, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar) // iOS18以降はtoolbarVisibility
     }
 }
 

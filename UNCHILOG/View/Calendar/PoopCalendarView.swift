@@ -21,10 +21,18 @@ struct PoopCalendarView: View {
             LazyVGrid(columns: columns, spacing: 0) {
                 ForEach(rootEnvironment.dayOfWeekList, id: \.self) { week in
                     Text(week.shortSymbols)
-                        .foregroundStyle(.exText)
-                        .opacity(0.8)
+                        .if(week.isSunday) { view in
+                            view
+                                .foregroundStyle(.exNegative)
+                        }.if(week.isSaturday) { view in
+                            view
+                                .foregroundStyle(.exSub)
+                        }.if(!week.isSaturday && !week.isSunday) { view in
+                            view
+                                .foregroundStyle(.exThema)
+                        }.fontS(bold: true)
                 }
-            }.padding(.top, 30)
+            }
             
             CarouselCalendarView()
             

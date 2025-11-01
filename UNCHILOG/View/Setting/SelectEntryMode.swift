@@ -28,16 +28,6 @@ struct SelectEntryMode: View {
         
         VStack {
             
-            HeaderView(
-                leadingIcon: "chevron.backward",
-                leadingAction: {
-                    dismiss()
-                },
-                content: {
-                    Text("登録モード")
-                }
-            )
-            
             Text("うんちの記録を登録するモードを変更することができます。")
                 .foregroundStyle(.exText)
                 .padding(.top, 10)
@@ -95,21 +85,20 @@ struct SelectEntryMode: View {
                     .shadow(color: .gray, radius: 3, x: 4, y: 4)
             }
             
-            // ダイアログを全体に表示させるための
-            HStack {
-                Spacer()
-            }
-            
             Spacer()
-        }.dialog(
-            isPresented: $showSuccessAlert,
-            title: L10n.dialogTitle,
-            message: L10n.dialogUpdateEntryMode(selectMode.name),
-            positiveButtonTitle: L10n.dialogButtonOk,
-            positiveAction: { dismiss() }
-        ).onAppear {
-            selectMode = rootEnvironment.entryMode
-        }
+        }.foregroundStyle(.exText)
+            .fontM(bold: true)
+            .alert(
+                isPresented: $showSuccessAlert,
+                title: L10n.dialogTitle,
+                message: L10n.dialogUpdateEntryMode(selectMode.name),
+                positiveButtonTitle: L10n.dialogButtonOk,
+                positiveAction: { dismiss() }
+            ).onAppear {
+                selectMode = rootEnvironment.entryMode
+            }.toolbarBackground(.exFoundation, for: .navigationBar)
+                .toolbarBackground(.visible, for: .navigationBar) // iOS18以降はtoolbarVisibility
+                .navigationTitle("登録モード変更")
     }
 }
 

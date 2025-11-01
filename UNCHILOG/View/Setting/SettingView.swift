@@ -10,94 +10,55 @@ import SwiftUI
 struct SettingView: View {
     @ObservedObject private var rootEnvironment = RootEnvironment.shared
     
-    @State private var showSelectInitWeek = false
-    @State private var showSelectAppIconView = false
-    @State private var showSelectEntryMode = false
-    // MARK: - ViewModel
-    
     @StateObject private var viewModel = SettingViewModel()
     
     // MARK: - View
-    
     @State private var isLock: Bool = false
-    
-    // MARK: - Environment
-    @Environment(\.dismiss) var dismiss
+
     
     var body: some View {
         VStack(spacing: 0) {
-            
-            HeaderView(
-                leadingIcon: "chevron.backward",
-                leadingAction: {
-                    dismiss()
-                },
-                content: {
-                    Text("設定")
-                }
-            )
             
             List {
                 
                 Section(header: Text(L10n.settingSectionCalendarTitle)) {
                     
-                    HStack {
-                        Image(systemName: "calendar")
-                        
-                        Button {
-                            showSelectInitWeek = true
-                        } label: {
-                            Text(L10n.settingSectionCalendarInitWeek)
-                        }
-                        
-                        Spacer()
-                        
-                        Image(systemName: "chevron.forward")
-                            .foregroundStyle(.gray)
-                        
-                    }.fullScreenCover(isPresented: $showSelectInitWeek, content: {
+                    NavigationLink {
                         SelectInitWeek()
-                    })
+                    } label: {
+                        HStack {
+                            Image(systemName: "calendar")
+                            
+                            Text(L10n.settingSectionCalendarInitWeek)
+                            
+                        }
+                    }.listRowBackground(Color.exFoundation)
                     
                 }
                 
                 Section(header: Text(L10n.settingSectionAppTitle),
                         footer: Text(L10n.settingSectionAppDesc)) {
                     
-                    
-                    HStack {
-                        Image(systemName: "plus.app")
-                        
-                        Button {
-                            showSelectEntryMode = true
-                        } label: {
+                    NavigationLink {
+                        SelectEntryMode()
+                    } label: {
+                        HStack {
+                            Image(systemName: "plus.app")
+                            
                             Text(L10n.settingSectionAppEntryMode)
-                        }.fullScreenCover(isPresented: $showSelectEntryMode, content: {
-                            SelectEntryMode()
-                        })
-                        
-                        Spacer()
-                        
-                        Image(systemName: "chevron.forward")
-                            .foregroundStyle(.gray)
-                    }
+                        }
+                    }.listRowBackground(Color.exFoundation)
                     
-                    HStack {
-                        Image(systemName: "app")
-                        
-                        Button {
-                            showSelectAppIconView = true
-                        } label: {
+                    NavigationLink {
+                        SelectAppIconView()
+                    } label: {
+                        HStack {
+                            Image(systemName: "app")
+                            
                             Text("アプリアイコンを変更する")
-                        }.fullScreenCover(isPresented: $showSelectAppIconView, content: {
-                            SelectAppIconView()
-                        })
-                        
-                        Spacer()
-                        
-                        Image(systemName: "chevron.forward")
-                            .foregroundStyle(.gray)
-                    }
+                            
+                        }
+                    }.listRowBackground(Color.exFoundation)
                     
                     
                     HStack {
@@ -112,10 +73,13 @@ struct SettingView: View {
                                 viewModel.deletePassword()
                             }
                         }.tint(.exText)
-                    }
+                    }.listRowBackground(Color.exFoundation)
                 }
                 
-                Section(header: Text("Link"), footer: Text(L10n.settingSectionLinkDesc)) {
+                Section(
+                    header: Text("Link"),
+                    footer: Text(L10n.settingSectionLinkDesc)
+                ) {
                     if let url = URL(string: UrlLinkConfig.APP_REVIEW_URL) {
                         // 1:レビューページ
                         Link(destination: url, label: {
@@ -123,7 +87,7 @@ struct SettingView: View {
                                 Image(systemName: "hand.thumbsup")
                                 Text(L10n.settingSectionLinkReview)
                             }
-                        })
+                        }).listRowBackground(Color.exFoundation)
                     }
                     
                     // 2:シェアボタン
@@ -138,7 +102,7 @@ struct SettingView: View {
                             
                             Text(L10n.settingSectionLinkRecommend)
                         }
-                    }
+                    }.listRowBackground(Color.exFoundation)
                     
                     if let url = URL(string: UrlLinkConfig.APP_CONTACT_URL) {
                         // 3:お問い合わせフォーム
@@ -148,7 +112,7 @@ struct SettingView: View {
                                 Text(L10n.settingSectionLinkContact)
                                 Image(systemName: "link").font(.caption)
                             }
-                        })
+                        }).listRowBackground(Color.exFoundation)
                     }
                     
                     if let url = URL(string: UrlLinkConfig.APP_TERMS_OF_SERVICE_URL) {
@@ -159,21 +123,27 @@ struct SettingView: View {
                                 Text(L10n.settingSectionLinkTerms)
                                 Image(systemName: "link").font(.caption)
                             }
-                        })
+                        }).listRowBackground(Color.exFoundation)
                     }
                 }
-            }
+            }.scrollContentBackground(.hidden)
+                .background(.white)
+               
             
             AdMobBannerView()
                 .frame(height: 60)
             
         }.foregroundStyle(.exText)
+            .fontM(bold: true)
             .onAppear {
                 viewModel.onAppear()
                 isLock = viewModel.isLock
-            }.sheet(isPresented: $viewModel.isShowPassInput, content: {
+            }.sheet(isPresented: $viewModel.isShowPassInput) {
                 AppLockInputView(isLock: $isLock)
-            }).navigationBarBackButtonHidden()
+            }
+            .toolbarBackground(.exFoundation, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar) // iOS18以降はtoolbarVisibility
+            .navigationTitle("設定")
     }
 }
 
