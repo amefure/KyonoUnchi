@@ -12,9 +12,9 @@ struct RootView: View {
     
     private var dateFormatUtility = DateFormatUtility()
     
-    @ObservedObject private var viewModel = PoopViewModel.shared
+    @ObservedObject private var poopViewModel = PoopViewModel.shared
     @ObservedObject private var rootEnvironment = RootEnvironment.shared
-    @ObservedObject private var interstitial = AdmobInterstitialView()
+    private let viewModel = RootViewModel()
     
     @State private var showInputPoopView = false
     @State private var showSetting = false
@@ -49,13 +49,17 @@ struct RootView: View {
                 rootEnvironment.addCountInterstitial()
             }
         ).onAppear {
-            viewModel.fetchAllPoops()
+            poopViewModel.fetchAllPoops()
             
-            interstitial.loadInterstitial()
+            viewModel.onAppear()
+            
             rootEnvironment.$showInterstitial.sink { result in
                 if result {
-                    interstitial.presentInterstitial()
-                    rootEnvironment.resetShowInterstitial()
+                    Task {
+                        await viewModel.showInterstitial()
+                        rootEnvironment.resetShowInterstitial()
+                    }
+                    
                 }
             }.store(in: &cancellables)
         }.toolbar {
@@ -86,7 +90,7 @@ struct RootView: View {
                     if rootEnvironment.entryMode == .simple {
                         // 現在時刻を取得して登録
                         let createdAt = Date()
-                        viewModel.addPoop(createdAt: createdAt)
+                        poopViewModel.addPoop(createdAt: createdAt)
                         rootEnvironment.addPoopUpdateCalender(createdAt: createdAt)
                         
                         rootEnvironment.moveTodayCalendar()

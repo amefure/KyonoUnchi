@@ -100,6 +100,13 @@
 		129FA0AB2EB4EB31009712F1 /* ShareInfoUtillity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129FA0A42EB4EB31009712F1 /* ShareInfoUtillity.swift */; };
 		129FA0AC2EB4EB31009712F1 /* DeviceSizeUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129FA0A02EB4EB31009712F1 /* DeviceSizeUtility.swift */; };
 		129FA0AE2EB4EC4B009712F1 /* DateFormatUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129FA0A22EB4EB31009712F1 /* DateFormatUtility.swift */; };
+		129FA0B12EB63D10009712F1 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 129FA0B02EB63D10009712F1 /* FirebaseAnalytics */; };
+		129FA0B32EB63D10009712F1 /* FirebaseAnalyticsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 129FA0B22EB63D10009712F1 /* FirebaseAnalyticsCore */; };
+		129FA0B52EB63D10009712F1 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 129FA0B42EB63D10009712F1 /* FirebaseCore */; };
+		129FA0B72EB63D10009712F1 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 129FA0B62EB63D10009712F1 /* FirebaseCrashlytics */; };
+		129FA0B92EB63D10009712F1 /* FirebasePerformance in Frameworks */ = {isa = PBXBuildFile; productRef = 129FA0B82EB63D10009712F1 /* FirebasePerformance */; };
+		129FA0BC2EB63D43009712F1 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 129FA0BB2EB63D43009712F1 /* GoogleMobileAds */; };
+		129FA0BE2EB63EAC009712F1 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129FA0BD2EB63EA8009712F1 /* RootViewModel.swift */; };
 		12A43E172BBAF51800AB19A4 /* RoundMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A43E162BBAF51700AB19A4 /* RoundMessageView.swift */; };
 		12B29BCE2BD521A900DD7E20 /* PoopMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B29BCD2BD521A900DD7E20 /* PoopMessage.swift */; };
 		12CBFBE92BAFE25B005FE4F1 /* UNCHILOGApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CBFBE82BAFE25B005FE4F1 /* UNCHILOGApp.swift */; };
@@ -113,7 +120,6 @@
 		12DB3CFC2BD3AD070075817A /* MrPoopMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB3CFB2BD3AD070075817A /* MrPoopMessageView.swift */; };
 		12DCB2C22BBD2B7700AF62CB /* EntryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DCB2C12BBD2B7700AF62CB /* EntryButton.swift */; };
 		12ED29B92C19701900A1293D /* TheMonthPoopTimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ED29B82C19701900A1293D /* TheMonthPoopTimelineView.swift */; };
-		C297C18C2F20E9590633A74B /* Pods_UNCHILOG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B70382F8D83335666AC1D3D7 /* Pods_UNCHILOG.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -215,6 +221,7 @@
 		129FA0A02EB4EB31009712F1 /* DeviceSizeUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSizeUtility.swift; sourceTree = "<group>"; };
 		129FA0A22EB4EB31009712F1 /* DateFormatUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatUtility.swift; sourceTree = "<group>"; };
 		129FA0A42EB4EB31009712F1 /* ShareInfoUtillity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareInfoUtillity.swift; sourceTree = "<group>"; };
+		129FA0BD2EB63EA8009712F1 /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		12A43E162BBAF51700AB19A4 /* RoundMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundMessageView.swift; sourceTree = "<group>"; };
 		12B29BCD2BD521A900DD7E20 /* PoopMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopMessage.swift; sourceTree = "<group>"; };
 		12CBFBE52BAFE25B005FE4F1 /* UNCHILOG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UNCHILOG.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -229,9 +236,6 @@
 		12DB3CFB2BD3AD070075817A /* MrPoopMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MrPoopMessageView.swift; sourceTree = "<group>"; };
 		12DCB2C12BBD2B7700AF62CB /* EntryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryButton.swift; sourceTree = "<group>"; };
 		12ED29B82C19701900A1293D /* TheMonthPoopTimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMonthPoopTimelineView.swift; sourceTree = "<group>"; };
-		B70382F8D83335666AC1D3D7 /* Pods_UNCHILOG.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UNCHILOG.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C335F896FB75E0D71E43B745 /* Pods-UNCHILOG.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UNCHILOG.release.xcconfig"; path = "Target Support Files/Pods-UNCHILOG/Pods-UNCHILOG.release.xcconfig"; sourceTree = "<group>"; };
-		FFAB3A2F64D4F2AEF273AC17 /* Pods-UNCHILOG.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UNCHILOG.debug.xcconfig"; path = "Target Support Files/Pods-UNCHILOG/Pods-UNCHILOG.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -246,7 +250,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C297C18C2F20E9590633A74B /* Pods_UNCHILOG.framework in Frameworks */,
+				129FA0B12EB63D10009712F1 /* FirebaseAnalytics in Frameworks */,
+				129FA0B32EB63D10009712F1 /* FirebaseAnalyticsCore in Frameworks */,
+				129FA0B92EB63D10009712F1 /* FirebasePerformance in Frameworks */,
+				129FA0B72EB63D10009712F1 /* FirebaseCrashlytics in Frameworks */,
+				129FA0B52EB63D10009712F1 /* FirebaseCore in Frameworks */,
+				129FA0BC2EB63D43009712F1 /* GoogleMobileAds in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +424,7 @@
 			isa = PBXGroup;
 			children = (
 				128BB5D72BB289E2009E0FAB /* PoopViewModel.swift */,
+				129FA0BD2EB63EA8009712F1 /* RootViewModel.swift */,
 				128BB5E72BB465A2009E0FAB /* RootEnvironment.swift */,
 				128BB6062BB5B0DD009E0FAB /* SettingViewModel.swift */,
 				128BB5FF2BB5AFF2009E0FAB /* AppLock */,
@@ -621,8 +631,6 @@
 				12CBFBE72BAFE25B005FE4F1 /* UNCHILOG */,
 				124778C12BE5194800559205 /* UNCHILOGWatch Watch App */,
 				12CBFBE62BAFE25B005FE4F1 /* Products */,
-				1966409B7BAB9EB294D87360 /* Pods */,
-				6DBA257C95B27BCA3EAE7CCB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -661,23 +669,6 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		1966409B7BAB9EB294D87360 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				FFAB3A2F64D4F2AEF273AC17 /* Pods-UNCHILOG.debug.xcconfig */,
-				C335F896FB75E0D71E43B745 /* Pods-UNCHILOG.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		6DBA257C95B27BCA3EAE7CCB /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				B70382F8D83335666AC1D3D7 /* Pods_UNCHILOG.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -702,11 +693,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 12CBFBF82BAFE25C005FE4F1 /* Build configuration list for PBXNativeTarget "UNCHILOG" */;
 			buildPhases = (
-				8CA84FE6A9154B3DD87231E6 /* [CP] Check Pods Manifest.lock */,
 				12CBFBE12BAFE25B005FE4F1 /* Sources */,
 				12CBFBE22BAFE25B005FE4F1 /* Frameworks */,
 				12CBFBE32BAFE25B005FE4F1 /* Resources */,
-				CD277CC31CE15987174DBBA6 /* [CP] Embed Pods Frameworks */,
 				124778CE2BE5194A00559205 /* Embed Watch Content */,
 			);
 			buildRules = (
@@ -747,6 +736,10 @@
 				ja,
 			);
 			mainGroup = 12CBFBDC2BAFE25B005FE4F1;
+			packageReferences = (
+				129FA0AF2EB63D10009712F1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				129FA0BA2EB63D43009712F1 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
+			);
 			productRefGroup = 12CBFBE62BAFE25B005FE4F1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -783,52 +776,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		8CA84FE6A9154B3DD87231E6 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-UNCHILOG-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CD277CC31CE15987174DBBA6 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-UNCHILOG/Pods-UNCHILOG-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-UNCHILOG/Pods-UNCHILOG-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UNCHILOG/Pods-UNCHILOG-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		124778BC2BE5194800559205 /* Sources */ = {
@@ -894,6 +841,7 @@
 				128BB5C22BB282E7009E0FAB /* PoopRepository.swift in Sources */,
 				12ED29B92C19701900A1293D /* TheMonthPoopTimelineView.swift in Sources */,
 				12CBFBE92BAFE25B005FE4F1 /* UNCHILOGApp.swift in Sources */,
+				129FA0BE2EB63EAC009712F1 /* RootViewModel.swift in Sources */,
 				128BB5F02BB59F97009E0FAB /* FooterView.swift in Sources */,
 				12DB3CFA2BD394870075817A /* AdsConfig.swift in Sources */,
 				128BB5DE2BB30B72009E0FAB /* TheDayDetailView.swift in Sources */,
@@ -1132,7 +1080,6 @@
 		};
 		12CBFBF92BAFE25C005FE4F1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FFAB3A2F64D4F2AEF273AC17 /* Pods-UNCHILOG.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1173,7 +1120,6 @@
 		};
 		12CBFBFA2BAFE25C005FE4F1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C335F896FB75E0D71E43B745 /* Pods-UNCHILOG.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1243,6 +1189,58 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		129FA0AF2EB63D10009712F1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.5.0;
+			};
+		};
+		129FA0BA2EB63D43009712F1 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.12.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		129FA0B02EB63D10009712F1 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 129FA0AF2EB63D10009712F1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		129FA0B22EB63D10009712F1 /* FirebaseAnalyticsCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 129FA0AF2EB63D10009712F1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsCore;
+		};
+		129FA0B42EB63D10009712F1 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 129FA0AF2EB63D10009712F1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		129FA0B62EB63D10009712F1 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 129FA0AF2EB63D10009712F1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		129FA0B82EB63D10009712F1 /* FirebasePerformance */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 129FA0AF2EB63D10009712F1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebasePerformance;
+		};
+		129FA0BB2EB63D43009712F1 /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 129FA0BA2EB63D43009712F1 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		12CBFBF32BAFE25C005FE4F1 /* UNCHILOG.xcdatamodeld */ = {
