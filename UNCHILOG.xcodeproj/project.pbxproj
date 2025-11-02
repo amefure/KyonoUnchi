@@ -107,6 +107,8 @@
 		129FA0B92EB63D10009712F1 /* FirebasePerformance in Frameworks */ = {isa = PBXBuildFile; productRef = 129FA0B82EB63D10009712F1 /* FirebasePerformance */; };
 		129FA0BC2EB63D43009712F1 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 129FA0BB2EB63D43009712F1 /* GoogleMobileAds */; };
 		129FA0BE2EB63EAC009712F1 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129FA0BD2EB63EA8009712F1 /* RootViewModel.swift */; };
+		129FA0C12EB641BD009712F1 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 129FA0C02EB641BD009712F1 /* Swinject */; };
+		129FA0C42EB641CE009712F1 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129FA0C22EB641CE009712F1 /* DIContainer.swift */; };
 		12A43E172BBAF51800AB19A4 /* RoundMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A43E162BBAF51700AB19A4 /* RoundMessageView.swift */; };
 		12B29BCE2BD521A900DD7E20 /* PoopMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B29BCD2BD521A900DD7E20 /* PoopMessage.swift */; };
 		12CBFBE92BAFE25B005FE4F1 /* UNCHILOGApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CBFBE82BAFE25B005FE4F1 /* UNCHILOGApp.swift */; };
@@ -222,6 +224,7 @@
 		129FA0A22EB4EB31009712F1 /* DateFormatUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatUtility.swift; sourceTree = "<group>"; };
 		129FA0A42EB4EB31009712F1 /* ShareInfoUtillity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareInfoUtillity.swift; sourceTree = "<group>"; };
 		129FA0BD2EB63EA8009712F1 /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
+		129FA0C22EB641CE009712F1 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		12A43E162BBAF51700AB19A4 /* RoundMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundMessageView.swift; sourceTree = "<group>"; };
 		12B29BCD2BD521A900DD7E20 /* PoopMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopMessage.swift; sourceTree = "<group>"; };
 		12CBFBE52BAFE25B005FE4F1 /* UNCHILOG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UNCHILOG.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -252,6 +255,7 @@
 			files = (
 				129FA0B12EB63D10009712F1 /* FirebaseAnalytics in Frameworks */,
 				129FA0B32EB63D10009712F1 /* FirebaseAnalyticsCore in Frameworks */,
+				129FA0C12EB641BD009712F1 /* Swinject in Frameworks */,
 				129FA0B92EB63D10009712F1 /* FirebasePerformance in Frameworks */,
 				129FA0B72EB63D10009712F1 /* FirebaseCrashlytics in Frameworks */,
 				129FA0B52EB63D10009712F1 /* FirebaseCore in Frameworks */,
@@ -625,6 +629,14 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
+		129FA0C32EB641CE009712F1 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				129FA0C22EB641CE009712F1 /* DIContainer.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
 		12CBFBDC2BAFE25B005FE4F1 = {
 			isa = PBXGroup;
 			children = (
@@ -656,6 +668,7 @@
 				128BB5A12BAFE36C009E0FAB /* View */,
 				128BB5A22BAFE371009E0FAB /* ViewModel */,
 				128BB5A32BAFE37D009E0FAB /* Repository */,
+				129FA0C32EB641CE009712F1 /* DI */,
 				12CBFBEE2BAFE25C005FE4F1 /* Preview Content */,
 			);
 			path = UNCHILOG;
@@ -739,6 +752,7 @@
 			packageReferences = (
 				129FA0AF2EB63D10009712F1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				129FA0BA2EB63D43009712F1 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
+				129FA0BF2EB641BC009712F1 /* XCRemoteSwiftPackageReference "Swinject" */,
 			);
 			productRefGroup = 12CBFBE62BAFE25B005FE4F1 /* Products */;
 			projectDirPath = "";
@@ -858,6 +872,7 @@
 				128BB5EC2BB467B2009E0FAB /* Strings.swift in Sources */,
 				129C63862C7F316200D9CB39 /* SelectAppIconView.swift in Sources */,
 				128BB60D2BB7F88E009E0FAB /* PoopChartView.swift in Sources */,
+				129FA0C42EB641CE009712F1 /* DIContainer.swift in Sources */,
 				128BB5E62BB46589009E0FAB /* CustomNotifyDialogView.swift in Sources */,
 				128BB5D22BB28882009E0FAB /* UserDefaultsRepository.swift in Sources */,
 				12DB3CFC2BD3AD070075817A /* MrPoopMessageView.swift in Sources */,
@@ -1207,6 +1222,14 @@
 				minimumVersion = 12.12.0;
 			};
 		};
+		129FA0BF2EB641BC009712F1 /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.10.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1239,6 +1262,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 129FA0BA2EB63D43009712F1 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
 			productName = GoogleMobileAds;
+		};
+		129FA0C02EB641BD009712F1 /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 129FA0BF2EB641BC009712F1 /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
 		};
 /* End XCSwiftPackageProductDependency section */
 

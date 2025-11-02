@@ -7,15 +7,11 @@
 
 import UIKit
 
-class KeyChainRepository {
+final class KeyChainRepository: Sendable {
     /// データ登録/更新
-    public func entry(value: String) {
-        guard let data = value.data(using: .utf8) else { print("NO")
-            return
-        }
-        guard let bundleId = Bundle.main.bundleIdentifier else { print("NOID")
-            return
-        }
+    func entry(value: String) {
+        guard let data = value.data(using: .utf8) else { return }
+        guard let bundleId = Bundle.main.bundleIdentifier else { return }
 
         let query = [
             kSecValueData: data,
@@ -34,12 +30,12 @@ class KeyChainRepository {
             // 更新
             SecItemUpdate(query, [kSecValueData: data] as CFDictionary)
         default:
-            print("Error")
+            AppLogger.logger.debug("Error: \(status)")
         }
     }
 
     /// データ取得
-    public func getData() -> String {
+    func getData() -> String {
         guard let bundleId = Bundle.main.bundleIdentifier else { return "" }
 
         let query = [
@@ -51,19 +47,17 @@ class KeyChainRepository {
 
         var result: AnyObject?
         _ = SecItemCopyMatching(query, &result)
-        if let data = result as? Data {
-            if let pass = String(data: data, encoding: .utf8) {
-                /// 念の為パスワードではない値があった場合に対応
-                if pass.count == 4 {
-                    return pass
-                }
-            }
-        }
-        return ""
+        guard let data = result as? Data else { return "" }
+
+        guard let pass = String(data: data, encoding: .utf8) else { return "" }
+
+        /// 念の為パスワードではない値があった場合に対応
+        guard pass.count == 4 else { return "" }
+        return pass
     }
 
     /// データ削除
-    public func delete() {
+    func delete() {
         guard let bundleId = Bundle.main.bundleIdentifier else { return }
         let query = [
             kSecClass: kSecClassGenericPassword,
@@ -74,5 +68,3 @@ class KeyChainRepository {
         _ = SecItemDelete(query)
     }
 }
-
-

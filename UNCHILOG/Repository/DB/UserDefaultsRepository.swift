@@ -7,38 +7,40 @@
 
 import UIKit
 
-// UserDefaultsの基底クラス
-class UserDefaultsRepository {
-
+/// `UserDefaults`の基底クラス
+/// スレッドセーフにするため `final class` + `Sendable`準拠
+/// `UserDefaults`が`Sendable`ではないがスレッドセーフのため`@unchecked`で無視しておく
+final class UserDefaultsRepository: @unchecked Sendable {
+    /// `UserDefaults`がスレッドセーフではあるが`Sendable`ではないため`@unchecked`で回避
     private let userDefaults = UserDefaults.standard
 
     /// Bool：保存
-    public func setBoolData(key: String, isOn: Bool) {
+    private func setBoolData(key: String, isOn: Bool) {
         userDefaults.set(isOn, forKey: key)
     }
 
     /// Bool：取得
-    public func getBoolData(key: String) -> Bool {
-        return userDefaults.bool(forKey: key)
+    private func getBoolData(key: String) -> Bool {
+        userDefaults.bool(forKey: key)
     }
 
     /// Int：保存
-    public func setIntData(key: String, value: Int) {
+    private func setIntData(key: String, value: Int) {
         userDefaults.set(value, forKey: key)
     }
 
     /// Int：取得
-    public func getIntData(key: String) -> Int {
-        return userDefaults.integer(forKey: key)
+    private func getIntData(key: String) -> Int {
+        userDefaults.integer(forKey: key)
     }
 
     /// String：保存
-    public func setStringData(key: String, value: String) {
+    private func setStringData(key: String, value: String) {
         userDefaults.set(value, forKey: key)
     }
 
     /// String：取得
-    public func getStringData(key: String, initialValue: String = "") -> String {
-        return userDefaults.string(forKey: key) ?? initialValue
+    private func getStringData(key: String, initialValue: String = "") -> String {
+        userDefaults.string(forKey: key) ?? initialValue
     }
 }
