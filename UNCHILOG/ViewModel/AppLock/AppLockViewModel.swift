@@ -9,12 +9,21 @@ import UIKit
 import Combine
 import LocalAuthentication
 
-class AppLockViewModel: ObservableObject {
-    @Published var isShowApp = false // アプリメイン画面遷移
-    @Published var isShowFailureAlert = false // パスワード失敗アラート
-    @Published private(set) var isShowProgress = false // プログレス表示
-    @Published private(set) var type: LABiometryType = .none
-    @Published private(set) var isLogin = false
+@Observable
+final class AppLockState {
+    /// アプリメイン画面遷移
+    var isShowApp: Bool = false
+    /// パスワード失敗アラート
+    var isShowFailureAlert: Bool = false
+    /// プログレス表示
+    fileprivate(set) var isShowProgress: Bool = false
+    fileprivate(set) var type: LABiometryType = .none
+    fileprivate(set) var isLogin: Bool = false
+}
+
+final class AppLockViewModel {
+
+    var state = AppLockState()
 
     private let biometricAuthRepository: BiometricAuthRepository
     private let keyChainRepository: KeyChainRepository
@@ -26,29 +35,34 @@ class AppLockViewModel: ObservableObject {
         keyChainRepository = repositoryDependency.keyChainRepository
     }
 
-    public func onAppear(completion: @escaping (Bool) -> Void) {
+    @MainActor
+    func onAppear() {
         biometricAuthRepository.biometryType.sink { [weak self] type in
-            guard let self = self else { return }
-            self.type = type
+            guard let self else { return }
+            self.state.type = type
         }.store(in: &cancellables)
 
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) { [weak self] in
-            guard let self = self else { return }
-            self.requestBiometricsLogin { _ in
-                completion(true)
+            guard let self else { return }
+            Task {
+                await self.requestBiometricsLogin()
             }
         }
     }
+    
+    func onDisappear() {
+        cancellables.forEach { $0.cancel() }
+    }
 
     /// 生体認証リクエスト
-    public func requestBiometricsLogin(completion: @escaping (Bool) -> Void) {
-        biometricAuthRepository.requestBiometrics { [weak self] result in
-            guard let self = self else { return }
-            if result {
-                self.showProgress()
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
-                    completion(true)
-                }
+    @MainActor
+    func requestBiometricsLogin() async {
+        let result: Bool = await biometricAuthRepository.requestBiometrics()
+        if result {
+            showProgress()
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [weak self] in
+                guard let self else { return }
+                showApp()
             }
         }
     }
@@ -76,22 +90,22 @@ class AppLockViewModel: ObservableObject {
 
     /// アプリトップへ遷移
     public func showApp() {
-        isShowApp = true
+        state.isShowApp = true
     }
 
     /// プログレス表示
     public func showProgress() {
-        isShowProgress = true
+        state.isShowProgress = true
     }
 
     /// プログレス非表示
     public func hiddenProgress() {
-        isShowProgress = false
+        state.isShowProgress = false
     }
 
     /// 失敗アラート表示
     public func showFailureAlert() {
-        isShowFailureAlert = true
+        state.isShowFailureAlert = true
     }
 }
 

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct AppLockView: View {
     // MARK: - ViewModel
-    @StateObject private var viewModel = AppLockViewModel()
+    @State private var viewModel = AppLockViewModel()
 
     // MARK: - View
     @State private var password: [String] = []
@@ -25,34 +25,30 @@ struct AppLockView: View {
 
             ZStack {
                 DisplayPasswordView(password: password)
-                    .onChange(of: password) { newValue in
+                    .onChange(of: password) { _, newValue in
                         viewModel.passwordLogin(password: newValue) { result in
-                            if result {
-                                rootEnvironment.unLockAppLock()
-                            } else {
+                            if result == false {
                                 password.removeAll()
                             }
                         }
                     }
 
-                if viewModel.isShowProgress {
+                if viewModel.state.isShowProgress {
                     ProgressView()
                         .offset(y: 60)
                 } else {
                     Button {
-                        viewModel.requestBiometricsLogin { result in
-                            if result {
-                                rootEnvironment.unLockAppLock()
-                            }
+                        Task {
+                            await viewModel.requestBiometricsLogin()
                         }
                     } label: {
                         VStack {
-                            if viewModel.type == .faceID {
+                            if viewModel.state.type == .faceID {
                                 Image(systemName: "faceid")
                                     .resizable()
                                     .frame(width: 20, height: 20)
                                 Text(L10n.appLockFaceId)
-                            } else if viewModel.type == .touchID {
+                            } else if viewModel.state.type == .touchID {
                                 Image(systemName: "touchid")
                                     .resizable()
                                     .frame(width: 20, height: 20)
@@ -68,12 +64,15 @@ struct AppLockView: View {
 
             NumberKeyboardView(password: $password)
                 .ignoresSafeArea(.all)
-        }.alert(L10n.appLockFailedPassword, isPresented: $viewModel.isShowFailureAlert) {
+        }.alert(L10n.appLockFailedPassword, isPresented: $viewModel.state.isShowFailureAlert) {
             Button("OK") {}
         }
-        .onAppear { viewModel.onAppear { result in
-            rootEnvironment.unLockAppLock()
-        }}.background(.white)
+        .onAppear { viewModel.onAppear() }
+        .onDisappear { viewModel.onDisappear() }
+        .background(.white)
+        .navigationDestination(isPresented: $viewModel.state.isShowApp) {
+            RootView()
+        }
     }
 }
 

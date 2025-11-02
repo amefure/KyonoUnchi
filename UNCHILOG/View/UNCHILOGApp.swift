@@ -29,13 +29,13 @@ struct UNCHILOGApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                ZStack {
+                if rootEnvironment.state.appLocked {
+                    AppLockView()
+                        // .environment(\.rootEnvironment, rootEnvironment)
+                } else {
                     RootView()
-                    // アプリにロックがかけてあれば表示
-                    if rootEnvironment.appLocked {
-                        AppLockView()
-                    }
-                }.ignoresSafeArea(edges: [.bottom])
+                        // .environment(\.rootEnvironment, rootEnvironment)
+                }
             }
         }
     }

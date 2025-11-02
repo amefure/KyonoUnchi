@@ -70,7 +70,7 @@ struct SelectInitWeek: View {
                 positiveButtonTitle: L10n.dialogButtonOk,
                 positiveAction: { dismiss() }
             ).onAppear {
-                selectWeek = rootEnvironment.initWeek
+                selectWeek = rootEnvironment.state.initWeek
             }.toolbarBackground(.exFoundation, for: .navigationBar)
                 .toolbarBackground(.visible, for: .navigationBar) // iOS18以降はtoolbarVisibility
                 .navigationTitle("週始まり変更")

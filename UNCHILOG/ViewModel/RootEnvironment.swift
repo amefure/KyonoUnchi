@@ -8,9 +8,26 @@
 import UIKit
 import Combine
 
+@Observable
+final class RootEnvironmentState {
+    /// アプリロック
+    fileprivate(set) var appLocked: Bool = false
+    /// 広告削除購入フラグ
+    fileprivate(set) var removeAds: Bool = false
+    /// 容量解放購入フラグ
+    fileprivate(set) var unlockStorage: Bool = false
+    /// 週始まり
+    fileprivate(set) var initWeek: SCWeek = .sunday
+    /// 登録モード
+    fileprivate(set) var entryMode: EntryMode = .simple
+}
+
+
 class RootEnvironment: ObservableObject {
     
     static let shared = RootEnvironment()
+    
+    var state = RootEnvironmentState()
     
     private let dateFormatUtility = DateFormatUtility()
     
@@ -20,11 +37,6 @@ class RootEnvironment: ObservableObject {
     @Published private(set) var dayOfWeekList: [SCWeek] = []
     /// アプリに表示しているカレンダー年月インデックス番号
     @Published var displayCalendarIndex: CGFloat = 0
-    
-    // MARK: 永続化
-    @Published private(set) var initWeek: SCWeek = .sunday
-    @Published private(set) var entryMode: EntryMode = .simple
-    @Published private(set) var appLocked = false
     
 
     // MARK: Dialog
@@ -81,7 +93,7 @@ class RootEnvironment: ObservableObject {
                 self.displayCalendarIndex = CGFloat(index)
             }.store(in: &cancellables)
         
-        setFirstWeek(week: initWeek)
+        setFirstWeek(week: state.initWeek)
         
         watchConnectRepository.entryDate
             .sink { [weak self] date in
@@ -187,14 +199,8 @@ extension RootEnvironment {
    
     /// アプリにロックがかけてあるかをチェック
     private func getAppLock() {
-        appLocked = keyChainRepository.getData().count == 4
+        state.appLocked = keyChainRepository.getData().count == 4
     }
-    
-    /// アプリのロック解除
-    public func unLockAppLock() {
-        appLocked = false
-    }
-
 }
 
 
@@ -208,13 +214,13 @@ extension RootEnvironment {
     
     /// インタースティシャルリセット
     public func resetCountInterstitial() {
-        userDefaultsRepository.setIntData(key: UserDefaultsKey.COUNT_INTERSTITIAL, value: 0)
+        userDefaultsRepository.setCountInterstitial(0)
     }
     
     /// インタースティシャルカウント
     public func addCountInterstitial() {
         countInterstitial += 1
-        userDefaultsRepository.setIntData(key: UserDefaultsKey.COUNT_INTERSTITIAL, value: countInterstitial)
+        userDefaultsRepository.setCountInterstitial(countInterstitial)
         
         if countInterstitial >= AdsConfig.COUNT_INTERSTITIAL {
             showInterstitial = true
@@ -225,40 +231,38 @@ extension RootEnvironment {
     
     /// インタースティシャル取得
     public func getCountInterstitial() {
-        countInterstitial = userDefaultsRepository.getIntData(key: UserDefaultsKey.COUNT_INTERSTITIAL)
+        countInterstitial = userDefaultsRepository.getCountInterstitial()
     }
     
     /// 週始まりを取得
     private func getInitWeek() {
-        let week = userDefaultsRepository.getIntData(key: UserDefaultsKey.INIT_WEEK)
-        initWeek = SCWeek(rawValue: week) ?? SCWeek.sunday
+        state.initWeek = userDefaultsRepository.getInitWeek()
     }
 
     /// 週始まりを登録
     public func saveInitWeek(week: SCWeek) {
-        initWeek = week
-        userDefaultsRepository.setIntData(key: UserDefaultsKey.INIT_WEEK, value: week.rawValue)
+        state.initWeek = week
+        userDefaultsRepository.setInitWeek(week)
     }
     
     /// 登録モード取得
     private func getEntryMode() {
-        let mode = userDefaultsRepository.getIntData(key: UserDefaultsKey.ENTRY_MODE)
-        entryMode = EntryMode(rawValue: mode) ?? EntryMode.detail
+        state.entryMode = userDefaultsRepository.getEntryMode()
     }
 
     /// 登録モード登録
     public func saveEntryMode(mode: EntryMode) {
-        entryMode = mode
-        userDefaultsRepository.setIntData(key: UserDefaultsKey.ENTRY_MODE, value: mode.rawValue)
+        state.entryMode = mode
+        userDefaultsRepository.setEntryMode(mode)
     }
     
     /// アプリアイコン取得
     public func getAppIcon() -> String {
-        userDefaultsRepository.getStringData(key: UserDefaultsKey.APP_ICON_NAME, initialValue: "AppIcon")
+        userDefaultsRepository.getAppIcon()
     }
 
     /// アプリアイコン登録
     public func saveAppIcon(iconName: String) {
-        userDefaultsRepository.setStringData(key: UserDefaultsKey.APP_ICON_NAME, value: iconName)
+        userDefaultsRepository.setAppIcon(iconName)
     }
 }

@@ -33,7 +33,7 @@ struct FooterView: View {
                         .offset(y: 50)
                 
                 Button {
-                    if rootEnvironment.entryMode == .simple {
+                    if rootEnvironment.state.entryMode == .simple {
                         if let date = date {
                             // 現在時間を格納した該当の日付を生成して登録
                             let createdAt = dateFormatUtility.combineDateWithCurrentTime(theDay: date)

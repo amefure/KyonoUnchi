@@ -87,7 +87,7 @@ struct RootView: View {
             ToolbarItemGroup(placement: .bottomBar) {
                 Spacer()
                 Button {
-                    if rootEnvironment.entryMode == .simple {
+                    if rootEnvironment.state.entryMode == .simple {
                         // 現在時刻を取得して登録
                         let createdAt = Date()
                         poopViewModel.addPoop(createdAt: createdAt)
@@ -115,6 +115,8 @@ struct RootView: View {
             PoopChartView()
         }.toolbarBackground(.exFoundation, for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar) // iOS18以降はtoolbarVisibility
+            .navigationBarBackButtonHidden()
+            .ignoresSafeArea(edges: [.bottom])
     }
 }
 

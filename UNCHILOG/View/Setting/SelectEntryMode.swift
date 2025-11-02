@@ -95,7 +95,7 @@ struct SelectEntryMode: View {
                 positiveButtonTitle: L10n.dialogButtonOk,
                 positiveAction: { dismiss() }
             ).onAppear {
-                selectMode = rootEnvironment.entryMode
+                selectMode = rootEnvironment.state.entryMode
             }.toolbarBackground(.exFoundation, for: .navigationBar)
                 .toolbarBackground(.visible, for: .navigationBar) // iOS18以降はtoolbarVisibility
                 .navigationTitle("登録モード変更")

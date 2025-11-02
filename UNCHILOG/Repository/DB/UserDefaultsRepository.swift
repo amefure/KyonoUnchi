@@ -44,3 +44,47 @@ final class UserDefaultsRepository: @unchecked Sendable {
         userDefaults.string(forKey: key) ?? initialValue
     }
 }
+
+extension UserDefaultsRepository {
+    /// 登録：インタースティシャルリセット
+    func setCountInterstitial(_ value: Int) {
+        setIntData(key: UserDefaultsKey.COUNT_INTERSTITIAL, value: value)
+    }
+    
+    /// 取得：インタースティシャル取得
+    func getCountInterstitial() -> Int {
+        getIntData(key: UserDefaultsKey.COUNT_INTERSTITIAL)
+    }
+    
+    /// 取得：週始まり
+    func getInitWeek() -> SCWeek {
+        let week = getIntData(key: UserDefaultsKey.INIT_WEEK)
+        return SCWeek(rawValue: week) ?? SCWeek.sunday
+    }
+
+    /// 登録：週始まり
+    func setInitWeek(_ week: SCWeek) {
+        setIntData(key: UserDefaultsKey.INIT_WEEK, value: week.rawValue)
+    }
+    
+    /// 取得：登録モード
+    func getEntryMode() -> EntryMode {
+        let mode = getIntData(key: UserDefaultsKey.ENTRY_MODE)
+        return EntryMode(rawValue: mode) ?? EntryMode.detail
+    }
+
+    /// 登録：登録モード
+    func setEntryMode(_ mode: EntryMode) {
+        setIntData(key: UserDefaultsKey.ENTRY_MODE, value: mode.rawValue)
+    }
+    
+    /// 取得：アプリアイコン
+    func getAppIcon() -> String {
+        getStringData(key: UserDefaultsKey.APP_ICON_NAME, initialValue: "AppIcon")
+    }
+
+    /// 登録：アプリアイコン
+    func setAppIcon(_ iconName: String) {
+        setStringData(key: UserDefaultsKey.APP_ICON_NAME, value: iconName)
+    }
+}
