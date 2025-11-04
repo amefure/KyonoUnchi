@@ -9,7 +9,7 @@ import SwiftUI
 
 struct YearAndMonthSelectionView: View {
     
-    @ObservedObject private var rootEnvironment = RootEnvironment.shared
+    @StateObject private var rootEnvironment = RootEnvironment.shared
     
     var body: some View {
         HStack {

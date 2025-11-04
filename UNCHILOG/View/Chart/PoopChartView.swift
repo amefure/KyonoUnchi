@@ -9,8 +9,8 @@ import SwiftUI
 import Charts
 
 struct PoopChartView: View {
-    @ObservedObject private var poopViewModel = PoopViewModel.shared
-    @ObservedObject private var rootEnvironment = RootEnvironment.shared
+    @StateObject private var poopViewModel = PoopViewModel.shared
+    @StateObject private var rootEnvironment = RootEnvironment.shared
     
     // チャートで表示する年月のデータのみ抽出
     private var showCurrentData: [(createdAt: Date, count: Int)] {

@@ -6,22 +6,10 @@
 //
 
 import SwiftUI
-import Combine
 
 struct RootView: View {
-    
-    private var dateFormatUtility = DateFormatUtility()
-    
-    @ObservedObject private var poopViewModel = PoopViewModel.shared
-    @ObservedObject private var rootEnvironment = RootEnvironment.shared
-    private let viewModel = RootViewModel()
-    
-    @State private var showInputPoopView = false
-    @State private var showSetting = false
-    @State private var showChart = false
-    
-    
-    @State private var cancellables: Set<AnyCancellable> = []
+    @StateObject private var rootEnvironment = RootEnvironment.shared
+    @State private var viewModel = RootViewModel.shared
         
     var body: some View {
         
@@ -34,39 +22,20 @@ struct RootView: View {
             Color.exThema
                 .frame(height: 100)
         }.alert(
-            isPresented: $rootEnvironment.showOutOfRangeCalendarDialog,
-            title: L10n.dialogTitle,
-            message: L10n.dialogOutOfRangeCalendar,
-            positiveButtonTitle: L10n.dialogButtonOk,
-            positiveAction: { rootEnvironment.showOutOfRangeCalendarDialog = false }
-        ).alert(
-            isPresented: $rootEnvironment.showSimpleEntryDialog,
+            isPresented: $viewModel.state.isShowSuccessEntryAlert,
             title: L10n.dialogTitle,
             message: L10n.dialogEntryPoop,
             positiveButtonTitle: L10n.dialogButtonOk,
             positiveAction: {
-                rootEnvironment.showSimpleEntryDialog = false
-                rootEnvironment.addCountInterstitial()
+                viewModel.showOrCountInterstitial()
             }
         ).onAppear {
-            poopViewModel.fetchAllPoops()
-            
             viewModel.onAppear()
-            
-            rootEnvironment.$showInterstitial.sink { result in
-                if result {
-                    Task {
-                        await viewModel.showInterstitial()
-                        rootEnvironment.resetShowInterstitial()
-                    }
-                    
-                }
-            }.store(in: &cancellables)
         }.toolbar {
             
             ToolbarItemGroup(placement: .topBarLeading) {
                 Button {
-                    showChart = true
+                    viewModel.state.isShowChart = true
                 } label: {
                     Image(systemName: "chart.xyaxis.line")
                         .foregroundStyle(.exThema)
@@ -76,7 +45,7 @@ struct RootView: View {
  
             ToolbarItemGroup(placement: .topBarTrailing) {
                 Button {
-                    showSetting = true
+                    viewModel.state.isShowSetting = true
                 } label: {
                     Image(systemName: "gearshape.fill")
                         .foregroundStyle(.exThema)
@@ -89,14 +58,13 @@ struct RootView: View {
                 Button {
                     if rootEnvironment.state.entryMode == .simple {
                         // 現在時刻を取得して登録
-                        let createdAt = Date()
-                        poopViewModel.addPoop(createdAt: createdAt)
-                        rootEnvironment.addPoopUpdateCalender(createdAt: createdAt)
+                        viewModel.addSimplePoop()
+                        rootEnvironment.addPoopUpdateCalender(createdAt: Date())
                         
                         rootEnvironment.moveTodayCalendar()
-                        rootEnvironment.showSimpleEntryDialog = true
+                        viewModel.state.isShowSuccessEntryAlert = true
                     } else {
-                        showInputPoopView = true
+                        viewModel.state.isShowInputDetailPoop = true
                     }
                 } label: {
                     VStack {
@@ -107,11 +75,11 @@ struct RootView: View {
                 }
             }
 
-        }.fullScreenCover(isPresented: $showInputPoopView) {
+        }.fullScreenCover(isPresented: $viewModel.state.isShowInputDetailPoop) {
             PoopInputView(theDay: Date())
-        }.navigationDestination(isPresented: $showSetting) {
+        }.navigationDestination(isPresented: $viewModel.state.isShowSetting) {
             SettingView()
-        }.navigationDestination(isPresented: $showChart) {
+        }.navigationDestination(isPresented: $viewModel.state.isShowChart) {
             PoopChartView()
         }.toolbarBackground(.exFoundation, for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar) // iOS18以降はtoolbarVisibility

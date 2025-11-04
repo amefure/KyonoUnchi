@@ -41,11 +41,8 @@ class RootEnvironment: ObservableObject {
 
     // MARK: Dialog
     @Published var showOutOfRangeCalendarDialog: Bool = false
-    @Published var showSimpleEntryDialog: Bool = false
     // 詳細ページで表示するダイアログ
     @Published var showSimpleEntryDetailDialog: Bool = false
-    @Published private(set) var showInterstitial = false
-    private var countInterstitial: Int = 0
    
     private let keyChainRepository: KeyChainRepository
     private let userDefaultsRepository: UserDefaultsRepository
@@ -66,7 +63,6 @@ class RootEnvironment: ObservableObject {
         getInitWeek()
         getEntryMode()
         getAppLock()
-        getCountInterstitial()
 
         scCalenderRepository.currentDates
             .receive(on: DispatchQueue.main)
@@ -206,33 +202,7 @@ extension RootEnvironment {
 
 // MARK: - UserDefaults
 extension RootEnvironment {
-    
-    /// インタースティシャル広告表示完了済みにする
-    public func resetShowInterstitial() {
-        showInterstitial = false
-    }
-    
-    /// インタースティシャルリセット
-    public func resetCountInterstitial() {
-        userDefaultsRepository.setCountInterstitial(0)
-    }
-    
-    /// インタースティシャルカウント
-    public func addCountInterstitial() {
-        countInterstitial += 1
-        userDefaultsRepository.setCountInterstitial(countInterstitial)
-        
-        if countInterstitial >= AdsConfig.COUNT_INTERSTITIAL {
-            showInterstitial = true
-            resetCountInterstitial()
-            getCountInterstitial()
-        }
-    }
-    
-    /// インタースティシャル取得
-    public func getCountInterstitial() {
-        countInterstitial = userDefaultsRepository.getCountInterstitial()
-    }
+
     
     /// 週始まりを取得
     private func getInitWeek() {

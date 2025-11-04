@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CarouselCalendarView: View {
     
-    @ObservedObject private var rootEnvironment = RootEnvironment.shared
+    @StateObject private var rootEnvironment = RootEnvironment.shared
     
     /// スワイプジェスチャー用オフセット
     @GestureState private var dragOffset: CGFloat = 0

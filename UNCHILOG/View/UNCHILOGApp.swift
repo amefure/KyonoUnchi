@@ -24,7 +24,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct UNCHILOGApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    @ObservedObject private var rootEnvironment = RootEnvironment.shared
+    @StateObject private var rootEnvironment = RootEnvironment.shared
 
     var body: some Scene {
         WindowGroup {

@@ -7,41 +7,50 @@
 
 import GoogleMobileAds
 
-@MainActor
+
+@Observable
+final class RootViewState {
+    /// 詳細登録画面表示
+    var isShowInputDetailPoop: Bool = false
+    /// 設定画面表示
+    var isShowSetting: Bool = false
+    /// グラフ画面表示
+    var isShowChart: Bool = false
+    /// 登録成功アラート表示
+    var isShowSuccessEntryAlert: Bool = false
+}
+
 final class RootViewModel {
-    private var interstitialAd: InterstitialAd?
+    
+    static let shared = RootViewModel()
+    
+    var state = RootViewState()
     
     private let interstitialService: InterstitialServiceProtocol
     
-    @MainActor
-    init(interstitialService: InterstitialServiceProtocol = InterstitialService()) {
-        self.interstitialService = interstitialService
-    }
+    private let localRepository: PoopRepository
     
+    init(
+        repositoryDependency: RepositoryDependency = RepositoryDependency()
+    ) {
+        localRepository = repositoryDependency.poopRepository
+        interstitialService = InterstitialService(userDefaultsRepository: repositoryDependency.userDefaultsRepository)
+    }
     
     func onAppear() {
-        Task {
-            await loadInterstitial()
-        }
-    }
-    
-    private func loadInterstitial() async {
-        do {
-            let ad = try await interstitialService.loadAds()
-            interstitialAd = ad
-        } catch {
-            // 広告読み込み失敗
-        }
-    }
-    
-    func showInterstitial() async {
-        // 広告が未読み込みであれば読み込んでから再度表示を試みる
-        guard let ad = interstitialAd else {
-            await loadInterstitial()
-            await showInterstitial()
-            return
-        }
-        interstitialService.showAds(ad)
+        
     }
 }
 
+extension RootViewModel {
+    
+    public func addSimplePoop() {
+        localRepository.addPoop(createdAt: Date())
+    }
+    
+    public func showOrCountInterstitial() {
+        Task {
+            await interstitialService.showOrCountInterstitial()
+        }
+    }
+}

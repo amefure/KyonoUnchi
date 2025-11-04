@@ -13,8 +13,8 @@ struct PoopInputView: View {
     
     private let df = DateFormatUtility(format: "M月d日")
     // MARK: - ViewModel
-    @ObservedObject private var viewModel = PoopViewModel.shared
-    @ObservedObject private var rootEnvironment = RootEnvironment.shared
+    @StateObject private var viewModel = PoopViewModel.shared
+    @StateObject private var rootEnvironment = RootEnvironment.shared
     
     public var theDay: Date?
     
@@ -207,7 +207,7 @@ struct PoopInputView: View {
             positiveAction: {
                 viewModel.selectPoop = nil
                 
-                rootEnvironment.addCountInterstitial()
+               // rootEnvironment.addCountInterstitial()
                 
                 dismiss()
             }

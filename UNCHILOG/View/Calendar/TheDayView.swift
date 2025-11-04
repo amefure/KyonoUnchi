@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TheDayView: View {
     
-    @ObservedObject private var rootEnvironment = RootEnvironment.shared
+    @StateObject private var rootEnvironment = RootEnvironment.shared
     public let theDay: SCDate
     
     @State private var isShowDetailView: Bool = false
@@ -57,7 +57,7 @@ struct TheDayView: View {
                     TapGesture()
                         .onEnded({ _ in
                             isShowDetailView = true
-                            rootEnvironment.addCountInterstitial()
+                            //rootEnvironment.addCountInterstitial()
                         })
                 )
             }

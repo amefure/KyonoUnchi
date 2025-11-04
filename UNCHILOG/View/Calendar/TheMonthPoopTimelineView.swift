@@ -16,8 +16,8 @@ struct TheMonthPoopTimelineView: View {
         return list
     }
     
-    @ObservedObject private var poopViewModel = PoopViewModel.shared
-    @ObservedObject private var rootEnvironment = RootEnvironment.shared
+    @StateObject private var poopViewModel = PoopViewModel.shared
+    @StateObject private var rootEnvironment = RootEnvironment.shared
     
     @State private var showDeleteDialog = false
     @State private var showEditInputView = false
