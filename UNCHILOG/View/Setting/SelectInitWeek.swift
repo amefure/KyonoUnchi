@@ -9,7 +9,7 @@ import SwiftUI
 import SCCalendar
 
 struct SelectInitWeek: View {
-    @ObservedObject private var rootEnvironment = RootEnvironment.shared
+    @Environment(\.rootEnvironment) private var rootEnvironment
     @State private var selectWeek: SCWeek = .sunday
     @State private var showSuccessAlert = false
     // MARK: - Environment

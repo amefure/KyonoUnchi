@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SelectEntryMode: View {
-    @ObservedObject private var rootEnvironment = RootEnvironment.shared
+    @Environment(\.rootEnvironment) private var rootEnvironment
     @State private var selectMode: EntryMode = .detail
     
     @State private var showSuccessAlert = false

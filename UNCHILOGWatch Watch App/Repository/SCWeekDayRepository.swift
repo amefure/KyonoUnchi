@@ -26,7 +26,7 @@ class SCWeekDayRepository {
     
     public func updateCalendar() {
         let df = DateFormatUtility()
-        let poopRepository = PoopRepository()
+        let poopRepository = WrapLocalRepository(localRepository: CoreDataRepository())
         
         let today = Date()
         var datesList: [SCDate] = []

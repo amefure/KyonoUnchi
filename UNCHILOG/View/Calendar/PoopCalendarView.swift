@@ -9,7 +9,7 @@ import SwiftUI
 import SCCalendar
 
 struct PoopCalendarView: View {
-    @StateObject private var rootEnvironment = RootEnvironment.shared
+    @Environment(\.rootEnvironment) private var rootEnvironment
     
     @State private var viewModel = CalendarViewModel()
     
@@ -27,11 +27,10 @@ struct PoopCalendarView: View {
             Spacer()
             
         }.alert(
-            isPresented: $rootEnvironment.showOutOfRangeCalendarDialog,
+            isPresented: $viewModel.state.showOutOfRangeCalendarDialog,
             title: L10n.dialogTitle,
             message: L10n.dialogOutOfRangeCalendar,
             positiveButtonTitle: L10n.dialogButtonOk,
-            positiveAction: { rootEnvironment.showOutOfRangeCalendarDialog = false }
         )
     }
     

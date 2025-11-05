@@ -28,7 +28,7 @@ final class RootViewModel {
     
     private let interstitialService: InterstitialServiceProtocol
     
-    private let localRepository: PoopRepository
+    private let localRepository: WrapLocalRepositoryProtocol
     
     init(
         repositoryDependency: RepositoryDependency = RepositoryDependency()
@@ -45,7 +45,7 @@ final class RootViewModel {
 extension RootViewModel {
     
     public func addSimplePoop() {
-        localRepository.addPoop(createdAt: Date())
+        localRepository.addPoopSimple(createdAt: Date())
     }
     
     public func showOrCountInterstitial() {

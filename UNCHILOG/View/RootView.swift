@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RootView: View {
-    @StateObject private var rootEnvironment = RootEnvironment.shared
+    @Environment(\.rootEnvironment) private var rootEnvironment
     @State private var viewModel = RootViewModel.shared
         
     var body: some View {
@@ -59,9 +59,6 @@ struct RootView: View {
                     if rootEnvironment.state.entryMode == .simple {
                         // 現在時刻を取得して登録
                         viewModel.addSimplePoop()
-                      //  rootEnvironment.addPoopUpdateCalender(createdAt: Date())
-                        
-                       // rootEnvironment.moveTodayCalendar()
                         viewModel.state.isShowSuccessEntryAlert = true
                     } else {
                         viewModel.state.isShowInputDetailPoop = true

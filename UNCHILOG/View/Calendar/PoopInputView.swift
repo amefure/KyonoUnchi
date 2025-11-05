@@ -14,7 +14,7 @@ struct PoopInputView: View {
     private let df = DateFormatUtility(format: "M月d日")
     // MARK: - ViewModel
     @StateObject private var viewModel = PoopViewModel.shared
-    @StateObject private var rootEnvironment = RootEnvironment.shared
+    @Environment(\.rootEnvironment) private var rootEnvironment
     
     public var theDay: Date?
     

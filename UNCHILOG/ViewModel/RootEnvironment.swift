@@ -8,6 +8,20 @@
 import UIKit
 import Combine
 import SCCalendar
+import SwiftUI
+
+private struct RootEnvironmentKey: @MainActor EnvironmentKey {
+    @MainActor
+    static let defaultValue = DIContainer.shared.resolve(RootEnvironment.self)
+}
+
+extension EnvironmentValues {
+    @MainActor
+    var rootEnvironment: RootEnvironment {
+        get { self[RootEnvironmentKey.self] }
+        set { self[RootEnvironmentKey.self] = newValue }
+    }
+}
 
 @Observable
 final class RootEnvironmentState {
@@ -21,56 +35,49 @@ final class RootEnvironmentState {
     fileprivate(set) var initWeek: SCWeek = .sunday
     /// 登録モード
     fileprivate(set) var entryMode: EntryMode = .simple
+    
+    // 詳細ページで表示するダイアログ
+    var showSimpleEntryDetailDialog: Bool = false
 }
 
 
-final class RootEnvironment: ObservableObject {
-    
-    static let shared = RootEnvironment()
+final class RootEnvironment {
     
     var state = RootEnvironmentState()
-    
-    private let dateFormatUtility = DateFormatUtility()
-    
-    // MARK: Dialog
-    @Published var showOutOfRangeCalendarDialog: Bool = false
-    // 詳細ページで表示するダイアログ
-    @Published var showSimpleEntryDetailDialog: Bool = false
-   
+
     private let keyChainRepository: KeyChainRepository
     private let userDefaultsRepository: UserDefaultsRepository
-    private let poopRepository: PoopRepository
+    private let localRepository: WrapLocalRepositoryProtocol
     private let watchConnectRepository: WatchConnectRepository
     
     private var cancellables: Set<AnyCancellable> = []
     
-
-    private init(repositoryDependency: RepositoryDependency = RepositoryDependency()) {
-        keyChainRepository = repositoryDependency.keyChainRepository
-        userDefaultsRepository = repositoryDependency.userDefaultsRepository
-        poopRepository = repositoryDependency.poopRepository
-        watchConnectRepository = repositoryDependency.watchConnectRepository
+    init(
+        localRepository: WrapLocalRepositoryProtocol,
+        keyChainRepository: KeyChainRepository,
+        userDefaultsRepository: UserDefaultsRepository,
+        watchConnectRepository: WatchConnectRepository
+    ) {
+        self.localRepository = localRepository
+        self.keyChainRepository = keyChainRepository
+        self.userDefaultsRepository = userDefaultsRepository
+        self.watchConnectRepository = watchConnectRepository
         
         getInitWeek()
         getEntryMode()
         getAppLock()
 
-
         watchConnectRepository.entryDate
             .sink { [weak self] date in
                 guard let self else { return }
-                self.poopRepository.addPoop(createdAt: date)
+                self.localRepository.addPoopSimple(createdAt: date)
             }.store(in: &cancellables)
     }
 }
 
 // MARK: - Status
 extension RootEnvironment {
-   
-    /// アプリにロックがかけてあるかをチェック
-    private func getAppLock() {
-        state.appLocked = keyChainRepository.getData().count == 4
-    }
+
     
     /// 週始まりを設定
     func setFirstWeek(week: SCWeek) {
@@ -113,5 +120,10 @@ extension RootEnvironment {
     /// アプリアイコン登録
     public func saveAppIcon(iconName: String) {
         userDefaultsRepository.setAppIcon(iconName)
+    }
+    
+    /// アプリにロックがかけてあるかをチェック
+    private func getAppLock() {
+        state.appLocked = keyChainRepository.getData().count == 4
     }
 }

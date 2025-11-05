@@ -38,11 +38,19 @@ final class DIContainer: @unchecked Sendable {
 private extension DIContainer {
     static func registerRepositories(_ c: Container) {
         // Repository
+        c.register(CoreDataRepository.self) { _ in CoreDataRepository() }
         c.register(UserDefaultsRepository.self) { _ in UserDefaultsRepository() }
         c.register(KeyChainRepository.self) { _ in KeyChainRepository() }
         c.register(BiometricAuthRepository.self) { _ in BiometricAuthRepository() }
         // c.register(InAppPurchaseRepository.self) { _ in InAppPurchaseRepository() }
         c.register(SCCalenderRepository.self) { _ in SCCalenderRepository() }
+        c.register(WatchConnectRepository.self) { _ in WatchConnectRepository() }
+        c.register(WrapLocalRepositoryProtocol.self) { r in
+            WrapLocalRepository(
+                localRepository: r.resolve(CoreDataRepository.self)!,
+            )
+        }
+        
     }
 }
 
@@ -57,17 +65,15 @@ private extension DIContainer {
 
 private extension DIContainer {
     static func registerViewModels(_ c: Container) {
-//        // RootEnvironment
-//        c.register(RootEnvironment.self) { r in
-//            RootEnvironment(
-//                repository: r.resolve(RealmRepository.self)!,
-//                userDefaultsRepository: r.resolve(UserDefaultsRepository.self)!,
-//                keyChainRepository: r.resolve(KeyChainRepository.self)!,
-//                inAppPurchaseRepository: r.resolve(InAppPurchaseRepository.self)!,
-//                notificationRequestManager: r.resolve(NotificationRequestManager.self)!,
-//                remoteConfigManager: r.resolve(RemoteConfigManager.self)!
-//            )
-//        }
+        // RootEnvironment
+        c.register(RootEnvironment.self) { r in
+            RootEnvironment(
+                localRepository: r.resolve(WrapLocalRepositoryProtocol.self)!,
+                keyChainRepository: r.resolve(KeyChainRepository.self)!,
+                userDefaultsRepository: r.resolve(UserDefaultsRepository.self)!,
+                watchConnectRepository: r.resolve(WatchConnectRepository.self)!
+            )
+        }
 //
 //        c.register(RootViewModel.self) { r in
 //            RootViewModel(

@@ -18,7 +18,7 @@ struct HeaderView<Content: View>: View {
     let content: Content
     
     // MARK: - Environment
-    @ObservedObject private var rootEnvironment = RootEnvironment.shared
+    @Environment(\.rootEnvironment) private var rootEnvironment
     
     init(leadingIcon: String = "",
          trailingIcon: String = "",

@@ -29,7 +29,7 @@ final class CalendarState {
 final class CalendarViewModel {
     private let dateFormatUtility = DateFormatUtility()
 
-    let state = CalendarState()
+    var state = CalendarState()
 
     /// カレンダーをイニシャライズしたかどうか
     private var isInitializeFlag: Bool = false
@@ -41,7 +41,7 @@ final class CalendarViewModel {
     private let keyChainRepository: KeyChainRepository
     private let userDefaultsRepository: UserDefaultsRepository
     private let scCalenderRepository: SCCalenderRepository
-    private let poopRepository: PoopRepository
+    private let poopRepository: WrapLocalRepositoryProtocol
     private let watchConnectRepository: WatchConnectRepository
     
 
@@ -83,7 +83,7 @@ final class CalendarViewModel {
         watchConnectRepository.entryDate
             .sink { [weak self] date in
                 guard let self else { return }
-                self.poopRepository.addPoop(createdAt: date)
+                self.poopRepository.addPoopSimple(createdAt: date)
                // self.scCalenderRepository.updateCalendar()
             }.store(in: &cancellables)
     }

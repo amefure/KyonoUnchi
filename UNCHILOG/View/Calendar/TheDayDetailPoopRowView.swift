@@ -12,7 +12,7 @@ struct TheDayDetailPoopRowView: View {
     public var poop: Poop
     
     @StateObject private var poopViewModel = PoopViewModel.shared
-    @StateObject private var rootEnvironment = RootEnvironment.shared
+    @Environment(\.rootEnvironment) private var rootEnvironment
     
     @Binding var showDeleteDialog: Bool
     @Binding var showEditInputView: Bool

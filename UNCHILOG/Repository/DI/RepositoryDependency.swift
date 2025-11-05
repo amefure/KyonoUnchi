@@ -9,14 +9,14 @@ import UIKit
 import SCCalendar
 
 class RepositoryDependency {
-    public let poopRepository: PoopRepository
+    public let poopRepository: WrapLocalRepository
     public let biometricAuthRepository: BiometricAuthRepository
     public let keyChainRepository: KeyChainRepository
     public let userDefaultsRepository: UserDefaultsRepository
     public let scCalenderRepository: SCCalenderRepository
     public let watchConnectRepository: WatchConnectRepository
     
-    static let sharedPoopRepository = PoopRepository()
+    static let sharedPoopRepository = WrapLocalRepository(localRepository: CoreDataRepository())
     static let sharedBiometricAuthRepository = BiometricAuthRepository()
     static let sharedKeyChainRepository = KeyChainRepository()
     static let sharedUserDefaultsRepository = UserDefaultsRepository()

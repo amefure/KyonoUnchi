@@ -8,13 +8,15 @@
 import UIKit
 import CoreData
 
-class CoreDataRepository {
+/// ローカル保存データベースの基底`Repository`クラス
+/// `Core Data`のロジックだけを内包
+final class CoreDataRepository: Sendable {
     
     /// ファイル名
     private static let persistentName = "UNCHILOG"
     
     ///
-    private static var persistenceController: NSPersistentContainer = {
+    private var persistenceController: NSPersistentContainer = {
         let container = NSPersistentContainer(name: CoreDataRepository.persistentName)
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
@@ -25,18 +27,18 @@ class CoreDataRepository {
         return container
     }()
     
-    public static var context: NSManagedObjectContext {
-        return CoreDataRepository.persistenceController.viewContext
+    public var context: NSManagedObjectContext {
+        return persistenceController.viewContext
     }
     
-    private static var bgContext: NSManagedObjectContext?
+    private var bgContext: NSManagedObjectContext?
     
-    private static var getBgContext: NSManagedObjectContext {
-        if CoreDataRepository.bgContext == nil {
-            CoreDataRepository.bgContext = CoreDataRepository.persistenceController.newBackgroundContext()
-            CoreDataRepository.bgContext?.automaticallyMergesChangesFromParent = true
+    private var getBgContext: NSManagedObjectContext {
+        if bgContext == nil {
+            bgContext = persistenceController.newBackgroundContext()
+            bgContext?.automaticallyMergesChangesFromParent = true
         }
-        return CoreDataRepository.bgContext!
+        return bgContext!
     }
 }
 
@@ -44,39 +46,25 @@ class CoreDataRepository {
 extension CoreDataRepository {
     
     /// 新規作成
-    static func entity<T: NSManagedObject>() -> T {
-        let entityDescription = NSEntityDescription.entity(forEntityName: String(describing: T.self), in: context)!
+    func entity<T: NSManagedObject>() -> T? {
+        guard let entityDescription = NSEntityDescription.entity(forEntityName: String(describing: T.self), in: context) else { return nil }
         return T(entity: entityDescription, insertInto: nil)
     }
     
     /// 取得処理
-    static func fetchSingle<T: NSManagedObject>(predicate: NSPredicate? = nil, sorts: [NSSortDescriptor]? = nil) -> T? {
-        let fetchRequest = NSFetchRequest<T>(entityName: String(describing: T.self))
-        
-        // フィルタリング
-        if let predicate = predicate {
-            fetchRequest.predicate = predicate
-        }
-        
-        // ソート
-        if let sorts = sorts {
-            fetchRequest.sortDescriptors = sorts
-        }
-        
-        do {
-            let entitys = try CoreDataRepository.context.fetch(fetchRequest)
-            if let entity = entitys.first {
-                return entity
-            }
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-            return nil
-        }
-        return nil
+    func fetchSingle<T: NSManagedObject>(
+        predicate: NSPredicate? = nil,
+        sorts: [NSSortDescriptor]? = nil
+    ) -> T? {
+        guard let entity: T = fetch(predicate: predicate, sorts: sorts).first else { return nil }
+        return entity
     }
     
     /// 取得処理
-    static func fetch<T: NSManagedObject>(predicate: NSPredicate? = nil, sorts: [NSSortDescriptor]? = nil) -> [T] {
+    func fetch<T: NSManagedObject>(
+        predicate: NSPredicate? = nil,
+        sorts: [NSSortDescriptor]? = nil
+    ) -> [T] {
         let fetchRequest = NSFetchRequest<T>(entityName: String(describing: T.self))
         
         // フィルタリング
@@ -92,23 +80,23 @@ extension CoreDataRepository {
         do {
             return try context.fetch(fetchRequest)
         } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
+            AppLogger.logger.error("Could not fetch. \(error), \(error.userInfo)")
             return []
         }
     }
     
     
     /// 追加処理
-    static func insert(_ object: NSManagedObject) {
+    func insert(_ object: NSManagedObject) {
         context.insert(object)
     }
     
     /// 削除処理
-    static func delete(_ object: NSManagedObject) {
+    func delete(_ object: NSManagedObject) {
         context.delete(object)
     }
     /// 保存処理
-    static func save() {
+    func save() {
         // 変更がある場合のみ
         guard context.hasChanges else { return }
         do {

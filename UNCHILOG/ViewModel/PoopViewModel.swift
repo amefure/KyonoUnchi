@@ -20,7 +20,7 @@ class PoopViewModel: ObservableObject {
     
     private let dateFormatUtility = DateFormatUtility(format: "yyyy年M月dd日")
     
-    private var repository: PoopRepository
+    private var repository: WrapLocalRepository
     private let watchConnectRepository: WatchConnectRepository
     
     private var cancellables: Set<AnyCancellable> = []

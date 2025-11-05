@@ -11,7 +11,7 @@ import SCCalendar
 struct TheDayView: View {
     
     let viewModel: CalendarViewModel
-    @StateObject private var rootEnvironment = RootEnvironment.shared
+    @Environment(\.rootEnvironment) private var rootEnvironment
     public let theDay: SCDate
     
     @State private var isShowDetailView: Bool = false

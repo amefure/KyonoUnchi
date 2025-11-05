@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingView: View {
-    @StateObject private var rootEnvironment = RootEnvironment.shared
+    @Environment(\.rootEnvironment) private var rootEnvironment
     
     @StateObject private var viewModel = SettingViewModel()
     

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SelectAppIconView: View {
     
-    @ObservedObject private var rootEnvironment = RootEnvironment.shared
+    @Environment(\.rootEnvironment) private var rootEnvironment
     
     @State private var appIconName = AppIconName.icon1.rawValue
     // MARK: - Environment

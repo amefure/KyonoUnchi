@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		120C655A2EBA3B6C0001312B /* SCCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 120C65592EBA3B6C0001312B /* SCCalendar */; };
 		120C655C2EBA412A0001312B /* SCCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 120C655B2EBA412A0001312B /* SCCalendar */; };
+		1222E51D2EBB917300DFC050 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129FA09F2EB4EB31009712F1 /* Logger.swift */; };
 		122B3EE12BBFC53B00167D9E /* SelectEntryMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122B3EE02BBFC53B00167D9E /* SelectEntryMode.swift */; };
 		122B3EE32BBFC62700167D9E /* EntryMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122B3EE22BBFC62700167D9E /* EntryMode.swift */; };
 		122B3EE52BC025C200167D9E /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122B3EE42BC025C200167D9E /* HeaderView.swift */; };
@@ -46,17 +47,16 @@
 		124779092BEA064000559205 /* ConnectError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124779012BEA03BC00559205 /* ConnectError.swift */; };
 		1247790A2BEA066000559205 /* CommunicationKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124778EC2BE9FC9C00559205 /* CommunicationKey.swift */; };
 		1247790C2BEA4B7800559205 /* WatchLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1247790B2BEA4B7800559205 /* WatchLogger.swift */; };
-		1247790D2BEA527200559205 /* PoopRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5C12BB282E7009E0FAB /* PoopRepository.swift */; };
+		1247790D2BEA527200559205 /* WrapLocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5C12BB282E7009E0FAB /* WrapLocalRepository.swift */; };
 		1247790F2BEA5CDE00559205 /* RootEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1247790E2BEA5CDE00559205 /* RootEnvironment.swift */; };
 		124779102BEA600700559205 /* WatchLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1247790B2BEA4B7800559205 /* WatchLogger.swift */; };
 		128BB5A62BAFE3B7009E0FAB /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 128BB5A52BAFE3B7009E0FAB /* Colors.xcassets */; };
 		128BB5A82BAFE3CB009E0FAB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 128BB5A72BAFE3CB009E0FAB /* Localizable.strings */; };
 		128BB5AB2BAFE5C8009E0FAB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 128BB5AA2BAFE5C8009E0FAB /* GoogleService-Info.plist */; };
 		128BB5AF2BB14115009E0FAB /* ExSCDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5AE2BB14115009E0FAB /* ExSCDate.swift */; };
-		128BB5B62BB141C5009E0FAB /* SCCalenderRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5B52BB141C5009E0FAB /* SCCalenderRepository.swift */; };
 		128BB5BC2BB147BB009E0FAB /* Poop+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5BB2BB147BB009E0FAB /* Poop+CoreDataClass.swift */; };
 		128BB5BF2BB1497D009E0FAB /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5BE2BB1497D009E0FAB /* CoreDataRepository.swift */; };
-		128BB5C22BB282E7009E0FAB /* PoopRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5C12BB282E7009E0FAB /* PoopRepository.swift */; };
+		128BB5C22BB282E7009E0FAB /* WrapLocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5C12BB282E7009E0FAB /* WrapLocalRepository.swift */; };
 		128BB5C52BB28495009E0FAB /* PoopShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5C42BB28495009E0FAB /* PoopShape.swift */; };
 		128BB5C72BB284AC009E0FAB /* PoopVolume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5C62BB284AC009E0FAB /* PoopVolume.swift */; };
 		128BB5CB2BB284D5009E0FAB /* PoopColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5CA2BB284D5009E0FAB /* PoopColor.swift */; };
@@ -175,10 +175,9 @@
 		128BB5A92BAFE480009E0FAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		128BB5AA2BAFE5C8009E0FAB /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		128BB5AE2BB14115009E0FAB /* ExSCDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExSCDate.swift; sourceTree = "<group>"; };
-		128BB5B52BB141C5009E0FAB /* SCCalenderRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCCalenderRepository.swift; sourceTree = "<group>"; };
 		128BB5BB2BB147BB009E0FAB /* Poop+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Poop+CoreDataClass.swift"; path = "/Users/s/Desktop/SwiftApp/UNCHILOG/UNCHILOG/Model/CoreData/Poop+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		128BB5BE2BB1497D009E0FAB /* CoreDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
-		128BB5C12BB282E7009E0FAB /* PoopRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopRepository.swift; sourceTree = "<group>"; };
+		128BB5C12BB282E7009E0FAB /* WrapLocalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrapLocalRepository.swift; sourceTree = "<group>"; };
 		128BB5C42BB28495009E0FAB /* PoopShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopShape.swift; sourceTree = "<group>"; };
 		128BB5C62BB284AC009E0FAB /* PoopVolume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopVolume.swift; sourceTree = "<group>"; };
 		128BB5CA2BB284D5009E0FAB /* PoopColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopColor.swift; sourceTree = "<group>"; };
@@ -417,10 +416,10 @@
 		128BB5A22BAFE371009E0FAB /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				128BB5E72BB465A2009E0FAB /* RootEnvironment.swift */,
 				128BB5D72BB289E2009E0FAB /* PoopViewModel.swift */,
 				129FA0C52EB77D96009712F1 /* CalendarViewModel.swift */,
 				129FA0BD2EB63EA8009712F1 /* RootViewModel.swift */,
-				128BB5E72BB465A2009E0FAB /* RootEnvironment.swift */,
 				128BB6062BB5B0DD009E0FAB /* SettingViewModel.swift */,
 				128BB5FF2BB5AFF2009E0FAB /* AppLock */,
 			);
@@ -430,7 +429,6 @@
 		128BB5A32BAFE37D009E0FAB /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				128BB5B42BB141A4009E0FAB /* SCCalendar */,
 				128BB5CE2BB28854009E0FAB /* DI */,
 				128BB5C02BB282D6009E0FAB /* AppModel */,
 				128BB5BD2BB14973009E0FAB /* DB */,
@@ -459,14 +457,6 @@
 			path = SCCalendar;
 			sourceTree = "<group>";
 		};
-		128BB5B42BB141A4009E0FAB /* SCCalendar */ = {
-			isa = PBXGroup;
-			children = (
-				128BB5B52BB141C5009E0FAB /* SCCalenderRepository.swift */,
-			);
-			path = SCCalendar;
-			sourceTree = "<group>";
-		};
 		128BB5BD2BB14973009E0FAB /* DB */ = {
 			isa = PBXGroup;
 			children = (
@@ -480,7 +470,7 @@
 		128BB5C02BB282D6009E0FAB /* AppModel */ = {
 			isa = PBXGroup;
 			children = (
-				128BB5C12BB282E7009E0FAB /* PoopRepository.swift */,
+				128BB5C12BB282E7009E0FAB /* WrapLocalRepository.swift */,
 			);
 			path = AppModel;
 			sourceTree = "<group>";
@@ -792,8 +782,9 @@
 				124778D32BE51A7400559205 /* Poop+CoreDataClass.swift in Sources */,
 				124778C32BE5194800559205 /* UNCHILOGWatchApp.swift in Sources */,
 				124779022BEA03BC00559205 /* ConnectError.swift in Sources */,
-				1247790D2BEA527200559205 /* PoopRepository.swift in Sources */,
+				1247790D2BEA527200559205 /* WrapLocalRepository.swift in Sources */,
 				124778D22BE51A6E00559205 /* UNCHILOG.xcdatamodeld in Sources */,
+				1222E51D2EBB917300DFC050 /* Logger.swift in Sources */,
 				124778EA2BE5BDA300559205 /* PoopInputTodayView.swift in Sources */,
 				124779042BEA041000559205 /* Strings.swift in Sources */,
 				124778E82BE523A400559205 /* RootView.swift in Sources */,
@@ -832,13 +823,12 @@
 				128BB5F92BB5ACF3009E0FAB /* UserDefaultsKey.swift in Sources */,
 				12CBFBEB2BAFE25B005FE4F1 /* RootView.swift in Sources */,
 				122B3EE72BC3B2CF00167D9E /* TheDayDetailPoopRowView.swift in Sources */,
-				128BB5B62BB141C5009E0FAB /* SCCalenderRepository.swift in Sources */,
 				128BB6012BB5B000009E0FAB /* AppLockViewModel.swift in Sources */,
 				122B3EE12BBFC53B00167D9E /* SelectEntryMode.swift in Sources */,
 				12CBFBF52BAFE25C005FE4F1 /* UNCHILOG.xcdatamodeld in Sources */,
 				128BB5EB2BB467B2009E0FAB /* Assets.swift in Sources */,
 				128BB5E12BB30E6E009E0FAB /* TheDayView.swift in Sources */,
-				128BB5C22BB282E7009E0FAB /* PoopRepository.swift in Sources */,
+				128BB5C22BB282E7009E0FAB /* WrapLocalRepository.swift in Sources */,
 				12ED29B92C19701900A1293D /* TheMonthPoopTimelineView.swift in Sources */,
 				12CBFBE92BAFE25B005FE4F1 /* UNCHILOGApp.swift in Sources */,
 				129FA0BE2EB63EAC009712F1 /* RootViewModel.swift in Sources */,

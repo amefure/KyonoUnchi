@@ -8,11 +8,11 @@
 import UIKit
 
 class RepositoryDependency {
-    public let poopRepository: PoopRepository
+    public let poopRepository: WrapLocalRepository
     public let scWeekDayRepository: SCWeekDayRepository
     public let iosConnectRepository: iOSConnectRepository
     
-    static let sharedPoopRepository = PoopRepository()
+    static let sharedPoopRepository = WrapLocalRepository(localRepository: CoreDataRepository())
     static let sharedSCWeekDayRepository = SCWeekDayRepository()
     static let sharediOSConnectRepository = iOSConnectRepository()
     

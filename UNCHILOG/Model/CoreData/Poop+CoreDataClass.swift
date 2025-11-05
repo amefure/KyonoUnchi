@@ -68,13 +68,13 @@ extension Poop {
     }
 }
 
-
-extension Poop {
-    /// デモプレビュー用インスタンス生成メソッド
-    static func new(name: String, color: String, order: Int) -> Poop {
-        let entity: Poop = CoreDataRepository.entity()
-        entity.id = UUID()
-        return entity
-    }
-}
+//
+//extension Poop {
+//    /// デモプレビュー用インスタンス生成メソッド
+//    static func new(name: String, color: String, order: Int) -> Poop {
+//        let entity: Poop = CoreDataRepository.entity()
+//        entity.id = UUID()
+//        return entity
+//    }
+//}
 

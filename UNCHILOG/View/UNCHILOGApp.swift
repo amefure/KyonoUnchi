@@ -24,17 +24,15 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct UNCHILOGApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    @StateObject private var rootEnvironment = RootEnvironment.shared
+    @Environment(\.rootEnvironment) private var rootEnvironment
 
     var body: some Scene {
         WindowGroup {
             NavigationStack {
                 if rootEnvironment.state.appLocked {
                     AppLockView()
-                        // .environment(\.rootEnvironment, rootEnvironment)
                 } else {
                     RootView()
-                        // .environment(\.rootEnvironment, rootEnvironment)
                 }
             }
         }

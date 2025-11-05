@@ -17,7 +17,7 @@ struct TheDayDetailView: View {
     }
     
     @StateObject private var poopViewModel = PoopViewModel.shared
-    @StateObject private var rootEnvironment = RootEnvironment.shared
+    @Environment(\.rootEnvironment) private var rootEnvironment
     
     @State private var showDeleteDialog = false
     @State private var showEditInputView = false
@@ -62,14 +62,12 @@ struct TheDayDetailView: View {
                 guard let createdAt = poop.createdAt else { return }
                // rootEnvironment.deletePoopUpdateCalender(createdAt: createdAt)
                 poopViewModel.deletePoop(poop: poop)
-            },
-            negativeAction: { showDeleteDialog = false }
-        ).alert(
-            isPresented: $rootEnvironment.showSimpleEntryDetailDialog,
-            title: L10n.dialogTitle,
-            message: L10n.dialogEntryPoop,
-            positiveButtonTitle: L10n.dialogButtonOk,
-            positiveAction: { rootEnvironment.showSimpleEntryDetailDialog = false }
+            }
+//        ).alert(
+//            isPresented: $rootEnvironment.state.showSimpleEntryDetailDialog,
+//            title: L10n.dialogTitle,
+//            message: L10n.dialogEntryPoop,
+//            positiveButtonTitle: L10n.dialogButtonOk
         ).toolbarBackground(.exFoundation, for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar) // iOS18以降はtoolbarVisibility
             .navigationTitle(theDay.getDate(format: "yyyy年M月d日"))

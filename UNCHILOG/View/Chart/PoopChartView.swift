@@ -11,7 +11,7 @@ import SCCalendar
 
 struct PoopChartView: View {
     @StateObject private var poopViewModel = PoopViewModel.shared
-    @StateObject private var rootEnvironment = RootEnvironment.shared
+    @Environment(\.rootEnvironment) private var rootEnvironment
     
 //    // チャートで表示する年月のデータのみ抽出
 //    private var showCurrentData: [(createdAt: Date, count: Int)] {

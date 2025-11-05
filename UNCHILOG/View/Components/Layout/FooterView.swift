@@ -16,7 +16,7 @@ struct FooterView: View {
     
     // MARK: - ViewModel
     @ObservedObject private var viewModel = PoopViewModel.shared
-    @ObservedObject private var rootEnvironment = RootEnvironment.shared
+    @Environment(\.rootEnvironment) private var rootEnvironment
     
     @State private var showInputPoopView = false
     
@@ -50,7 +50,7 @@ struct FooterView: View {
                            // rootEnvironment.moveTodayCalendar()
                             //rootEnvironment.showSimpleEntryDialog = true
                         } else {
-                            rootEnvironment.showSimpleEntryDetailDialog = true
+                            rootEnvironment.state.showSimpleEntryDetailDialog = true
                         }
                         
                     } else {

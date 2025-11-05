@@ -17,7 +17,7 @@ class RootEnvironment: ObservableObject {
     
     private let iosConnectRepository: iOSConnectRepository
     private let scWeekDayRepository: SCWeekDayRepository
-    private let poopRepository: PoopRepository
+    private let poopRepository: WrapLocalRepositoryProtocol
     
     private var weekPoopList: [Poop] = []
 

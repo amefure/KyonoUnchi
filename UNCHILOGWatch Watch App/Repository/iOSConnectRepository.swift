@@ -71,6 +71,7 @@ extension iOSConnectRepository: WCSessionDelegate {
     }
     
     private func savePoopList(_ dic: [String : Any]) {
+        let repository = CoreDataRepository()
         WatchLogger.debug(items: "データ受信：\(dic)")
         
         guard let key = CommunicationKey.checkForKeyValue(dic) else {
@@ -87,11 +88,11 @@ extension iOSConnectRepository: WCSessionDelegate {
         }
         DispatchQueue.main.async {
             let decoder = JSONDecoder()
-            decoder.userInfo[CodingUserInfoKey(rawValue: "managedObjectContext")!] = CoreDataRepository.context
+            decoder.userInfo[CodingUserInfoKey(rawValue: "managedObjectContext")!] = repository.context
             // JSONデータを構造体に準拠した形式に変換
             if let lives = try? decoder.decode([Poop].self, from: jsonData) {
                 // この時点で保存される
-                CoreDataRepository.save()
+                repository.save()
                 self._poopList.send(lives)
             } else {
                 self._poopList.send(completion: .failure(.jsonConversionFailed))
