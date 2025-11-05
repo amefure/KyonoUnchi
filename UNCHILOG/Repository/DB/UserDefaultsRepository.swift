@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SCCalendar
 
 /// `UserDefaults`の基底クラス
 /// スレッドセーフにするため `final class` + `Sendable`準拠

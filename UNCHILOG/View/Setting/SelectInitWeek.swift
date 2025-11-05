@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SCCalendar
 
 struct SelectInitWeek: View {
     @ObservedObject private var rootEnvironment = RootEnvironment.shared

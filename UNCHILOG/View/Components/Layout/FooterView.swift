@@ -38,16 +38,16 @@ struct FooterView: View {
                             // 現在時間を格納した該当の日付を生成して登録
                             let createdAt = dateFormatUtility.combineDateWithCurrentTime(theDay: date)
                             viewModel.addPoop(createdAt: createdAt)
-                            rootEnvironment.addPoopUpdateCalender(createdAt: createdAt)
+                            //rootEnvironment.addPoopUpdateCalender(createdAt: createdAt)
                         } else {
                             // 現在時刻を取得して登録
                             let createdAt = Date()
                             viewModel.addPoop(createdAt: createdAt)
-                            rootEnvironment.addPoopUpdateCalender(createdAt: createdAt)
+                          //  rootEnvironment.addPoopUpdateCalender(createdAt: createdAt)
                         }
                         
                         if isRoot {
-                            rootEnvironment.moveTodayCalendar()
+                           // rootEnvironment.moveTodayCalendar()
                             //rootEnvironment.showSimpleEntryDialog = true
                         } else {
                             rootEnvironment.showSimpleEntryDetailDialog = true

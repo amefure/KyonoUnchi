@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SCCalendar
 
 struct TheMonthPoopTimelineView: View {
     
@@ -80,7 +81,7 @@ struct TheMonthPoopTimelineView: View {
             positiveAction: {
                 guard let poop = poopViewModel.selectPoop else { return }
                 guard let createdAt = poop.createdAt else { return }
-                rootEnvironment.deletePoopUpdateCalender(createdAt: createdAt)
+                //rootEnvironment.deletePoopUpdateCalender(createdAt: createdAt)
                 poopViewModel.deletePoop(poop: poop)
             },
             negativeAction: { showDeleteDialog = false }
@@ -94,5 +95,5 @@ struct TheMonthPoopTimelineView: View {
     }
 }
 #Preview {
-    TheMonthPoopTimelineView(currentMonth: SCYearAndMonth(year: 2024, month: 12))
+    TheMonthPoopTimelineView(currentMonth: SCYearAndMonth(year: 2024, month: 12, dates: []))
 }

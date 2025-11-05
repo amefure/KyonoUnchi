@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import SCCalendar
 
 class PoopViewModel: ObservableObject {
     
@@ -51,7 +52,7 @@ extension PoopViewModel {
     private func findTodayDifference() -> Int {
         // 今日の日付の23:59を取得
         let endDay = dateFormatUtility.endOfDay(for: DateFormatUtility.today)
-        let dates = poops.map({ $0.wrappedCreatedAt }).filter({ $0 < endDay })
+        let dates = poops.map({ $0.date }).filter({ $0 < endDay })
         // 今日と同じ日付があれば0を返す
         if dates.contains(where: { dateFormatUtility.checkInSameDayAs(date: $0 )}) {
             return 0
@@ -78,7 +79,7 @@ extension PoopViewModel {
         let filterPoops = poops.filter({ $0.getDate(format: "yyyy年M月") == currentMonth.yearAndMonth })
         let groupedRecords = Dictionary(grouping: filterPoops) { poop in
             // yyyy年M月d日の文字列とする
-            return dateFormatUtility.getString(date:  dateFormatUtility.startOfDay(poop.wrappedCreatedAt))
+            return dateFormatUtility.getString(date:  dateFormatUtility.startOfDay(poop.date))
         }
         return groupedRecords
     }
@@ -137,7 +138,7 @@ extension PoopViewModel {
             let endToday = dateFormatUtility.endOfDay(for: Date())
             let oneWeekAgo = dateFormatUtility.calcDate(date: endToday, value: -7)
             let weekPoops = poops.filter { poop in
-                poop.wrappedCreatedAt >= oneWeekAgo && poop.wrappedCreatedAt <= endToday
+                poop.date >= oneWeekAgo && poop.date <= endToday
             }
             watchConnectRepository.send(weekPoops)
         }

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SCCalendar
 
 struct TheDayDetailView: View {
     public var theDay: SCDate
@@ -59,7 +60,7 @@ struct TheDayDetailView: View {
             positiveAction: {
                 guard let poop = poopViewModel.selectPoop else { return }
                 guard let createdAt = poop.createdAt else { return }
-                rootEnvironment.deletePoopUpdateCalender(createdAt: createdAt)
+               // rootEnvironment.deletePoopUpdateCalender(createdAt: createdAt)
                 poopViewModel.deletePoop(poop: poop)
             },
             negativeAction: { showDeleteDialog = false }

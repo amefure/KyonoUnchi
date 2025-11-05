@@ -59,9 +59,9 @@ struct RootView: View {
                     if rootEnvironment.state.entryMode == .simple {
                         // 現在時刻を取得して登録
                         viewModel.addSimplePoop()
-                        rootEnvironment.addPoopUpdateCalender(createdAt: Date())
+                      //  rootEnvironment.addPoopUpdateCalender(createdAt: Date())
                         
-                        rootEnvironment.moveTodayCalendar()
+                       // rootEnvironment.moveTodayCalendar()
                         viewModel.state.isShowSuccessEntryAlert = true
                     } else {
                         viewModel.state.isShowInputDetailPoop = true

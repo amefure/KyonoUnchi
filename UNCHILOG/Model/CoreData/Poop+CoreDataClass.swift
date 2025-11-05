@@ -8,16 +8,24 @@
 
 import Foundation
 import CoreData
+import SCCalendar
 
 @objc(Poop)
-public class Poop: NSManagedObject, Decodable, Encodable {
+public class Poop: NSManagedObject, Decodable, Encodable, SCDateEntity {
     // 値がnilの場合のデフォルト値定義
     public var wrappedId: UUID { id ?? UUID() }
     public var wrappedColor: String { color ?? PoopColor.undefined.rawValue }
     public var wrappedShape: Int { Int(shape) }
     public var wrappedVolume: Int { Int(volume) }
     public var wrappedMemo: String { memo ?? "" }
-    public var wrappedCreatedAt: Date { createdAt ?? Date() }
+    // public var wrappedCreatedAt: Date { createdAt ?? Date() }
+    public var date: Date {
+        get {
+            createdAt ?? Date()
+        }
+        set { }
+    }
+   
     
     enum CodingKeys: CodingKey {
         case id, createdAt
@@ -49,13 +57,13 @@ public class Poop: NSManagedObject, Decodable, Encodable {
 extension Poop {
     /// 年月日取得
     public func getDate(format: String = "yyyy-M-d") -> String {
-        let str = DateFormatUtility(format: format).getString(date: wrappedCreatedAt)
+        let str = DateFormatUtility(format: format).getString(date: date)
         return str
     }
     
     /// 時間取得
     public func getTime(format: String = "HH:mm:ss") -> String {
-        let str = DateFormatUtility(format: format).getString(date: wrappedCreatedAt)
+        let str = DateFormatUtility(format: format).getString(date: date)
         return str
     }
 }
@@ -69,3 +77,4 @@ extension Poop {
         return entity
     }
 }
+

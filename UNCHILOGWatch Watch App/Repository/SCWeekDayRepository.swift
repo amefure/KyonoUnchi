@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import SCCalendar
 
 class SCWeekDayRepository {
     
@@ -44,8 +45,17 @@ class SCWeekDayRepository {
             let isToday = df.checkInSameDayAs(date: resultDate, sameDay: Date())
             let holidayName = "" // ここに祝日名を取得する処理を追加する
             // 表示するカウントを取得
-            let count = poopRepository.getTheDateCount(date: resultDate)
-            let scDate = SCDate(year: year, month: month, day: day, date: resultDate, week: week, holidayName: holidayName, count: count, isToday: isToday)
+            let list = poopRepository.getByTheDate(date: resultDate)
+            let scDate = SCDate(
+                year: year,
+                month: month,
+                day: day,
+                date: resultDate,
+                week: week,
+                holidayName: holidayName,
+                entities: list,
+                isToday: isToday
+            )
             datesList.append(scDate)
         }
         _currentDates.send(datesList.reversed())

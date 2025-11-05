@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SCCalendar
 
 class RepositoryDependency {
     public let poopRepository: PoopRepository

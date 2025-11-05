@@ -7,6 +7,7 @@
 
 import Foundation
 import Swinject
+import SCCalendar
 
 final class DIContainer: @unchecked Sendable {
     static let shared = DIContainer()

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		120C655A2EBA3B6C0001312B /* SCCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 120C65592EBA3B6C0001312B /* SCCalendar */; };
+		120C655C2EBA412A0001312B /* SCCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 120C655B2EBA412A0001312B /* SCCalendar */; };
 		122B3EE12BBFC53B00167D9E /* SelectEntryMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122B3EE02BBFC53B00167D9E /* SelectEntryMode.swift */; };
 		122B3EE32BBFC62700167D9E /* EntryMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122B3EE22BBFC62700167D9E /* EntryMode.swift */; };
 		122B3EE52BC025C200167D9E /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122B3EE42BC025C200167D9E /* HeaderView.swift */; };
@@ -25,9 +27,7 @@
 		124778D92BE51ACA00559205 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 128BB5A52BAFE3B7009E0FAB /* Colors.xcassets */; };
 		124778DA2BE51ACD00559205 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12CBFBEC2BAFE25C005FE4F1 /* Images.xcassets */; };
 		124778E12BE51C3E00559205 /* DeviceSizeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124778E02BE51C3E00559205 /* DeviceSizeManager.swift */; };
-		124778E22BE5200900559205 /* SCDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5AE2BB14115009E0FAB /* SCDate.swift */; };
-		124778E32BE5200B00559205 /* SCYearAndMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5B02BB14125009E0FAB /* SCYearAndMonth.swift */; };
-		124778E42BE5200D00559205 /* SCWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5B22BB14135009E0FAB /* SCWeek.swift */; };
+		124778E22BE5200900559205 /* ExSCDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5AE2BB14115009E0FAB /* ExSCDate.swift */; };
 		124778E82BE523A400559205 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124778E72BE523A400559205 /* RootView.swift */; };
 		124778EA2BE5BDA300559205 /* PoopInputTodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124778E92BE5BDA300559205 /* PoopInputTodayView.swift */; };
 		124778ED2BE9FC9C00559205 /* CommunicationKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124778EC2BE9FC9C00559205 /* CommunicationKey.swift */; };
@@ -49,13 +49,10 @@
 		1247790D2BEA527200559205 /* PoopRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5C12BB282E7009E0FAB /* PoopRepository.swift */; };
 		1247790F2BEA5CDE00559205 /* RootEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1247790E2BEA5CDE00559205 /* RootEnvironment.swift */; };
 		124779102BEA600700559205 /* WatchLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1247790B2BEA4B7800559205 /* WatchLogger.swift */; };
-		125326832BB8050A003A6BB0 /* YearAndMonthSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125326822BB8050A003A6BB0 /* YearAndMonthSelectionView.swift */; };
 		128BB5A62BAFE3B7009E0FAB /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 128BB5A52BAFE3B7009E0FAB /* Colors.xcassets */; };
 		128BB5A82BAFE3CB009E0FAB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 128BB5A72BAFE3CB009E0FAB /* Localizable.strings */; };
 		128BB5AB2BAFE5C8009E0FAB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 128BB5AA2BAFE5C8009E0FAB /* GoogleService-Info.plist */; };
-		128BB5AF2BB14115009E0FAB /* SCDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5AE2BB14115009E0FAB /* SCDate.swift */; };
-		128BB5B12BB14125009E0FAB /* SCYearAndMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5B02BB14125009E0FAB /* SCYearAndMonth.swift */; };
-		128BB5B32BB14135009E0FAB /* SCWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5B22BB14135009E0FAB /* SCWeek.swift */; };
+		128BB5AF2BB14115009E0FAB /* ExSCDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5AE2BB14115009E0FAB /* ExSCDate.swift */; };
 		128BB5B62BB141C5009E0FAB /* SCCalenderRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5B52BB141C5009E0FAB /* SCCalenderRepository.swift */; };
 		128BB5BC2BB147BB009E0FAB /* Poop+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5BB2BB147BB009E0FAB /* Poop+CoreDataClass.swift */; };
 		128BB5BF2BB1497D009E0FAB /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5BE2BB1497D009E0FAB /* CoreDataRepository.swift */; };
@@ -109,6 +106,7 @@
 		129FA0BE2EB63EAC009712F1 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129FA0BD2EB63EA8009712F1 /* RootViewModel.swift */; };
 		129FA0C12EB641BD009712F1 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 129FA0C02EB641BD009712F1 /* Swinject */; };
 		129FA0C42EB641CE009712F1 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129FA0C22EB641CE009712F1 /* DIContainer.swift */; };
+		129FA0C62EB77D9A009712F1 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129FA0C52EB77D96009712F1 /* CalendarViewModel.swift */; };
 		12A43E172BBAF51800AB19A4 /* RoundMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A43E162BBAF51700AB19A4 /* RoundMessageView.swift */; };
 		12B29BCE2BD521A900DD7E20 /* PoopMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B29BCD2BD521A900DD7E20 /* PoopMessage.swift */; };
 		12CBFBE92BAFE25B005FE4F1 /* UNCHILOGApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CBFBE82BAFE25B005FE4F1 /* UNCHILOGApp.swift */; };
@@ -172,14 +170,11 @@
 		124779052BEA062300559205 /* WatchConnectRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectRepository.swift; sourceTree = "<group>"; };
 		1247790B2BEA4B7800559205 /* WatchLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchLogger.swift; sourceTree = "<group>"; };
 		1247790E2BEA5CDE00559205 /* RootEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootEnvironment.swift; sourceTree = "<group>"; };
-		125326822BB8050A003A6BB0 /* YearAndMonthSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearAndMonthSelectionView.swift; sourceTree = "<group>"; };
 		128BB5A52BAFE3B7009E0FAB /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		128BB5A72BAFE3CB009E0FAB /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		128BB5A92BAFE480009E0FAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		128BB5AA2BAFE5C8009E0FAB /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
-		128BB5AE2BB14115009E0FAB /* SCDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCDate.swift; sourceTree = "<group>"; };
-		128BB5B02BB14125009E0FAB /* SCYearAndMonth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCYearAndMonth.swift; sourceTree = "<group>"; };
-		128BB5B22BB14135009E0FAB /* SCWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCWeek.swift; sourceTree = "<group>"; };
+		128BB5AE2BB14115009E0FAB /* ExSCDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExSCDate.swift; sourceTree = "<group>"; };
 		128BB5B52BB141C5009E0FAB /* SCCalenderRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCCalenderRepository.swift; sourceTree = "<group>"; };
 		128BB5BB2BB147BB009E0FAB /* Poop+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Poop+CoreDataClass.swift"; path = "/Users/s/Desktop/SwiftApp/UNCHILOG/UNCHILOG/Model/CoreData/Poop+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		128BB5BE2BB1497D009E0FAB /* CoreDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
@@ -225,6 +220,7 @@
 		129FA0A42EB4EB31009712F1 /* ShareInfoUtillity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareInfoUtillity.swift; sourceTree = "<group>"; };
 		129FA0BD2EB63EA8009712F1 /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		129FA0C22EB641CE009712F1 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
+		129FA0C52EB77D96009712F1 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		12A43E162BBAF51700AB19A4 /* RoundMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundMessageView.swift; sourceTree = "<group>"; };
 		12B29BCD2BD521A900DD7E20 /* PoopMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopMessage.swift; sourceTree = "<group>"; };
 		12CBFBE52BAFE25B005FE4F1 /* UNCHILOG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UNCHILOG.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -246,6 +242,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				120C655C2EBA412A0001312B /* SCCalendar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,6 +252,7 @@
 			files = (
 				129FA0B12EB63D10009712F1 /* FirebaseAnalytics in Frameworks */,
 				129FA0B32EB63D10009712F1 /* FirebaseAnalyticsCore in Frameworks */,
+				120C655A2EBA3B6C0001312B /* SCCalendar in Frameworks */,
 				129FA0C12EB641BD009712F1 /* Swinject in Frameworks */,
 				129FA0B92EB63D10009712F1 /* FirebasePerformance in Frameworks */,
 				129FA0B72EB63D10009712F1 /* FirebaseCrashlytics in Frameworks */,
@@ -361,14 +359,6 @@
 			path = Error;
 			sourceTree = "<group>";
 		};
-		125326812BB804E5003A6BB0 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				125326822BB8050A003A6BB0 /* YearAndMonthSelectionView.swift */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
 		128BB59D2BAFE348009E0FAB /* Generated */ = {
 			isa = PBXGroup;
 			children = (
@@ -428,6 +418,7 @@
 			isa = PBXGroup;
 			children = (
 				128BB5D72BB289E2009E0FAB /* PoopViewModel.swift */,
+				129FA0C52EB77D96009712F1 /* CalendarViewModel.swift */,
 				129FA0BD2EB63EA8009712F1 /* RootViewModel.swift */,
 				128BB5E72BB465A2009E0FAB /* RootEnvironment.swift */,
 				128BB6062BB5B0DD009E0FAB /* SettingViewModel.swift */,
@@ -464,9 +455,6 @@
 		128BB5AD2BB140F6009E0FAB /* SCCalendar */ = {
 			isa = PBXGroup;
 			children = (
-				128BB5AE2BB14115009E0FAB /* SCDate.swift */,
-				128BB5B02BB14125009E0FAB /* SCYearAndMonth.swift */,
-				128BB5B22BB14135009E0FAB /* SCWeek.swift */,
 			);
 			path = SCCalendar;
 			sourceTree = "<group>";
@@ -515,7 +503,6 @@
 				122B3EE62BC3B2CF00167D9E /* TheDayDetailPoopRowView.swift */,
 				128BB5CC2BB28833009E0FAB /* PoopInputView.swift */,
 				12ED29B82C19701900A1293D /* TheMonthPoopTimelineView.swift */,
-				125326812BB804E5003A6BB0 /* Components */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -614,6 +601,7 @@
 				129FA0932EB4EB24009712F1 /* ExFontSize.swift */,
 				129FA0942EB4EB24009712F1 /* ExView.swift */,
 				129FA0952EB4EB24009712F1 /* ExCollection.swift */,
+				128BB5AE2BB14115009E0FAB /* ExSCDate.swift */,
 			);
 			path = Extenstion;
 			sourceTree = "<group>";
@@ -753,6 +741,7 @@
 				129FA0AF2EB63D10009712F1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				129FA0BA2EB63D43009712F1 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 				129FA0BF2EB641BC009712F1 /* XCRemoteSwiftPackageReference "Swinject" */,
+				120C65582EBA3B6C0001312B /* XCRemoteSwiftPackageReference "SCCalender" */,
 			);
 			productRefGroup = 12CBFBE62BAFE25B005FE4F1 /* Products */;
 			projectDirPath = "";
@@ -809,11 +798,9 @@
 				124779042BEA041000559205 /* Strings.swift in Sources */,
 				124778E82BE523A400559205 /* RootView.swift in Sources */,
 				1247790F2BEA5CDE00559205 /* RootEnvironment.swift in Sources */,
-				124778E22BE5200900559205 /* SCDate.swift in Sources */,
-				124778E32BE5200B00559205 /* SCYearAndMonth.swift in Sources */,
+				124778E22BE5200900559205 /* ExSCDate.swift in Sources */,
 				124778F72BEA028A00559205 /* iOSConnectRepository.swift in Sources */,
 				124778F32BEA00E700559205 /* RepositoryDependency.swift in Sources */,
-				124778E42BE5200D00559205 /* SCWeek.swift in Sources */,
 				124778F92BEA02DE00559205 /* SessionDataError.swift in Sources */,
 				124779002BEA03A300559205 /* PoopError.swift in Sources */,
 				124778ED2BE9FC9C00559205 /* CommunicationKey.swift in Sources */,
@@ -833,7 +820,6 @@
 				128BB5DA2BB2FCEF009E0FAB /* PoopCalendarView.swift in Sources */,
 				12A43E172BBAF51800AB19A4 /* RoundMessageView.swift in Sources */,
 				128BB5E82BB465A2009E0FAB /* RootEnvironment.swift in Sources */,
-				125326832BB8050A003A6BB0 /* YearAndMonthSelectionView.swift in Sources */,
 				124778FC2BEA034300559205 /* PoopError.swift in Sources */,
 				124779092BEA064000559205 /* ConnectError.swift in Sources */,
 				128BB5D62BB289AF009E0FAB /* BiometricAuthRepository.swift in Sources */,
@@ -859,15 +845,15 @@
 				128BB5F02BB59F97009E0FAB /* FooterView.swift in Sources */,
 				12DB3CFA2BD394870075817A /* AdsConfig.swift in Sources */,
 				128BB5DE2BB30B72009E0FAB /* TheDayDetailView.swift in Sources */,
+				129FA0C62EB77D9A009712F1 /* CalendarViewModel.swift in Sources */,
 				128BB5CD2BB28833009E0FAB /* PoopInputView.swift in Sources */,
-				128BB5B32BB14135009E0FAB /* SCWeek.swift in Sources */,
 				128BB5F62BB5AB58009E0FAB /* SelectInitWeek.swift in Sources */,
 				12DCB2C22BBD2B7700AF62CB /* EntryButton.swift in Sources */,
 				12978DEC2BE3CEF700D25AA4 /* CarouselCalendarView.swift in Sources */,
 				122B3EE52BC025C200167D9E /* HeaderView.swift in Sources */,
 				128BB5D42BB2899C009E0FAB /* KeyChainRepository.swift in Sources */,
 				128BB5D02BB2885C009E0FAB /* RepositoryDependency.swift in Sources */,
-				128BB5AF2BB14115009E0FAB /* SCDate.swift in Sources */,
+				128BB5AF2BB14115009E0FAB /* ExSCDate.swift in Sources */,
 				122B3EE32BBFC62700167D9E /* EntryMode.swift in Sources */,
 				128BB5EC2BB467B2009E0FAB /* Strings.swift in Sources */,
 				129C63862C7F316200D9CB39 /* SelectAppIconView.swift in Sources */,
@@ -898,7 +884,6 @@
 				124779062BEA062300559205 /* WatchConnectRepository.swift in Sources */,
 				128BB5CB2BB284D5009E0FAB /* PoopColor.swift in Sources */,
 				12DB3CF82BD392A90075817A /* AdMobView.swift in Sources */,
-				128BB5B12BB14125009E0FAB /* SCYearAndMonth.swift in Sources */,
 				128BB60A2BB79BA2009E0FAB /* UrlLinkConfig.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1206,6 +1191,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		120C65582EBA3B6C0001312B /* XCRemoteSwiftPackageReference "SCCalender" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/amefure/SCCalender.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		129FA0AF2EB63D10009712F1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -1233,6 +1226,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		120C65592EBA3B6C0001312B /* SCCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 120C65582EBA3B6C0001312B /* XCRemoteSwiftPackageReference "SCCalender" */;
+			productName = SCCalendar;
+		};
+		120C655B2EBA412A0001312B /* SCCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 120C65582EBA3B6C0001312B /* XCRemoteSwiftPackageReference "SCCalender" */;
+			productName = SCCalendar;
+		};
 		129FA0B02EB63D10009712F1 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 129FA0AF2EB63D10009712F1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

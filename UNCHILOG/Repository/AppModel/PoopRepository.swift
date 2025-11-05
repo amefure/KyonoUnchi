@@ -7,20 +7,20 @@
 
 import UIKit
 
-class PoopRepository {
+final class PoopRepository {
     
     public func fetchAllPoops() -> [Poop] {
         return CoreDataRepository.fetch(sorts: [NSSortDescriptor(keyPath: \Poop.createdAt, ascending: true)])
     }
     
-    public func getTheDateCount(date: Date) -> Int {
+    public func getByTheDate(date: Date) -> [Poop] {
         // 指定した日付
         let specifiedDate = Calendar(identifier: .gregorian).startOfDay(for: date)
-        let nextDay = Calendar.current.date(byAdding: .day, value: 1, to: specifiedDate)!
+        let nextDay = Calendar.current.date(byAdding: .day, value: 1, to: specifiedDate) ?? Date()
 
         let predicate = NSPredicate(format: "createdAt >= %@ AND createdAt < %@", specifiedDate as NSDate, nextDay as NSDate)
         let list: [Poop] = CoreDataRepository.fetch(predicate: predicate)
-        return list.count
+        return list
     }
     
     public func addPoop(

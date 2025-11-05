@@ -60,9 +60,9 @@ struct PoopInputView: View {
                             memo: memo,
                             createdAt: createdAt
                         )
-                        rootEnvironment.addPoopUpdateCalender(createdAt: createdAt)
+                        //rootEnvironment.addPoopUpdateCalender(createdAt: createdAt)
                         if df.checkInSameDayAs(date: createdAt) {
-                            rootEnvironment.moveTodayCalendar()
+                            //rootEnvironment.moveTodayCalendar()
                         }
                     }
                     showSuccessAlert = true
@@ -185,7 +185,7 @@ struct PoopInputView: View {
                 volume = PoopVolume(rawValue: poop.wrappedVolume) ?? .medium
                 volumeNum = Float(volume.rawValue)
                 memo = poop.wrappedMemo
-                createdAt = poop.wrappedCreatedAt
+                createdAt = poop.date
                 
                 // シンプルで登録された場合は自動で初期値を設定しておく
                 if color == .undefined {

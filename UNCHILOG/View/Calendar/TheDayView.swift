@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import SCCalendar
 
 struct TheDayView: View {
     
+    let viewModel: CalendarViewModel
     @StateObject private var rootEnvironment = RootEnvironment.shared
     public let theDay: SCDate
     
@@ -35,7 +37,7 @@ struct TheDayView: View {
                         
                     Spacer()
                     
-                    if theDay.count != 0 {
+                    if theDay.entities.count != 0 {
                         ZStack {
                             Image("noface_poop")
                                 .resizable()
@@ -44,7 +46,7 @@ struct TheDayView: View {
                                 .offset(y: -5)
 
                             
-                            Text("\(theDay.count)")
+                            Text("\(theDay.entities.count)")
                                 .font(.system(size: DeviceSizeUtility.isSESize ? 14 : 18))
                                 .fontWeight(.bold)
                                 .foregroundStyle(.white)
@@ -74,5 +76,5 @@ struct TheDayView: View {
 }
 
 #Preview {
-    TheDayView(theDay: SCDate.demo)
+    //TheDayView(theDay: SCDate.demo)
 }
