@@ -82,7 +82,14 @@ private extension DIContainer {
 //            )
 //        }
 //
-//       
+        
+        // ViewModel
+        c.register(TheDayDetailViewModel.self) { r in
+            TheDayDetailViewModel(
+                localRepository: r.resolve(WrapLocalRepositoryProtocol.self)!,
+            )
+        }
+//
 //
 //        // Setting
 //        c.register(SettingViewModel.self) { r in

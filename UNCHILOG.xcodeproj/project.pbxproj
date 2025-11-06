@@ -10,10 +10,10 @@
 		120C655A2EBA3B6C0001312B /* SCCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 120C65592EBA3B6C0001312B /* SCCalendar */; };
 		120C655C2EBA412A0001312B /* SCCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 120C655B2EBA412A0001312B /* SCCalendar */; };
 		1222E51D2EBB917300DFC050 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129FA09F2EB4EB31009712F1 /* Logger.swift */; };
+		1222E5202EBCE39700DFC050 /* TheDayDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1222E51F2EBCE39300DFC050 /* TheDayDetailViewModel.swift */; };
 		122B3EE12BBFC53B00167D9E /* SelectEntryMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122B3EE02BBFC53B00167D9E /* SelectEntryMode.swift */; };
 		122B3EE32BBFC62700167D9E /* EntryMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122B3EE22BBFC62700167D9E /* EntryMode.swift */; };
 		122B3EE52BC025C200167D9E /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122B3EE42BC025C200167D9E /* HeaderView.swift */; };
-		122B3EE72BC3B2CF00167D9E /* TheDayDetailPoopRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122B3EE62BC3B2CF00167D9E /* TheDayDetailPoopRowView.swift */; };
 		124778C32BE5194800559205 /* UNCHILOGWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124778C22BE5194800559205 /* UNCHILOGWatchApp.swift */; };
 		124778C52BE5194800559205 /* PoopWeekListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124778C42BE5194800559205 /* PoopWeekListView.swift */; };
 		124778C72BE5194A00559205 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 124778C62BE5194A00559205 /* Assets.xcassets */; };
@@ -147,10 +147,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1222E51F2EBCE39300DFC050 /* TheDayDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheDayDetailViewModel.swift; sourceTree = "<group>"; };
 		122B3EE02BBFC53B00167D9E /* SelectEntryMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectEntryMode.swift; sourceTree = "<group>"; };
 		122B3EE22BBFC62700167D9E /* EntryMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryMode.swift; sourceTree = "<group>"; };
 		122B3EE42BC025C200167D9E /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
-		122B3EE62BC3B2CF00167D9E /* TheDayDetailPoopRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheDayDetailPoopRowView.swift; sourceTree = "<group>"; };
 		124778C02BE5194800559205 /* 今日のうんちWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "今日のうんちWatch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		124778C22BE5194800559205 /* UNCHILOGWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNCHILOGWatchApp.swift; sourceTree = "<group>"; };
 		124778C42BE5194800559205 /* PoopWeekListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopWeekListView.swift; sourceTree = "<group>"; };
@@ -263,6 +263,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1222E51E2EBB94B100DFC050 /* Poop */ = {
+			isa = PBXGroup;
+			children = (
+				128BB5DD2BB30B72009E0FAB /* TheDayDetailView.swift */,
+				128BB5CC2BB28833009E0FAB /* PoopInputView.swift */,
+				12ED29B82C19701900A1293D /* TheMonthPoopTimelineView.swift */,
+			);
+			path = Poop;
+			sourceTree = "<group>";
+		};
 		124778C12BE5194800559205 /* UNCHILOGWatch Watch App */ = {
 			isa = PBXGroup;
 			children = (
@@ -403,8 +413,9 @@
 			children = (
 				12CBFBE82BAFE25B005FE4F1 /* UNCHILOGApp.swift */,
 				12CBFBEA2BAFE25B005FE4F1 /* RootView.swift */,
-				128BB60B2BB7F85E009E0FAB /* Chart */,
+				1222E51E2EBB94B100DFC050 /* Poop */,
 				128BB5DF2BB30E48009E0FAB /* Calendar */,
+				128BB60B2BB7F85E009E0FAB /* Chart */,
 				128BB5E42BB4657F009E0FAB /* Dialog */,
 				128BB5F42BB5AB47009E0FAB /* Setting */,
 				128BB5FA2BB5AFB0009E0FAB /* AppLock */,
@@ -418,6 +429,7 @@
 			children = (
 				128BB5E72BB465A2009E0FAB /* RootEnvironment.swift */,
 				128BB5D72BB289E2009E0FAB /* PoopViewModel.swift */,
+				1222E51F2EBCE39300DFC050 /* TheDayDetailViewModel.swift */,
 				129FA0C52EB77D96009712F1 /* CalendarViewModel.swift */,
 				129FA0BD2EB63EA8009712F1 /* RootViewModel.swift */,
 				128BB6062BB5B0DD009E0FAB /* SettingViewModel.swift */,
@@ -489,10 +501,6 @@
 				128BB5D92BB2FCEF009E0FAB /* PoopCalendarView.swift */,
 				12978DEB2BE3CEF700D25AA4 /* CarouselCalendarView.swift */,
 				128BB5E02BB30E6E009E0FAB /* TheDayView.swift */,
-				128BB5DD2BB30B72009E0FAB /* TheDayDetailView.swift */,
-				122B3EE62BC3B2CF00167D9E /* TheDayDetailPoopRowView.swift */,
-				128BB5CC2BB28833009E0FAB /* PoopInputView.swift */,
-				12ED29B82C19701900A1293D /* TheMonthPoopTimelineView.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -808,6 +816,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1222E5202EBCE39700DFC050 /* TheDayDetailViewModel.swift in Sources */,
 				128BB5DA2BB2FCEF009E0FAB /* PoopCalendarView.swift in Sources */,
 				12A43E172BBAF51800AB19A4 /* RoundMessageView.swift in Sources */,
 				128BB5E82BB465A2009E0FAB /* RootEnvironment.swift in Sources */,
@@ -822,7 +831,6 @@
 				128BB5D82BB289E2009E0FAB /* PoopViewModel.swift in Sources */,
 				128BB5F92BB5ACF3009E0FAB /* UserDefaultsKey.swift in Sources */,
 				12CBFBEB2BAFE25B005FE4F1 /* RootView.swift in Sources */,
-				122B3EE72BC3B2CF00167D9E /* TheDayDetailPoopRowView.swift in Sources */,
 				128BB6012BB5B000009E0FAB /* AppLockViewModel.swift in Sources */,
 				122B3EE12BBFC53B00167D9E /* SelectEntryMode.swift in Sources */,
 				12CBFBF52BAFE25C005FE4F1 /* UNCHILOG.xcdatamodeld in Sources */,

@@ -22,6 +22,7 @@ final class RootViewState {
 
 final class RootViewModel {
     
+    // シングルトン設計にしないと再生性が何度も発生しインタースティシャルが期待通りに動作しない
     static let shared = RootViewModel()
     
     var state = RootViewState()

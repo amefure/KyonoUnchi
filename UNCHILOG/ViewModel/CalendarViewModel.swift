@@ -95,8 +95,8 @@ final class CalendarViewModel {
     func onAppear() {
         if !isInitializeFlag {
             // リフレッシュしたいため都度取得する
-          //  let users: [User] = localRepository.readAllObjs()
-            //scCalenderRepository.initialize(initWeek: state.initWeek, entities: users)
+            let poops: [Poop] = poopRepository.fetchAllPoops()
+            scCalenderRepository.initialize(initWeek: state.initWeek, entities: poops)
             isInitializeFlag = true
         }
 

@@ -57,8 +57,8 @@ struct TheMonthPoopTimelineView: View {
                         Section(header: Text(date)) {
                             if let list = poopList[date] {
                                 ForEach(list, id: \.id) { notify in
-                                    TheDayDetailPoopRowView(poop: notify, showDeleteDialog: $showDeleteDialog, showEditInputView: $showEditInputView
-                                    )
+//                                    TheDayDetailPoopRowView(poop: notify, showDeleteDialog: $showDeleteDialog, showEditInputView: $showEditInputView
+//                                    )
                                 }
                             }
                         }

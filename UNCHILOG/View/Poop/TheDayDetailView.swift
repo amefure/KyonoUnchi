@@ -1,36 +1,97 @@
 //
-//  TheDayDetailPoopRow.swift
+//  PoopDayView.swift
 //  UNCHILOG
 //
-//  Created by t&a on 2024/04/08.
+//  Created by t&a on 2024/03/26.
 //
 
 import SwiftUI
+import SCCalendar
 
-struct TheDayDetailPoopRowView: View {
+struct TheDayDetailView: View {
+    public let theDay: SCDate
     
-    public var poop: Poop
-    
-    @StateObject private var poopViewModel = PoopViewModel.shared
     @Environment(\.rootEnvironment) private var rootEnvironment
     
-    @Binding var showDeleteDialog: Bool
-    @Binding var showEditInputView: Bool
+    @State private var viewModel = DIContainer.shared.resolve(TheDayDetailViewModel.self)
+    
+    @State private var showDeleteDialog = false
+    @State private var showEditInputView = false
     @State private var isShowMemo = false
-    @State private var memoLineLimit = 1
+    
+    /// メモ表示領域調整用の行数制限
+    @State private var memoLineLimit: MemoDisplay = .singleLine
+    
+    private enum MemoDisplay: Int {
+        case singleLine = 1
+        case full = 100
+    }
     
     var body: some View {
+        VStack(spacing: 0) {
+            
+            if viewModel.state.poopList.count == 0 {
+                
+                Spacer()
+                
+                Text("うんちの記録がありません。")
+                
+                Spacer()
+            } else {
+                
+                List {
+                    ForEach(viewModel.state.poopList) { poop in
+                        poopRowView(poop: poop)
+                    }
+                }.listStyle(GroupedListStyle())
+                    .scrollContentBackground(.hidden)
+                    .background(Color.clear)
+            }
+            
+            AdMobBannerView()
+                .frame(height: 60)
+            
+            //FooterView(date: theDay.date ?? Date(), isRoot: false)
+            
+        }.onAppear {
+            viewModel.onAppear(theDay: theDay)
+        }
+        .fullScreenCover(isPresented: $showEditInputView) {
+            PoopInputView(theDay: theDay.date)
+        }.alert(
+            isPresented: $showDeleteDialog,
+            title: L10n.dialogTitle,
+            message: L10n.dialogDeletePoop,
+            positiveButtonTitle: L10n.dialogButtonOk,
+            negativeButtonTitle: L10n.dialogButtonCancel,
+            positiveAction: {
+                viewModel.deletePoop()               
+            },
+            negativeAction: {
+                viewModel.cancelDelete()
+            }
+//        ).alert(
+//            isPresented: $rootEnvironment.state.showSimpleEntryDetailDialog,
+//            title: L10n.dialogTitle,
+//            message: L10n.dialogEntryPoop,
+//            positiveButtonTitle: L10n.dialogButtonOk
+        ).toolbarBackground(.exFoundation, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar) // iOS18以降はtoolbarVisibility
+            .navigationTitle(theDay.getDate(format: "yyyy年M月d日"))
+    }
+    
+    private func poopRowView(poop: Poop) -> some View {
         Menu {
             
             Button(role: .none) {
-                poopViewModel.selectPoop = poop
+                viewModel.selectPoop(poop)
                 showEditInputView = true
             } label: {
                 Label("編集", systemImage: "square.and.pencil")
             }
             
             Button(role: .none) {
-                poopViewModel.selectPoop = poop
+                viewModel.selectPoop(poop)
                 showDeleteDialog = true
             } label: {
                 Label("削除", systemImage: "trash")
@@ -38,18 +99,16 @@ struct TheDayDetailPoopRowView: View {
             
             if !poop.wrappedMemo.isEmpty {
                 Button(role: .none) {
-                    if memoLineLimit == 100 {
-                        memoLineLimit = 1
+                    if memoLineLimit == .full {
+                        memoLineLimit = .singleLine
                     } else {
-                        memoLineLimit = 100
+                        memoLineLimit = .full
                     }
                 } label: {
-                    Label(memoLineLimit != 100 ? "MEMO表示" : "戻す", systemImage: "doc.plaintext")
+                    Label(memoLineLimit == .singleLine ? "MEMO表示" : "戻す", systemImage: "doc.plaintext")
                 }
             }
         } label: {
-            
-            
             
             VStack(spacing: 0) {
                 
@@ -57,20 +116,20 @@ struct TheDayDetailPoopRowView: View {
                     VStack(spacing: 0) {
                         
                         Rectangle()
-                            .fill(.exThema)
+                            .fill(.exText)
                             .frame(width: 2, height: 20)
                         
                         Text(poop.getTime(format: "HH:mm"))
-                            .fontWeight(.bold)
-                            .foregroundStyle(.exSub)
+                            .fontM(bold: true)
+                            .foregroundStyle(.white)
                             .frame(width: 70)
                             .padding(10)
-                            .background(.exThema)
+                            .background(.exText)
                             .clipShape(RoundedRectangle(cornerRadius: 5))
                         
                         Rectangle()
-                            .fill(.exThema)
-                            .frame(width: 2, height: memoLineLimit != 100 ? 20 : .infinity)
+                            .fill(.exText)
+                            .frame(width: 2, height: memoLineLimit == .singleLine ? 20 : .infinity)
                     }
                     
                     VStack {
@@ -116,12 +175,11 @@ struct TheDayDetailPoopRowView: View {
                             Spacer()
                         }
                         
-                        // MARK: - MEMO：メモ
                         if !poop.wrappedMemo.isEmpty {
                             Text(poop.wrappedMemo)
                                 .multilineTextAlignment(.leading)
                                 .foregroundStyle(.exText)
-                                .lineLimit(memoLineLimit)
+                                .lineLimit(memoLineLimit.rawValue)
                                 .padding(.leading)
                         }
                     }
@@ -136,6 +194,6 @@ struct TheDayDetailPoopRowView: View {
     }
 }
 
-//#Preview {
-//    TheDayDetailPoopRowView()
-//}
+#Preview {
+    TheDayDetailView(theDay: SCDate.demo)
+}

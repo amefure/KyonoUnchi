@@ -26,7 +26,10 @@ struct PoopCalendarView: View {
 
             Spacer()
             
-        }.alert(
+        }.onAppear {
+            viewModel.onAppear()
+        }
+        .alert(
             isPresented: $viewModel.state.showOutOfRangeCalendarDialog,
             title: L10n.dialogTitle,
             message: L10n.dialogOutOfRangeCalendar,
@@ -38,6 +41,10 @@ struct PoopCalendarView: View {
     /// 年月選択ヘッダービュー
     private func yearAndMonthSelectionView() -> some View {
         HStack {
+            Spacer()
+                .frame(width: 30)
+                .padding(.horizontal, 10)
+            
             Spacer()
 
             Button {
@@ -62,8 +69,19 @@ struct PoopCalendarView: View {
             }.frame(width: 10)
 
             Spacer()
+            
+            Button {
+                viewModel.moveTodayCalendar()
+            } label: {
+              Image("back_today")
+                  .resizable()
+                  .scaledToFit()
+                  .frame(width: 30)
+            }.padding(.horizontal, 10)
+              .frame(width: 30)
 
-        }
+        }.foregroundStyle(.exThema)
+            .padding(.horizontal)
     }
 
     /// 曜日リスト

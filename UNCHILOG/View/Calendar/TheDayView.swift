@@ -30,7 +30,7 @@ struct TheDayView: View {
                     Text("\(theDay.day)")
                         .frame(width: 25, height: 25)
                         .background(theDay.isToday ? Color.exSub : Color.clear)
-                        .font(.system(size: DeviceSizeUtility.isSESize ? 14 : 18))
+                        .fontS()
                         .clipShape(RoundedRectangle(cornerRadius: 25))
                         .foregroundStyle(theDay.isToday ? Color.white : theDay.dayColor())
                         .padding(.top, 3)
@@ -65,7 +65,6 @@ struct TheDayView: View {
             }
         }
         .frame(maxWidth: .infinity)
-        //.frame(height: DeviceSizeUtility.isSESize ? 68 : 80)
         .overlay {
             Rectangle()
                 .stroke(.gray, lineWidth: 0.5)
