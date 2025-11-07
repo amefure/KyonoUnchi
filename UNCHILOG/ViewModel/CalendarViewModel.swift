@@ -27,6 +27,10 @@ final class CalendarState {
 }
 
 final class CalendarViewModel {
+    
+    // シングルトン設計にしないと再生成が何度も発生してします
+    static let shared = CalendarViewModel()
+    
     private let dateFormatUtility = DateFormatUtility()
 
     var state = CalendarState()
@@ -35,7 +39,6 @@ final class CalendarViewModel {
     private var isInitializeFlag: Bool = false
 
     private var cancellables: Set<AnyCancellable> = []
-    private var updateCancellable: AnyCancellable?
 
     /// `Repository`
     private let keyChainRepository: KeyChainRepository
@@ -58,38 +61,12 @@ final class CalendarViewModel {
 
         // 初回描画用に最新月だけ取得して表示する
         state.yearAndMonths = scCalenderRepository.fetchInitYearAndMonths()
-        
-        scCalenderRepository.displayCalendarIndex
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] index in
-                guard let self else { return }
-                state.displayCalendarIndex = CGFloat(index)
-            }.store(in: &cancellables)
 
-        scCalenderRepository.yearAndMonths
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] yearAndMonths in
-                guard let self else { return }
-                state.yearAndMonths = yearAndMonths
-            }.store(in: &cancellables)
-
-        scCalenderRepository.dayOfWeekList
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] list in
-                guard let self else { return }
-                state.dayOfWeekList = list
-            }.store(in: &cancellables)
-        
-        watchConnectRepository.entryDate
-            .sink { [weak self] date in
-                guard let self else { return }
-                self.poopRepository.addPoopSimple(createdAt: date)
-               // self.scCalenderRepository.updateCalendar()
-            }.store(in: &cancellables)
     }
 
     deinit {
-        updateCancellable?.cancel()
+        cancellables.forEach { $0.cancel() }
+        cancellables.removeAll()
     }
 
     func onAppear() {
@@ -100,11 +77,43 @@ final class CalendarViewModel {
             isInitializeFlag = true
         }
 
-     
+        scCalenderRepository.displayCalendarIndex
+            .subscribe(on: DispatchQueue.global(qos: .background))
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] index in
+                guard let self else { return }
+                state.displayCalendarIndex = CGFloat(index)
+            }.store(in: &cancellables)
+
+        scCalenderRepository.yearAndMonths
+            .subscribe(on: DispatchQueue.global(qos: .background))
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] yearAndMonths in
+                guard let self else { return }
+                state.yearAndMonths = yearAndMonths
+            }.store(in: &cancellables)
+
+        scCalenderRepository.dayOfWeekList
+            .subscribe(on: DispatchQueue.global(qos: .background))
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] list in
+                guard let self else { return }
+                state.dayOfWeekList = list
+            }.store(in: &cancellables)
+        
+        watchConnectRepository.entryDate
+            .subscribe(on: DispatchQueue.global(qos: .background))
+            .receive(on: DispatchQueue.global(qos: .background))
+            .sink { [weak self] date in
+                guard let self else { return }
+                self.poopRepository.addPoopSimple(createdAt: date)
+               // self.scCalenderRepository.updateCalendar()
+            }.store(in: &cancellables)
     }
 
     func onDisappear() {
         cancellables.forEach { $0.cancel() }
+        cancellables.removeAll()
     }
 }
 

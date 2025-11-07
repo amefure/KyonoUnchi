@@ -12,19 +12,10 @@ import SwiftUI
 struct PoopInputView: View {
     
     private let df = DateFormatUtility(format: "M月d日")
-    // MARK: - ViewModel
-    @StateObject private var viewModel = PoopViewModel.shared
-    @Environment(\.rootEnvironment) private var rootEnvironment
+    @State private var viewModel = DIContainer.shared.resolve(PoopInputViewModel.self)
     
     public var theDay: Date?
-    
-    @State private var color: PoopColor = .darkBrown
-    @State private var shape: PoopShape = .normal
-    @State private var volume: PoopVolume = .medium
-    @State private var volumeNum: Float = 3
-    @State private var hardnessNum: Float = 3
-    @State private var memo: String = ""
-    @State private var createdAt: Date = Date()
+    public var poopId: UUID?
     
     @FocusState var isActive: Bool
     @State private var showSuccessAlert: Bool = false
@@ -43,32 +34,13 @@ struct PoopInputView: View {
                 },
                 trailingAction: {
                     isActive = false
-                    if let poop = viewModel.selectPoop {
-                        viewModel.updatePoop(
-                            id: poop.wrappedId,
-                            color: color,
-                            shape: shape,
-                            volume: volume,
-                            memo: memo,
-                            createdAt: createdAt
-                        )
-                    } else {
-                        viewModel.addPoop(
-                            color: color,
-                            shape: shape,
-                            volume: volume,
-                            memo: memo,
-                            createdAt: createdAt
-                        )
-                        //rootEnvironment.addPoopUpdateCalender(createdAt: createdAt)
-                        if df.checkInSameDayAs(date: createdAt) {
-                            //rootEnvironment.moveTodayCalendar()
-                        }
-                    }
+                    viewModel.createOrUpdatePoop()
                     showSuccessAlert = true
                 },
                 content: {
-                    Text(viewModel.selectPoop == nil ? "うんち登録：\(df.getString(date: createdAt))" : "うんち記録編集：\(df.getString(date: createdAt))" )
+                    Text(viewModel.state.targetPoop == nil
+                         ? "うんち登録：\(df.getString(date: viewModel.state.createdAt))"
+                         : "うんち記録編集：\(df.getString(date: viewModel.state.createdAt))")
                 }
             )
             
@@ -77,9 +49,10 @@ struct PoopInputView: View {
                 
                 InputItemTitleView(title: "時間", subTitle: "Time")
                 
-                DatePicker("createdAt",
-                           selection: $createdAt,
-                           displayedComponents: [.hourAndMinute]
+                DatePicker(
+                    "createdAt",
+                    selection: $viewModel.state.createdAt,
+                    displayedComponents: [.hourAndMinute]
                 ).frame(width: 300)
                     .labelsHidden()
                 
@@ -92,10 +65,10 @@ struct PoopInputView: View {
                             if poopColor != .undefined {
                                 
                                 Button {
-                                    color = poopColor
+                                    viewModel.state.color = poopColor
                                 } label: {
                                     VStack {
-                                        if color == poopColor {
+                                        if viewModel.state.color == poopColor {
                                             Image(systemName: "arrowshape.down.fill")
                                                 .resizable()
                                                 .scaledToFit()
@@ -123,7 +96,7 @@ struct PoopInputView: View {
                         ForEach(PoopShape.allCases, id: \.self) { poopShape in
                             if poopShape != .undefined {
                                 Button {
-                                    shape = poopShape
+                                    viewModel.state.shape = poopShape
                                 } label: {
                                     VStack(spacing: 0) {
                                         
@@ -136,7 +109,7 @@ struct PoopInputView: View {
                                             .scaledToFit()
                                             .frame(width: 55)
                                             .padding(5)
-                                            .background(shape == poopShape ? .exGray : .clear)
+                                            .background(viewModel.state.shape == poopShape ? .exGray : .clear)
                                             .clipShape(RoundedRectangle(cornerRadius: 60))
                                     }
                                 }
@@ -148,20 +121,20 @@ struct PoopInputView: View {
                 
                 InputItemTitleView(title: "量", subTitle: "Volume")
                 
-                Text(volume.name)
+                Text(viewModel.state.volume.name)
                     .foregroundStyle(.exText)
                     .fontWeight(.bold)
                     .opacity(0.8)
                 
-                Slider(value: $volumeNum, in: 1...Float(PoopVolume.allCases.count - 1), step: 1.0)
-                    .onChange(of: volumeNum) { _, newValue in
-                        volume = PoopVolume(rawValue: Int(newValue)) ?? .medium
+                Slider(value: $viewModel.state.volumeNum, in: 1...Float(PoopVolume.allCases.count - 1), step: 1.0)
+                    .onChange(of: viewModel.state.volumeNum) { _, newValue in
+                        viewModel.state.volume = PoopVolume(rawValue: Int(newValue)) ?? .medium
                     }.padding(.horizontal)
                     .tint(.exSub)
                 
                 InputItemTitleView(title: "メモ", subTitle: "MEMO")
                 
-                TextEditor(text: $memo)
+                TextEditor(text: $viewModel.state.memo)
                     .frame(height: 200)
                     .scrollContentBackground(.hidden)
                     .padding(5)
@@ -179,36 +152,13 @@ struct PoopInputView: View {
             isActive = false
         })
         .onAppear {
-            if let poop = viewModel.selectPoop {
-                color = PoopColor(rawValue: poop.wrappedColor) ?? .brown
-                shape = PoopShape(rawValue: poop.wrappedShape) ?? .normal
-                volume = PoopVolume(rawValue: poop.wrappedVolume) ?? .medium
-                volumeNum = Float(volume.rawValue)
-                memo = poop.wrappedMemo
-                createdAt = poop.date
-                
-                // シンプルで登録された場合は自動で初期値を設定しておく
-                if color == .undefined {
-                    color = .darkBrown
-                    shape = .normal
-                    volume = .medium
-                    volumeNum = Float(volume.rawValue)
-                }
-                
-            } else {
-                // 現在時間を格納した該当の日付を生成
-                createdAt = df.combineDateWithCurrentTime(theDay: theDay ?? Date())
-            }
-        }.dialog(
+            viewModel.onAppear(poopId: poopId, theDay: theDay)
+        }.alert(
             isPresented: $showSuccessAlert,
             title: L10n.dialogTitle,
-            message: viewModel.selectPoop == nil ? L10n.dialogEntryPoop : L10n.dialogUpdatePoop,
+            message: viewModel.state.targetPoop == nil ? L10n.dialogEntryPoop : L10n.dialogUpdatePoop,
             positiveButtonTitle: L10n.dialogButtonOk,
             positiveAction: {
-                viewModel.selectPoop = nil
-                
-               // rootEnvironment.addCountInterstitial()
-                
                 dismiss()
             }
         )
@@ -216,7 +166,7 @@ struct PoopInputView: View {
 }
 
 
-struct InputItemTitleView: View {
+private struct InputItemTitleView: View {
     public var title: String
     public var subTitle: String
     var body: some View {

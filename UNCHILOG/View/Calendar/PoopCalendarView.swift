@@ -11,7 +11,7 @@ import SCCalendar
 struct PoopCalendarView: View {
     @Environment(\.rootEnvironment) private var rootEnvironment
     
-    @State private var viewModel = CalendarViewModel()
+    @State private var viewModel = CalendarViewModel.shared
     
     private let columns = Array(repeating: GridItem(spacing: 0), count: 7)
     
@@ -28,6 +28,8 @@ struct PoopCalendarView: View {
             
         }.onAppear {
             viewModel.onAppear()
+        }.onDisappear {
+            viewModel.onDisappear()
         }
         .alert(
             isPresented: $viewModel.state.showOutOfRangeCalendarDialog,

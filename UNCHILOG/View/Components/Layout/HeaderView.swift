@@ -17,8 +17,7 @@ struct HeaderView<Content: View>: View {
     let isShowLogo: Bool
     let content: Content
     
-    // MARK: - Environment
-    @Environment(\.rootEnvironment) private var rootEnvironment
+    private let buttonSize: CGFloat = 40
     
     init(leadingIcon: String = "",
          trailingIcon: String = "",
@@ -42,13 +41,14 @@ struct HeaderView<Content: View>: View {
                     leadingAction()
                 } label: {
                     Image(systemName: leadingIcon)
-                        .font(.system(size: 18))
-                        .padding(.leading, 5)
-                        .frame(width: 50)
-                }.frame(width: 50)
+                        .fontM(bold: true)
+                        .frame(width: buttonSize, height: buttonSize)
+                        .background(.white.opacity(0.98))
+                        .clipShape(RoundedRectangle(cornerRadius: buttonSize))
+                }
             } else if !trailingIcon.isEmpty {
                 Spacer()
-                    .frame(width: 50)
+                    .frame(width: buttonSize)
             }
             
             Spacer()
@@ -62,34 +62,32 @@ struct HeaderView<Content: View>: View {
                     trailingAction()
                 } label: {
                     Image(systemName: trailingIcon)
-                        .font(.system(size: 18))
-                        .padding(.trailing, 5)
-                        .frame(width: 50)
-                }.frame(width: 50)
+                        .fontM(bold: true)
+                        .frame(width: buttonSize, height: buttonSize)
+                        .background(.white.opacity(0.98))
+                        .clipShape(RoundedRectangle(cornerRadius: buttonSize))
+                }
                 
             } else if !leadingIcon.isEmpty {
                 Spacer()
-                    .frame(width: 50)
+                    .frame(width: buttonSize)
             }
-        }.padding(.vertical)
-            .foregroundStyle(.exSub)
+        }.padding(.vertical, 10)
+            .padding(.horizontal)
+            .foregroundStyle(.exThema)
             .fontWeight(.bold)
-            .background(.exThema)
-    }
-}
-
-// 親から渡されたViewをラップするためのView
-struct HeaderContentView: View {
-    var body: some View {
-        // ここに親から渡されたViewを表示
-        Text("Header Content") // 例としてテキストを表示
-            .foregroundColor(.white)
-            .font(.title)
+            .background(.exFoundation)
     }
 }
 
 
 #Preview {
-    HeaderView(leadingIcon: "swift", trailingIcon: "iphone", leadingAction: {}, trailingAction: {}, content: {})
+    HeaderView(
+        leadingIcon: "swift",
+        trailingIcon: "iphone",
+        leadingAction: {},
+        trailingAction: {},
+        content: {}
+    )
 }
 

@@ -11,6 +11,7 @@
 		120C655C2EBA412A0001312B /* SCCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 120C655B2EBA412A0001312B /* SCCalendar */; };
 		1222E51D2EBB917300DFC050 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129FA09F2EB4EB31009712F1 /* Logger.swift */; };
 		1222E5202EBCE39700DFC050 /* TheDayDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1222E51F2EBCE39300DFC050 /* TheDayDetailViewModel.swift */; };
+		1222E5232EBCEAD500DFC050 /* PoopInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1222E5222EBCEAD200DFC050 /* PoopInputViewModel.swift */; };
 		122B3EE12BBFC53B00167D9E /* SelectEntryMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122B3EE02BBFC53B00167D9E /* SelectEntryMode.swift */; };
 		122B3EE32BBFC62700167D9E /* EntryMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122B3EE22BBFC62700167D9E /* EntryMode.swift */; };
 		122B3EE52BC025C200167D9E /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122B3EE42BC025C200167D9E /* HeaderView.swift */; };
@@ -148,6 +149,7 @@
 
 /* Begin PBXFileReference section */
 		1222E51F2EBCE39300DFC050 /* TheDayDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheDayDetailViewModel.swift; sourceTree = "<group>"; };
+		1222E5222EBCEAD200DFC050 /* PoopInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopInputViewModel.swift; sourceTree = "<group>"; };
 		122B3EE02BBFC53B00167D9E /* SelectEntryMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectEntryMode.swift; sourceTree = "<group>"; };
 		122B3EE22BBFC62700167D9E /* EntryMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryMode.swift; sourceTree = "<group>"; };
 		122B3EE42BC025C200167D9E /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
@@ -269,6 +271,15 @@
 				128BB5DD2BB30B72009E0FAB /* TheDayDetailView.swift */,
 				128BB5CC2BB28833009E0FAB /* PoopInputView.swift */,
 				12ED29B82C19701900A1293D /* TheMonthPoopTimelineView.swift */,
+			);
+			path = Poop;
+			sourceTree = "<group>";
+		};
+		1222E5212EBCEAC800DFC050 /* Poop */ = {
+			isa = PBXGroup;
+			children = (
+				1222E5222EBCEAD200DFC050 /* PoopInputViewModel.swift */,
+				1222E51F2EBCE39300DFC050 /* TheDayDetailViewModel.swift */,
 			);
 			path = Poop;
 			sourceTree = "<group>";
@@ -428,10 +439,10 @@
 			isa = PBXGroup;
 			children = (
 				128BB5E72BB465A2009E0FAB /* RootEnvironment.swift */,
-				128BB5D72BB289E2009E0FAB /* PoopViewModel.swift */,
-				1222E51F2EBCE39300DFC050 /* TheDayDetailViewModel.swift */,
-				129FA0C52EB77D96009712F1 /* CalendarViewModel.swift */,
 				129FA0BD2EB63EA8009712F1 /* RootViewModel.swift */,
+				1222E5212EBCEAC800DFC050 /* Poop */,
+				128BB5D72BB289E2009E0FAB /* PoopViewModel.swift */,
+				129FA0C52EB77D96009712F1 /* CalendarViewModel.swift */,
 				128BB6062BB5B0DD009E0FAB /* SettingViewModel.swift */,
 				128BB5FF2BB5AFF2009E0FAB /* AppLock */,
 			);
@@ -865,6 +876,7 @@
 				128BB6032BB5B008009E0FAB /* AppLockInputViewModel.swift in Sources */,
 				128BB5FC2BB5AFC5009E0FAB /* AppLockView.swift in Sources */,
 				128BB5FE2BB5AFD0009E0FAB /* AppLockInputView.swift in Sources */,
+				1222E5232EBCEAD500DFC050 /* PoopInputViewModel.swift in Sources */,
 				129FA0982EB4EB24009712F1 /* ExView.swift in Sources */,
 				129FA09A2EB4EB24009712F1 /* ExFontSize.swift in Sources */,
 				129FA09B2EB4EB24009712F1 /* ExUIApplication.swift in Sources */,
