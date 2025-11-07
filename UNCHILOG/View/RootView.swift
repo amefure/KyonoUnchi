@@ -18,6 +18,9 @@ struct RootView: View {
             PoopCalendarView()
             
             Spacer()
+            
+            AdMobBannerView()
+                .frame(height: 60)
         
             Color.exThema
                 .frame(height: 100)
