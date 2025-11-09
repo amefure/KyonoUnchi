@@ -9,6 +9,7 @@ import UIKit
 
 protocol WrapLocalRepositoryProtocol {
     func fetchAllPoops() -> [Poop]
+    func fetchAllPoopsBG() -> [Poop]
     func fetchSinglePoop(id: UUID) -> Poop?
     func getByTheDate(date: Date) -> [Poop]
 
@@ -46,6 +47,12 @@ final class WrapLocalRepository: WrapLocalRepositoryProtocol {
     
     public func fetchAllPoops() -> [Poop] {
         return localRepository.fetch(
+            sorts: [NSSortDescriptor(keyPath: \Poop.createdAt, ascending: true)]
+        )
+    }
+    
+    public func fetchAllPoopsBG() -> [Poop] {
+        return localRepository.fetchBG(
             sorts: [NSSortDescriptor(keyPath: \Poop.createdAt, ascending: true)]
         )
     }

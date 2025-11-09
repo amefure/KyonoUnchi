@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SCCalendar
 
 struct CarouselCalendarView: View {
     
@@ -16,30 +17,21 @@ struct CarouselCalendarView: View {
 
     /// スワイプ中かどうか
     @State private var isSwipe: Bool = false
+    @State private var selectedDay: SCDate? = nil
     private let deviceWidth = DeviceSizeUtility.deviceWidth
     
     var body: some View {
         
         GeometryReader { geometry in
-            HStack(spacing: 0) {
+            LazyHStack(spacing: 0) {
                 ForEach(viewModel.state.yearAndMonths, id: \.id) { yearAndMonth in
-                    VStack(spacing: 0) {
-                        let dates = yearAndMonth.dates
-                        // LazyVGridだとスワイプ時の描画が重くなる
-                        ForEach(0 ..< dates.count / 7, id: \.self) { rowIndex in
-                            HStack(spacing: 0) {
-                                ForEach(0 ..< 7) { columnIndex in
-                                    let dataIndex: Int = rowIndex * 7 + columnIndex
-                                    if dataIndex < dates.count {
-                                        let theDay = dates[dataIndex]
-                                        TheDayView(viewModel: viewModel, theDay: theDay)
-                                    }
-                                }
-                            }
+                    CalendarMonthView(
+                        yearAndMonth: yearAndMonth,
+                        onTapDay: { day in
+                            selectedDay = day
                         }
-
-                        Spacer()
-                    }.frame(width: geometry.size.width, height: geometry.size.height)
+                    ).equatable()
+                        .frame(width: geometry.size.width, height: geometry.size.height)
                 }
             }
         }
@@ -50,10 +42,12 @@ struct CarouselCalendarView: View {
         // スワイプ完了後にバナーコンテナ自体を移動した後に固定するためのオフセット
         .offset(x: -(viewModel.state.displayCalendarIndex * deviceWidth))
         // スワイプ完了後の動作をなめらかにするためのアニメーション
-        .animation(
-            .linear(duration: 0.2),
-            value: viewModel.state.displayCalendarIndex * deviceWidth
-        )
+//        .animation(
+//            .linear(duration: 0.2),
+//            value: viewModel.state.displayCalendarIndex * deviceWidth
+//        )
+        .animation(.linear(duration: 0.2), value: viewModel.state.displayCalendarIndex)
+
         .gesture(
             DragGesture(minimumDistance: 0)
                 // スワイプの変化を観測しスワイプの変化分をHStackのoffsetに反映(スワイプでビューが動く部分を実装)
@@ -80,9 +74,48 @@ struct CarouselCalendarView: View {
                         viewModel.forwardMonthPage()
                     }
                 }
-        )
+        ).navigationDestination(item: $selectedDay) { da in
+            TheDayDetailView(theDay: da)
+        }
+    }
+    /// ✅ 現在表示中＋前後1ヶ月のみ描画
+//    private var visibleMonths: [SCYearAndMonth] {
+//        let index = Int(viewModel.state.displayCalendarIndex)
+//        return viewModel.state.yearAndMonths.enumerated().compactMap { offset, month in
+//            (offset >= index - 1 && offset <= index + 1) ? month : nil
+//        }
+//    }
+}
+
+private struct CalendarMonthView: View, Equatable {
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        lhs.yearAndMonth == rhs.yearAndMonth
+    }
+    
+    let yearAndMonth: SCYearAndMonth
+    let onTapDay: (SCDate) -> Void
+
+    var body: some View {
+        VStack(spacing: 0) {
+            let dates = yearAndMonth.dates
+            // LazyVGridだとスワイプ時の描画が重くなる
+            ForEach(0 ..< dates.count / 7, id: \.self) { rowIndex in
+                HStack(spacing: 0) {
+                    ForEach(0 ..< 7) { columnIndex in
+                        let dataIndex: Int = rowIndex * 7 + columnIndex
+                        if dataIndex < dates.count {
+                            let theDay = dates[dataIndex]
+                            TheDayView(theDay: theDay, onTap: onTapDay)
+                                .equatable()
+                        }
+                    }
+                }
+            }
+            Spacer()
+        }
     }
 }
+
 
 
 

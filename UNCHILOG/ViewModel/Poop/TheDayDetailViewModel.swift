@@ -12,7 +12,8 @@ import SCCalendar
 final class TheDayDetailViewState {
     
     var isShowSuccessEntryAlert: Bool = false
-    var isShowInputDetailPoop: Bool = false
+    var isShowDeleteConfirmAlert: Bool = false
+    var isShowInputDetailView: Bool = false
     
     fileprivate(set) var poopList: [Poop] = []
     /// 削除対象として選択されたデータ
@@ -37,8 +38,16 @@ final class TheDayDetailViewModel {
         fetchAllPoops()
     }
     
-    func selectPoop(_ poop: Poop) {
+    func selectPoop(
+        _ poop: Poop,
+        isDelete: Bool
+    ) {
         state.selectPoop = poop
+        if isDelete {
+            state.isShowDeleteConfirmAlert = true
+        } else {
+            state.isShowInputDetailView = true
+        }
     }
     
     public func addSimplePoop() {
@@ -48,7 +57,7 @@ final class TheDayDetailViewModel {
         let createdAt = df.combineDateWithCurrentTime(theDay: targetDate)
         let added = localRepository.addPoopSimple(createdAt: createdAt)
         // カレンダーを更新
-        NotificationCenter.default.post(name: .updateCalendar, object: added)
+        //NotificationCenter.default.post(name: .updateCalendar, object: added)
         fetchAllPoops()
     }
     

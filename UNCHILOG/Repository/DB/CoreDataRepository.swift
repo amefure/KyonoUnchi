@@ -85,6 +85,33 @@ extension CoreDataRepository {
         }
     }
     
+    /// 取得処理
+    func fetchBG<T: NSManagedObject>(
+        predicate: NSPredicate? = nil,
+        sorts: [NSSortDescriptor]? = nil
+    ) -> [T] {
+        getBgContext.performAndWait {
+            let fetchRequest = NSFetchRequest<T>(entityName: String(describing: T.self))
+            
+            // フィルタリング
+            if let predicate = predicate {
+                fetchRequest.predicate = predicate
+            }
+            
+            // ソート
+            if let sorts = sorts {
+                fetchRequest.sortDescriptors = sorts
+            }
+            
+            do {
+                return try getBgContext.fetch(fetchRequest)
+            } catch let error as NSError {
+                AppLogger.logger.error("Could not fetch. \(error), \(error.userInfo)")
+                return []
+            }
+        }  
+    }
+    
     
     /// 追加処理
     func insert(_ object: NSManagedObject) {

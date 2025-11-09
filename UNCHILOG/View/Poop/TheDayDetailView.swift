@@ -14,9 +14,7 @@ struct TheDayDetailView: View {
     @Environment(\.rootEnvironment) private var rootEnvironment
     
     @State private var viewModel = DIContainer.shared.resolve(TheDayDetailViewModel.self)
-    
-    @State private var showDeleteDialog = false
-    @State private var showEditInputView = false
+
     @State private var isShowMemo = false
     
     /// メモ表示領域調整用の行数制限
@@ -51,15 +49,13 @@ struct TheDayDetailView: View {
             AdMobBannerView()
                 .frame(height: 60)
             
-            //FooterView(date: theDay.date ?? Date(), isRoot: false)
-            
         }.onAppear {
             viewModel.onAppear(theDay: theDay)
         }
-        .fullScreenCover(isPresented: $showEditInputView) {
-            PoopInputView(theDay: theDay.date)
+        .fullScreenCover(isPresented: $viewModel.state.isShowInputDetailView) {
+            PoopInputView(theDay: theDay.date, poopId: viewModel.state.selectPoop?.id)
         }.alert(
-            isPresented: $showDeleteDialog,
+            isPresented: $viewModel.state.isShowDeleteConfirmAlert,
             title: L10n.dialogTitle,
             message: L10n.dialogDeletePoop,
             positiveButtonTitle: L10n.dialogButtonOk,
@@ -84,7 +80,7 @@ struct TheDayDetailView: View {
                         viewModel.addSimplePoop()
                         viewModel.state.isShowSuccessEntryAlert = true
                     } else {
-                        viewModel.state.isShowInputDetailPoop = true
+                        viewModel.state.isShowInputDetailView = true
                     }
                 } label: {
                     Image(systemName: "plus")
@@ -95,24 +91,20 @@ struct TheDayDetailView: View {
         .toolbarBackground(.exFoundation, for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar) // iOS18以降はtoolbarVisibility
             .navigationTitle(theDay.getDate(format: "yyyy年M月d日") ?? "")
-            .fullScreenCover(isPresented: $viewModel.state.isShowInputDetailPoop) {
-                PoopInputView(theDay: Date())
-            }
+
     }
     
     private func poopRowView(poop: Poop) -> some View {
         Menu {
             
             Button(role: .none) {
-                viewModel.selectPoop(poop)
-                showEditInputView = true
+                viewModel.selectPoop(poop, isDelete: false)
             } label: {
                 Label("編集", systemImage: "square.and.pencil")
             }
             
             Button(role: .none) {
-                viewModel.selectPoop(poop)
-                showDeleteDialog = true
+                viewModel.selectPoop(poop, isDelete: true)
             } label: {
                 Label("削除", systemImage: "trash")
             }

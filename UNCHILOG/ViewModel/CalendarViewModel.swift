@@ -99,7 +99,7 @@ final class CalendarViewModel {
         // カレンダー更新用Notificationを観測
         NotificationCenter.default.publisher(for: .updateCalendar)
             .subscribe(on: DispatchQueue.global(qos: .background))
-            .receive(on: DispatchQueue.main)
+            .receive(on: DispatchQueue.global(qos: .background))
             .sink { [weak self] notification in
                 guard let self else { return }
                 if let obj = notification.object as? Poop {
@@ -111,13 +111,15 @@ final class CalendarViewModel {
                 } else if let deleteId = notification.object as? UUID {
                     for yearIndex in state.yearAndMonths.indices {
                         for dateIndex in state.yearAndMonths[yearIndex].dates.indices {
-                            state.yearAndMonths[yearIndex].dates[dateIndex].entities.removeAll(where: {
-                                if let poop = $0 as? Poop {
-                                    return poop.wrappedId == deleteId
-                                } else {
-                                    return false
-                                }
-                            })
+                            DispatchQueue.main.async {
+                                self.state.yearAndMonths[yearIndex].dates[dateIndex].entities.removeAll(where: {
+                                    if let poop = $0 as? Poop {
+                                        return poop.wrappedId == deleteId
+                                    } else {
+                                        return false
+                                    }
+                                })
+                            }
                         }
                         AppLogger.logger.debug("データ削除によるカレンダー更新")
                     }

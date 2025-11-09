@@ -8,13 +8,13 @@
 import SwiftUI
 import SCCalendar
 
-struct TheDayView: View {
+struct TheDayView: View, Equatable {
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        lhs.theDay == rhs.theDay
+    }
     
-    let viewModel: CalendarViewModel
-    @Environment(\.rootEnvironment) private var rootEnvironment
-    public let theDay: SCDate
-    
-    @State private var isShowDetailView: Bool = false
+    let theDay: SCDate
+    let onTap: (SCDate) -> Void
     
     private var poopIconWidth: CGFloat {
         DeviceSizeUtility.deviceWidth / 7
@@ -55,24 +55,19 @@ struct TheDayView: View {
                         Color.white
                             .frame(height: DeviceSizeUtility.isSESize ? 35 : 40)
                     }
-                }.simultaneousGesture(
-                    TapGesture()
-                        .onEnded({ _ in
-                            isShowDetailView = true
-                            //rootEnvironment.addCountInterstitial()
-                        })
-                )
+                } .onTapGesture {
+                    onTap(theDay)
+                }
             }
         }
         .frame(maxWidth: .infinity)
         .overlay {
             Rectangle()
                 .stroke(.gray, lineWidth: 0.5)
-        }.navigationDestination(isPresented: $isShowDetailView) {
-            TheDayDetailView(theDay: theDay)
         }
     }
 }
+
 
 #Preview {
     //TheDayView(theDay: SCDate.demo)
