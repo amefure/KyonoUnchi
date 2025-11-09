@@ -43,7 +43,7 @@ struct SelectInitWeek: View {
             
             Button {
                 rootEnvironment.saveInitWeek(week: selectWeek)
-                rootEnvironment.setFirstWeek(week: selectWeek)
+                //rootEnvironment.setFirstWeek(week: selectWeek)
                 showSuccessAlert = true
             } label: {
                 Text(L10n.appLockInputEntryButton)

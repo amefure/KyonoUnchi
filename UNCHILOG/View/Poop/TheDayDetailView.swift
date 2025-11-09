@@ -65,19 +65,39 @@ struct TheDayDetailView: View {
             positiveButtonTitle: L10n.dialogButtonOk,
             negativeButtonTitle: L10n.dialogButtonCancel,
             positiveAction: {
-                viewModel.deletePoop()               
+                viewModel.deletePoop()
             },
             negativeAction: {
                 viewModel.cancelDelete()
             }
-//        ).alert(
-//            isPresented: $rootEnvironment.state.showSimpleEntryDetailDialog,
-//            title: L10n.dialogTitle,
-//            message: L10n.dialogEntryPoop,
-//            positiveButtonTitle: L10n.dialogButtonOk
-        ).toolbarBackground(.exFoundation, for: .navigationBar)
+        ).alert(
+            isPresented: $viewModel.state.isShowSuccessEntryAlert,
+            title: L10n.dialogTitle,
+            message: L10n.dialogEntryPoop,
+            positiveButtonTitle: L10n.dialogButtonOk
+        ).toolbar {
+ 
+            ToolbarItemGroup(placement: .topBarTrailing) {
+                Button {
+                    if rootEnvironment.state.entryMode == .simple {
+                        // 現在時刻を取得して登録
+                        viewModel.addSimplePoop()
+                        viewModel.state.isShowSuccessEntryAlert = true
+                    } else {
+                        viewModel.state.isShowInputDetailPoop = true
+                    }
+                } label: {
+                    Image(systemName: "plus")
+                        .foregroundStyle(.exThema)
+                }
+            }
+        }
+        .toolbarBackground(.exFoundation, for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar) // iOS18以降はtoolbarVisibility
-            .navigationTitle(theDay.getDate(format: "yyyy年M月d日"))
+            .navigationTitle(theDay.getDate(format: "yyyy年M月d日") ?? "")
+            .fullScreenCover(isPresented: $viewModel.state.isShowInputDetailPoop) {
+                PoopInputView(theDay: Date())
+            }
     }
     
     private func poopRowView(poop: Poop) -> some View {

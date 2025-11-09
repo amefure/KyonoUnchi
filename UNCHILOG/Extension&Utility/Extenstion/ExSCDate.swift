@@ -10,8 +10,9 @@ import SCCalendar
 
 extension SCDate {
     /// 年月日取得
-    public func getDate(format: String = "yyyy-M-d") -> String {
-        let str = DateFormatUtility(format: format).getString(date: date ?? Date())
+    public func getDate(format: String = "yyyy-M-d") -> String? {
+        guard let date else { return nil }
+        let str = DateFormatUtility(format: format).getString(date: date)
         return str
     }
 }

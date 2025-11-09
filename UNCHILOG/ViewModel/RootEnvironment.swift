@@ -36,7 +36,7 @@ final class RootEnvironmentState {
     /// 登録モード
     fileprivate(set) var entryMode: EntryMode = .simple
     
-    // 詳細ページで表示するダイアログ
+    /// 詳細ページで表示するダイアログ
     var showSimpleEntryDetailDialog: Bool = false
 }
 
@@ -72,16 +72,6 @@ final class RootEnvironment {
                 guard let self else { return }
                 self.localRepository.addPoopSimple(createdAt: date)
             }.store(in: &cancellables)
-    }
-}
-
-// MARK: - Status
-extension RootEnvironment {
-
-    
-    /// 週始まりを設定
-    func setFirstWeek(week: SCWeek) {
-        
     }
 }
 

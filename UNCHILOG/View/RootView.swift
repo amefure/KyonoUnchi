@@ -17,13 +17,38 @@ struct RootView: View {
             
             PoopCalendarView()
             
-            Spacer()
-            
             AdMobBannerView()
                 .frame(height: 60)
-        
-            Color.exThema
-                .frame(height: 100)
+            
+            HStack {
+                Spacer()
+                
+                Button {
+                    if rootEnvironment.state.entryMode == .simple {
+                        // 現在時刻を取得して登録
+                        viewModel.addSimplePoop()
+                        viewModel.state.isShowSuccessEntryAlert = true
+                    } else {
+                        viewModel.state.isShowInputDetailPoop = true
+                    }
+                } label: {
+                    Image(systemName: "plus")
+                        .fontL(bold: true)
+                        .foregroundStyle(.white)
+                        .frame(width: 50, height: 50)
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 50)
+                                .stroke(lineWidth: 2)
+                                .foregroundStyle(.white)
+                        }
+                        .compositingGroup()
+                        .shadow(color: .black, radius: 3, x: 1, y: 1)
+                }
+
+                Spacer()
+            }.padding(.bottom, 40)
+                .padding(.top)
+                .background(Color.exThema)
         }.alert(
             isPresented: $viewModel.state.isShowSuccessEntryAlert,
             title: L10n.dialogTitle,
@@ -44,7 +69,6 @@ struct RootView: View {
                         .foregroundStyle(.exThema)
                 }
             }
-                
  
             ToolbarItemGroup(placement: .topBarTrailing) {
                 Button {
@@ -54,27 +78,6 @@ struct RootView: View {
                         .foregroundStyle(.exThema)
                 }
             }
-            
-            
-            ToolbarItemGroup(placement: .bottomBar) {
-                Spacer()
-                Button {
-                    if rootEnvironment.state.entryMode == .simple {
-                        // 現在時刻を取得して登録
-                        viewModel.addSimplePoop()
-                        viewModel.state.isShowSuccessEntryAlert = true
-                    } else {
-                        viewModel.state.isShowInputDetailPoop = true
-                    }
-                } label: {
-                    VStack {
-                        Image(systemName: "plus")
-                        Text("登録")
-                    }.foregroundStyle(.white)
-                        .fontM(bold: true)
-                }
-            }
-
         }.fullScreenCover(isPresented: $viewModel.state.isShowInputDetailPoop) {
             PoopInputView(theDay: Date())
         }.navigationDestination(isPresented: $viewModel.state.isShowSetting) {

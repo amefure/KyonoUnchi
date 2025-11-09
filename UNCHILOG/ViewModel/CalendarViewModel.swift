@@ -46,7 +46,6 @@ final class CalendarViewModel {
     private let scCalenderRepository: SCCalenderRepository
     private let poopRepository: WrapLocalRepositoryProtocol
     private let watchConnectRepository: WatchConnectRepository
-    
 
     init(repositoryDependency: RepositoryDependency = RepositoryDependency()) {
         keyChainRepository = repositoryDependency.keyChainRepository
@@ -61,25 +60,11 @@ final class CalendarViewModel {
 
         // 初回描画用に最新月だけ取得して表示する
         state.yearAndMonths = scCalenderRepository.fetchInitYearAndMonths()
-
-    }
-
-    deinit {
-        cancellables.forEach { $0.cancel() }
-        cancellables.removeAll()
-    }
-
-    func onAppear() {
-        if !isInitializeFlag {
-            // リフレッシュしたいため都度取得する
-            let poops: [Poop] = poopRepository.fetchAllPoops()
-            scCalenderRepository.initialize(initWeek: state.initWeek, entities: poops)
-            isInitializeFlag = true
-        }
-
+        
         scCalenderRepository.displayCalendarIndex
             .subscribe(on: DispatchQueue.global(qos: .background))
             .receive(on: DispatchQueue.main)
+            .removeDuplicates()
             .sink { [weak self] index in
                 guard let self else { return }
                 state.displayCalendarIndex = CGFloat(index)
@@ -96,6 +81,7 @@ final class CalendarViewModel {
         scCalenderRepository.dayOfWeekList
             .subscribe(on: DispatchQueue.global(qos: .background))
             .receive(on: DispatchQueue.main)
+            .removeDuplicates()
             .sink { [weak self] list in
                 guard let self else { return }
                 state.dayOfWeekList = list
@@ -106,14 +92,57 @@ final class CalendarViewModel {
             .receive(on: DispatchQueue.global(qos: .background))
             .sink { [weak self] date in
                 guard let self else { return }
-                self.poopRepository.addPoopSimple(createdAt: date)
-               // self.scCalenderRepository.updateCalendar()
+                let added = self.poopRepository.addPoopSimple(createdAt: date)
+                NotificationCenter.default.post(name: .updateCalendar, object: added)
+            }.store(in: &cancellables)
+        
+        // カレンダー更新用Notificationを観測
+        NotificationCenter.default.publisher(for: .updateCalendar)
+            .subscribe(on: DispatchQueue.global(qos: .background))
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] notification in
+                guard let self else { return }
+                if let obj = notification.object as? Poop {
+                    for yearIndex in state.yearAndMonths.indices {
+                        guard let dateIndex = state.yearAndMonths[yearIndex].dates.firstIndex(where: { $0.getDate() == obj.getDate() }) else { continue }
+                        AppLogger.logger.debug("データ追加によるカレンダー更新")
+                        state.yearAndMonths[yearIndex].dates[dateIndex].entities.append(obj)
+                    }
+                } else if let deleteId = notification.object as? UUID {
+                    for yearIndex in state.yearAndMonths.indices {
+                        for dateIndex in state.yearAndMonths[yearIndex].dates.indices {
+                            state.yearAndMonths[yearIndex].dates[dateIndex].entities.removeAll(where: {
+                                if let poop = $0 as? Poop {
+                                    return poop.wrappedId == deleteId
+                                } else {
+                                    return false
+                                }
+                            })
+                        }
+                        AppLogger.logger.debug("データ削除によるカレンダー更新")
+                    }
+                }
+                
+                NotificationCenter.default.post(name: .updateCalendar, object: nil)
             }.store(in: &cancellables)
     }
 
-    func onDisappear() {
+    deinit {
         cancellables.forEach { $0.cancel() }
         cancellables.removeAll()
+    }
+
+    func onAppear() {
+        if !isInitializeFlag {
+            // リフレッシュしたいため都度取得する
+            let poops = poopRepository.fetchAllPoops()
+            scCalenderRepository.initialize(initWeek: state.initWeek, entities: poops)
+            isInitializeFlag = true
+        }
+
+    }
+
+    func onDisappear() {
     }
 }
 

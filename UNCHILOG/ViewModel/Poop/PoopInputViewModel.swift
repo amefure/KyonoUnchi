@@ -80,13 +80,15 @@ final class PoopInputViewModel {
     }
     
     private func addPoop() {
-        localRepository.addPoop(
+        let added = localRepository.addPoop(
             color: state.color,
             shape: state.shape,
             volume: state.volume,
             memo: state.memo,
             createdAt: state.createdAt
         )
+        // カレンダーを更新
+        NotificationCenter.default.post(name: .updateCalendar, object: added)
     }
 
     private func updatePoop(_ poop: Poop) {

@@ -46,7 +46,9 @@ final class RootViewModel {
 extension RootViewModel {
     
     public func addSimplePoop() {
-        localRepository.addPoopSimple(createdAt: Date())
+        let added = localRepository.addPoopSimple(createdAt: Date())
+        // カレンダーを更新
+        NotificationCenter.default.post(name: .updateCalendar, object: added)
     }
     
     public func showOrCountInterstitial() {

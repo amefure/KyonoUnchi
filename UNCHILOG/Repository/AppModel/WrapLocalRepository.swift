@@ -18,9 +18,9 @@ protocol WrapLocalRepositoryProtocol {
         volume: PoopVolume,
         memo: String,
         createdAt: Date
-    )
+    ) -> Poop?
     
-    func addPoopSimple(createdAt: Date)
+    func addPoopSimple(createdAt: Date) -> Poop?
     
     func updatePoop(
         id : UUID,
@@ -71,8 +71,8 @@ final class WrapLocalRepository: WrapLocalRepositoryProtocol {
         volume: PoopVolume = .undefined,
         memo: String = "",
         createdAt: Date
-    ) {
-        guard let entity: Poop = localRepository.entity() else { return }
+    ) -> Poop? {
+        guard let entity: Poop = localRepository.entity() else { return nil }
         entity.id = UUID()
         entity.color = color.rawValue
         entity.shape = Int16(shape.rawValue)
@@ -81,9 +81,10 @@ final class WrapLocalRepository: WrapLocalRepositoryProtocol {
         entity.createdAt = createdAt
         localRepository.insert(entity)
         localRepository.save()
+        return entity
     }
     
-    public func addPoopSimple(createdAt: Date) {
+    public func addPoopSimple(createdAt: Date) -> Poop? {
         addPoop(createdAt: createdAt)
     }
     
