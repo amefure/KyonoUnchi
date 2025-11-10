@@ -75,6 +75,7 @@ final class CalendarViewModel {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] yearAndMonths in
                 guard let self else { return }
+                AppLogger.logger.debug("yearAndMonths：\(yearAndMonths.map { $0.yearAndMonth })")
                 state.yearAndMonths = yearAndMonths
             }.store(in: &cancellables)
 
@@ -184,33 +185,4 @@ extension CalendarViewModel {
     private func getInitWeek() {
         state.initWeek = userDefaultsRepository.getInitWeek()
     }
-    
-//    /// Poopが追加された際にカレンダー構成用のデータも更新
-//    public func addPoopUpdateCalender(createdAt: Date) {
-//        let (year, date) = getUpdateCurrentDateIndex(createdAt: createdAt)
-//        if year != -1 && date != -1 {
-//            state.currentDates[year][date].count += 1
-//        }
-//    }
-//    /// Poopが削除された際にカレンダー構成用のデータも更新
-//    public func deletePoopUpdateCalender(createdAt: Date) {
-//        let (year, date) = getUpdateCurrentDateIndex(createdAt: createdAt)
-//        if year != -1 && date != -1 {
-//            state.currentDates[year][date].count -= 1
-//        }
-//    }
-//    // 更新対象のインデックス番号を取得する
-//    private func getUpdateCurrentDateIndex(createdAt: Date) -> (Int, Int) {
-//        // 月でフィルタリング
-//        guard let index = state.currentYearAndMonth.firstIndex(where: { $0.month == dateFormatUtility.getDateYearAndMonth(date: createdAt).month }) else { return (-1, -1) }
-//        // 更新対象のSCDateを取得
-//        guard let index2 = state.currentDates[index].firstIndex(where: {
-//            if let date = $0.date {
-//                return dateFormatUtility.checkInSameDayAs(date: date, sameDay: createdAt)
-//            } else {
-//                return false
-//            }
-//        }) else { return (-1, -1) }
-//        return (index, index2)
-//    }
 }
