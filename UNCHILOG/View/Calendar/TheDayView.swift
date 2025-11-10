@@ -55,7 +55,7 @@ struct TheDayView: View, Equatable {
                         Color.white
                             .frame(height: DeviceSizeUtility.isSESize ? 35 : 40)
                     }
-                } .onTapGesture {
+                }.onTapGesture {
                     onTap(theDay)
                 }
             }

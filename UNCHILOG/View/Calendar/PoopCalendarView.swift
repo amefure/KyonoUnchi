@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SCCalendar
+import Combine
 
 struct PoopCalendarView: View {
     @Environment(\.rootEnvironment) private var rootEnvironment
@@ -22,7 +23,12 @@ struct PoopCalendarView: View {
 
             dayOfWeekListView()
             
-            CarouselCalendarView(viewModel: viewModel)
+            CarouselCalendarView(
+                yearAndMonths: viewModel.state.yearAndMonths,
+                displayCalendarIndex: viewModel.state.displayCalendarIndex,
+                backMonthPage: viewModel.backMonthPage,
+                forwardMonthPage: viewModel.forwardMonthPage
+            )
 
             Spacer()
             

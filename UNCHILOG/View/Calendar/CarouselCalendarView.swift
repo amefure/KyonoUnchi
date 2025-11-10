@@ -10,7 +10,10 @@ import SCCalendar
 
 struct CarouselCalendarView: View {
     
-    let viewModel: CalendarViewModel
+    let yearAndMonths: [SCYearAndMonth]
+    let displayCalendarIndex: CGFloat
+    let backMonthPage: () -> Void
+    let forwardMonthPage: () -> Void
     
     /// スワイプジェスチャー用オフセット
     @GestureState private var dragOffset: CGFloat = 0
@@ -24,7 +27,7 @@ struct CarouselCalendarView: View {
         
         GeometryReader { geometry in
             LazyHStack(spacing: 0) {
-                ForEach(viewModel.state.yearAndMonths, id: \.id) { yearAndMonth in
+                ForEach(yearAndMonths, id: \.id) { yearAndMonth in
                     CalendarMonthView(
                         yearAndMonth: yearAndMonth,
                         onTapDay: { day in
@@ -40,14 +43,9 @@ struct CarouselCalendarView: View {
         // iOS18以降からかスワイプ終了あとに0にならなくなったのでスワイプ中のみオフセットするように変更
         .offset(x: isSwipe ? dragOffset : 0)
         // スワイプ完了後にバナーコンテナ自体を移動した後に固定するためのオフセット
-        .offset(x: -(viewModel.state.displayCalendarIndex * deviceWidth))
+        .offset(x: -(displayCalendarIndex * deviceWidth))
         // スワイプ完了後の動作をなめらかにするためのアニメーション
-//        .animation(
-//            .linear(duration: 0.2),
-//            value: viewModel.state.displayCalendarIndex * deviceWidth
-//        )
-        .animation(.linear(duration: 0.2), value: viewModel.state.displayCalendarIndex)
-
+        .animation(.linear(duration: 0.2), value: displayCalendarIndex * deviceWidth)
         .gesture(
             DragGesture(minimumDistance: 0)
                 // スワイプの変化を観測しスワイプの変化分をHStackのoffsetに反映(スワイプでビューが動く部分を実装)
@@ -69,22 +67,15 @@ struct CarouselCalendarView: View {
                     
                     // 以下でdisplayCalendarIndexの値を変化させる
                     if swipeFlag == 1 {
-                        viewModel.backMonthPage()
+                        backMonthPage()
                     } else {
-                        viewModel.forwardMonthPage()
+                        forwardMonthPage()
                     }
                 }
         ).navigationDestination(item: $selectedDay) { da in
             TheDayDetailView(theDay: da)
         }
     }
-    /// ✅ 現在表示中＋前後1ヶ月のみ描画
-//    private var visibleMonths: [SCYearAndMonth] {
-//        let index = Int(viewModel.state.displayCalendarIndex)
-//        return viewModel.state.yearAndMonths.enumerated().compactMap { offset, month in
-//            (offset >= index - 1 && offset <= index + 1) ? month : nil
-//        }
-//    }
 }
 
 private struct CalendarMonthView: View, Equatable {
@@ -120,5 +111,5 @@ private struct CalendarMonthView: View, Equatable {
 
 
 #Preview {
-    CarouselCalendarView(viewModel: CalendarViewModel())
+    //CarouselCalendarView(viewM())
 }
