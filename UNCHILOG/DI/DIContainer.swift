@@ -90,6 +90,12 @@ private extension DIContainer {
             )
         }
         
+        c.register(TheMonthDetailViewModel.self) { r in
+            TheMonthDetailViewModel(
+                localRepository: r.resolve(WrapLocalRepositoryProtocol.self)!,
+            )
+        }
+        
         c.register(PoopInputViewModel.self) { r in
             PoopInputViewModel(
                 localRepository: r.resolve(WrapLocalRepositoryProtocol.self)!,

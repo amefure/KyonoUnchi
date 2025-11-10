@@ -116,12 +116,13 @@
 		12CBFBED2BAFE25C005FE4F1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12CBFBEC2BAFE25C005FE4F1 /* Images.xcassets */; };
 		12CBFBF02BAFE25C005FE4F1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12CBFBEF2BAFE25C005FE4F1 /* Preview Assets.xcassets */; };
 		12CBFBF52BAFE25C005FE4F1 /* UNCHILOG.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 12CBFBF32BAFE25C005FE4F1 /* UNCHILOG.xcdatamodeld */; };
+		12D016AE2EC22E6B0037448A /* TheMonthDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D016AD2EC22E690037448A /* TheMonthDetailViewModel.swift */; };
 		12DB3CF62BD391FC0075817A /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 12DB3CF52BD391FC0075817A /* PrivacyInfo.xcprivacy */; };
 		12DB3CF82BD392A90075817A /* AdMobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB3CF72BD392A90075817A /* AdMobView.swift */; };
 		12DB3CFA2BD394870075817A /* AdsConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB3CF92BD394870075817A /* AdsConfig.swift */; };
 		12DB3CFC2BD3AD070075817A /* MrPoopMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB3CFB2BD3AD070075817A /* MrPoopMessageView.swift */; };
 		12DCB2C22BBD2B7700AF62CB /* EntryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DCB2C12BBD2B7700AF62CB /* EntryButton.swift */; };
-		12ED29B92C19701900A1293D /* TheMonthPoopTimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ED29B82C19701900A1293D /* TheMonthPoopTimelineView.swift */; };
+		12ED29B92C19701900A1293D /* TheMonthDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ED29B82C19701900A1293D /* TheMonthDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -232,12 +233,13 @@
 		12CBFBEC2BAFE25C005FE4F1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		12CBFBEF2BAFE25C005FE4F1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		12CBFBF42BAFE25C005FE4F1 /* UNCHILOG.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UNCHILOG.xcdatamodel; sourceTree = "<group>"; };
+		12D016AD2EC22E690037448A /* TheMonthDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMonthDetailViewModel.swift; sourceTree = "<group>"; };
 		12DB3CF52BD391FC0075817A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		12DB3CF72BD392A90075817A /* AdMobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobView.swift; sourceTree = "<group>"; };
 		12DB3CF92BD394870075817A /* AdsConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsConfig.swift; sourceTree = "<group>"; };
 		12DB3CFB2BD3AD070075817A /* MrPoopMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MrPoopMessageView.swift; sourceTree = "<group>"; };
 		12DCB2C12BBD2B7700AF62CB /* EntryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryButton.swift; sourceTree = "<group>"; };
-		12ED29B82C19701900A1293D /* TheMonthPoopTimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMonthPoopTimelineView.swift; sourceTree = "<group>"; };
+		12ED29B82C19701900A1293D /* TheMonthDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMonthDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,7 +274,7 @@
 			children = (
 				128BB5DD2BB30B72009E0FAB /* TheDayDetailView.swift */,
 				128BB5CC2BB28833009E0FAB /* PoopInputView.swift */,
-				12ED29B82C19701900A1293D /* TheMonthPoopTimelineView.swift */,
+				12ED29B82C19701900A1293D /* TheMonthDetailView.swift */,
 			);
 			path = Poop;
 			sourceTree = "<group>";
@@ -282,6 +284,7 @@
 			children = (
 				1222E5222EBCEAD200DFC050 /* PoopInputViewModel.swift */,
 				1222E51F2EBCE39300DFC050 /* TheDayDetailViewModel.swift */,
+				12D016AD2EC22E690037448A /* TheMonthDetailViewModel.swift */,
 			);
 			path = Poop;
 			sourceTree = "<group>";
@@ -843,7 +846,7 @@
 				128BB5EB2BB467B2009E0FAB /* Assets.swift in Sources */,
 				128BB5E12BB30E6E009E0FAB /* TheDayView.swift in Sources */,
 				128BB5C22BB282E7009E0FAB /* WrapLocalRepository.swift in Sources */,
-				12ED29B92C19701900A1293D /* TheMonthPoopTimelineView.swift in Sources */,
+				12ED29B92C19701900A1293D /* TheMonthDetailView.swift in Sources */,
 				12CBFBE92BAFE25B005FE4F1 /* UNCHILOGApp.swift in Sources */,
 				129FA0BE2EB63EAC009712F1 /* RootViewModel.swift in Sources */,
 				1222E5252EBF786700DFC050 /* ExNotificationName.swift in Sources */,
@@ -866,6 +869,7 @@
 				129FA0C42EB641CE009712F1 /* DIContainer.swift in Sources */,
 				128BB5E62BB46589009E0FAB /* CustomNotifyDialogView.swift in Sources */,
 				128BB5D22BB28882009E0FAB /* UserDefaultsRepository.swift in Sources */,
+				12D016AE2EC22E6B0037448A /* TheMonthDetailViewModel.swift in Sources */,
 				12DB3CFC2BD3AD070075817A /* MrPoopMessageView.swift in Sources */,
 				1247790A2BEA066000559205 /* CommunicationKey.swift in Sources */,
 				129C63882C7F35F800D9CB39 /* AppIconName.swift in Sources */,

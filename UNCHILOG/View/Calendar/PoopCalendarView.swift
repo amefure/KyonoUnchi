@@ -56,7 +56,7 @@ struct PoopCalendarView: View {
             }.frame(width: 10)
 
             NavigationLink {
-                TheMonthPoopTimelineView(currentMonth: viewModel.getCurrentYearAndMonth())
+                TheMonthDetailView(currentMonth: viewModel.getCurrentYearAndMonth())
             } label: {
                 Text(viewModel.getCurrentYearAndMonth().yearAndMonth)
                     .fontM(bold: true)

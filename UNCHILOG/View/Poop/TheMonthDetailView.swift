@@ -1,22 +1,21 @@
 //
-//  PoopDayView.swift
+//  TheMonthDetailView.swift
 //  UNCHILOG
 //
-//  Created by t&a on 2024/03/26.
+//  Created by t&a on 2024/06/12.
 //
 
 import SwiftUI
 import SCCalendar
 
-struct TheDayDetailView: View {
-    public let theDay: SCDate
+struct TheMonthDetailView: View {
+    
+    public var currentMonth: SCYearAndMonth
     
     @Environment(\.rootEnvironment) private var rootEnvironment
+    @State private var viewModel = DIContainer.shared.resolve(TheMonthDetailViewModel.self)
     
-    @State private var viewModel = DIContainer.shared.resolve(TheDayDetailViewModel.self)
-
     @State private var isShowMemo = false
-    
     /// メモ表示領域調整用の行数制限
     @State private var memoLineLimit: MemoDisplay = .singleLine
     
@@ -25,10 +24,12 @@ struct TheDayDetailView: View {
         case full = 100
     }
     
+    @Environment(\.dismiss) var dismiss
     var body: some View {
         VStack(spacing: 0) {
-            
+        
             if viewModel.state.poopList.count == 0 {
+                
                 
                 Spacer()
                 
@@ -38,22 +39,25 @@ struct TheDayDetailView: View {
             } else {
                 
                 List {
-                    ForEach(viewModel.state.poopList) { poop in
-                        poopRowView(poop: poop)
+                    ForEach(viewModel.state.poopList.keys.sorted(by: { $0 > $1}), id: \.self) { date in
+                        Section(header: Text(date)) {
+                            if let list = viewModel.state.poopList[date] {
+                                ForEach(list, id: \.id) { poop in
+                                    poopRowView(poop: poop)
+                                }
+                            }
+                        }
                     }
                 }.listStyle(GroupedListStyle())
                     .scrollContentBackground(.hidden)
                     .background(Color.clear)
             }
             
-            AdMobBannerView()
-                .frame(height: 60)
-            
         }.onAppear {
-            viewModel.onAppear(theDay: theDay)
+            viewModel.onAppear(currentMonth: currentMonth)
         }
         .fullScreenCover(isPresented: viewModel.$state.isShowInputDetailView) {
-            PoopInputView(theDay: theDay.date, poopId: viewModel.state.selectPoop?.id)
+            PoopInputView(theDay: viewModel.state.selectPoop?.date ?? Date(), poopId: viewModel.state.selectPoop?.id)
         }.alert(
             isPresented: viewModel.$state.isShowDeleteConfirmAlert,
             title: L10n.dialogTitle,
@@ -72,7 +76,7 @@ struct TheDayDetailView: View {
             message: L10n.dialogEntryPoop,
             positiveButtonTitle: L10n.dialogButtonOk
         ).toolbar {
- 
+            
             ToolbarItemGroup(placement: .topBarTrailing) {
                 Button {
                     if rootEnvironment.state.entryMode == .simple {
@@ -90,8 +94,7 @@ struct TheDayDetailView: View {
         }
         .toolbarBackground(.exFoundation, for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar) // iOS18以降はtoolbarVisibility
-            .navigationTitle(theDay.getDate(format: "yyyy年M月d日") ?? "")
-
+            .navigationTitle(currentMonth.yearAndMonth)
     }
     
     private func poopRowView(poop: Poop) -> some View {
@@ -205,7 +208,6 @@ struct TheDayDetailView: View {
         .listRowInsets(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
     }
 }
-
 #Preview {
-    TheDayDetailView(theDay: SCDate.demo)
+   // TheMonthPoopTimelineView(currentMonth: SCYearAndMonth(year: 2024, month: 12, dates: []))
 }

@@ -1,28 +1,28 @@
 //
-//  TheDayDetailViewModel.swift
+//  TheMonthDetailViewModel.swift
 //  UNCHILOG
 //
-//  Created by t&a on 2025/11/06.
+//  Created by t&a on 2025/11/10.
 //
 
 import SwiftUI
 import SCCalendar
 
 @Observable
-final class TheDayDetailViewState {
+final class TheMonthDetailViewState {
     var isShowSuccessEntryAlert: Bool = false
     var isShowDeleteConfirmAlert: Bool = false
     var isShowInputDetailView: Bool = false
     
-    fileprivate(set) var poopList: [Poop] = []
+    fileprivate(set) var poopList: [String: [Poop]] = [:]
     /// 削除対象として選択されたデータ
     fileprivate(set) var selectPoop: Poop? = nil
 }
 
-final class TheDayDetailViewModel {
-    @Bindable var state = TheDayDetailViewState()
+final class TheMonthDetailViewModel {
+    @Bindable var state = TheMonthDetailViewState()
 
-    private let localRepository: WrapLocalRepositoryProtocol    
+    private let localRepository: WrapLocalRepositoryProtocol
     
     init(
         localRepository: WrapLocalRepositoryProtocol,
@@ -30,10 +30,10 @@ final class TheDayDetailViewModel {
         self.localRepository = localRepository
     }
     
-    private var theDay: SCDate?
+    private var currentMonth: SCYearAndMonth?
     
-    func onAppear(theDay: SCDate) {
-        self.theDay = theDay
+    func onAppear(currentMonth: SCYearAndMonth) {
+        self.currentMonth = currentMonth
         fetchAllPoops()
         tracking()
     }
@@ -61,9 +61,8 @@ final class TheDayDetailViewModel {
     
     public func addSimplePoop() {
         let df = DateFormatUtility()
-        let targetDate: Date = theDay?.date ?? Date()
         // 現在時間を格納した該当の日付を生成して登録
-        let createdAt = df.combineDateWithCurrentTime(theDay: targetDate)
+        let createdAt = df.combineDateWithCurrentTime(theDay: Date())
         let added = localRepository.addPoopSimple(createdAt: createdAt)
         // カレンダーを更新
         NotificationCenter.default.post(name: .updateCalendar, object: added)
@@ -86,9 +85,21 @@ final class TheDayDetailViewModel {
     }
     
     private func fetchAllPoops() {
+        guard let currentMonth else { return }
+        state.poopList = dayNotifyDictionary(currentMonth: currentMonth)
+    }
+    
+    /// うんち情報を辞書型に変換する
+    private func dayNotifyDictionary(currentMonth: SCYearAndMonth) -> [String: [Poop]] {
+        let df = DateFormatUtility()
         let result = localRepository.fetchAllPoops()
-        let poopTheDayString: String = theDay?.getDate() ?? ""
-        state.poopList = result.filter({ $0.getDate() == poopTheDayString })
+        // 月毎にフィルタリング
+        let filterPoops = result.filter({ $0.getDate(format: "yyyy年M月") == currentMonth.yearAndMonth })
+        let groupedRecords = Dictionary(grouping: filterPoops) { poop in
+            // yyyy年M月d日の文字列とする
+            return df.getString(date:  df.startOfDay(poop.date))
+        }
+        return groupedRecords
     }
 }
 

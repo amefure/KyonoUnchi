@@ -61,14 +61,15 @@ struct RootView: View {
             viewModel.onAppear()
         }.toolbar {
             
-            ToolbarItemGroup(placement: .topBarLeading) {
-                Button {
-                    viewModel.state.isShowChart = true
-                } label: {
-                    Image(systemName: "chart.xyaxis.line")
-                        .foregroundStyle(.exThema)
-                }
-            }
+            // FIXME: 未開発のためコメントアウト
+//            ToolbarItemGroup(placement: .topBarLeading) {
+//                Button {
+//                    viewModel.state.isShowChart = true
+//                } label: {
+//                    Image(systemName: "chart.xyaxis.line")
+//                        .foregroundStyle(.exThema)
+//                }
+//            }
  
             ToolbarItemGroup(placement: .topBarTrailing) {
                 Button {
