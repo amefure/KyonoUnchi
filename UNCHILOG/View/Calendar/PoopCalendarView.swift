@@ -12,9 +12,9 @@ import Combine
 struct PoopCalendarView: View {
     @Environment(\.rootEnvironment) private var rootEnvironment
     
-    @State private var viewModel = CalendarViewModel.shared
+    private let viewModel = CalendarViewModel.shared
     
-    private let columns = Array(repeating: GridItem(spacing: 0), count: 7)
+    private let weekColumns = Array(repeating: GridItem(spacing: 0), count: 7)
     
     var body: some View {
         VStack(spacing: 0) {
@@ -37,21 +37,15 @@ struct PoopCalendarView: View {
         }.onDisappear {
             viewModel.onDisappear()
         }
-        .alert(
-            isPresented: $viewModel.state.showOutOfRangeCalendarDialog,
-            title: L10n.dialogTitle,
-            message: L10n.dialogOutOfRangeCalendar,
-            positiveButtonTitle: L10n.dialogButtonOk,
-        )
     }
     
     
     /// 年月選択ヘッダービュー
     private func yearAndMonthSelectionView() -> some View {
         HStack {
-            Spacer()
-                .frame(width: 30)
-                .padding(.horizontal, 10)
+//            Spacer()
+//                .frame(width: 30)
+//                .padding(.horizontal, 10)
             
             Spacer()
 
@@ -78,15 +72,16 @@ struct PoopCalendarView: View {
 
             Spacer()
             
-            Button {
-                viewModel.moveTodayCalendar()
-            } label: {
-              Image("back_today")
-                  .resizable()
-                  .scaledToFit()
-                  .frame(width: 30)
-            }.padding(.horizontal, 10)
-              .frame(width: 30)
+            // FIXME: 期待通りに動作しないため一時的にコメントアウト
+//            Button {
+//                viewModel.moveTodayCalendar()
+//            } label: {
+//              Image("back_today")
+//                  .resizable()
+//                  .scaledToFit()
+//                  .frame(width: 30)
+//            }.padding(.horizontal, 10)
+//              .frame(width: 30)
 
         }.foregroundStyle(.exThema)
             .padding(.horizontal)
@@ -94,7 +89,7 @@ struct PoopCalendarView: View {
 
     /// 曜日リスト
     private func dayOfWeekListView() -> some View {
-        LazyVGrid(columns: columns, spacing: 0) {
+        LazyVGrid(columns: weekColumns, spacing: 0) {
             ForEach(viewModel.state.dayOfWeekList, id: \.self) { week in
                 Text(week.shortSymbols)
                     .if(week.isSunday) { view in
