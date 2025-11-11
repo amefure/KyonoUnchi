@@ -12,7 +12,7 @@ import Combine
 struct PoopCalendarView: View {
     @Environment(\.rootEnvironment) private var rootEnvironment
     
-    private let viewModel = CalendarViewModel.shared
+    @State private var viewModel = CalendarViewModel.shared
     
     private let weekColumns = Array(repeating: GridItem(spacing: 0), count: 7)
     

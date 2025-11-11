@@ -16,6 +16,7 @@ struct RootView: View {
         VStack(spacing: 0) {
             
             PoopCalendarView()
+                .id(1)
             
             AdMobBannerView()
                 .frame(height: 60)

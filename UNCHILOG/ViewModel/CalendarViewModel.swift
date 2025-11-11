@@ -19,11 +19,6 @@ final class CalendarState {
     fileprivate(set) var displayCalendarIndex: CGFloat = 0
     /// 曜日始まり
     fileprivate(set) var initWeek: SCWeek = .sunday
-    
-    
-    var showOutOfRangeCalendarDialog: Bool = false
-    // 詳細ページで表示するダイアログ
-    var showSimpleEntryDetailDialog: Bool = false
 }
 
 final class CalendarViewModel {
