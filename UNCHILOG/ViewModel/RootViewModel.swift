@@ -18,6 +18,8 @@ final class RootViewState {
     var isShowChart: Bool = false
     /// 登録成功アラート表示
     var isShowSuccessEntryAlert: Bool = false
+    /// アップデートダイアログ表示
+    var isUpdateNotifyDialog: Bool = false
 }
 
 final class RootViewModel {
@@ -28,22 +30,32 @@ final class RootViewModel {
     var state = RootViewState()
     
     private let interstitialService: InterstitialServiceProtocol
-    
     private let localRepository: WrapLocalRepositoryProtocol
+    private let userDefaultsRepository: UserDefaultsRepository
     
     init(
         repositoryDependency: RepositoryDependency = RepositoryDependency()
     ) {
         localRepository = repositoryDependency.poopRepository
+        userDefaultsRepository = repositoryDependency.userDefaultsRepository
         interstitialService = InterstitialService(userDefaultsRepository: repositoryDependency.userDefaultsRepository)
     }
     
     func onAppear() {
-        
+        showDialog()
     }
 }
 
 extension RootViewModel {
+    
+    private func showDialog() {
+        let flag = userDefaultsRepository.getIsShowNotifyDialog()
+        // 既存ユーザーのみに見せたいのでデータが存在するかつ表示フラグがfalseの場合のみ
+        if !localRepository.fetchAllPoops().isEmpty && !flag {
+            state.isUpdateNotifyDialog = true
+        }
+        userDefaultsRepository.setIsShowNotifyDialog(true)
+    }
     
     public func addSimplePoop() {
         let added = localRepository.addPoopSimple(createdAt: Date())

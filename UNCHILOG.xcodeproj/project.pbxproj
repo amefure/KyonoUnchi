@@ -75,7 +75,6 @@
 		128BB5E82BB465A2009E0FAB /* RootEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5E72BB465A2009E0FAB /* RootEnvironment.swift */; };
 		128BB5EB2BB467B2009E0FAB /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5E92BB467B2009E0FAB /* Assets.swift */; };
 		128BB5EC2BB467B2009E0FAB /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5EA2BB467B2009E0FAB /* Strings.swift */; };
-		128BB5F02BB59F97009E0FAB /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5EF2BB59F97009E0FAB /* FooterView.swift */; };
 		128BB5F32BB5A124009E0FAB /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5F22BB5A124009E0FAB /* SettingView.swift */; };
 		128BB5F62BB5AB58009E0FAB /* SelectInitWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5F52BB5AB58009E0FAB /* SelectInitWeek.swift */; };
 		128BB5F92BB5ACF3009E0FAB /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5F82BB5ACF3009E0FAB /* UserDefaultsKey.swift */; };
@@ -121,7 +120,6 @@
 		12DB3CF82BD392A90075817A /* AdMobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB3CF72BD392A90075817A /* AdMobView.swift */; };
 		12DB3CFA2BD394870075817A /* AdsConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB3CF92BD394870075817A /* AdsConfig.swift */; };
 		12DB3CFC2BD3AD070075817A /* MrPoopMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB3CFB2BD3AD070075817A /* MrPoopMessageView.swift */; };
-		12DCB2C22BBD2B7700AF62CB /* EntryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DCB2C12BBD2B7700AF62CB /* EntryButton.swift */; };
 		12ED29B92C19701900A1293D /* TheMonthDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ED29B82C19701900A1293D /* TheMonthDetailView.swift */; };
 /* End PBXBuildFile section */
 
@@ -199,7 +197,6 @@
 		128BB5E72BB465A2009E0FAB /* RootEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootEnvironment.swift; sourceTree = "<group>"; };
 		128BB5E92BB467B2009E0FAB /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		128BB5EA2BB467B2009E0FAB /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
-		128BB5EF2BB59F97009E0FAB /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		128BB5F22BB5A124009E0FAB /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		128BB5F52BB5AB58009E0FAB /* SelectInitWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectInitWeek.swift; sourceTree = "<group>"; };
 		128BB5F82BB5ACF3009E0FAB /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
@@ -238,7 +235,6 @@
 		12DB3CF72BD392A90075817A /* AdMobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobView.swift; sourceTree = "<group>"; };
 		12DB3CF92BD394870075817A /* AdsConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsConfig.swift; sourceTree = "<group>"; };
 		12DB3CFB2BD3AD070075817A /* MrPoopMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MrPoopMessageView.swift; sourceTree = "<group>"; };
-		12DCB2C12BBD2B7700AF62CB /* EntryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryButton.swift; sourceTree = "<group>"; };
 		12ED29B82C19701900A1293D /* TheMonthDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMonthDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -526,7 +522,6 @@
 			children = (
 				128BB5EE2BB59F83009E0FAB /* Layout */,
 				12A43E162BBAF51700AB19A4 /* RoundMessageView.swift */,
-				12DCB2C12BBD2B7700AF62CB /* EntryButton.swift */,
 				12DB3CFB2BD3AD070075817A /* MrPoopMessageView.swift */,
 				12DB3CF72BD392A90075817A /* AdMobView.swift */,
 			);
@@ -537,7 +532,6 @@
 			isa = PBXGroup;
 			children = (
 				122B3EE42BC025C200167D9E /* HeaderView.swift */,
-				128BB5EF2BB59F97009E0FAB /* FooterView.swift */,
 			);
 			path = Layout;
 			sourceTree = "<group>";
@@ -850,13 +844,11 @@
 				12CBFBE92BAFE25B005FE4F1 /* UNCHILOGApp.swift in Sources */,
 				129FA0BE2EB63EAC009712F1 /* RootViewModel.swift in Sources */,
 				1222E5252EBF786700DFC050 /* ExNotificationName.swift in Sources */,
-				128BB5F02BB59F97009E0FAB /* FooterView.swift in Sources */,
 				12DB3CFA2BD394870075817A /* AdsConfig.swift in Sources */,
 				128BB5DE2BB30B72009E0FAB /* TheDayDetailView.swift in Sources */,
 				129FA0C62EB77D9A009712F1 /* CalendarViewModel.swift in Sources */,
 				128BB5CD2BB28833009E0FAB /* PoopInputView.swift in Sources */,
 				128BB5F62BB5AB58009E0FAB /* SelectInitWeek.swift in Sources */,
-				12DCB2C22BBD2B7700AF62CB /* EntryButton.swift in Sources */,
 				12978DEC2BE3CEF700D25AA4 /* CarouselCalendarView.swift in Sources */,
 				122B3EE52BC025C200167D9E /* HeaderView.swift in Sources */,
 				128BB5D42BB2899C009E0FAB /* KeyChainRepository.swift in Sources */,
@@ -915,7 +907,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"UNCHILOGWatch Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = CGD79LB65H;
 				ENABLE_PREVIEWS = YES;
@@ -926,7 +918,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.3.4;
+				MARKETING_VERSION = 3.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ame.UNCHILOG.watchkitapp;
 				PRODUCT_NAME = "今日のうんちWatch";
 				SDKROOT = watchos;
@@ -944,7 +936,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"UNCHILOGWatch Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = CGD79LB65H;
 				ENABLE_PREVIEWS = YES;
@@ -955,7 +947,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.3.4;
+				MARKETING_VERSION = 3.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ame.UNCHILOG.watchkitapp;
 				PRODUCT_NAME = "今日のうんちWatch";
 				SDKROOT = watchos;
@@ -1096,7 +1088,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"UNCHILOG/Preview Content\"";
 				DEVELOPMENT_TEAM = CGD79LB65H;
 				ENABLE_PREVIEWS = YES;
@@ -1116,7 +1108,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.3.4;
+				MARKETING_VERSION = 3.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ame.UNCHILOG;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1136,7 +1128,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"UNCHILOG/Preview Content\"";
 				DEVELOPMENT_TEAM = CGD79LB65H;
 				ENABLE_PREVIEWS = YES;
@@ -1156,7 +1148,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.3.4;
+				MARKETING_VERSION = 3.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ame.UNCHILOG;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

@@ -18,5 +18,7 @@ class UserDefaultsKey {
     static let APP_COLOR = "APP_COLOR"
     /// アプリアイコン
     static let APP_ICON_NAME = "APP_ICON_NAME"
+    /// お知らせダイアログ表示フラグ
+    static let IS_SHOW_NOTIFY_DIALOG = "IS_SHOW_NOTIFY_DIALOG"
 }
 

@@ -22,25 +22,16 @@ struct PoopInputTodayView: View {
                     showFailedDialog = true
                 }
             } label: {
-                ZStack {
-                    Text("登")
-                        .font(.system(size: 25))
-                        .fontWeight(.bold)
-                        .rotationEffect(Angle(degrees: -20))
-                        .position(x: 40, y: 40)
-                        
-                    Text("録")
-                        .font(.system(size: 25))
-                        .fontWeight(.bold)
-                        .rotationEffect(Angle(degrees: 20))
-                        .position(x: 100, y: 40)
-                    
-                    Image("smile_poop")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 100, height: 100)
-                        .offset(y: 15)
-                }.frame(width: 140, height: 140)
+                Image(systemName: "plus")
+                    .foregroundStyle(.white)
+                    .frame(width: 100, height: 100)
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 50)
+                            .stroke(lineWidth: 2)
+                            .foregroundStyle(.white)
+                    }
+                    .compositingGroup()
+                    .shadow(color: .black, radius: 3, x: 1, y: 1)
             }.buttonStyle(.borderless)
                     .background(.exThema)
                     .foregroundStyle(.exSub)

@@ -57,6 +57,11 @@ struct RootView: View {
             positiveAction: {
                 viewModel.showOrCountInterstitial()
             }
+        ).alert(
+            isPresented: $viewModel.state.isUpdateNotifyDialog,
+            title: L10n.dialogTitle,
+            message: "アプリをお使いいただき誠にありがとうございます。\nこのたびアプリのデザインが大きく変更となりました。\nうんちのアイコン等が直接的すぎたため、既存デザインでのリリースに制限がかかってしまったためになります。\nそれに伴い一部機能なども消えておりますがご理解のほどお願いいたします。",
+            positiveButtonTitle: L10n.dialogButtonOk,
         ).onAppear {
             viewModel.onAppear()
         }.toolbar {

@@ -47,6 +47,18 @@ final class UserDefaultsRepository: @unchecked Sendable {
 }
 
 extension UserDefaultsRepository {
+    
+    /// 登録：アプリお知らせダイアログ表示フラグ
+    func setIsShowNotifyDialog(_ isOn: Bool) {
+        setBoolData(key: UserDefaultsKey.IS_SHOW_NOTIFY_DIALOG, isOn: isOn)
+    }
+    
+    /// 取得：アプリお知らせダイアログ表示フラグ
+    func getIsShowNotifyDialog() -> Bool {
+        getBoolData(key: UserDefaultsKey.IS_SHOW_NOTIFY_DIALOG)
+    }
+    
+    
     /// 登録：インタースティシャルリセット
     func setCountInterstitial(_ value: Int) {
         setIntData(key: UserDefaultsKey.COUNT_INTERSTITIAL, value: value)
