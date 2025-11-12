@@ -10,11 +10,7 @@ import SwiftUI
 struct SettingView: View {
     @Environment(\.rootEnvironment) private var rootEnvironment
     
-    @StateObject private var viewModel = SettingViewModel()
-    
-    // MARK: - View
-    @State private var isLock: Bool = false
-
+    @StateObject private var viewModel = DIContainer.shared.resolve(SettingViewModel.self)
     
     var body: some View {
         VStack(spacing: 0) {
@@ -36,8 +32,10 @@ struct SettingView: View {
                     
                 }
                 
-                Section(header: Text(L10n.settingSectionAppTitle),
-                        footer: Text(L10n.settingSectionAppDesc)) {
+                Section(
+                    header: Text(L10n.settingSectionAppTitle),
+                    footer: Text(L10n.settingSectionAppDesc)
+                ) {
                     
                     NavigationLink {
                         SelectEntryMode()
@@ -64,14 +62,8 @@ struct SettingView: View {
                     HStack {
                         Image(systemName: "lock.app.dashed")
                         
-                        Toggle(isOn: $isLock) {
+                        Toggle(isOn: $viewModel.isLock) {
                             Text(L10n.settingSectionAppLock)
-                        }.onChange(of: isLock) { _, newValue in
-                            if newValue {
-                                viewModel.showPassInput()
-                            } else {
-                                viewModel.deletePassword()
-                            }
                         }.tint(.exText)
                     }.listRowBackground(Color.exFoundation)
                 }
@@ -137,9 +129,8 @@ struct SettingView: View {
             .fontM(bold: true)
             .onAppear {
                 viewModel.onAppear()
-                isLock = viewModel.isLock
-            }.sheet(isPresented: $viewModel.isShowPassInput) {
-                AppLockInputView(isLock: $isLock)
+            }.sheet(isPresented: $viewModel.state.isShowPassInput) {
+                AppLockInputView(isLock: $viewModel.isLock)
             }
             .toolbarBackground(.exFoundation, for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar) // iOS18以降はtoolbarVisibility

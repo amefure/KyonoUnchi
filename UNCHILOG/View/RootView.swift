@@ -18,8 +18,10 @@ struct RootView: View {
             PoopCalendarView()
                 .id(1)
             
-            AdMobBannerView()
-                .frame(height: 60)
+            if !DeviceSizeUtility.isSESize {
+                AdMobBannerView()
+                    .frame(height: 60)
+            }
             
             footerView()
         }.alert(
@@ -96,8 +98,8 @@ struct RootView: View {
             }
 
             Spacer()
-        }.padding(.bottom, 40)
-            .padding(.top)
+        }.padding(.bottom, !DeviceSizeUtility.isSESize ? 40 : 8)
+            .padding(.top, !DeviceSizeUtility.isSESize ? 15 : 8)
             .background(Color.exThema)
     }
 }

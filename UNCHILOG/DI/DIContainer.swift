@@ -117,16 +117,13 @@ private extension DIContainer {
                 localRepository: r.resolve(WrapLocalRepositoryProtocol.self)!,
             )
         }
-//
-//
-//        // Setting
-//        c.register(SettingViewModel.self) { r in
-//            SettingViewModel(
-//                repository: r.resolve(RealmRepository.self)!,
-//                userDefaultsRepository: r.resolve(UserDefaultsRepository.self)!,
-//                keyChainRepository: r.resolve(KeyChainRepository.self)!
-//            )
-//        }
+
+        // Setting
+        c.register(SettingViewModel.self) { r in
+            SettingViewModel(
+                keyChainRepository: r.resolve(KeyChainRepository.self)!
+            )
+        }
         
         // Setting
         c.register(SelectInitWeekViewModel.self) { r in

@@ -90,7 +90,7 @@ final class CalendarViewModel {
         
         watchConnectRepository.entryDate
             .subscribe(on: DispatchQueue.global(qos: .background))
-            .receive(on: DispatchQueue.global(qos: .background))
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] date in
                 guard let self else { return }
                 let added = self.poopRepository.addPoopSimple(createdAt: date)

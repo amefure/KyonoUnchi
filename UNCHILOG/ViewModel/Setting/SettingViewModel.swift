@@ -6,56 +6,59 @@
 //
 
 import UIKit
+import Combine
 
-/// SettingView画面全域を管理するViewModel
-/// 配下のViewも含めて管理
-class SettingViewModel: ObservableObject {
-    @Published var isShowPassInput: Bool = false
-    @Published private(set) var isLock: Bool = false
+@Observable
+final class SettingState {
+    var isShowPassInput: Bool = false
+    var isShowInAppPurchaseView: Bool = false
+}
+
+
+final class SettingViewModel: ObservableObject {
+    
+    var state = SettingState()
+    
+    @Published var isLock: Bool = false
+    
+    private var cancellables: Set<AnyCancellable> = []
 
     private let keyChainRepository: KeyChainRepository
 
-    init(repositoryDependency: RepositoryDependency = RepositoryDependency()) {
-        keyChainRepository = repositoryDependency.keyChainRepository
-    }
-    
-    // このアプリはタブViewなのでSettingViewModelのイニシャライザは一度しか呼ばれないため明示的にonAppearから呼び出す
-    public func onAppear() {
-        checkAppLock()
+    init(
+        keyChainRepository: KeyChainRepository
+    ) {
+        self.keyChainRepository = keyChainRepository
     }
 
-    // MARK: - App Lock
-    /// アプリにロックがかけてあるかをチェック
-    private func checkAppLock() {
+    func onAppear() {
+        setUpIsLock()
+    }
+    
+    /// アプリロック
+    private func setUpIsLock() {
         isLock = keyChainRepository.getData().count == 4
-    }
-
-    /// パスワード入力画面を表示
-    public func showPassInput() {
-        isShowPassInput = true
-    }
-
-    /// アプリロックパスワードをリセット
-    public func deletePassword() {
-        keyChainRepository.delete()
+        
+        $isLock
+            .eraseToAnyPublisher()
+            .dropFirst() // 初回はスキップ
+            .removeDuplicates() // 重複値は流さない
+            .sink { [weak self] flag in
+                guard let self else { return }
+                if flag {
+                    // パスワード入力画面を表示
+                    state.isShowPassInput = true
+                } else {
+                    // アプリパスワードをリセット
+                    keyChainRepository.delete()
+                }
+            }.store(in: &cancellables)
     }
     
-    // MARK: - Share Logic
-
     /// アプリシェアロジック
+    @MainActor
     public func shareApp(shareText: String, shareLink: String) {
-        let items = [shareText, URL(string: shareLink)!] as [Any]
-        let activityVC = UIActivityViewController(activityItems: items, applicationActivities: nil)
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            if let popPC = activityVC.popoverPresentationController {
-                popPC.sourceView = activityVC.view
-                popPC.barButtonItem = .none
-                popPC.sourceRect = activityVC.accessibilityFrame
-            }
-        }
-        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
-        let rootVC = windowScene?.windows.first?.rootViewController
-        rootVC?.present(activityVC, animated: true, completion: {})
+        ShareInfoUtillity.shareApp(shareText: shareText, shareLink: shareLink)
     }
 }
 
