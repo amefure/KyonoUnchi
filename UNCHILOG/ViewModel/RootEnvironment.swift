@@ -31,8 +31,6 @@ final class RootEnvironmentState {
     fileprivate(set) var removeAds: Bool = false
     /// 容量解放購入フラグ
     fileprivate(set) var unlockStorage: Bool = false
-    /// 週始まり
-    fileprivate(set) var initWeek: SCWeek = .sunday
     /// 登録モード
     fileprivate(set) var entryMode: EntryMode = .simple
     
@@ -63,14 +61,13 @@ final class RootEnvironment {
         self.userDefaultsRepository = userDefaultsRepository
         self.watchConnectRepository = watchConnectRepository
         
-        getInitWeek()
         getEntryMode()
         getAppLock()
 
         watchConnectRepository.entryDate
             .sink { [weak self] date in
                 guard let self else { return }
-                self.localRepository.addPoopSimple(createdAt: date)
+                _ = self.localRepository.addPoopSimple(createdAt: date)
             }.store(in: &cancellables)
     }
 }
@@ -78,19 +75,6 @@ final class RootEnvironment {
 
 // MARK: - UserDefaults
 extension RootEnvironment {
-
-    
-    /// 週始まりを取得
-    private func getInitWeek() {
-        state.initWeek = userDefaultsRepository.getInitWeek()
-    }
-
-    /// 週始まりを登録
-    public func saveInitWeek(week: SCWeek) {
-        state.initWeek = week
-        userDefaultsRepository.setInitWeek(week)
-    }
-    
     /// 登録モード取得
     private func getEntryMode() {
         state.entryMode = userDefaultsRepository.getEntryMode()

@@ -24,21 +24,20 @@ final class RootViewState {
 
 final class RootViewModel {
     
-    // シングルトン設計にしないと再生成が何度も発生しインタースティシャルが期待通りに動作しない
-    static let shared = RootViewModel()
-    
     var state = RootViewState()
     
-    private let interstitialService: InterstitialServiceProtocol
     private let localRepository: WrapLocalRepositoryProtocol
     private let userDefaultsRepository: UserDefaultsRepository
+    private let interstitialService: InterstitialServiceProtocol
     
     init(
-        repositoryDependency: RepositoryDependency = RepositoryDependency()
+        localRepository: WrapLocalRepositoryProtocol,
+        userDefaultsRepository: UserDefaultsRepository,
+        interstitialService: InterstitialServiceProtocol
     ) {
-        localRepository = repositoryDependency.poopRepository
-        userDefaultsRepository = repositoryDependency.userDefaultsRepository
-        interstitialService = InterstitialService(userDefaultsRepository: repositoryDependency.userDefaultsRepository)
+        self.localRepository = localRepository
+        self.userDefaultsRepository = userDefaultsRepository
+        self.interstitialService = interstitialService
     }
     
     func onAppear() {

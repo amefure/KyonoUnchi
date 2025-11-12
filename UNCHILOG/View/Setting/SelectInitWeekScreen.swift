@@ -1,5 +1,5 @@
 //
-//  SelectInitWeek.swift
+//  SelectInitWeekScreen.swift
 //  UNCHILOG
 //
 //  Created by t&a on 2024/03/28.
@@ -8,12 +8,10 @@
 import SwiftUI
 import SCCalendar
 
-struct SelectInitWeek: View {
-    @Environment(\.rootEnvironment) private var rootEnvironment
-    @State private var selectWeek: SCWeek = .sunday
-    @State private var showSuccessAlert = false
-    // MARK: - Environment
+struct SelectInitWeekScreen: View {
+    @State private var viewModel = DIContainer.shared.resolve(SelectInitWeekViewModel.self)
     @Environment(\.dismiss) var dismiss
+    
     var body: some View {
         
         VStack {
@@ -25,14 +23,14 @@ struct SelectInitWeek: View {
             List {
                 ForEach(SCWeek.allCases, id: \.self) { week in
                     Button {
-                        selectWeek = week
+                        viewModel.setWeek(week: week)
                     } label: {
                         HStack {
                             Text(week.fullSymbols)
                             
                             Spacer()
 
-                            if selectWeek == week {
+                            if viewModel.state.selectWeek == week {
                                 Image(systemName: "checkmark")
                             }
                         }
@@ -42,9 +40,7 @@ struct SelectInitWeek: View {
                 .background(.white)
             
             Button {
-                rootEnvironment.saveInitWeek(week: selectWeek)
-                //rootEnvironment.setFirstWeek(week: selectWeek)
-                showSuccessAlert = true
+                viewModel.registerInitWeek()
             } label: {
                 Text(L10n.appLockInputEntryButton)
                     .fontWeight(.bold)
@@ -65,13 +61,13 @@ struct SelectInitWeek: View {
         }.foregroundStyle(.exText)
             .fontM(bold: true)
             .alert(
-                isPresented: $showSuccessAlert,
+                isPresented: $viewModel.state.isShowSuccessAlert,
                 title: L10n.dialogTitle,
-                message: L10n.dialogUpdateInitWeek(selectWeek.fullSymbols),
+                message: L10n.dialogUpdateInitWeek(viewModel.state.selectWeek.fullSymbols),
                 positiveButtonTitle: L10n.dialogButtonOk,
                 positiveAction: { dismiss() }
             ).onAppear {
-                selectWeek = rootEnvironment.state.initWeek
+                viewModel.onAppear()
             }.toolbarBackground(.exFoundation, for: .navigationBar)
                 .toolbarBackground(.visible, for: .navigationBar) // iOS18以降はtoolbarVisibility
                 .navigationTitle("週始まり変更")
@@ -79,5 +75,5 @@ struct SelectInitWeek: View {
 }
 
 #Preview {
-    SelectInitWeek()
+    SelectInitWeekScreen()
 }

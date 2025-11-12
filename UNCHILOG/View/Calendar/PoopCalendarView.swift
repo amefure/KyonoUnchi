@@ -43,9 +43,9 @@ struct PoopCalendarView: View {
     /// 年月選択ヘッダービュー
     private func yearAndMonthSelectionView() -> some View {
         HStack {
-//            Spacer()
-//                .frame(width: 30)
-//                .padding(.horizontal, 10)
+            Spacer()
+                .frame(width: 30)
+                .padding(.horizontal, 10)
             
             Spacer()
 
@@ -72,16 +72,15 @@ struct PoopCalendarView: View {
 
             Spacer()
             
-            // FIXME: 期待通りに動作しないため一時的にコメントアウト
-//            Button {
-//                viewModel.moveTodayCalendar()
-//            } label: {
-//              Image("back_today")
-//                  .resizable()
-//                  .scaledToFit()
-//                  .frame(width: 30)
-//            }.padding(.horizontal, 10)
-//              .frame(width: 30)
+            Button {
+                viewModel.moveTodayCalendar()
+            } label: {
+              Image("back_today")
+                  .resizable()
+                  .scaledToFit()
+                  .frame(width: 30)
+            }.padding(.horizontal, 10)
+              .frame(width: 30)
 
         }.foregroundStyle(.exThema)
             .padding(.horizontal)

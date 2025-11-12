@@ -24,7 +24,7 @@ struct SettingView: View {
                 Section(header: Text(L10n.settingSectionCalendarTitle)) {
                     
                     NavigationLink {
-                        SelectInitWeek()
+                        SelectInitWeekScreen()
                     } label: {
                         HStack {
                             Image(systemName: "calendar")

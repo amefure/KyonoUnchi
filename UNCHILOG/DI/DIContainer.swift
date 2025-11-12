@@ -45,6 +45,11 @@ private extension DIContainer {
         // c.register(InAppPurchaseRepository.self) { _ in InAppPurchaseRepository() }
         c.register(SCCalenderRepository.self) { _ in SCCalenderRepository() }
         c.register(WatchConnectRepository.self) { _ in WatchConnectRepository() }
+        c.register(InterstitialServiceProtocol.self) { r in
+            InterstitialService(
+                userDefaultsRepository: r.resolve(UserDefaultsRepository.self)!
+            )
+        }
         c.register(WrapLocalRepositoryProtocol.self) { r in
             WrapLocalRepository(
                 localRepository: r.resolve(CoreDataRepository.self)!,
@@ -74,14 +79,25 @@ private extension DIContainer {
                 watchConnectRepository: r.resolve(WatchConnectRepository.self)!
             )
         }
-//
-//        c.register(RootViewModel.self) { r in
-//            RootViewModel(
-//                localRepository: r.resolve(RealmRepository.self)!,
-//                userDefaultsRepository: r.resolve(UserDefaultsRepository.self)!
-//            )
-//        }
-//
+
+        c.register(RootViewModel.self) { r in
+            RootViewModel(
+                localRepository: r.resolve(WrapLocalRepositoryProtocol.self)!,
+                userDefaultsRepository: r.resolve(UserDefaultsRepository.self)!,
+                interstitialService: r.resolve(InterstitialServiceProtocol.self)!
+            )
+        }
+        
+        c.register(CalendarViewModel.self) { r in
+            CalendarViewModel(
+                localRepository: r.resolve(WrapLocalRepositoryProtocol.self)!,
+                userDefaultsRepository: r.resolve(UserDefaultsRepository.self)!,
+                keyChainRepository: r.resolve(KeyChainRepository.self)!,
+                scCalenderRepository: r.resolve(SCCalenderRepository.self)!,
+                watchConnectRepository: r.resolve(WatchConnectRepository.self)!
+            )
+        }
+        
         
         // ViewModel
         c.register(TheDayDetailViewModel.self) { r in
@@ -111,21 +127,28 @@ private extension DIContainer {
 //                keyChainRepository: r.resolve(KeyChainRepository.self)!
 //            )
 //        }
+        
+        // Setting
+        c.register(SelectInitWeekViewModel.self) { r in
+            SelectInitWeekViewModel(
+                userDefaultsRepository: r.resolve(UserDefaultsRepository.self)!
+            )
+        }
+        
+        
 //
-//        // Setting > AppLock
-//        c.register(AppLockViewModel.self) { r in
-//            AppLockViewModel(
-//                repository: r.resolve(RealmRepository.self)!,
-//                keyChainRepository: r.resolve(KeyChainRepository.self)!,
-//                biometricAuthRepository: r.resolve(BiometricAuthRepository.self)!
-//            )
-//        }
-//
-//        // Setting > AppLockInput
-//        c.register(AppLockInputViewModel.self) { r in
-//            AppLockInputViewModel(
-//                keyChainRepository: r.resolve(KeyChainRepository.self)!
-//            )
-//        }
+        // Setting > AppLock
+        c.register(AppLockViewModel.self) { r in
+            AppLockViewModel(
+                keyChainRepository: r.resolve(KeyChainRepository.self)!,
+                biometricAuthRepository: r.resolve(BiometricAuthRepository.self)!
+            )
+        }
+        // Setting > AppLockInput
+        c.register(AppLockInputViewModel.self) { r in
+            AppLockInputViewModel(
+                keyChainRepository: r.resolve(KeyChainRepository.self)!
+            )
+        }
     }
 }

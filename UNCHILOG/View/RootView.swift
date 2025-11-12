@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RootView: View {
     @Environment(\.rootEnvironment) private var rootEnvironment
-    @State private var viewModel = RootViewModel.shared
+    @State private var viewModel = DIContainer.shared.resolve(RootViewModel.self)
         
     var body: some View {
         
@@ -21,35 +21,7 @@ struct RootView: View {
             AdMobBannerView()
                 .frame(height: 60)
             
-            HStack {
-                Spacer()
-                
-                Button {
-                    if rootEnvironment.state.entryMode == .simple {
-                        // 現在時刻を取得して登録
-                        viewModel.addSimplePoop()
-                        viewModel.state.isShowSuccessEntryAlert = true
-                    } else {
-                        viewModel.state.isShowInputDetailPoop = true
-                    }
-                } label: {
-                    Image(systemName: "plus")
-                        .fontL(bold: true)
-                        .foregroundStyle(.white)
-                        .frame(width: 50, height: 50)
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 50)
-                                .stroke(lineWidth: 2)
-                                .foregroundStyle(.white)
-                        }
-                        .compositingGroup()
-                        .shadow(color: .black, radius: 3, x: 1, y: 1)
-                }
-
-                Spacer()
-            }.padding(.bottom, 40)
-                .padding(.top)
-                .background(Color.exThema)
+            footerView()
         }.alert(
             isPresented: $viewModel.state.isShowSuccessEntryAlert,
             title: L10n.dialogTitle,
@@ -96,12 +68,39 @@ struct RootView: View {
             .navigationBarBackButtonHidden()
             .ignoresSafeArea(edges: [.bottom])
     }
+    
+    private func footerView() -> some View {
+        HStack {
+            Spacer()
+            
+            Button {
+                if rootEnvironment.state.entryMode == .simple {
+                    // 現在時刻を取得して登録
+                    viewModel.addSimplePoop()
+                    viewModel.state.isShowSuccessEntryAlert = true
+                } else {
+                    viewModel.state.isShowInputDetailPoop = true
+                }
+            } label: {
+                Image(systemName: "plus")
+                    .fontL(bold: true)
+                    .foregroundStyle(.white)
+                    .frame(width: 50, height: 50)
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 50)
+                            .stroke(lineWidth: 2)
+                            .foregroundStyle(.white)
+                    }
+                    .compositingGroup()
+                    .shadow(color: .black, radius: 3, x: 1, y: 1)
+            }
+
+            Spacer()
+        }.padding(.bottom, 40)
+            .padding(.top)
+            .background(Color.exThema)
+    }
 }
-
-
-
-
-
 
 #Preview {
     RootView()

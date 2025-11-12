@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-// 更新時対象のPoopオブジェクトはViewModelを介してやり取りする
-// 値渡しにすると正常に渡せない時がある
 struct PoopInputView: View {
     
     private let df = DateFormatUtility(format: "M月d日")
@@ -47,7 +45,7 @@ struct PoopInputView: View {
             ScrollView {
                 
                 
-                InputItemTitleView(title: "時間", subTitle: "Time")
+                inputItemTitleView(title: "時間", subTitle: "Time")
                 
                 DatePicker(
                     "createdAt",
@@ -56,7 +54,7 @@ struct PoopInputView: View {
                 ).frame(width: 300)
                     .labelsHidden()
                 
-                InputItemTitleView(title: "色", subTitle: "Color")
+                inputItemTitleView(title: "色", subTitle: "Color")
                 
                 
                 ScrollView(.horizontal) {
@@ -89,7 +87,7 @@ struct PoopInputView: View {
                         .padding(.horizontal, 10)
                 }.padding(.horizontal)
                 
-                InputItemTitleView(title: "形", subTitle: "Shape")
+                inputItemTitleView(title: "形", subTitle: "Shape")
                 
                 ScrollView(.horizontal) {
                     HStack(spacing: 15) {
@@ -119,7 +117,7 @@ struct PoopInputView: View {
                 }.padding(.horizontal)
                 
                 
-                InputItemTitleView(title: "量", subTitle: "Volume")
+                inputItemTitleView(title: "量", subTitle: "Volume")
                 
                 Text(viewModel.state.volume.name)
                     .foregroundStyle(.exText)
@@ -132,7 +130,7 @@ struct PoopInputView: View {
                     }.padding(.horizontal)
                     .tint(.exSub)
                 
-                InputItemTitleView(title: "メモ", subTitle: "MEMO")
+                inputItemTitleView(title: "メモ", subTitle: "MEMO")
                 
                 TextEditor(text: $viewModel.state.memo)
                     .frame(height: 200)
@@ -163,13 +161,11 @@ struct PoopInputView: View {
             }
         )
     }
-}
-
-
-private struct InputItemTitleView: View {
-    public var title: String
-    public var subTitle: String
-    var body: some View {
+    
+    private func inputItemTitleView(
+        title: String,
+        subTitle: String
+    ) -> some View {
         VStack(alignment: .leading){
             HStack {
                 Text(title)
@@ -192,6 +188,7 @@ private struct InputItemTitleView: View {
         }.padding()
     }
 }
+
 
 #Preview {
     PoopInputView(theDay: Date())

@@ -22,9 +22,8 @@ final class CalendarState {
 }
 
 final class CalendarViewModel {
-    
-    // シングルトン設計にしないと再生成が何度も発生してします
-    static let shared = CalendarViewModel()
+    /// シングルトン設計にしておかないと`updateCalendar`が重複実行されてしまう
+    static let shared = DIContainer.shared.resolve(CalendarViewModel.self)
     
     private let dateFormatUtility = DateFormatUtility()
 
@@ -42,12 +41,18 @@ final class CalendarViewModel {
     private let poopRepository: WrapLocalRepositoryProtocol
     private let watchConnectRepository: WatchConnectRepository
 
-    init(repositoryDependency: RepositoryDependency = RepositoryDependency()) {
-        keyChainRepository = repositoryDependency.keyChainRepository
-        userDefaultsRepository = repositoryDependency.userDefaultsRepository
-        scCalenderRepository = repositoryDependency.scCalenderRepository
-        poopRepository = repositoryDependency.poopRepository
-        watchConnectRepository = repositoryDependency.watchConnectRepository
+    init(
+        localRepository: WrapLocalRepositoryProtocol,
+        userDefaultsRepository: UserDefaultsRepository,
+        keyChainRepository: KeyChainRepository,
+        scCalenderRepository: SCCalenderRepository,
+        watchConnectRepository: WatchConnectRepository,
+    ) {
+        poopRepository = localRepository
+        self.userDefaultsRepository = userDefaultsRepository
+        self.keyChainRepository = keyChainRepository
+        self.scCalenderRepository = scCalenderRepository
+        self.watchConnectRepository = watchConnectRepository
 
         getInitWeek()
 
@@ -117,6 +122,12 @@ final class CalendarViewModel {
                         }
                         AppLogger.logger.debug("データ削除によるカレンダー更新")
                     }
+                } else if let _ = notification.object as? Bool {
+                    AppLogger.logger.debug("始まり更新")
+                    getInitWeek()
+                    // リフレッシュしたいため都度取得する
+                    let poops = poopRepository.fetchAllPoops()
+                    scCalenderRepository.initialize(initWeek: state.initWeek, entities: poops)
                 }
                 
                 NotificationCenter.default.post(name: .updateCalendar, object: nil)

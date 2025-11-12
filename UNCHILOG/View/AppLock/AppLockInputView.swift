@@ -10,15 +10,10 @@ import SwiftUI
 /// 設定ページからモーダルとして呼び出される
 struct AppLockInputView: View {
     
-    // MARK: - ViewModel
-    @StateObject private var viewModel = AppLockInputViewModel()
-    
-    // MARK: - Receive
     @Binding var isLock: Bool
-    
-    // MARK: - View
     @State private var password: [String] = []
-
+    
+    @State private var viewModel = DIContainer.shared.resolve(AppLockInputViewModel.self)
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
@@ -64,11 +59,11 @@ struct AppLockInputView: View {
                 .ignoresSafeArea(.all)
         }.background(.white)
             .onDisappear {
-            if viewModel.entryFlag {
-                isLock = true
-            } else {
-                isLock = false
-            }
+                if viewModel.state.entryFlag {
+                    isLock = true
+                } else {
+                    isLock = false
+                }
         }
     }
 }

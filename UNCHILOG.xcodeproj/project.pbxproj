@@ -71,12 +71,11 @@
 		128BB5DA2BB2FCEF009E0FAB /* PoopCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5D92BB2FCEF009E0FAB /* PoopCalendarView.swift */; };
 		128BB5DE2BB30B72009E0FAB /* TheDayDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5DD2BB30B72009E0FAB /* TheDayDetailView.swift */; };
 		128BB5E12BB30E6E009E0FAB /* TheDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5E02BB30E6E009E0FAB /* TheDayView.swift */; };
-		128BB5E62BB46589009E0FAB /* CustomNotifyDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5E52BB46589009E0FAB /* CustomNotifyDialogView.swift */; };
 		128BB5E82BB465A2009E0FAB /* RootEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5E72BB465A2009E0FAB /* RootEnvironment.swift */; };
 		128BB5EB2BB467B2009E0FAB /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5E92BB467B2009E0FAB /* Assets.swift */; };
 		128BB5EC2BB467B2009E0FAB /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5EA2BB467B2009E0FAB /* Strings.swift */; };
 		128BB5F32BB5A124009E0FAB /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5F22BB5A124009E0FAB /* SettingView.swift */; };
-		128BB5F62BB5AB58009E0FAB /* SelectInitWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5F52BB5AB58009E0FAB /* SelectInitWeek.swift */; };
+		128BB5F62BB5AB58009E0FAB /* SelectInitWeekScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5F52BB5AB58009E0FAB /* SelectInitWeekScreen.swift */; };
 		128BB5F92BB5ACF3009E0FAB /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5F82BB5ACF3009E0FAB /* UserDefaultsKey.swift */; };
 		128BB5FC2BB5AFC5009E0FAB /* AppLockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5FB2BB5AFC5009E0FAB /* AppLockView.swift */; };
 		128BB5FE2BB5AFD0009E0FAB /* AppLockInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5FD2BB5AFD0009E0FAB /* AppLockInputView.swift */; };
@@ -116,6 +115,7 @@
 		12CBFBF02BAFE25C005FE4F1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12CBFBEF2BAFE25C005FE4F1 /* Preview Assets.xcassets */; };
 		12CBFBF52BAFE25C005FE4F1 /* UNCHILOG.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 12CBFBF32BAFE25C005FE4F1 /* UNCHILOG.xcdatamodeld */; };
 		12D016AE2EC22E6B0037448A /* TheMonthDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D016AD2EC22E690037448A /* TheMonthDetailViewModel.swift */; };
+		12D016B12EC37CED0037448A /* SelectInitWeekViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D016B02EC37CE80037448A /* SelectInitWeekViewModel.swift */; };
 		12DB3CF62BD391FC0075817A /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 12DB3CF52BD391FC0075817A /* PrivacyInfo.xcprivacy */; };
 		12DB3CF82BD392A90075817A /* AdMobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB3CF72BD392A90075817A /* AdMobView.swift */; };
 		12DB3CFA2BD394870075817A /* AdsConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB3CF92BD394870075817A /* AdsConfig.swift */; };
@@ -193,12 +193,11 @@
 		128BB5D92BB2FCEF009E0FAB /* PoopCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopCalendarView.swift; sourceTree = "<group>"; };
 		128BB5DD2BB30B72009E0FAB /* TheDayDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheDayDetailView.swift; sourceTree = "<group>"; };
 		128BB5E02BB30E6E009E0FAB /* TheDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheDayView.swift; sourceTree = "<group>"; };
-		128BB5E52BB46589009E0FAB /* CustomNotifyDialogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNotifyDialogView.swift; sourceTree = "<group>"; };
 		128BB5E72BB465A2009E0FAB /* RootEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootEnvironment.swift; sourceTree = "<group>"; };
 		128BB5E92BB467B2009E0FAB /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		128BB5EA2BB467B2009E0FAB /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		128BB5F22BB5A124009E0FAB /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
-		128BB5F52BB5AB58009E0FAB /* SelectInitWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectInitWeek.swift; sourceTree = "<group>"; };
+		128BB5F52BB5AB58009E0FAB /* SelectInitWeekScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectInitWeekScreen.swift; sourceTree = "<group>"; };
 		128BB5F82BB5ACF3009E0FAB /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		128BB5FB2BB5AFC5009E0FAB /* AppLockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLockView.swift; sourceTree = "<group>"; };
 		128BB5FD2BB5AFD0009E0FAB /* AppLockInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLockInputView.swift; sourceTree = "<group>"; };
@@ -231,6 +230,7 @@
 		12CBFBEF2BAFE25C005FE4F1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		12CBFBF42BAFE25C005FE4F1 /* UNCHILOG.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UNCHILOG.xcdatamodel; sourceTree = "<group>"; };
 		12D016AD2EC22E690037448A /* TheMonthDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMonthDetailViewModel.swift; sourceTree = "<group>"; };
+		12D016B02EC37CE80037448A /* SelectInitWeekViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectInitWeekViewModel.swift; sourceTree = "<group>"; };
 		12DB3CF52BD391FC0075817A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		12DB3CF72BD392A90075817A /* AdMobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobView.swift; sourceTree = "<group>"; };
 		12DB3CF92BD394870075817A /* AdsConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsConfig.swift; sourceTree = "<group>"; };
@@ -427,7 +427,6 @@
 				1222E51E2EBB94B100DFC050 /* Poop */,
 				128BB5DF2BB30E48009E0FAB /* Calendar */,
 				128BB60B2BB7F85E009E0FAB /* Chart */,
-				128BB5E42BB4657F009E0FAB /* Dialog */,
 				128BB5F42BB5AB47009E0FAB /* Setting */,
 				128BB5FA2BB5AFB0009E0FAB /* AppLock */,
 				128BB5ED2BB59F6C009E0FAB /* Components */,
@@ -443,7 +442,7 @@
 				1222E5212EBCEAC800DFC050 /* Poop */,
 				128BB5D72BB289E2009E0FAB /* PoopViewModel.swift */,
 				129FA0C52EB77D96009712F1 /* CalendarViewModel.swift */,
-				128BB6062BB5B0DD009E0FAB /* SettingViewModel.swift */,
+				12D016AF2EC37CDF0037448A /* Setting */,
 				128BB5FF2BB5AFF2009E0FAB /* AppLock */,
 			);
 			path = ViewModel;
@@ -509,14 +508,6 @@
 			path = Calendar;
 			sourceTree = "<group>";
 		};
-		128BB5E42BB4657F009E0FAB /* Dialog */ = {
-			isa = PBXGroup;
-			children = (
-				128BB5E52BB46589009E0FAB /* CustomNotifyDialogView.swift */,
-			);
-			path = Dialog;
-			sourceTree = "<group>";
-		};
 		128BB5ED2BB59F6C009E0FAB /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -542,7 +533,7 @@
 				128BB5F22BB5A124009E0FAB /* SettingView.swift */,
 				129C63852C7F316200D9CB39 /* SelectAppIconView.swift */,
 				122B3EE02BBFC53B00167D9E /* SelectEntryMode.swift */,
-				128BB5F52BB5AB58009E0FAB /* SelectInitWeek.swift */,
+				128BB5F52BB5AB58009E0FAB /* SelectInitWeekScreen.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -669,6 +660,15 @@
 				12CBFBEF2BAFE25C005FE4F1 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		12D016AF2EC37CDF0037448A /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				128BB6062BB5B0DD009E0FAB /* SettingViewModel.swift */,
+				12D016B02EC37CE80037448A /* SelectInitWeekViewModel.swift */,
+			);
+			path = Setting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -839,6 +839,7 @@
 				12CBFBF52BAFE25C005FE4F1 /* UNCHILOG.xcdatamodeld in Sources */,
 				128BB5EB2BB467B2009E0FAB /* Assets.swift in Sources */,
 				128BB5E12BB30E6E009E0FAB /* TheDayView.swift in Sources */,
+				12D016B12EC37CED0037448A /* SelectInitWeekViewModel.swift in Sources */,
 				128BB5C22BB282E7009E0FAB /* WrapLocalRepository.swift in Sources */,
 				12ED29B92C19701900A1293D /* TheMonthDetailView.swift in Sources */,
 				12CBFBE92BAFE25B005FE4F1 /* UNCHILOGApp.swift in Sources */,
@@ -848,7 +849,7 @@
 				128BB5DE2BB30B72009E0FAB /* TheDayDetailView.swift in Sources */,
 				129FA0C62EB77D9A009712F1 /* CalendarViewModel.swift in Sources */,
 				128BB5CD2BB28833009E0FAB /* PoopInputView.swift in Sources */,
-				128BB5F62BB5AB58009E0FAB /* SelectInitWeek.swift in Sources */,
+				128BB5F62BB5AB58009E0FAB /* SelectInitWeekScreen.swift in Sources */,
 				12978DEC2BE3CEF700D25AA4 /* CarouselCalendarView.swift in Sources */,
 				122B3EE52BC025C200167D9E /* HeaderView.swift in Sources */,
 				128BB5D42BB2899C009E0FAB /* KeyChainRepository.swift in Sources */,
@@ -859,7 +860,6 @@
 				129C63862C7F316200D9CB39 /* SelectAppIconView.swift in Sources */,
 				128BB60D2BB7F88E009E0FAB /* PoopChartView.swift in Sources */,
 				129FA0C42EB641CE009712F1 /* DIContainer.swift in Sources */,
-				128BB5E62BB46589009E0FAB /* CustomNotifyDialogView.swift in Sources */,
 				128BB5D22BB28882009E0FAB /* UserDefaultsRepository.swift in Sources */,
 				12D016AE2EC22E6B0037448A /* TheMonthDetailViewModel.swift in Sources */,
 				12DB3CFC2BD3AD070075817A /* MrPoopMessageView.swift in Sources */,

@@ -9,13 +9,9 @@ import SwiftUI
 
 
 struct AppLockView: View {
-    // MARK: - ViewModel
-    @State private var viewModel = AppLockViewModel()
-
-    // MARK: - View
+    
+    @State private var viewModel = DIContainer.shared.resolve(AppLockViewModel.self)
     @State private var password: [String] = []
-
-    // MARK: - Environment
     @Environment(\.rootEnvironment) private var rootEnvironment
 
     var body: some View {
@@ -64,9 +60,11 @@ struct AppLockView: View {
 
             NumberKeyboardView(password: $password)
                 .ignoresSafeArea(.all)
-        }.alert(L10n.appLockFailedPassword, isPresented: $viewModel.state.isShowFailureAlert) {
-            Button("OK") {}
-        }
+        }.alert(
+            isPresented: $viewModel.state.isShowFailureAlert,
+            title: "Error",
+            message: L10n.appLockFailedPassword
+        )
         .onAppear { viewModel.onAppear() }
         .onDisappear { viewModel.onDisappear() }
         .background(.white)

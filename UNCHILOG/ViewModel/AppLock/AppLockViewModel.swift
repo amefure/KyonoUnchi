@@ -25,16 +25,19 @@ final class AppLockViewModel {
 
     var state = AppLockState()
 
+    private var cancellables: Set<AnyCancellable> = []
+
+    /// `Repository`
     private let biometricAuthRepository: BiometricAuthRepository
     private let keyChainRepository: KeyChainRepository
 
-    private var cancellables: Set<AnyCancellable> = []
-
-    init(repositoryDependency: RepositoryDependency = RepositoryDependency()) {
-        biometricAuthRepository = repositoryDependency.biometricAuthRepository
-        keyChainRepository = repositoryDependency.keyChainRepository
+    init(
+        keyChainRepository: KeyChainRepository,
+        biometricAuthRepository: BiometricAuthRepository
+    ) {
+        self.biometricAuthRepository = biometricAuthRepository
+        self.keyChainRepository = keyChainRepository
     }
-
     @MainActor
     func onAppear() {
         biometricAuthRepository.biometryType.sink { [weak self] type in

@@ -7,17 +7,24 @@
 
 import UIKit
 
-class AppLockInputViewModel: ObservableObject {
-    @Published private(set) var entryFlag: Bool = false
+@Observable
+final class AppLockInputState {
+    /// アプリメイン画面遷移
+    var entryFlag: Bool = false
+}
 
+final class AppLockInputViewModel {
+    var state = AppLockInputState()
+
+    /// `Repository`
     private let keyChainRepository: KeyChainRepository
 
-    init(repositoryDependency: RepositoryDependency = RepositoryDependency()) {
-        keyChainRepository = repositoryDependency.keyChainRepository
+    init(keyChainRepository: KeyChainRepository) {
+        self.keyChainRepository = keyChainRepository
     }
 
     public func entryPassword(password: [String]) {
-        entryFlag = true
+        state.entryFlag = true
         let pass = password.joined(separator: "")
         keyChainRepository.entry(value: pass)
     }
