@@ -65,10 +65,36 @@ final class RootEnvironment {
         getAppLock()
 
         watchConnectRepository.entryDate
+            .subscribe(on: DispatchQueue.global(qos: .background))
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] date in
                 guard let self else { return }
-                _ = self.localRepository.addPoopSimple(createdAt: date)
+                let added = self.localRepository.addPoopSimple(createdAt: date)
+                NotificationCenter.default.post(name: .updateCalendar, object: added)
             }.store(in: &cancellables)
+        
+        watchConnectRepository.sendPoopDataFlag
+            .subscribe(on: DispatchQueue.global(qos: .background))
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] date in
+                guard let self else { return }
+                self.sendWatchWeekPoops()
+            }.store(in: &cancellables)
+    }
+}
+
+extension RootEnvironment {
+    private func sendWatchWeekPoops() {
+        if watchConnectRepository.isReachable() {
+            let poops = localRepository.fetchAllPoops()
+            let dateFormatUtility = DateFormatUtility(format: "yyyy年M月dd日")
+            let endToday = dateFormatUtility.endOfDay(for: Date())
+            let oneWeekAgo = dateFormatUtility.calcDate(date: endToday, value: -7)
+            let weekPoops = poops.filter { poop in
+                poop.date >= oneWeekAgo && poop.date <= endToday
+            }
+            watchConnectRepository.send(weekPoops)
+        }
     }
 }
 

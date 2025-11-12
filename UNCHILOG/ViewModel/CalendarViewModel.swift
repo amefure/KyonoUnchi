@@ -39,20 +39,17 @@ final class CalendarViewModel {
     private let userDefaultsRepository: UserDefaultsRepository
     private let scCalenderRepository: SCCalenderRepository
     private let poopRepository: WrapLocalRepositoryProtocol
-    private let watchConnectRepository: WatchConnectRepository
 
     init(
         localRepository: WrapLocalRepositoryProtocol,
         userDefaultsRepository: UserDefaultsRepository,
         keyChainRepository: KeyChainRepository,
         scCalenderRepository: SCCalenderRepository,
-        watchConnectRepository: WatchConnectRepository,
     ) {
         poopRepository = localRepository
         self.userDefaultsRepository = userDefaultsRepository
         self.keyChainRepository = keyChainRepository
         self.scCalenderRepository = scCalenderRepository
-        self.watchConnectRepository = watchConnectRepository
 
         getInitWeek()
 
@@ -87,16 +84,7 @@ final class CalendarViewModel {
                 guard let self else { return }
                 state.dayOfWeekList = list
             }.store(in: &cancellables)
-        
-        watchConnectRepository.entryDate
-            .subscribe(on: DispatchQueue.global(qos: .background))
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] date in
-                guard let self else { return }
-                let added = self.poopRepository.addPoopSimple(createdAt: date)
-                NotificationCenter.default.post(name: .updateCalendar, object: added)
-            }.store(in: &cancellables)
-        
+                
         // カレンダー更新用Notificationを観測
         NotificationCenter.default.publisher(for: .updateCalendar)
             .subscribe(on: DispatchQueue.global(qos: .background))

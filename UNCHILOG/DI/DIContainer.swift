@@ -94,7 +94,6 @@ private extension DIContainer {
                 userDefaultsRepository: r.resolve(UserDefaultsRepository.self)!,
                 keyChainRepository: r.resolve(KeyChainRepository.self)!,
                 scCalenderRepository: r.resolve(SCCalenderRepository.self)!,
-                watchConnectRepository: r.resolve(WatchConnectRepository.self)!
             )
         }
         
