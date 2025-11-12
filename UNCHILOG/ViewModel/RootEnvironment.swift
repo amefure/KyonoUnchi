@@ -64,6 +64,7 @@ final class RootEnvironment {
         
         getEntryMode()
         getAppLock()
+        getAppInPurchased()
 
         watchConnectRepository.entryDate
             .subscribe(on: DispatchQueue.global(qos: .background))
@@ -152,5 +153,10 @@ extension RootEnvironment {
     /// アプリにロックがかけてあるかをチェック
     private func getAppLock() {
         state.appLocked = keyChainRepository.getData().count == 4
+    }
+    
+    /// アプリ内課金
+    private func getAppInPurchased() {
+        state.removeAds = userDefaultsRepository.getPurchasedRemoveAds()
     }
 }
