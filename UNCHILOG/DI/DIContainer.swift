@@ -42,7 +42,7 @@ private extension DIContainer {
         c.register(UserDefaultsRepository.self) { _ in UserDefaultsRepository() }
         c.register(KeyChainRepository.self) { _ in KeyChainRepository() }
         c.register(BiometricAuthRepository.self) { _ in BiometricAuthRepository() }
-        // c.register(InAppPurchaseRepository.self) { _ in InAppPurchaseRepository() }
+        c.register(InAppPurchaseRepository.self) { _ in InAppPurchaseRepository() }
         c.register(SCCalenderRepository.self) { _ in SCCalenderRepository() }
         c.register(WatchConnectRepository.self) { _ in WatchConnectRepository() }
         c.register(InterstitialServiceProtocol.self) { r in
@@ -76,6 +76,7 @@ private extension DIContainer {
                 localRepository: r.resolve(WrapLocalRepositoryProtocol.self)!,
                 keyChainRepository: r.resolve(KeyChainRepository.self)!,
                 userDefaultsRepository: r.resolve(UserDefaultsRepository.self)!,
+                inAppPurchaseRepository: r.resolve(InAppPurchaseRepository.self)!,
                 watchConnectRepository: r.resolve(WatchConnectRepository.self)!
             )
         }
@@ -132,7 +133,13 @@ private extension DIContainer {
         }
         
         
-//
+        // Setting > Purchase
+        c.register(InAppPurchaseViewModel.self) { r in
+            InAppPurchaseViewModel(
+                userDefaultsRepository: r.resolve(UserDefaultsRepository.self)!,
+                inAppPurchaseRepository: r.resolve(InAppPurchaseRepository.self)!
+            )
+        }
         // Setting > AppLock
         c.register(AppLockViewModel.self) { r in
             AppLockViewModel(

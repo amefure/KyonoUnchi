@@ -17,7 +17,9 @@ struct SettingView: View {
             
             List {
                 
-                Section(header: Text(L10n.settingSectionCalendarTitle)) {
+                Section(
+                    header: Text(L10n.settingSectionCalendarTitle)
+                ) {
                     
                     NavigationLink {
                         SelectInitWeekScreen()
@@ -44,6 +46,17 @@ struct SettingView: View {
                             Image(systemName: "plus.app")
                             
                             Text(L10n.settingSectionAppEntryMode)
+                        }
+                    }.listRowBackground(Color.exFoundation)
+    
+                    // アプリ内課金
+                    NavigationLink {
+                        InAppPurchaseView()
+                    } label: {
+                        HStack {
+                            Image(systemName: "app.gift.fill")
+                            
+                            Text(L10n.settingSectionLinkInAppPurchase)
                         }
                     }.listRowBackground(Color.exFoundation)
                     
@@ -122,8 +135,10 @@ struct SettingView: View {
                 .background(.white)
                
             
-            AdMobBannerView()
-                .frame(height: 60)
+            if !rootEnvironment.state.removeAds {
+                AdMobBannerView()
+                    .frame(height: 60)
+            }
             
         }.foregroundStyle(.exText)
             .fontM(bold: true)

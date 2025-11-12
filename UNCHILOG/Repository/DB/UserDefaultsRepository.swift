@@ -100,4 +100,15 @@ extension UserDefaultsRepository {
     func setAppIcon(_ iconName: String) {
         setStringData(key: UserDefaultsKey.APP_ICON_NAME, value: iconName)
     }
+    
+    /// `PURCHASED_REMOVE_ADS`
+    /// 取得：アプリ内課金 / 広告削除
+    func getPurchasedRemoveAds() -> Bool {
+        getBoolData(key: UserDefaultsKey.PURCHASED_REMOVE_ADS)
+    }
+
+    /// 登録：アプリ内課金 / 広告削除
+    func setPurchasedRemoveAds(_ flag: Bool) {
+        setBoolData(key: UserDefaultsKey.PURCHASED_REMOVE_ADS, isOn: flag)
+    }
 }

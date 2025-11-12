@@ -67,7 +67,6 @@
 		128BB5D22BB28882009E0FAB /* UserDefaultsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5D12BB28882009E0FAB /* UserDefaultsRepository.swift */; };
 		128BB5D42BB2899C009E0FAB /* KeyChainRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5D32BB2899C009E0FAB /* KeyChainRepository.swift */; };
 		128BB5D62BB289AF009E0FAB /* BiometricAuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5D52BB289AF009E0FAB /* BiometricAuthRepository.swift */; };
-		128BB5D82BB289E2009E0FAB /* PoopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5D72BB289E2009E0FAB /* PoopViewModel.swift */; };
 		128BB5DA2BB2FCEF009E0FAB /* PoopCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5D92BB2FCEF009E0FAB /* PoopCalendarView.swift */; };
 		128BB5DE2BB30B72009E0FAB /* TheDayDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5DD2BB30B72009E0FAB /* TheDayDetailView.swift */; };
 		128BB5E12BB30E6E009E0FAB /* TheDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5E02BB30E6E009E0FAB /* TheDayView.swift */; };
@@ -116,6 +115,16 @@
 		12CBFBF52BAFE25C005FE4F1 /* UNCHILOG.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 12CBFBF32BAFE25C005FE4F1 /* UNCHILOG.xcdatamodeld */; };
 		12D016AE2EC22E6B0037448A /* TheMonthDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D016AD2EC22E690037448A /* TheMonthDetailViewModel.swift */; };
 		12D016B12EC37CED0037448A /* SelectInitWeekViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D016B02EC37CE80037448A /* SelectInitWeekViewModel.swift */; };
+		12D016B32EC4BE1A0037448A /* InAppPurchaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D016B22EC4BE1A0037448A /* InAppPurchaseRepository.swift */; };
+		12D016B82EC4BE320037448A /* SecretProductIdKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D016B62EC4BE320037448A /* SecretProductIdKey.swift */; };
+		12D016B92EC4BE320037448A /* ProductItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D016B52EC4BE320037448A /* ProductItem.swift */; };
+		12D016BA2EC4BE320037448A /* WrapperProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D016B42EC4BE320037448A /* WrapperProduct.swift */; };
+		12D016BB2EC4BE320037448A /* SecretProductIdKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D016B62EC4BE320037448A /* SecretProductIdKey.swift */; };
+		12D016BC2EC4BE320037448A /* ProductItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D016B52EC4BE320037448A /* ProductItem.swift */; };
+		12D016BD2EC4BE320037448A /* WrapperProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D016B42EC4BE320037448A /* WrapperProduct.swift */; };
+		12D016BF2EC4BEAC0037448A /* InAppPurchaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D016BE2EC4BEAC0037448A /* InAppPurchaseView.swift */; };
+		12D016C12EC4BEC70037448A /* InAppPurchaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D016C02EC4BEC70037448A /* InAppPurchaseViewModel.swift */; };
+		12D016C32EC4C17D0037448A /* AsyncProducts.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 12D016C22EC4C17D0037448A /* AsyncProducts.storekit */; };
 		12DB3CF62BD391FC0075817A /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 12DB3CF52BD391FC0075817A /* PrivacyInfo.xcprivacy */; };
 		12DB3CF82BD392A90075817A /* AdMobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB3CF72BD392A90075817A /* AdMobView.swift */; };
 		12DB3CFA2BD394870075817A /* AdsConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB3CF92BD394870075817A /* AdsConfig.swift */; };
@@ -189,7 +198,6 @@
 		128BB5D12BB28882009E0FAB /* UserDefaultsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsRepository.swift; sourceTree = "<group>"; };
 		128BB5D32BB2899C009E0FAB /* KeyChainRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainRepository.swift; sourceTree = "<group>"; };
 		128BB5D52BB289AF009E0FAB /* BiometricAuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricAuthRepository.swift; sourceTree = "<group>"; };
-		128BB5D72BB289E2009E0FAB /* PoopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopViewModel.swift; sourceTree = "<group>"; };
 		128BB5D92BB2FCEF009E0FAB /* PoopCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopCalendarView.swift; sourceTree = "<group>"; };
 		128BB5DD2BB30B72009E0FAB /* TheDayDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheDayDetailView.swift; sourceTree = "<group>"; };
 		128BB5E02BB30E6E009E0FAB /* TheDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheDayView.swift; sourceTree = "<group>"; };
@@ -231,6 +239,13 @@
 		12CBFBF42BAFE25C005FE4F1 /* UNCHILOG.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UNCHILOG.xcdatamodel; sourceTree = "<group>"; };
 		12D016AD2EC22E690037448A /* TheMonthDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMonthDetailViewModel.swift; sourceTree = "<group>"; };
 		12D016B02EC37CE80037448A /* SelectInitWeekViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectInitWeekViewModel.swift; sourceTree = "<group>"; };
+		12D016B22EC4BE1A0037448A /* InAppPurchaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseRepository.swift; sourceTree = "<group>"; };
+		12D016B42EC4BE320037448A /* WrapperProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrapperProduct.swift; sourceTree = "<group>"; };
+		12D016B52EC4BE320037448A /* ProductItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItem.swift; sourceTree = "<group>"; };
+		12D016B62EC4BE320037448A /* SecretProductIdKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretProductIdKey.swift; sourceTree = "<group>"; };
+		12D016BE2EC4BEAC0037448A /* InAppPurchaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseView.swift; sourceTree = "<group>"; };
+		12D016C02EC4BEC70037448A /* InAppPurchaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseViewModel.swift; sourceTree = "<group>"; };
+		12D016C22EC4C17D0037448A /* AsyncProducts.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = AsyncProducts.storekit; sourceTree = "<group>"; };
 		12DB3CF52BD391FC0075817A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		12DB3CF72BD392A90075817A /* AdMobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobView.swift; sourceTree = "<group>"; };
 		12DB3CF92BD394870075817A /* AdsConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsConfig.swift; sourceTree = "<group>"; };
@@ -414,6 +429,7 @@
 				124778FA2BEA033400559205 /* Error */,
 				128BB6082BB79B98009E0FAB /* Config */,
 				128BB5F72BB5ACE0009E0FAB /* Key */,
+				12D016B72EC4BE320037448A /* InAppPurchase */,
 				128BB5A42BAFE38F009E0FAB /* CoreData */,
 			);
 			path = Model;
@@ -439,9 +455,8 @@
 			children = (
 				128BB5E72BB465A2009E0FAB /* RootEnvironment.swift */,
 				129FA0BD2EB63EA8009712F1 /* RootViewModel.swift */,
-				1222E5212EBCEAC800DFC050 /* Poop */,
-				128BB5D72BB289E2009E0FAB /* PoopViewModel.swift */,
 				129FA0C52EB77D96009712F1 /* CalendarViewModel.swift */,
+				1222E5212EBCEAC800DFC050 /* Poop */,
 				12D016AF2EC37CDF0037448A /* Setting */,
 				128BB5FF2BB5AFF2009E0FAB /* AppLock */,
 			);
@@ -456,6 +471,7 @@
 				128BB5BD2BB14973009E0FAB /* DB */,
 				128BB5D52BB289AF009E0FAB /* BiometricAuthRepository.swift */,
 				124779052BEA062300559205 /* WatchConnectRepository.swift */,
+				12D016B22EC4BE1A0037448A /* InAppPurchaseRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -534,6 +550,7 @@
 				129C63852C7F316200D9CB39 /* SelectAppIconView.swift */,
 				122B3EE02BBFC53B00167D9E /* SelectEntryMode.swift */,
 				128BB5F52BB5AB58009E0FAB /* SelectInitWeekScreen.swift */,
+				12D016BE2EC4BEAC0037448A /* InAppPurchaseView.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -641,6 +658,7 @@
 				128BB5A92BAFE480009E0FAB /* Info.plist */,
 				128BB5AA2BAFE5C8009E0FAB /* GoogleService-Info.plist */,
 				12DB3CF52BD391FC0075817A /* PrivacyInfo.xcprivacy */,
+				12D016C22EC4C17D0037448A /* AsyncProducts.storekit */,
 				128BB59D2BAFE348009E0FAB /* Generated */,
 				128BB59E2BAFE34E009E0FAB /* Resources */,
 				128BB59F2BAFE357009E0FAB /* Extension&Utility */,
@@ -667,8 +685,19 @@
 			children = (
 				128BB6062BB5B0DD009E0FAB /* SettingViewModel.swift */,
 				12D016B02EC37CE80037448A /* SelectInitWeekViewModel.swift */,
+				12D016C02EC4BEC70037448A /* InAppPurchaseViewModel.swift */,
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		12D016B72EC4BE320037448A /* InAppPurchase */ = {
+			isa = PBXGroup;
+			children = (
+				12D016B42EC4BE320037448A /* WrapperProduct.swift */,
+				12D016B52EC4BE320037448A /* ProductItem.swift */,
+				12D016B62EC4BE320037448A /* SecretProductIdKey.swift */,
+			);
+			path = InAppPurchase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -776,6 +805,7 @@
 				128BB5AB2BAFE5C8009E0FAB /* GoogleService-Info.plist in Resources */,
 				12CBFBF02BAFE25C005FE4F1 /* Preview Assets.xcassets in Resources */,
 				12CBFBED2BAFE25C005FE4F1 /* Images.xcassets in Resources */,
+				12D016C32EC4C17D0037448A /* AsyncProducts.storekit in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -809,6 +839,9 @@
 				124778FF2BEA037700559205 /* WatchErrorr.swift in Sources */,
 				1247790C2BEA4B7800559205 /* WatchLogger.swift in Sources */,
 				124778D42BE51A9400559205 /* PoopShape.swift in Sources */,
+				12D016BB2EC4BE320037448A /* SecretProductIdKey.swift in Sources */,
+				12D016BC2EC4BE320037448A /* ProductItem.swift in Sources */,
+				12D016BD2EC4BE320037448A /* WrapperProduct.swift in Sources */,
 				124778F02BE9FD7900559205 /* SCWeekDayRepository.swift in Sources */,
 				124778D62BE51A9800559205 /* PoopVolume.swift in Sources */,
 				129FA0AE2EB4EC4B009712F1 /* DateFormatUtility.swift in Sources */,
@@ -831,7 +864,6 @@
 				124779082BEA063D00559205 /* SessionDataError.swift in Sources */,
 				124779072BEA063B00559205 /* WatchErrorr.swift in Sources */,
 				128BB5C52BB28495009E0FAB /* PoopShape.swift in Sources */,
-				128BB5D82BB289E2009E0FAB /* PoopViewModel.swift in Sources */,
 				128BB5F92BB5ACF3009E0FAB /* UserDefaultsKey.swift in Sources */,
 				12CBFBEB2BAFE25B005FE4F1 /* RootView.swift in Sources */,
 				128BB6012BB5B000009E0FAB /* AppLockViewModel.swift in Sources */,
@@ -843,6 +875,7 @@
 				128BB5C22BB282E7009E0FAB /* WrapLocalRepository.swift in Sources */,
 				12ED29B92C19701900A1293D /* TheMonthDetailView.swift in Sources */,
 				12CBFBE92BAFE25B005FE4F1 /* UNCHILOGApp.swift in Sources */,
+				12D016B32EC4BE1A0037448A /* InAppPurchaseRepository.swift in Sources */,
 				129FA0BE2EB63EAC009712F1 /* RootViewModel.swift in Sources */,
 				1222E5252EBF786700DFC050 /* ExNotificationName.swift in Sources */,
 				12DB3CFA2BD394870075817A /* AdsConfig.swift in Sources */,
@@ -871,15 +904,20 @@
 				1222E5232EBCEAD500DFC050 /* PoopInputViewModel.swift in Sources */,
 				129FA0982EB4EB24009712F1 /* ExView.swift in Sources */,
 				129FA09A2EB4EB24009712F1 /* ExFontSize.swift in Sources */,
+				12D016C12EC4BEC70037448A /* InAppPurchaseViewModel.swift in Sources */,
 				129FA09B2EB4EB24009712F1 /* ExUIApplication.swift in Sources */,
 				129FA09C2EB4EB24009712F1 /* ExCollection.swift in Sources */,
 				129FA09D2EB4EB24009712F1 /* ExPublisher.swift in Sources */,
 				129FA0A82EB4EB31009712F1 /* Logger.swift in Sources */,
+				12D016B82EC4BE320037448A /* SecretProductIdKey.swift in Sources */,
+				12D016B92EC4BE320037448A /* ProductItem.swift in Sources */,
+				12D016BA2EC4BE320037448A /* WrapperProduct.swift in Sources */,
 				129FA0A92EB4EB31009712F1 /* DateFormatUtility.swift in Sources */,
 				129FA0AB2EB4EB31009712F1 /* ShareInfoUtillity.swift in Sources */,
 				129FA0AC2EB4EB31009712F1 /* DeviceSizeUtility.swift in Sources */,
 				128BB5C72BB284AC009E0FAB /* PoopVolume.swift in Sources */,
 				124779102BEA600700559205 /* WatchLogger.swift in Sources */,
+				12D016BF2EC4BEAC0037448A /* InAppPurchaseView.swift in Sources */,
 				128BB6072BB5B0DD009E0FAB /* SettingViewModel.swift in Sources */,
 				128BB5BC2BB147BB009E0FAB /* Poop+CoreDataClass.swift in Sources */,
 				12B29BCE2BD521A900DD7E20 /* PoopMessage.swift in Sources */,

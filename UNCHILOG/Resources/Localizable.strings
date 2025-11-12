@@ -27,7 +27,7 @@
 "setting_section_app_entry_mode" = "うんちの登録モードを切り替え";
 "setting_section_app_desc" = "・アプリにパスワードを設定してロックをかけることができます。";
 "setting_section_app_lock" = "アプリをロックする";
-
+"setting_section_link_in_app_purchase" = "広告削除";
 "setting_section_link_desc" = "・アプリに不具合がございましたら「アプリの不具合はこちら」よりお問い合わせください。";
 "setting_section_link_review" = "アプリをレビューする";
 "setting_section_link_recommend" = "「今日のうんち」をオススメする";

@@ -34,7 +34,7 @@ struct UNCHILOGApp: App {
                 } else {
                     RootView()
                 }
-            }
+            }.onAppear { rootEnvironment.onAppear() }
         }
     }
 }

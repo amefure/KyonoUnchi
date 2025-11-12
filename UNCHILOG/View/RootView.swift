@@ -18,7 +18,7 @@ struct RootView: View {
             PoopCalendarView()
                 .id(1)
             
-            if !DeviceSizeUtility.isSESize {
+            if !DeviceSizeUtility.isSESize && !rootEnvironment.state.removeAds {
                 AdMobBannerView()
                     .frame(height: 60)
             }

@@ -46,8 +46,10 @@ struct TheDayDetailView: View {
                     .background(Color.clear)
             }
             
-            AdMobBannerView()
-                .frame(height: 60)
+            if !rootEnvironment.state.removeAds {
+                AdMobBannerView()
+                    .frame(height: 60)
+            }
             
         }.onAppear {
             viewModel.onAppear(theDay: theDay)

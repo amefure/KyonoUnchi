@@ -29,8 +29,6 @@ final class RootEnvironmentState {
     fileprivate(set) var appLocked: Bool = false
     /// 広告削除購入フラグ
     fileprivate(set) var removeAds: Bool = false
-    /// 容量解放購入フラグ
-    fileprivate(set) var unlockStorage: Bool = false
     /// 登録モード
     fileprivate(set) var entryMode: EntryMode = .simple
     
@@ -43,9 +41,10 @@ final class RootEnvironment {
     
     var state = RootEnvironmentState()
 
-    private let keyChainRepository: KeyChainRepository
-    private let userDefaultsRepository: UserDefaultsRepository
     private let localRepository: WrapLocalRepositoryProtocol
+    private let userDefaultsRepository: UserDefaultsRepository
+    private let keyChainRepository: KeyChainRepository
+    private let inAppPurchaseRepository: InAppPurchaseRepository
     private let watchConnectRepository: WatchConnectRepository
     
     private var cancellables: Set<AnyCancellable> = []
@@ -54,11 +53,13 @@ final class RootEnvironment {
         localRepository: WrapLocalRepositoryProtocol,
         keyChainRepository: KeyChainRepository,
         userDefaultsRepository: UserDefaultsRepository,
-        watchConnectRepository: WatchConnectRepository
+        inAppPurchaseRepository: InAppPurchaseRepository,
+        watchConnectRepository: WatchConnectRepository,
     ) {
         self.localRepository = localRepository
         self.keyChainRepository = keyChainRepository
         self.userDefaultsRepository = userDefaultsRepository
+        self.inAppPurchaseRepository = inAppPurchaseRepository
         self.watchConnectRepository = watchConnectRepository
         
         getEntryMode()
@@ -80,10 +81,36 @@ final class RootEnvironment {
                 guard let self else { return }
                 self.sendWatchWeekPoops()
             }.store(in: &cancellables)
+    
+    }
+    
+    /// アプリ起動時に1回だけ呼ばれる設計
+    @MainActor
+    func onAppear() {
+        // 購入済み課金アイテム観測
+        inAppPurchaseRepository.purchasedProducts
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                guard let self else { return }
+                // 購入済みアイテム配列が変化した際に購入済みかどうか確認
+                let removeAds = inAppPurchaseRepository.isPurchased(ProductItem.removeAds.id)
+                // 両者trueなら更新
+                if removeAds { state.removeAds = true }
+            }.store(in: &cancellables)   
     }
 }
 
 extension RootEnvironment {
+    
+    /// 課金アイテムの購入状況を確認
+    @MainActor
+    func listenInAppPurchase() {
+        Task {
+            // 課金アイテムの変化を観測
+            await inAppPurchaseRepository.startListen()
+        }
+    }
+    
     private func sendWatchWeekPoops() {
         if watchConnectRepository.isReachable() {
             let poops = localRepository.fetchAllPoops()

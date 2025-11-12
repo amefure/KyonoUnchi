@@ -114,6 +114,8 @@ internal enum L10n {
   internal static let settingSectionLinkContact = L10n.tr("Localizable", "setting_section_link_contact", fallback: "アプリの不具合はこちら")
   /// ・アプリに不具合がございましたら「アプリの不具合はこちら」よりお問い合わせください。
   internal static let settingSectionLinkDesc = L10n.tr("Localizable", "setting_section_link_desc", fallback: "・アプリに不具合がございましたら「アプリの不具合はこちら」よりお問い合わせください。")
+  /// 広告削除
+  internal static let settingSectionLinkInAppPurchase = L10n.tr("Localizable", "setting_section_link_in_app_purchase", fallback: "広告削除")
   /// 「今日のうんち」をオススメする
   internal static let settingSectionLinkRecommend = L10n.tr("Localizable", "setting_section_link_recommend", fallback: "「今日のうんち」をオススメする")
   /// アプリをレビューする

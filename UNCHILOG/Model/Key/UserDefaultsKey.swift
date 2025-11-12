@@ -20,5 +20,7 @@ class UserDefaultsKey {
     static let APP_ICON_NAME = "APP_ICON_NAME"
     /// お知らせダイアログ表示フラグ
     static let IS_SHOW_NOTIFY_DIALOG = "IS_SHOW_NOTIFY_DIALOG"
+    /// アプリ内課金 / 広告削除
+    static let PURCHASED_REMOVE_ADS = "PURCHASED_REMOVE_ADS"
 }
 

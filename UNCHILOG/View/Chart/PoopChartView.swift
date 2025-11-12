@@ -9,8 +9,30 @@ import SwiftUI
 import Charts
 import SCCalendar
 
+class PoopChartViewModel {
+    //    // 今日を起点として何日うんちが出ていないか
+    //    private func findTodayDifference() -> Int {
+    //        // 今日の日付の23:59を取得
+    //        let endDay = dateFormatUtility.endOfDay(for: DateFormatUtility.today)
+    //        let dates = poops.map({ $0.date }).filter({ $0 < endDay })
+    //        // 今日と同じ日付があれば0を返す
+    //        if dates.contains(where: { dateFormatUtility.checkInSameDayAs(date: $0 )}) {
+    //            return 0
+    //        }
+    //        // 昨日でていれば0,一昨日出ていれば1になるように計算
+    //        var closestPastDateDifference = Int.max
+    //        for date in dates {
+    //            let difference = dateFormatUtility.daysDifferenceFromToday(date: date)
+    //            if difference > 0 && difference < closestPastDateDifference {
+    //                closestPastDateDifference = difference
+    //            }
+    //        }
+    //        return closestPastDateDifference == Int.max ? 0 : closestPastDateDifference
+    //    }
+}
+
 struct PoopChartView: View {
-    @StateObject private var poopViewModel = PoopViewModel.shared
+    @State private var poopViewModel = PoopChartViewModel()
     @Environment(\.rootEnvironment) private var rootEnvironment
     
 //    // チャートで表示する年月のデータのみ抽出
@@ -150,8 +172,10 @@ struct PoopChartView: View {
 //                    }
 //            )
             
-            AdMobBannerView()
-                .frame(height: 60)
+            if !rootEnvironment.state.removeAds {
+                AdMobBannerView()
+                    .frame(height: 60)
+            }
             
         }.padding(.bottom, 25)
             .toolbarBackground(.exFoundation, for: .navigationBar)

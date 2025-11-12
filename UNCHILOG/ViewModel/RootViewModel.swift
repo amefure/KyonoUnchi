@@ -63,6 +63,9 @@ extension RootViewModel {
     }
     
     public func showOrCountInterstitial() {
+        let flag = userDefaultsRepository.getPurchasedRemoveAds()
+        // 課金済みなら広告を表示しない
+        guard !flag else { return }
         Task {
             await interstitialService.showOrCountInterstitial()
         }
