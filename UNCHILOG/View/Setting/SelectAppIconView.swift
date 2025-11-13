@@ -36,7 +36,7 @@ struct SelectAppIconView: View {
                               .scaledToFit()
                               .frame(width: 50)
                               .clipShape(RoundedRectangle(cornerRadius: 10))
-                        Text("うんちくん")
+                        Text("ブロックうんち ブラウン(デフォルト)")
                             .foregroundStyle(.exText)
                             .fontWeight(.bold)
                         
@@ -85,7 +85,7 @@ struct SelectAppIconView: View {
                               .scaledToFit()
                               .frame(width: 50)
                               .clipShape(RoundedRectangle(cornerRadius: 10))
-                        Text("ブロックうんち ブラウン")
+                        Text("ポップUNCHI")
                             .foregroundStyle(.exText)
                             .fontWeight(.bold)
                         
@@ -121,29 +121,29 @@ struct SelectAppIconView: View {
                 }.buttonStyle(PlainButtonStyle())
                     .listRowBackground(Color.exFoundation)
                 
-                Button {
-                    appIconName = AppIconName.icon5.rawValue
-                    UIApplication.shared.setAlternateIconName(appIconName)
-                    rootEnvironment.saveAppIcon(iconName: appIconName)
-                } label: {
-                    HStack {
-                        Asset.Images.appIconImg5.swiftUIImage
-                              .resizable()
-                              .scaledToFit()
-                              .frame(width: 50)
-                              .clipShape(RoundedRectangle(cornerRadius: 10))
-                        Text("ポップUNCHI")
-                            .foregroundStyle(.exText)
-                            .fontWeight(.bold)
-                        
-                        if appIconName == AppIconName.icon5.rawValue {
-                            Spacer()
-                            Image(systemName: "checkmark")
-                                .foregroundStyle(.exText)
-                        }
-                    }
-                }.buttonStyle(PlainButtonStyle())
-                    .listRowBackground(Color.exFoundation)
+//                Button {
+//                    appIconName = AppIconName.icon5.rawValue
+//                    UIApplication.shared.setAlternateIconName(appIconName)
+//                    rootEnvironment.saveAppIcon(iconName: appIconName)
+//                } label: {
+//                    HStack {
+//                        Asset.Images.appIconImg5.swiftUIImage
+//                              .resizable()
+//                              .scaledToFit()
+//                              .frame(width: 50)
+//                              .clipShape(RoundedRectangle(cornerRadius: 10))
+//                        Text("ポップUNCHI")
+//                            .foregroundStyle(.exText)
+//                            .fontWeight(.bold)
+//                        
+//                        if appIconName == AppIconName.icon5.rawValue {
+//                            Spacer()
+//                            Image(systemName: "checkmark")
+//                                .foregroundStyle(.exText)
+//                        }
+//                    }
+//                }.buttonStyle(PlainButtonStyle())
+//                    .listRowBackground(Color.exFoundation)
             }.scrollContentBackground(.hidden)
                 .background(.white)
                
