@@ -70,5 +70,8 @@ struct TheDayView: View, Equatable {
 
 
 #Preview {
-    //TheDayView(theDay: SCDate.demo)
+    TheDayView(
+        theDay: SCDate.demo,
+        onTap: { _ in }
+    )
 }

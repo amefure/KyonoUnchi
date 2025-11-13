@@ -28,7 +28,7 @@ struct SelectEntryMode: View {
         
         VStack {
             
-            Text("うんちの記録を登録するモードを変更することができます。")
+            Text(L10n.selectEntryModeMsg)
                 .foregroundStyle(.exText)
                 .padding(.top, 10)
                 .font(.caption)
@@ -43,7 +43,7 @@ struct SelectEntryMode: View {
             
             switch selectMode {
             case .simple:
-                Text("「シンプルモード」に設定するとカレンダー画面の登録ボタン(赤枠)を押下した際に現在時刻でうんちの記録が登録されます。\n登録の際に細かい設定はできませんが、登録後から編集することは可能になっているので詳細モードと同じ内容を追記することが可能です。")
+                Text(L10n.selectEntryModeSimple)
                     .frame(height: 130)
                     .padding(.horizontal, 25)
                     
@@ -53,7 +53,7 @@ struct SelectEntryMode: View {
                     .scaledToFit()
                     .frame(height: DeviceSizeUtility.deviceHeight / 2.3)
             case .detail:
-                Text("「詳細モード」に設定するとカレンダー画面の登録ボタンを押下した際に以下の登録画面が表示され、うんちの色、形、量、MEMOなどを入力することが可能です。")
+                Text(L10n.selectEntryModeDetail)
                     .frame(height: 130)
                     .padding(.horizontal, 25)
                     

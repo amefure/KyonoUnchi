@@ -6,7 +6,16 @@
   
 */
 
+// MARK: - UI
+"no_poop_msg" = "うんちの記録がありません。";
+"select_entry_mode_msg" = "うんちの記録を登録するモードを変更することができます。";
+"select_entry_mode_simple" = "「シンプルモード」に設定するとカレンダー画面の登録ボタン(赤枠)を押下した際に現在時刻でうんちの記録が登録されます。\n登録の際に細かい設定はできませんが、登録後から編集することは可能になっているので詳細モードと同じ内容を追記することが可能です。";
+"select_entry_mode_detail" = "「詳細モード」に設定するとカレンダー画面の登録ボタンを押下した際に以下の登録画面が表示され、うんちの色、形、量、MEMOなどを入力することが可能です。";
+
+
+// MARK: - Dialog
 "dialog_title" = "お知らせ";
+"dialog_title_error" = "Error";
 
 "dialog_delete_poop" = "うんちの記録を本当に削除しますか？";
 "dialog_delete_theday" = "うんちの記録を本当に削除しますか？\n削除するとリンクも全てなくなります。";
@@ -18,8 +27,10 @@
 
 
 "dialog_button_ok" = "OK";
+"dialog_button_delete" = "削除";
 "dialog_button_cancel" = "キャンセル";
 
+// MARK: Setting
 "setting_section_calendar_title" = "カレンダー設定";
 "setting_section_calendar_init_week" = "週始まり";
 
@@ -41,6 +52,7 @@
 "app_lock_input_entry_button" = "登録";
 
 
+// MARK: Message
 "poop_message_1" = "順調♪順調♪";
 "poop_message_2" = "バナナうんちは良いうんち！";
 "poop_message_3" = "ぷりっ♪";

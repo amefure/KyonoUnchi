@@ -118,5 +118,10 @@ private struct CalendarMonthView: View, Equatable {
 
 
 #Preview {
-    //CarouselCalendarView(viewM())
+    CarouselCalendarView(
+        yearAndMonths: [],
+        displayCalendarIndex: 0,
+        backMonthPage: {},
+        forwardMonthPage: {}
+    )
 }

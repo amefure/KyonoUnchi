@@ -63,7 +63,6 @@
 		128BB5C72BB284AC009E0FAB /* PoopVolume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5C62BB284AC009E0FAB /* PoopVolume.swift */; };
 		128BB5CB2BB284D5009E0FAB /* PoopColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5CA2BB284D5009E0FAB /* PoopColor.swift */; };
 		128BB5CD2BB28833009E0FAB /* PoopInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5CC2BB28833009E0FAB /* PoopInputView.swift */; };
-		128BB5D02BB2885C009E0FAB /* RepositoryDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5CF2BB2885C009E0FAB /* RepositoryDependency.swift */; };
 		128BB5D22BB28882009E0FAB /* UserDefaultsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5D12BB28882009E0FAB /* UserDefaultsRepository.swift */; };
 		128BB5D42BB2899C009E0FAB /* KeyChainRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5D32BB2899C009E0FAB /* KeyChainRepository.swift */; };
 		128BB5D62BB289AF009E0FAB /* BiometricAuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BB5D52BB289AF009E0FAB /* BiometricAuthRepository.swift */; };
@@ -125,10 +124,11 @@
 		12D016BF2EC4BEAC0037448A /* InAppPurchaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D016BE2EC4BEAC0037448A /* InAppPurchaseView.swift */; };
 		12D016C12EC4BEC70037448A /* InAppPurchaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D016C02EC4BEC70037448A /* InAppPurchaseViewModel.swift */; };
 		12D016C32EC4C17D0037448A /* AsyncProducts.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 12D016C22EC4C17D0037448A /* AsyncProducts.storekit */; };
+		12D016C72EC5F9C10037448A /* MemoDisplayMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D016C62EC5F9AF0037448A /* MemoDisplayMode.swift */; };
+		12D016C92EC5FB6E0037448A /* PoopRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D016C82EC5FB6C0037448A /* PoopRowView.swift */; };
 		12DB3CF62BD391FC0075817A /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 12DB3CF52BD391FC0075817A /* PrivacyInfo.xcprivacy */; };
 		12DB3CF82BD392A90075817A /* AdMobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB3CF72BD392A90075817A /* AdMobView.swift */; };
 		12DB3CFA2BD394870075817A /* AdsConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB3CF92BD394870075817A /* AdsConfig.swift */; };
-		12DB3CFC2BD3AD070075817A /* MrPoopMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB3CFB2BD3AD070075817A /* MrPoopMessageView.swift */; };
 		12ED29B92C19701900A1293D /* TheMonthDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ED29B82C19701900A1293D /* TheMonthDetailView.swift */; };
 /* End PBXBuildFile section */
 
@@ -194,7 +194,6 @@
 		128BB5C62BB284AC009E0FAB /* PoopVolume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopVolume.swift; sourceTree = "<group>"; };
 		128BB5CA2BB284D5009E0FAB /* PoopColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopColor.swift; sourceTree = "<group>"; };
 		128BB5CC2BB28833009E0FAB /* PoopInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopInputView.swift; sourceTree = "<group>"; };
-		128BB5CF2BB2885C009E0FAB /* RepositoryDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDependency.swift; sourceTree = "<group>"; };
 		128BB5D12BB28882009E0FAB /* UserDefaultsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsRepository.swift; sourceTree = "<group>"; };
 		128BB5D32BB2899C009E0FAB /* KeyChainRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainRepository.swift; sourceTree = "<group>"; };
 		128BB5D52BB289AF009E0FAB /* BiometricAuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricAuthRepository.swift; sourceTree = "<group>"; };
@@ -246,10 +245,11 @@
 		12D016BE2EC4BEAC0037448A /* InAppPurchaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseView.swift; sourceTree = "<group>"; };
 		12D016C02EC4BEC70037448A /* InAppPurchaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseViewModel.swift; sourceTree = "<group>"; };
 		12D016C22EC4C17D0037448A /* AsyncProducts.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = AsyncProducts.storekit; sourceTree = "<group>"; };
+		12D016C62EC5F9AF0037448A /* MemoDisplayMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoDisplayMode.swift; sourceTree = "<group>"; };
+		12D016C82EC5FB6C0037448A /* PoopRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopRowView.swift; sourceTree = "<group>"; };
 		12DB3CF52BD391FC0075817A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		12DB3CF72BD392A90075817A /* AdMobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobView.swift; sourceTree = "<group>"; };
 		12DB3CF92BD394870075817A /* AdsConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsConfig.swift; sourceTree = "<group>"; };
-		12DB3CFB2BD3AD070075817A /* MrPoopMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MrPoopMessageView.swift; sourceTree = "<group>"; };
 		12ED29B82C19701900A1293D /* TheMonthDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMonthDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -286,6 +286,7 @@
 				128BB5DD2BB30B72009E0FAB /* TheDayDetailView.swift */,
 				128BB5CC2BB28833009E0FAB /* PoopInputView.swift */,
 				12ED29B82C19701900A1293D /* TheMonthDetailView.swift */,
+				12D016C82EC5FB6C0037448A /* PoopRowView.swift */,
 			);
 			path = Poop;
 			sourceTree = "<group>";
@@ -466,7 +467,6 @@
 		128BB5A32BAFE37D009E0FAB /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				128BB5CE2BB28854009E0FAB /* DI */,
 				128BB5C02BB282D6009E0FAB /* AppModel */,
 				128BB5BD2BB14973009E0FAB /* DB */,
 				128BB5D52BB289AF009E0FAB /* BiometricAuthRepository.swift */,
@@ -506,14 +506,6 @@
 			path = AppModel;
 			sourceTree = "<group>";
 		};
-		128BB5CE2BB28854009E0FAB /* DI */ = {
-			isa = PBXGroup;
-			children = (
-				128BB5CF2BB2885C009E0FAB /* RepositoryDependency.swift */,
-			);
-			path = DI;
-			sourceTree = "<group>";
-		};
 		128BB5DF2BB30E48009E0FAB /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
@@ -529,7 +521,6 @@
 			children = (
 				128BB5EE2BB59F83009E0FAB /* Layout */,
 				12A43E162BBAF51700AB19A4 /* RoundMessageView.swift */,
-				12DB3CFB2BD3AD070075817A /* MrPoopMessageView.swift */,
 				12DB3CF72BD392A90075817A /* AdMobView.swift */,
 			);
 			path = Components;
@@ -587,6 +578,7 @@
 				128BB6092BB79BA2009E0FAB /* UrlLinkConfig.swift */,
 				12DB3CF92BD394870075817A /* AdsConfig.swift */,
 				122B3EE22BBFC62700167D9E /* EntryMode.swift */,
+				12D016C62EC5F9AF0037448A /* MemoDisplayMode.swift */,
 				12B29BCD2BD521A900DD7E20 /* PoopMessage.swift */,
 				129C63872C7F35F800D9CB39 /* AppIconName.swift */,
 			);
@@ -853,8 +845,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1222E5202EBCE39700DFC050 /* TheDayDetailViewModel.swift in Sources */,
+				12D016C72EC5F9C10037448A /* MemoDisplayMode.swift in Sources */,
 				128BB5DA2BB2FCEF009E0FAB /* PoopCalendarView.swift in Sources */,
 				12A43E172BBAF51800AB19A4 /* RoundMessageView.swift in Sources */,
+				12D016C92EC5FB6E0037448A /* PoopRowView.swift in Sources */,
 				128BB5E82BB465A2009E0FAB /* RootEnvironment.swift in Sources */,
 				124778FC2BEA034300559205 /* PoopError.swift in Sources */,
 				124779092BEA064000559205 /* ConnectError.swift in Sources */,
@@ -886,7 +880,6 @@
 				12978DEC2BE3CEF700D25AA4 /* CarouselCalendarView.swift in Sources */,
 				122B3EE52BC025C200167D9E /* HeaderView.swift in Sources */,
 				128BB5D42BB2899C009E0FAB /* KeyChainRepository.swift in Sources */,
-				128BB5D02BB2885C009E0FAB /* RepositoryDependency.swift in Sources */,
 				128BB5AF2BB14115009E0FAB /* ExSCDate.swift in Sources */,
 				122B3EE32BBFC62700167D9E /* EntryMode.swift in Sources */,
 				128BB5EC2BB467B2009E0FAB /* Strings.swift in Sources */,
@@ -895,7 +888,6 @@
 				129FA0C42EB641CE009712F1 /* DIContainer.swift in Sources */,
 				128BB5D22BB28882009E0FAB /* UserDefaultsRepository.swift in Sources */,
 				12D016AE2EC22E6B0037448A /* TheMonthDetailViewModel.swift in Sources */,
-				12DB3CFC2BD3AD070075817A /* MrPoopMessageView.swift in Sources */,
 				1247790A2BEA066000559205 /* CommunicationKey.swift in Sources */,
 				129C63882C7F35F800D9CB39 /* AppIconName.swift in Sources */,
 				128BB6032BB5B008009E0FAB /* AppLockInputViewModel.swift in Sources */,
@@ -945,7 +937,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"UNCHILOGWatch Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = CGD79LB65H;
 				ENABLE_PREVIEWS = YES;
@@ -974,7 +966,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"UNCHILOGWatch Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = CGD79LB65H;
 				ENABLE_PREVIEWS = YES;
@@ -1126,7 +1118,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"UNCHILOG/Preview Content\"";
 				DEVELOPMENT_TEAM = CGD79LB65H;
 				ENABLE_PREVIEWS = YES;
@@ -1166,7 +1158,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"UNCHILOG/Preview Content\"";
 				DEVELOPMENT_TEAM = CGD79LB65H;
 				ENABLE_PREVIEWS = YES;

@@ -16,7 +16,6 @@ struct PoopInputView: View {
     public var poopId: UUID?
     
     @FocusState var isActive: Bool
-    @State private var showSuccessAlert: Bool = false
     
     // MARK: - Environment
     @Environment(\.dismiss) var dismiss
@@ -33,7 +32,6 @@ struct PoopInputView: View {
                 trailingAction: {
                     isActive = false
                     viewModel.createOrUpdatePoop()
-                    showSuccessAlert = true
                 },
                 content: {
                     Text(viewModel.state.targetPoop == nil
@@ -152,7 +150,7 @@ struct PoopInputView: View {
         .onAppear {
             viewModel.onAppear(poopId: poopId, theDay: theDay)
         }.alert(
-            isPresented: $showSuccessAlert,
+            isPresented: viewModel.$state.showSuccessAlert,
             title: L10n.dialogTitle,
             message: viewModel.state.targetPoop == nil ? L10n.dialogEntryPoop : L10n.dialogUpdatePoop,
             positiveButtonTitle: L10n.dialogButtonOk,

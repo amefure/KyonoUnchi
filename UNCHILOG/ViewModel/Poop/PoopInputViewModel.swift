@@ -13,6 +13,8 @@ final class PoopInputViewState {
     
     fileprivate(set) var targetPoop: Poop? = nil
     
+    var showSuccessAlert: Bool = false
+    
     var color: PoopColor = .darkBrown
     var shape: PoopShape = .normal
     var volume: PoopVolume = .medium
@@ -46,7 +48,7 @@ final class PoopInputViewState {
 }
 
 final class PoopInputViewModel {
-    var state = PoopInputViewState()
+    @Bindable var state = PoopInputViewState()
 
     private let localRepository: WrapLocalRepositoryProtocol
     
@@ -77,6 +79,7 @@ final class PoopInputViewModel {
         } else {
             addPoop()
         }
+        state.showSuccessAlert = true
     }
     
     private func addPoop() {

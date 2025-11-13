@@ -28,6 +28,8 @@ internal enum L10n {
   internal static let connectErrorTitle = L10n.tr("Localizable", "connect_error_title", fallback: "通信エラー")
   /// キャンセル
   internal static let dialogButtonCancel = L10n.tr("Localizable", "dialog_button_cancel", fallback: "キャンセル")
+  /// 削除
+  internal static let dialogButtonDelete = L10n.tr("Localizable", "dialog_button_delete", fallback: "削除")
   /// OK
   internal static let dialogButtonOk = L10n.tr("Localizable", "dialog_button_ok", fallback: "OK")
   /// うんちの記録を本当に削除しますか？
@@ -44,11 +46,10 @@ internal enum L10n {
   internal static let dialogEntryPoop = L10n.tr("Localizable", "dialog_entry_poop", fallback: "うんちの記録を\n登録しました。")
   /// カレンダーの表示範囲外です。
   internal static let dialogOutOfRangeCalendar = L10n.tr("Localizable", "dialog_out_of_range_calendar", fallback: "カレンダーの表示範囲外です。")
-  /// Localizable.strings
-  ///   UNCHILOG
-  /// 
-  ///   Created by t&a on 2024/03/24.
+  /// お知らせ
   internal static let dialogTitle = L10n.tr("Localizable", "dialog_title", fallback: "お知らせ")
+  /// Error
+  internal static let dialogTitleError = L10n.tr("Localizable", "dialog_title_error", fallback: "Error")
   /// 「%@」モードに
   /// 変更しました。
   internal static func dialogUpdateEntryMode(_ p1: Any) -> String {
@@ -62,6 +63,11 @@ internal enum L10n {
   /// うんちの記録を
   /// 更新しました。
   internal static let dialogUpdatePoop = L10n.tr("Localizable", "dialog_update_poop", fallback: "うんちの記録を\n更新しました。")
+  /// Localizable.strings
+  ///   UNCHILOG
+  /// 
+  ///   Created by t&a on 2024/03/24.
+  internal static let noPoopMsg = L10n.tr("Localizable", "no_poop_msg", fallback: "うんちの記録がありません。")
   /// 順調♪順調♪
   internal static let poopMessage1 = L10n.tr("Localizable", "poop_message_1", fallback: "順調♪順調♪")
   /// 自分のうんちを把握するのは大事だよ
@@ -88,6 +94,13 @@ internal enum L10n {
   internal static let poopMessage8 = L10n.tr("Localizable", "poop_message_8", fallback: "今日も良い1日になりますように")
   /// 記録を続けていてすごい！
   internal static let poopMessage9 = L10n.tr("Localizable", "poop_message_9", fallback: "記録を続けていてすごい！")
+  /// うんちの記録がありません。
+  internal static let selectEntryModeDetail = L10n.tr("Localizable", "select_entry_mode_detail", fallback: "うんちの記録がありません。")
+  /// うんちの記録を登録するモードを変更することができます。
+  internal static let selectEntryModeMsg = L10n.tr("Localizable", "select_entry_mode_msg", fallback: "うんちの記録を登録するモードを変更することができます。")
+  /// 「シンプルモード」に設定するとカレンダー画面の登録ボタン(赤枠)を押下した際に現在時刻でうんちの記録が登録されます。
+  /// 登録の際に細かい設定はできませんが、登録後から編集することは可能になっているので詳細モードと同じ内容を追記することが可能です。
+  internal static let selectEntryModeSimple = L10n.tr("Localizable", "select_entry_mode_simple", fallback: "「シンプルモード」に設定するとカレンダー画面の登録ボタン(赤枠)を押下した際に現在時刻でうんちの記録が登録されます。\n登録の際に細かい設定はできませんが、登録後から編集することは可能になっているので詳細モードと同じ内容を追記することが可能です。")
   /// データの不整合エラーが発生しました。何度も繰り返される場合はアプリを起動し直して再度実行してみてください。
   internal static let sessionErrorJsonFailedMessage = L10n.tr("Localizable", "session_error_json_failed_message", fallback: "データの不整合エラーが発生しました。何度も繰り返される場合はアプリを起動し直して再度実行してみてください。")
   /// データの受信に失敗しました。何度も繰り返される場合はアプリを起動し直して再度実行してみてください。
