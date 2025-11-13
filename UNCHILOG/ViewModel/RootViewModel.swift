@@ -62,6 +62,7 @@ extension RootViewModel {
         NotificationCenter.default.post(name: .updateCalendar, object: added)
     }
     
+    @MainActor
     public func showOrCountInterstitial() {
         let flag = userDefaultsRepository.getPurchasedRemoveAds()
         // 課金済みなら広告を表示しない

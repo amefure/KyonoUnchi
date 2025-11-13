@@ -8,10 +8,7 @@
 import SwiftUI
 import SCCalendar
 
-struct TheDayView: View, Equatable {
-    static func == (lhs: Self, rhs: Self) -> Bool {
-        lhs.theDay == rhs.theDay
-    }
+struct TheDayView: View {
     
     let theDay: SCDate
     let onTap: (SCDate) -> Void

@@ -10,7 +10,7 @@ import CoreData
 
 /// ローカル保存データベースの基底`Repository`クラス
 /// `Core Data`のロジックだけを内包
-final class CoreDataRepository: Sendable {
+final class CoreDataRepository: @unchecked Sendable {
     
     /// ファイル名
     private static let persistentName = "UNCHILOG"
@@ -56,7 +56,7 @@ extension CoreDataRepository {
         predicate: NSPredicate? = nil,
         sorts: [NSSortDescriptor]? = nil
     ) -> T? {
-        guard let entity: T = fetch(predicate: predicate, sorts: sorts).first else { return nil }
+        guard let entity: T = fetch(predicate: predicate, sorts: sorts).first as? T else { return nil }
         return entity
     }
     
@@ -90,7 +90,8 @@ extension CoreDataRepository {
         predicate: NSPredicate? = nil,
         sorts: [NSSortDescriptor]? = nil
     ) -> [T] {
-        getBgContext.performAndWait {
+        getBgContext.performAndWait { [weak self] in
+            guard let self else { return [] }
             let fetchRequest = NSFetchRequest<T>(entityName: String(describing: T.self))
             
             // フィルタリング
@@ -104,7 +105,7 @@ extension CoreDataRepository {
             }
             
             do {
-                return try getBgContext.fetch(fetchRequest)
+                return try self.getBgContext.fetch(fetchRequest)
             } catch let error as NSError {
                 AppLogger.logger.error("Could not fetch. \(error), \(error.userInfo)")
                 return []

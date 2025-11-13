@@ -33,8 +33,7 @@ struct CarouselCalendarView: View {
                         onTapDay: { day in
                             selectedDay = day
                         }
-                    ).equatable()
-                        .frame(width: geometry.size.width, height: geometry.size.height)
+                    ).frame(width: geometry.size.width, height: geometry.size.height)
                 }
             }
         }
@@ -85,10 +84,7 @@ struct CarouselCalendarView: View {
     }
 }
 
-private struct CalendarMonthView: View, Equatable {
-    static func == (lhs: Self, rhs: Self) -> Bool {
-        lhs.yearAndMonth == rhs.yearAndMonth
-    }
+private struct CalendarMonthView: View {
     
     let yearAndMonth: SCYearAndMonth
     let onTapDay: (SCDate) -> Void
@@ -104,7 +100,6 @@ private struct CalendarMonthView: View, Equatable {
                         if dataIndex < dates.count {
                             let theDay = dates[dataIndex]
                             TheDayView(theDay: theDay, onTap: onTapDay)
-                                .equatable()
                         }
                     }
                 }

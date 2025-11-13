@@ -5,6 +5,7 @@
 //  Created by t&a on 2024/05/07.
 //
 
+@preconcurrency
 import Combine
 import WatchConnectivity
 
@@ -77,9 +78,7 @@ extension WatchConnectRepository: WCSessionDelegate {
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         if let error = error {
             WatchLogger.debug(items: error.localizedDescription)
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-                self._errorPublisher.send(ConnectError.activateFailed)
-            }
+            _errorPublisher.send(ConnectError.activateFailed)
         } else {
             WatchLogger.debug(items: "セッション：アクティベート")
         }

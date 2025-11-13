@@ -19,7 +19,7 @@ final class TheDayDetailViewState {
     fileprivate(set) var selectPoop: Poop? = nil
 }
 
-final class TheDayDetailViewModel {
+final class TheDayDetailViewModel: @unchecked Sendable {
     @Bindable var state = TheDayDetailViewState()
 
     private let localRepository: WrapLocalRepositoryProtocol    
@@ -41,9 +41,9 @@ final class TheDayDetailViewModel {
     private func tracking() {
         _ = withObservationTracking {
             state.isShowInputDetailView
-        } onChange: {
-            self.fetchAllPoops()
-            self.tracking()
+        } onChange: { [weak self] in
+            self?.fetchAllPoops()
+            self?.tracking()
         }
     }
     

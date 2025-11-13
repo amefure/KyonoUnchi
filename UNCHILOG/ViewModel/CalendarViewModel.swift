@@ -23,6 +23,7 @@ final class CalendarState {
 
 final class CalendarViewModel {
     /// シングルトン設計にしておかないと`updateCalendar`が重複実行されてしまう
+    @MainActor
     static let shared = DIContainer.shared.resolve(CalendarViewModel.self)
     
     private let dateFormatUtility = DateFormatUtility()

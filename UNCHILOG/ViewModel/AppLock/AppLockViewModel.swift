@@ -71,6 +71,7 @@ final class AppLockViewModel {
     }
 
     /// パスワードログイン(keyChain)
+    @MainActor
     public func passwordLogin(password: [String], completion: @escaping (Bool) -> Void) {
         if password.count == 4 {
             showProgress()

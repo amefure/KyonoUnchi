@@ -94,8 +94,8 @@ internal enum L10n {
   internal static let poopMessage8 = L10n.tr("Localizable", "poop_message_8", fallback: "今日も良い1日になりますように")
   /// 記録を続けていてすごい！
   internal static let poopMessage9 = L10n.tr("Localizable", "poop_message_9", fallback: "記録を続けていてすごい！")
-  /// うんちの記録がありません。
-  internal static let selectEntryModeDetail = L10n.tr("Localizable", "select_entry_mode_detail", fallback: "うんちの記録がありません。")
+  /// 「詳細モード」に設定するとカレンダー画面の登録ボタンを押下した際に以下の登録画面が表示され、うんちの色、形、量、MEMOなどを入力することが可能です。
+  internal static let selectEntryModeDetail = L10n.tr("Localizable", "select_entry_mode_detail", fallback: "「詳細モード」に設定するとカレンダー画面の登録ボタンを押下した際に以下の登録画面が表示され、うんちの色、形、量、MEMOなどを入力することが可能です。")
   /// うんちの記録を登録するモードを変更することができます。
   internal static let selectEntryModeMsg = L10n.tr("Localizable", "select_entry_mode_msg", fallback: "うんちの記録を登録するモードを変更することができます。")
   /// 「シンプルモード」に設定するとカレンダー画面の登録ボタン(赤枠)を押下した際に現在時刻でうんちの記録が登録されます。
