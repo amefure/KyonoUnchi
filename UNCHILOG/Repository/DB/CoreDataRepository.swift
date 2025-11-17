@@ -56,8 +56,8 @@ extension CoreDataRepository {
         predicate: NSPredicate? = nil,
         sorts: [NSSortDescriptor]? = nil
     ) -> T? {
-        guard let entity: T = fetch(predicate: predicate, sorts: sorts).first as? T else { return nil }
-        return entity
+        let entities: [T] = fetch(predicate: predicate, sorts: sorts)
+        return entities.first
     }
     
     /// 取得処理

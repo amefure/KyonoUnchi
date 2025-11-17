@@ -10,7 +10,15 @@ import SwiftUI
 struct SettingView: View {
     @Environment(\.rootEnvironment) private var rootEnvironment
     
-    @StateObject private var viewModel = DIContainer.shared.resolve(SettingViewModel.self)
+    @StateObject private var viewModel: SettingViewModel
+    
+    init(container: DIContainer = .shared) {
+        _viewModel = StateObject(
+            wrappedValue: {
+                container.resolve(SettingViewModel.self)
+            }()
+        )
+    }
     
     var body: some View {
         VStack(spacing: 0) {
@@ -144,6 +152,8 @@ struct SettingView: View {
             .fontM(bold: true)
             .onAppear {
                 viewModel.onAppear()
+            }.onDisappear {
+                viewModel.onDisappear()
             }.sheet(isPresented: $viewModel.state.isShowPassInput) {
                 AppLockInputView(isLock: $viewModel.isLock)
             }

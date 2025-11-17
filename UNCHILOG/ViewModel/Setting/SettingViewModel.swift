@@ -34,7 +34,11 @@ final class SettingViewModel: ObservableObject {
     func onAppear() {
         setUpIsLock()
     }
-    
+
+    func onDisappear() {
+        cancellables.forEach { $0.cancel() }
+        cancellables.removeAll()
+    }
     /// アプリロック
     private func setUpIsLock() {
         isLock = keyChainRepository.getData().count == 4

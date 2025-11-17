@@ -49,7 +49,7 @@ private extension DIContainer {
             InterstitialService(
                 userDefaultsRepository: r.resolve(UserDefaultsRepository.self)!
             )
-        }
+        }.inObjectScope(.container)
         c.register(WrapLocalRepositoryProtocol.self) { r in
             WrapLocalRepository(
                 localRepository: r.resolve(CoreDataRepository.self)!,
