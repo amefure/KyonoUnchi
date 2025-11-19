@@ -24,7 +24,7 @@ struct TheDayView: View {
     var body: some View {
         VStack {
             if theDay.day == -1 {
-                Color.gray
+                Color.exFoundation
                     .opacity(0.2)
             } else {
                 VStack(spacing: 0) {
@@ -65,7 +65,7 @@ struct TheDayView: View {
         .frame(maxWidth: .infinity)
         .overlay {
             Rectangle()
-                .stroke(.gray, lineWidth: 0.5)
+                .stroke( Color.exFoundation, lineWidth: 2)
         }
     }
 }

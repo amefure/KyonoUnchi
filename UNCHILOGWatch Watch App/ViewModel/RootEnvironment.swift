@@ -46,8 +46,10 @@ class RootEnvironment: ObservableObject {
                 guard let self else { return }
                 // poopListに値が流れた時点で保存まで完了している
                 // 現在保存されているデータを全て削除
-                self.weekPoopList.forEach { poop in
-                    self.poopRepository.deletePoop(id: poop.wrappedId)
+                self.weekPoopList.forEach { [weak self] poop in
+                    guard let self else { return }
+                    guard let id = poop.id else { return }
+                    self.poopRepository.deletePoop(id: id)
                 }
                 self.weekPoopList = poopList
                 // カレンダー更新

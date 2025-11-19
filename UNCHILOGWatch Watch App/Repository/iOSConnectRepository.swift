@@ -31,16 +31,22 @@ class iOSConnectRepository: NSObject {
     // transferUserInfoはシミュレーターでは動作しないので注意
     private func requestPoopData() {
         let requestDic: [String: Bool] = [CommunicationKey.W_REQUEST_WEEK_POOPS.rawValue: true]
+#if DEBUG
+        self.session.sendMessage(requestDic, replyHandler: { _ in })
+#else
         self.session.transferUserInfo(requestDic)
-        // self.session.sendMessage(requestDic, replyHandler: { _ in })
+#endif
     }
 
     
     /// うんち登録リクエスト
     public func requestRegisterPoop() -> Bool {
         let requestDic: [String: Date] = [CommunicationKey.W_REQUEST_REGISTER_POOP.rawValue: Date()]
+#if DEBUG
+        self.session.sendMessage(requestDic, replyHandler: { _ in })
+#else
         self.session.transferUserInfo(requestDic)
-        // self.session.sendMessage(requestDic, replyHandler: { _ in })
+#endif
         return true
     }
 }

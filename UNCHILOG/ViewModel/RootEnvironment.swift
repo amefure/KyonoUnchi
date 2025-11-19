@@ -73,6 +73,7 @@ final class RootEnvironment {
                 guard let self else { return }
                 let added = self.localRepository.addPoopSimple(createdAt: date)
                 NotificationCenter.default.post(name: .updateCalendar, object: added)
+                self.sendWatchWeekPoops()
             }.store(in: &cancellables)
         
         watchConnectRepository.sendPoopDataFlag
@@ -121,6 +122,7 @@ extension RootEnvironment {
             let weekPoops = poops.filter { poop in
                 poop.date >= oneWeekAgo && poop.date <= endToday
             }
+            print("-----send wtacg")
             watchConnectRepository.send(weekPoops)
         }
     }

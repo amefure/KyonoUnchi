@@ -64,8 +64,11 @@ class WatchConnectRepository: NSObject {
         do {
             let json = try jsonConverter(poops: poops)
             let poopDic: [String: String] = [CommunicationKey.I_SEND_WEEK_POOPS.rawValue: json]
-            self.session.transferUserInfo(poopDic)
-            // self.session.sendMessage(poopDic) { _ in }
+#if DEBUG
+        self.session.sendMessage(poopDic, replyHandler: { _ in })
+#else
+        self.session.transferUserInfo(poopDic)
+#endif
         } catch {
             _errorPublisher.send(error as? SessionDataError ?? SessionDataError.unidentified)
         }
