@@ -32,11 +32,12 @@ struct PoopWeekListView: View {
                             
                             if theDay.entities.count != 0 {
                                 ZStack {
-                                    Image("noface_poop")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(height: 40)
-                                        .offset(y: -5)
+                                    Color.exPoopYellow
+                                    //Image("noface_poop")
+                                        //.resizable()
+                                        //.scaledToFit()
+                                        .frame(width: 40, height: 40)
+                                        .clipShape(RoundedRectangle(cornerRadius: 60))
         
                                     
                                     Text("\(theDay.entities.count)")

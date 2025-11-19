@@ -94,19 +94,31 @@ struct PoopInputView: View {
                                 Button {
                                     viewModel.state.shape = poopShape
                                 } label: {
-                                    VStack(spacing: 0) {
+                                    VStack(spacing: 20) {
+                                        
+                                        if viewModel.state.shape == poopShape {
+                                            Image(systemName: "arrowshape.down.fill")
+                                                .resizable()
+                                                .scaledToFit()
+                                                .foregroundStyle(.exText)
+                                                .frame(width: 55, height: 20, alignment: .center)
+                                        } else {
+                                            Spacer()
+                                                .frame(width: 55, height: 20)
+                                        }
                                         
                                         Text(poopShape.name)
-                                            .font(.caption)
+                                            .fontSS(bold: true)
+                                            .frame(width: 55)
                                             .foregroundStyle(.exText)
                                      
-                                        poopShape.image
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width: 55)
-                                            .padding(5)
-                                            .background(viewModel.state.shape == poopShape ? .exGray : .clear)
-                                            .clipShape(RoundedRectangle(cornerRadius: 60))
+//                                        poopShape.image
+//                                            .resizable()
+//                                            .scaledToFit()
+//                                            .frame(width: 55)
+//                                            .padding(5)
+//                                            .background(viewModel.state.shape == poopShape ? .exGray : .clear)
+//                                            .clipShape(RoundedRectangle(cornerRadius: 60))
                                     }
                                 }
                             }

@@ -16,6 +16,10 @@ struct TheDayView: View {
     private var poopIconWidth: CGFloat {
         DeviceSizeUtility.deviceWidth / 7
     }
+    
+    private var iconSize: CGFloat {
+        DeviceSizeUtility.isSESize ? 25 : 40
+    }
 
     var body: some View {
         VStack {
@@ -36,12 +40,12 @@ struct TheDayView: View {
                     
                     if theDay.entities.count != 0 {
                         ZStack {
-                            Image("noface_poop")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: DeviceSizeUtility.isSESize ? 35 : 40)
-                                .offset(y: -5)
-
+                            Color.exPoopYellow
+                            //Image("noface_poop")
+                                //.resizable()
+                                //.scaledToFit()
+                                .frame(width: iconSize, height: iconSize)
+                                .clipShape(RoundedRectangle(cornerRadius: 60))
                             
                             Text("\(theDay.entities.count)")
                                 .font(.system(size: DeviceSizeUtility.isSESize ? 14 : 18))
@@ -50,8 +54,9 @@ struct TheDayView: View {
                         }
                     } else {
                         Color.white
-                            .frame(height: DeviceSizeUtility.isSESize ? 35 : 40)
+                            .frame(height: iconSize)
                     }
+                    Spacer()
                 }.onTapGesture {
                     onTap(theDay)
                 }

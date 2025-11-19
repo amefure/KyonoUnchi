@@ -83,7 +83,7 @@ struct PoopCalendarView: View {
               .frame(width: 30)
 
         }.foregroundStyle(.exThema)
-            .padding(.horizontal, !DeviceSizeUtility.isSESize ? 15 : 7)
+            .padding(.horizontal, 15)
     }
 
     /// 曜日リスト
@@ -102,8 +102,8 @@ struct PoopCalendarView: View {
                             .foregroundStyle(.exThema)
                     }.fontS(bold: true)
             }
-        }.padding(.vertical, 8)
-            .frame(height: !DeviceSizeUtility.isSESize ? 40 : 30)
+        }.padding(.vertical, !DeviceSizeUtility.isSESize ? 8 : 4)
+            .frame(height: !DeviceSizeUtility.isSESize ? 40 : 25)
     }
 }
 
