@@ -24,6 +24,7 @@
 "dialog_out_of_range_calendar" = "カレンダーの表示範囲外です。";
 "dialog_update_entry_mode_%@" = "「%@」モードに\n変更しました。";
 "dialog_update_init_week_%@" = "週始まりを「%@」に\n変更しました。";
+"dialog_update_count_icon_%@" = "回数アイコンを「%@」に\n変更しました。";
 
 
 "dialog_button_ok" = "OK";
@@ -33,6 +34,7 @@
 // MARK: Setting
 "setting_section_calendar_title" = "カレンダー設定";
 "setting_section_calendar_init_week" = "週始まり";
+"setting_section_calendar_count_icon" = "回数アイコン変更";
 
 "setting_section_app_title" = "アプリ設定";
 "setting_section_app_entry_mode" = "うんちの登録モードを切り替え";

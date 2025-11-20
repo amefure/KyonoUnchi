@@ -18,7 +18,7 @@ struct SelectInitWeekScreen: View {
             Text("カレンダーの週の始まりの曜日を変更することができます。")
                 .foregroundStyle(.exText)
                 .padding(.top, 10)
-                .font(.caption)
+                .fontS()
             
             List {
                 ForEach(SCWeek.allCases, id: \.self) { week in

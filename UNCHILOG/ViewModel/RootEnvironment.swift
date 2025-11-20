@@ -31,6 +31,8 @@ final class RootEnvironmentState {
     fileprivate(set) var removeAds: Bool = false
     /// 登録モード
     fileprivate(set) var entryMode: EntryMode = .simple
+    /// 回数アイコン
+    fileprivate(set) var countIcon: CountIconItem = .simple
     
     /// 詳細ページで表示するダイアログ
     var showSimpleEntryDetailDialog: Bool = false
@@ -63,6 +65,7 @@ final class RootEnvironment {
         self.watchConnectRepository = watchConnectRepository
         
         getEntryMode()
+        getCountIcon()
         getAppLock()
         getAppInPurchased()
 
@@ -122,7 +125,6 @@ extension RootEnvironment {
             let weekPoops = poops.filter { poop in
                 poop.date >= oneWeekAgo && poop.date <= endToday
             }
-            print("-----send wtacg")
             watchConnectRepository.send(weekPoops)
         }
     }
@@ -131,6 +133,12 @@ extension RootEnvironment {
 
 // MARK: - UserDefaults
 extension RootEnvironment {
+    
+    /// 回数アイコン取得
+    func getCountIcon() {
+        state.countIcon = userDefaultsRepository.getCountIcon()
+    }
+    
     /// 登録モード取得
     private func getEntryMode() {
         state.entryMode = userDefaultsRepository.getEntryMode()

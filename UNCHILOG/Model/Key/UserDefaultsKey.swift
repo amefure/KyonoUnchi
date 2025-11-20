@@ -14,6 +14,8 @@ class UserDefaultsKey {
     static let INIT_WEEK = "INIT_WEEK"
     /// 登録モード
     static let ENTRY_MODE = "ENTRY_MODE"
+    /// 回数アイコン
+    static let COUNT_ICON = "COUNT_ICON"
     /// アプリカラー
     static let APP_COLOR = "APP_COLOR"
     /// アプリアイコン

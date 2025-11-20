@@ -40,6 +40,17 @@ struct SettingView: View {
                         }
                     }.listRowBackground(Color.exFoundation)
                     
+                    NavigationLink {
+                        SelectCountIconScreen()
+                    } label: {
+                        HStack {
+                            Image(systemName: "calendar")
+                            
+                            Text(L10n.settingSectionCalendarCountIcon)
+                            
+                        }
+                    }.listRowBackground(Color.exFoundation)
+                    
                 }
                 
                 Section(

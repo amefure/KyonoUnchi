@@ -11,15 +11,13 @@ import SCCalendar
 struct TheDayView: View {
     
     let theDay: SCDate
+    let countIcon: CountIconItem
     let onTap: (SCDate) -> Void
     
     private var poopIconWidth: CGFloat {
         DeviceSizeUtility.deviceWidth / 7
     }
-    
-    private var iconSize: CGFloat {
-        DeviceSizeUtility.isSESize ? 25 : 40
-    }
+
 
     var body: some View {
         VStack {
@@ -40,12 +38,8 @@ struct TheDayView: View {
                     
                     if theDay.entities.count != 0 {
                         ZStack {
-                            Color.exPoopYellow
-                            //Image("noface_poop")
-                                //.resizable()
-                                //.scaledToFit()
-                                .frame(width: iconSize, height: iconSize)
-                                .clipShape(RoundedRectangle(cornerRadius: 60))
+                           
+                            CountIconView(countIcon: countIcon)
                             
                             Text("\(theDay.entities.count)")
                                 .font(.system(size: DeviceSizeUtility.isSESize ? 14 : 18))
@@ -54,7 +48,7 @@ struct TheDayView: View {
                         }
                     } else {
                         Color.white
-                            .frame(height: iconSize)
+                            //.frame(height: iconSize)
                     }
                     Spacer()
                 }.onTapGesture {
@@ -74,6 +68,7 @@ struct TheDayView: View {
 #Preview {
     TheDayView(
         theDay: SCDate.demo,
+        countIcon: CountIconItem.poop,
         onTap: { _ in }
     )
 }

@@ -12,6 +12,7 @@ struct CarouselCalendarView: View {
     
     let yearAndMonths: [SCYearAndMonth]
     let displayCalendarIndex: CGFloat
+    let countIcon: CountIconItem
     let backMonthPage: () -> Void
     let forwardMonthPage: () -> Void
     
@@ -30,6 +31,7 @@ struct CarouselCalendarView: View {
                 ForEach(yearAndMonths, id: \.id) { yearAndMonth in
                     CalendarMonthView(
                         yearAndMonth: yearAndMonth,
+                        countIcon: countIcon,
                         onTapDay: { day in
                             selectedDay = day
                         }
@@ -87,6 +89,7 @@ struct CarouselCalendarView: View {
 private struct CalendarMonthView: View {
     
     let yearAndMonth: SCYearAndMonth
+    let countIcon: CountIconItem
     let onTapDay: (SCDate) -> Void
 
     var body: some View {
@@ -99,7 +102,11 @@ private struct CalendarMonthView: View {
                         let dataIndex: Int = rowIndex * 7 + columnIndex
                         if dataIndex < dates.count {
                             let theDay = dates[dataIndex]
-                            TheDayView(theDay: theDay, onTap: onTapDay)
+                            TheDayView(
+                                theDay: theDay,
+                                countIcon: countIcon,
+                                onTap: onTapDay
+                            )
                         }
                     }
                 }
@@ -116,6 +123,7 @@ private struct CalendarMonthView: View {
     CarouselCalendarView(
         yearAndMonths: [],
         displayCalendarIndex: 0,
+        countIcon: .simple,
         backMonthPage: {},
         forwardMonthPage: {}
     )

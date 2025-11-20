@@ -80,6 +80,18 @@ extension UserDefaultsRepository {
         setIntData(key: UserDefaultsKey.INIT_WEEK, value: week.rawValue)
     }
     
+    /// 取得：回数アイコン
+    func getCountIcon() -> CountIconItem {
+        let icon = getIntData(key: UserDefaultsKey.COUNT_ICON)
+        return CountIconItem(rawValue: icon) ?? CountIconItem.simple
+    }
+
+    /// 登録：回数アイコン
+    func setCountIcon(_ icon: CountIconItem) {
+        setIntData(key: UserDefaultsKey.COUNT_ICON, value: icon.rawValue)
+    }
+    
+    
     /// 取得：登録モード
     func getEntryMode() -> EntryMode {
         let mode = getIntData(key: UserDefaultsKey.ENTRY_MODE)

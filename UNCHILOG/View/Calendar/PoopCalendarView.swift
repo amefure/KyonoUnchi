@@ -26,6 +26,7 @@ struct PoopCalendarView: View {
             CarouselCalendarView(
                 yearAndMonths: viewModel.state.yearAndMonths,
                 displayCalendarIndex: viewModel.state.displayCalendarIndex,
+                countIcon: rootEnvironment.state.countIcon,
                 backMonthPage: viewModel.backMonthPage,
                 forwardMonthPage: viewModel.forwardMonthPage
             )

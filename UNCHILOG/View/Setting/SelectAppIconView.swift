@@ -22,7 +22,7 @@ struct SelectAppIconView: View {
             Text("アプリアイコンを変更することができます。")
                 .foregroundStyle(.exText)
                 .padding(.top, 10)
-                .font(.caption)
+                .fontS()
             
             List {
                 Button {
@@ -40,8 +40,9 @@ struct SelectAppIconView: View {
                             .foregroundStyle(.exText)
                             .fontWeight(.bold)
                         
+                        Spacer()
+                        
                         if appIconName == AppIconName.icon1.rawValue {
-                            Spacer()
                             Image(systemName: "checkmark")
                                 .foregroundStyle(.exText)
                         }
@@ -65,8 +66,9 @@ struct SelectAppIconView: View {
                             .foregroundStyle(.exText)
                             .fontWeight(.bold)
                         
+                        Spacer()
+                        
                         if appIconName == AppIconName.icon2.rawValue {
-                            Spacer()
                             Image(systemName: "checkmark")
                                 .foregroundStyle(.exText)
                         }
@@ -89,8 +91,9 @@ struct SelectAppIconView: View {
                             .foregroundStyle(.exText)
                             .fontWeight(.bold)
                         
+                        Spacer()
+                        
                         if appIconName == AppIconName.icon3.rawValue {
-                            Spacer()
                             Image(systemName: "checkmark")
                         }
                     }
@@ -112,8 +115,9 @@ struct SelectAppIconView: View {
                             .foregroundStyle(.exText)
                             .fontWeight(.bold)
                         
+                        Spacer()
+                        
                         if appIconName == AppIconName.icon4.rawValue {
-                            Spacer()
                             Image(systemName: "checkmark")
                                 .foregroundStyle(.exText)
                         }
@@ -121,29 +125,30 @@ struct SelectAppIconView: View {
                 }.buttonStyle(PlainButtonStyle())
                     .listRowBackground(Color.exFoundation)
                 
-//                Button {
-//                    appIconName = AppIconName.icon5.rawValue
-//                    UIApplication.shared.setAlternateIconName(appIconName)
-//                    rootEnvironment.saveAppIcon(iconName: appIconName)
-//                } label: {
-//                    HStack {
-//                        Asset.Images.appIconImg5.swiftUIImage
-//                              .resizable()
-//                              .scaledToFit()
-//                              .frame(width: 50)
-//                              .clipShape(RoundedRectangle(cornerRadius: 10))
-//                        Text("ポップUNCHI")
-//                            .foregroundStyle(.exText)
-//                            .fontWeight(.bold)
-//                        
-//                        if appIconName == AppIconName.icon5.rawValue {
-//                            Spacer()
-//                            Image(systemName: "checkmark")
-//                                .foregroundStyle(.exText)
-//                        }
-//                    }
-//                }.buttonStyle(PlainButtonStyle())
-//                    .listRowBackground(Color.exFoundation)
+                Button {
+                    appIconName = AppIconName.icon5.rawValue
+                    UIApplication.shared.setAlternateIconName(appIconName)
+                    rootEnvironment.saveAppIcon(iconName: appIconName)
+                } label: {
+                    HStack {
+                        Asset.Images.appIconImg5.swiftUIImage
+                              .resizable()
+                              .scaledToFit()
+                              .frame(width: 50)
+                              .clipShape(RoundedRectangle(cornerRadius: 10))
+                        Text("うんちくん")
+                            .foregroundStyle(.exText)
+                            .fontWeight(.bold)
+                        
+                        Spacer()
+                        
+                        if appIconName == AppIconName.icon5.rawValue {
+                            Image(systemName: "checkmark")
+                                .foregroundStyle(.exText)
+                        }
+                    }
+                }.buttonStyle(PlainButtonStyle())
+                    .listRowBackground(Color.exFoundation)
             }.scrollContentBackground(.hidden)
                 .background(.white)
                

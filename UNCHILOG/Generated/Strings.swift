@@ -50,6 +50,11 @@ internal enum L10n {
   internal static let dialogTitle = L10n.tr("Localizable", "dialog_title", fallback: "お知らせ")
   /// Error
   internal static let dialogTitleError = L10n.tr("Localizable", "dialog_title_error", fallback: "Error")
+  /// 回数アイコンを「%@」に
+  /// 変更しました。
+  internal static func dialogUpdateCountIcon(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "dialog_update_count_icon_%@", String(describing: p1), fallback: "回数アイコンを「%@」に\n変更しました。")
+  }
   /// 「%@」モードに
   /// 変更しました。
   internal static func dialogUpdateEntryMode(_ p1: Any) -> String {
@@ -119,6 +124,8 @@ internal enum L10n {
   internal static let settingSectionAppLock = L10n.tr("Localizable", "setting_section_app_lock", fallback: "アプリをロックする")
   /// アプリ設定
   internal static let settingSectionAppTitle = L10n.tr("Localizable", "setting_section_app_title", fallback: "アプリ設定")
+  /// 回数アイコン変更
+  internal static let settingSectionCalendarCountIcon = L10n.tr("Localizable", "setting_section_calendar_count_icon", fallback: "回数アイコン変更")
   /// 週始まり
   internal static let settingSectionCalendarInitWeek = L10n.tr("Localizable", "setting_section_calendar_init_week", fallback: "週始まり")
   /// カレンダー設定

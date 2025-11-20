@@ -31,7 +31,7 @@ struct SelectEntryMode: View {
             Text(L10n.selectEntryModeMsg)
                 .foregroundStyle(.exText)
                 .padding(.top, 10)
-                .font(.caption)
+                .fontS()
             
             Picker(selection: $selectMode) {
                 Text(EntryMode.simple.name).tag(EntryMode.simple)

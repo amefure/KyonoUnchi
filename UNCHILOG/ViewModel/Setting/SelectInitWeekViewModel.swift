@@ -9,7 +9,7 @@ import SCCalendar
 import SwiftUI
 
 @Observable
-final class SelectInitWeekVState {
+final class SelectInitWeekState {
     private(set) var selectWeek: SCWeek = .sunday
     var isShowSuccessAlert: Bool = false
     fileprivate func setWeek(week: SCWeek) {
@@ -18,7 +18,7 @@ final class SelectInitWeekVState {
 }
 
 final class SelectInitWeekViewModel {
-    var state = SelectInitWeekVState()
+    var state = SelectInitWeekState()
 
     /// `Repository`
     private let userDefaultsRepository: UserDefaultsRepository
