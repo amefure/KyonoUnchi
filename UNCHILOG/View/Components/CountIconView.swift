@@ -33,7 +33,7 @@ struct CountIconView: View {
             Image("noface_poop")
                 .resizable()
                 .scaledToFit()
-                .scaleEffect(1.3)
+                .scaleEffect(DeviceSizeUtility.isSESize ? 1.3 : 1.0)
                 .frame(width: iconSize, height: iconSize)
                 .offset(y: -5)
         }
