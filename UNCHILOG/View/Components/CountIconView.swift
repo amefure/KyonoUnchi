@@ -11,7 +11,9 @@ struct CountIconView: View {
     
     let countIcon: CountIconItem
     
-    private var iconSize: CGFloat = 40
+    private var iconSize: CGFloat {
+        DeviceSizeUtility.isSESize ? 25 : 40
+    }
     
     var body: some View {
         switch countIcon {
@@ -31,6 +33,7 @@ struct CountIconView: View {
             Image("noface_poop")
                 .resizable()
                 .scaledToFit()
+                .scaleEffect(1.3)
                 .frame(width: iconSize, height: iconSize)
                 .offset(y: -5)
         }
