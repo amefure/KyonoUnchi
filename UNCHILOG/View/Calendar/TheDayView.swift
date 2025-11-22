@@ -48,7 +48,6 @@ struct TheDayView: View {
                         }
                     } else {
                         Color.white
-                            //.frame(height: iconSize)
                     }
                     Spacer()
                 }.onTapGesture {

@@ -108,6 +108,10 @@
 		129FA0C12EB641BD009712F1 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 129FA0C02EB641BD009712F1 /* Swinject */; };
 		129FA0C42EB641CE009712F1 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129FA0C22EB641CE009712F1 /* DIContainer.swift */; };
 		129FA0C62EB77D9A009712F1 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129FA0C52EB77D96009712F1 /* CalendarViewModel.swift */; };
+		12A3AE462ED1F87E009116CC /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 12A3AE452ED1F87E009116CC /* FirebaseAnalytics */; };
+		12A3AE482ED1F87E009116CC /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 12A3AE472ED1F87E009116CC /* FirebaseCrashlytics */; };
+		12A3AE4A2ED1F87E009116CC /* FirebasePerformance in Frameworks */ = {isa = PBXBuildFile; productRef = 12A3AE492ED1F87E009116CC /* FirebasePerformance */; };
+		12A3AE4C2ED1F93F009116CC /* CountIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A3AE4B2ED1F93E009116CC /* CountIconView.swift */; };
 		12A43E172BBAF51800AB19A4 /* RoundMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A43E162BBAF51700AB19A4 /* RoundMessageView.swift */; };
 		12B29BCE2BD521A900DD7E20 /* PoopMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B29BCD2BD521A900DD7E20 /* PoopMessage.swift */; };
 		12CBFBE92BAFE25B005FE4F1 /* UNCHILOGApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CBFBE82BAFE25B005FE4F1 /* UNCHILOGApp.swift */; };
@@ -234,6 +238,7 @@
 		129FA0BD2EB63EA8009712F1 /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		129FA0C22EB641CE009712F1 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		129FA0C52EB77D96009712F1 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
+		12A3AE4B2ED1F93E009116CC /* CountIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountIconView.swift; sourceTree = "<group>"; };
 		12A43E162BBAF51700AB19A4 /* RoundMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundMessageView.swift; sourceTree = "<group>"; };
 		12B29BCD2BD521A900DD7E20 /* PoopMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopMessage.swift; sourceTree = "<group>"; };
 		12CBFBE52BAFE25B005FE4F1 /* UNCHILOG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UNCHILOG.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -272,6 +277,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12A3AE4A2ED1F87E009116CC /* FirebasePerformance in Frameworks */,
 				129FA0B12EB63D10009712F1 /* FirebaseAnalytics in Frameworks */,
 				129FA0B32EB63D10009712F1 /* FirebaseAnalyticsCore in Frameworks */,
 				120C655A2EBA3B6C0001312B /* SCCalendar in Frameworks */,
@@ -279,7 +285,9 @@
 				129FA0B92EB63D10009712F1 /* FirebasePerformance in Frameworks */,
 				129FA0B72EB63D10009712F1 /* FirebaseCrashlytics in Frameworks */,
 				129FA0B52EB63D10009712F1 /* FirebaseCore in Frameworks */,
+				12A3AE482ED1F87E009116CC /* FirebaseCrashlytics in Frameworks */,
 				129FA0BC2EB63D43009712F1 /* GoogleMobileAds in Frameworks */,
+				12A3AE462ED1F87E009116CC /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -527,6 +535,7 @@
 			children = (
 				128BB5EE2BB59F83009E0FAB /* Layout */,
 				12A43E162BBAF51700AB19A4 /* RoundMessageView.swift */,
+				12A3AE4B2ED1F93E009116CC /* CountIconView.swift */,
 				12DB3CF72BD392A90075817A /* AdMobView.swift */,
 			);
 			path = Components;
@@ -872,6 +881,7 @@
 				12CBFBEB2BAFE25B005FE4F1 /* RootView.swift in Sources */,
 				128BB6012BB5B000009E0FAB /* AppLockViewModel.swift in Sources */,
 				122B3EE12BBFC53B00167D9E /* SelectEntryMode.swift in Sources */,
+				12A3AE4C2ED1F93F009116CC /* CountIconView.swift in Sources */,
 				12CBFBF52BAFE25C005FE4F1 /* UNCHILOG.xcdatamodeld in Sources */,
 				128BB5EB2BB467B2009E0FAB /* Assets.swift in Sources */,
 				128BB5E12BB30E6E009E0FAB /* TheDayView.swift in Sources */,
@@ -1314,6 +1324,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 129FA0BF2EB641BC009712F1 /* XCRemoteSwiftPackageReference "Swinject" */;
 			productName = Swinject;
+		};
+		12A3AE452ED1F87E009116CC /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 129FA0AF2EB63D10009712F1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		12A3AE472ED1F87E009116CC /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 129FA0AF2EB63D10009712F1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		12A3AE492ED1F87E009116CC /* FirebasePerformance */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 129FA0AF2EB63D10009712F1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebasePerformance;
 		};
 /* End XCSwiftPackageProductDependency section */
 
