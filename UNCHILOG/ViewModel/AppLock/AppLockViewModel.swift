@@ -40,6 +40,9 @@ final class AppLockViewModel {
     }
     @MainActor
     func onAppear() {
+        
+        FBAnalyticsManager.loggingScreen(screen: .AppLockScreen)
+        
         biometricAuthRepository.biometryType.sink { [weak self] type in
             guard let self else { return }
             self.state.type = type

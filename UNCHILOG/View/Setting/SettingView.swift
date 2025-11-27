@@ -59,7 +59,7 @@ struct SettingView: View {
                 ) {
                     
                     NavigationLink {
-                        SelectEntryMode()
+                        SelectEntryModeScreen()
                     } label: {
                         HStack {
                             Image(systemName: "plus.app")

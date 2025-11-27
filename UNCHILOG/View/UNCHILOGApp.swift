@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAnalytics
 import FirebaseCore
 import GoogleMobileAds
 

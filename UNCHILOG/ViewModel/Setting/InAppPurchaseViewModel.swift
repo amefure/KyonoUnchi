@@ -49,6 +49,8 @@ final class InAppPurchaseViewModel {
 
     @MainActor
     func onAppear() {
+        
+        FBAnalyticsManager.loggingScreen(screen: .InAppPurchaseScreen)
 
         Task {
             await inAppPurchaseRepository.startListen()

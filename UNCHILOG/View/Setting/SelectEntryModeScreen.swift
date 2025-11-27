@@ -1,5 +1,5 @@
 //
-//  SelectEntryMode.swift
+//  SelectEntryModeScreen.swift
 //  UNCHILOG
 //
 //  Created by t&a on 2024/04/05.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SelectEntryMode: View {
+struct SelectEntryModeScreen: View {
     @Environment(\.rootEnvironment) private var rootEnvironment
     @State private var selectMode: EntryMode = .detail
     
@@ -95,6 +95,7 @@ struct SelectEntryMode: View {
                 positiveButtonTitle: L10n.dialogButtonOk,
                 positiveAction: { dismiss() }
             ).onAppear {
+                FBAnalyticsManager.loggingScreen(screen: .SelectEntryModeScreen)
                 selectMode = rootEnvironment.state.entryMode
             }.toolbarBackground(.exFoundation, for: .navigationBar)
                 .toolbarBackground(.visible, for: .navigationBar) // iOS18以降はtoolbarVisibility
@@ -103,5 +104,5 @@ struct SelectEntryMode: View {
 }
 
 #Preview {
-    SelectEntryMode()
+    SelectEntryModeScreen()
 }
