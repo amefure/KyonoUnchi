@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		120C655A2EBA3B6C0001312B /* SCCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 120C65592EBA3B6C0001312B /* SCCalendar */; };
 		120C655C2EBA412A0001312B /* SCCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 120C655B2EBA412A0001312B /* SCCalendar */; };
+		121532B82ED8766F00891E45 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 121532B72ED8766F00891E45 /* FirebaseAnalytics */; };
+		121532BA2ED8766F00891E45 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 121532B92ED8766F00891E45 /* FirebaseCrashlytics */; };
+		121532BC2ED8766F00891E45 /* FirebasePerformance in Frameworks */ = {isa = PBXBuildFile; productRef = 121532BB2ED8766F00891E45 /* FirebasePerformance */; };
 		1222E51D2EBB917300DFC050 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129FA09F2EB4EB31009712F1 /* Logger.swift */; };
 		1222E5202EBCE39700DFC050 /* TheDayDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1222E51F2EBCE39300DFC050 /* TheDayDetailViewModel.swift */; };
 		1222E5232EBCEAD500DFC050 /* PoopInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1222E5222EBCEAD200DFC050 /* PoopInputViewModel.swift */; };
@@ -98,19 +101,11 @@
 		129FA0AB2EB4EB31009712F1 /* ShareInfoUtillity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129FA0A42EB4EB31009712F1 /* ShareInfoUtillity.swift */; };
 		129FA0AC2EB4EB31009712F1 /* DeviceSizeUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129FA0A02EB4EB31009712F1 /* DeviceSizeUtility.swift */; };
 		129FA0AE2EB4EC4B009712F1 /* DateFormatUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129FA0A22EB4EB31009712F1 /* DateFormatUtility.swift */; };
-		129FA0B12EB63D10009712F1 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 129FA0B02EB63D10009712F1 /* FirebaseAnalytics */; };
-		129FA0B32EB63D10009712F1 /* FirebaseAnalyticsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 129FA0B22EB63D10009712F1 /* FirebaseAnalyticsCore */; };
-		129FA0B52EB63D10009712F1 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 129FA0B42EB63D10009712F1 /* FirebaseCore */; };
-		129FA0B72EB63D10009712F1 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 129FA0B62EB63D10009712F1 /* FirebaseCrashlytics */; };
-		129FA0B92EB63D10009712F1 /* FirebasePerformance in Frameworks */ = {isa = PBXBuildFile; productRef = 129FA0B82EB63D10009712F1 /* FirebasePerformance */; };
 		129FA0BC2EB63D43009712F1 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 129FA0BB2EB63D43009712F1 /* GoogleMobileAds */; };
 		129FA0BE2EB63EAC009712F1 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129FA0BD2EB63EA8009712F1 /* RootViewModel.swift */; };
 		129FA0C12EB641BD009712F1 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 129FA0C02EB641BD009712F1 /* Swinject */; };
 		129FA0C42EB641CE009712F1 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129FA0C22EB641CE009712F1 /* DIContainer.swift */; };
 		129FA0C62EB77D9A009712F1 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129FA0C52EB77D96009712F1 /* CalendarViewModel.swift */; };
-		12A3AE462ED1F87E009116CC /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 12A3AE452ED1F87E009116CC /* FirebaseAnalytics */; };
-		12A3AE482ED1F87E009116CC /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 12A3AE472ED1F87E009116CC /* FirebaseCrashlytics */; };
-		12A3AE4A2ED1F87E009116CC /* FirebasePerformance in Frameworks */ = {isa = PBXBuildFile; productRef = 12A3AE492ED1F87E009116CC /* FirebasePerformance */; };
 		12A3AE4C2ED1F93F009116CC /* CountIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A3AE4B2ED1F93E009116CC /* CountIconView.swift */; };
 		12A43E172BBAF51800AB19A4 /* RoundMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A43E162BBAF51700AB19A4 /* RoundMessageView.swift */; };
 		12B29BCE2BD521A900DD7E20 /* PoopMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B29BCD2BD521A900DD7E20 /* PoopMessage.swift */; };
@@ -277,17 +272,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				12A3AE4A2ED1F87E009116CC /* FirebasePerformance in Frameworks */,
-				129FA0B12EB63D10009712F1 /* FirebaseAnalytics in Frameworks */,
-				129FA0B32EB63D10009712F1 /* FirebaseAnalyticsCore in Frameworks */,
 				120C655A2EBA3B6C0001312B /* SCCalendar in Frameworks */,
 				129FA0C12EB641BD009712F1 /* Swinject in Frameworks */,
-				129FA0B92EB63D10009712F1 /* FirebasePerformance in Frameworks */,
-				129FA0B72EB63D10009712F1 /* FirebaseCrashlytics in Frameworks */,
-				129FA0B52EB63D10009712F1 /* FirebaseCore in Frameworks */,
-				12A3AE482ED1F87E009116CC /* FirebaseCrashlytics in Frameworks */,
+				121532BC2ED8766F00891E45 /* FirebasePerformance in Frameworks */,
+				121532BA2ED8766F00891E45 /* FirebaseCrashlytics in Frameworks */,
+				121532B82ED8766F00891E45 /* FirebaseAnalytics in Frameworks */,
 				129FA0BC2EB63D43009712F1 /* GoogleMobileAds in Frameworks */,
-				12A3AE462ED1F87E009116CC /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -778,10 +768,10 @@
 			);
 			mainGroup = 12CBFBDC2BAFE25B005FE4F1;
 			packageReferences = (
-				129FA0AF2EB63D10009712F1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				129FA0BA2EB63D43009712F1 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 				129FA0BF2EB641BC009712F1 /* XCRemoteSwiftPackageReference "Swinject" */,
 				120C65582EBA3B6C0001312B /* XCRemoteSwiftPackageReference "SCCalender" */,
+				121532B62ED8766F00891E45 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 12CBFBE62BAFE25B005FE4F1 /* Products */;
 			projectDirPath = "";
@@ -1253,12 +1243,12 @@
 				kind = branch;
 			};
 		};
-		129FA0AF2EB63D10009712F1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		121532B62ED8766F00891E45 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 12.5.0;
+				minimumVersion = 12.6.0;
 			};
 		};
 		129FA0BA2EB63D43009712F1 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
@@ -1290,29 +1280,19 @@
 			package = 120C65582EBA3B6C0001312B /* XCRemoteSwiftPackageReference "SCCalender" */;
 			productName = SCCalendar;
 		};
-		129FA0B02EB63D10009712F1 /* FirebaseAnalytics */ = {
+		121532B72ED8766F00891E45 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 129FA0AF2EB63D10009712F1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 121532B62ED8766F00891E45 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalytics;
 		};
-		129FA0B22EB63D10009712F1 /* FirebaseAnalyticsCore */ = {
+		121532B92ED8766F00891E45 /* FirebaseCrashlytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 129FA0AF2EB63D10009712F1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalyticsCore;
-		};
-		129FA0B42EB63D10009712F1 /* FirebaseCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 129FA0AF2EB63D10009712F1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseCore;
-		};
-		129FA0B62EB63D10009712F1 /* FirebaseCrashlytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 129FA0AF2EB63D10009712F1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 121532B62ED8766F00891E45 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCrashlytics;
 		};
-		129FA0B82EB63D10009712F1 /* FirebasePerformance */ = {
+		121532BB2ED8766F00891E45 /* FirebasePerformance */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 129FA0AF2EB63D10009712F1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 121532B62ED8766F00891E45 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebasePerformance;
 		};
 		129FA0BB2EB63D43009712F1 /* GoogleMobileAds */ = {
@@ -1324,21 +1304,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 129FA0BF2EB641BC009712F1 /* XCRemoteSwiftPackageReference "Swinject" */;
 			productName = Swinject;
-		};
-		12A3AE452ED1F87E009116CC /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 129FA0AF2EB63D10009712F1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
-		};
-		12A3AE472ED1F87E009116CC /* FirebaseCrashlytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 129FA0AF2EB63D10009712F1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseCrashlytics;
-		};
-		12A3AE492ED1F87E009116CC /* FirebasePerformance */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 129FA0AF2EB63D10009712F1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebasePerformance;
 		};
 /* End XCSwiftPackageProductDependency section */
 
