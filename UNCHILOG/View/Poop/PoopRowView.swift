@@ -42,24 +42,14 @@ struct PoopRowView: View {
             VStack(spacing: 0) {
                 
                 HStack {
-                    VStack(spacing: 0) {
-                        
-                        Rectangle()
-                            .fill(.exText)
-                            .frame(width: 2, height: 20)
-                        
-                        Text(poop.getTime(format: "HH:mm"))
-                            .fontM(bold: true)
-                            .foregroundStyle(.white)
-                            .frame(width: 70)
-                            .padding(10)
-                            .background(.exText)
-                            .clipShape(RoundedRectangle(cornerRadius: 5))
-                        
-                        Rectangle()
-                            .fill(.exText)
-                            .frame(width: 2, height: memoDisplayMode == .singleLine ? 20 : .infinity)
-                    }
+                    Text(poop.getTime(format: "HH:mm"))
+                        .fontM(bold: true)
+                        .foregroundStyle(.white)
+                        .frame(width: 70)
+                        .padding(10)
+                        .background(.exText)
+                        .clipShape(RoundedRectangle(cornerRadius: 5))
+                        .padding(.vertical, 20)
                     
                     VStack {
                         

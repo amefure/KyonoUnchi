@@ -97,7 +97,7 @@ final class TheMonthDetailViewModel: @unchecked Sendable {
         let filterPoops = result.filter({ $0.getDate(format: "yyyy年M月") == currentMonth.yearAndMonth })
         let groupedRecords = Dictionary(grouping: filterPoops) { poop in
             // yyyy年M月d日の文字列とする
-            return df.getString(date:  df.startOfDay(poop.date))
+            return df.getString(date: df.startOfDay(poop.date))
         }
         return groupedRecords
     }

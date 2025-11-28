@@ -47,13 +47,13 @@ final class WrapLocalRepository: WrapLocalRepositoryProtocol {
     
     public func fetchAllPoops() -> [Poop] {
         return localRepository.fetch(
-            sorts: [NSSortDescriptor(keyPath: \Poop.createdAt, ascending: true)]
+            sorts: [NSSortDescriptor(keyPath: \Poop.createdAt, ascending: false)]
         )
     }
     
     public func fetchAllPoopsBG() -> [Poop] {
         return localRepository.fetchBG(
-            sorts: [NSSortDescriptor(keyPath: \Poop.createdAt, ascending: true)]
+            sorts: [NSSortDescriptor(keyPath: \Poop.createdAt, ascending: false)]
         )
     }
     
