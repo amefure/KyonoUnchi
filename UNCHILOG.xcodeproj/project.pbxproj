@@ -132,6 +132,7 @@
 		12DB3CF62BD391FC0075817A /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 12DB3CF52BD391FC0075817A /* PrivacyInfo.xcprivacy */; };
 		12DB3CF82BD392A90075817A /* AdMobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB3CF72BD392A90075817A /* AdMobView.swift */; };
 		12DB3CFA2BD394870075817A /* AdsConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB3CF92BD394870075817A /* AdsConfig.swift */; };
+		12E13F052F892FE100EF115B /* File.txt in Resources */ = {isa = PBXBuildFile; fileRef = 12E13F042F892FE100EF115B /* File.txt */; };
 		12ED29B92C19701900A1293D /* TheMonthDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ED29B82C19701900A1293D /* TheMonthDetailView.swift */; };
 /* End PBXBuildFile section */
 
@@ -258,6 +259,7 @@
 		12DB3CF52BD391FC0075817A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		12DB3CF72BD392A90075817A /* AdMobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobView.swift; sourceTree = "<group>"; };
 		12DB3CF92BD394870075817A /* AdsConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsConfig.swift; sourceTree = "<group>"; };
+		12E13F042F892FE100EF115B /* File.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = File.txt; sourceTree = "<group>"; };
 		12ED29B82C19701900A1293D /* TheMonthDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMonthDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -424,6 +426,7 @@
 		128BB59F2BAFE357009E0FAB /* Extension&Utility */ = {
 			isa = PBXGroup;
 			children = (
+				12E13F042F892FE100EF115B /* File.txt */,
 				129FA0972EB4EB24009712F1 /* Extenstion */,
 				129FA0A62EB4EB31009712F1 /* Utility */,
 			);
@@ -774,8 +777,8 @@
 			packageReferences = (
 				129FA0BA2EB63D43009712F1 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 				129FA0BF2EB641BC009712F1 /* XCRemoteSwiftPackageReference "Swinject" */,
-				120C65582EBA3B6C0001312B /* XCRemoteSwiftPackageReference "SCCalender" */,
 				121532B62ED8766F00891E45 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				12E13F062F89336300EF115B /* XCRemoteSwiftPackageReference "SCCalender" */,
 			);
 			productRefGroup = 12CBFBE62BAFE25B005FE4F1 /* Products */;
 			projectDirPath = "";
@@ -809,6 +812,7 @@
 				128BB5AB2BAFE5C8009E0FAB /* GoogleService-Info.plist in Resources */,
 				12CBFBF02BAFE25C005FE4F1 /* Preview Assets.xcassets in Resources */,
 				12CBFBED2BAFE25C005FE4F1 /* Images.xcassets in Resources */,
+				12E13F052F892FE100EF115B /* File.txt in Resources */,
 				12D016C32EC4C17D0037448A /* AsyncProducts.storekit in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1296,6 +1300,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 2.10.0;
+			};
+		};
+		12E13F062F89336300EF115B /* XCRemoteSwiftPackageReference "SCCalender" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/amefure/SCCalender.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
