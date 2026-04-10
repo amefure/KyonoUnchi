@@ -1270,8 +1270,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/amefure/SCCalender.git";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 		121532B62ED8766F00891E45 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
