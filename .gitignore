@@ -60,3 +60,7 @@ fastlane/test_output
 
 # Code Injection
 iOSInjectionProject/
+
+# Force include Package.resolved
+!Package.resolved
+!**/Package.resolved
