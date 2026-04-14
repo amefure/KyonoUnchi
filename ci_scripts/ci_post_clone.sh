@@ -8,9 +8,9 @@ mkdir -p "$(dirname "$TARGET_PATH")"
 
 # 3. 環境変数の内容をファイルに書き出す
 if [ -n "$SECRET_PRODUCT_ID_KEY_CONTENT" ]; then
-    echo "$SECRET_PRODUCT_ID_KEY_CONTENT" > "$TARGET_PATH"
-    echo "✅ SecretProductIdKey.swift has been created successfully."
+    printf "%s\n" "$SECRET_PRODUCT_ID_KEY_CONTENT" > "$TARGET_PATH"
+    echo "✅ SecretProductIdKey.swift has been created from environment variable."
 else
-    echo "❌ Error: SECRET_PRODUCT_ID_KEY_CONTENT is not set."
+    echo "❌ Error: SECRET_PRODUCT_ID_KEY_CONTENT is not set in Xcode Cloud."
     exit 1
 fi
