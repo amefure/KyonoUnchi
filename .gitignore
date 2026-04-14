@@ -42,7 +42,7 @@ Pods
 
 # Firebase
 GoogleService-Info.plist
-UNCHILOG/View/Components/AdMobView.swift
+UNCHILOG/Model/Key/AdMobAdsKey.swift
 UNCHILOG/Model/InAppPurchase/SecretProductIdKey.swift
 
 # Carthage

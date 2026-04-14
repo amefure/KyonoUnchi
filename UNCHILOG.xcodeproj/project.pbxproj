@@ -15,6 +15,7 @@
 		121532BE2ED8798A00891E45 /* FBAnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121532BD2ED8798A00891E45 /* FBAnalyticsManager.swift */; };
 		121599E72F8E61FD00468D53 /* Poop+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121599E62F8E61FD00468D53 /* Poop+CoreDataClass.swift */; };
 		121599E82F8E61FD00468D53 /* Poop+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121599E62F8E61FD00468D53 /* Poop+CoreDataClass.swift */; };
+		121599EA2F8E6CB400468D53 /* AdMobAdsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121599E92F8E6CAC00468D53 /* AdMobAdsKey.swift */; };
 		1222E51D2EBB917300DFC050 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129FA09F2EB4EB31009712F1 /* Logger.swift */; };
 		1222E5202EBCE39700DFC050 /* TheDayDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1222E51F2EBCE39300DFC050 /* TheDayDetailViewModel.swift */; };
 		1222E5232EBCEAD500DFC050 /* PoopInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1222E5222EBCEAD200DFC050 /* PoopInputViewModel.swift */; };
@@ -162,6 +163,7 @@
 /* Begin PBXFileReference section */
 		121532BD2ED8798A00891E45 /* FBAnalyticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBAnalyticsManager.swift; sourceTree = "<group>"; };
 		121599E62F8E61FD00468D53 /* Poop+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Poop+CoreDataClass.swift"; sourceTree = "<group>"; };
+		121599E92F8E6CAC00468D53 /* AdMobAdsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobAdsKey.swift; sourceTree = "<group>"; };
 		1222E51F2EBCE39300DFC050 /* TheDayDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheDayDetailViewModel.swift; sourceTree = "<group>"; };
 		1222E5222EBCEAD200DFC050 /* PoopInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopInputViewModel.swift; sourceTree = "<group>"; };
 		1222E5242EBF786600DFC050 /* ExNotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExNotificationName.swift; sourceTree = "<group>"; };
@@ -559,6 +561,7 @@
 			isa = PBXGroup;
 			children = (
 				128BB5F82BB5ACF3009E0FAB /* UserDefaultsKey.swift */,
+				121599E92F8E6CAC00468D53 /* AdMobAdsKey.swift */,
 			);
 			path = Key;
 			sourceTree = "<group>";
@@ -904,6 +907,7 @@
 				122B3EE12BBFC53B00167D9E /* SelectEntryModeScreen.swift in Sources */,
 				12A3AE4C2ED1F93F009116CC /* CountIconView.swift in Sources */,
 				12CBFBF52BAFE25C005FE4F1 /* UNCHILOG.xcdatamodeld in Sources */,
+				121599EA2F8E6CB400468D53 /* AdMobAdsKey.swift in Sources */,
 				128BB5EB2BB467B2009E0FAB /* Assets.swift in Sources */,
 				128BB5E12BB30E6E009E0FAB /* TheDayView.swift in Sources */,
 				12D016B12EC37CED0037448A /* SelectInitWeekViewModel.swift in Sources */,
